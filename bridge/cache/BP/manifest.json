@@ -1,0 +1,107 @@
+{
+	"file_path": "C:\\Users\\James\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_behavior_packs\\HydraAntiCheat Easy Mode\\manifest.json",
+	"file_type": "manifest_bp",
+	"format_version": 1,
+	"file_uuid": "ea19ff51_8d21_492d_a22a_db46642dc3b9",
+	"file_version": 21,
+	"cache_content": {
+		"children": [
+			{
+				"data": "2",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": 2,
+					"header": {
+						"name": "§¶§c⋰ Hydra Anticheat | v2.0.0 | Easy Setup ⋱",
+						"description": "§¶§c⋮                                      ⋮",
+						"uuid": "958b8370-72b0-4a78-91e2-b3b719084de7",
+						"version": [
+							1,
+							0,
+							0
+						],
+						"min_engine_version": [
+							1,
+							13,
+							0
+						]
+					},
+					"modules": [
+						{
+							"type": "data",
+							"uuid": "f4c7fd43-5678-4bb5-83b3-82e2a5f7a3c3",
+							"version": [
+								1,
+								0,
+								0
+							]
+						}
+					]
+				},
+				"key": "header",
+				"is_minified": true,
+				"children": {
+					"name": "§¶§c⋰ Hydra Anticheat | v2.0.0 | Easy Setup ⋱",
+					"description": "§¶§c⋮                                      ⋮",
+					"uuid": "958b8370-72b0-4a78-91e2-b3b719084de7",
+					"version": [
+						1,
+						0,
+						0
+					],
+					"min_engine_version": [
+						1,
+						13,
+						0
+					]
+				}
+			},
+			{
+				"open": {
+					"format_version": 2,
+					"header": {
+						"name": "§¶§c⋰ Hydra Anticheat | v2.0.0 | Easy Setup ⋱",
+						"description": "§¶§c⋮                                      ⋮",
+						"uuid": "958b8370-72b0-4a78-91e2-b3b719084de7",
+						"version": [
+							1,
+							0,
+							0
+						],
+						"min_engine_version": [
+							1,
+							13,
+							0
+						]
+					},
+					"modules": [
+						{
+							"type": "data",
+							"uuid": "f4c7fd43-5678-4bb5-83b3-82e2a5f7a3c3",
+							"version": [
+								1,
+								0,
+								0
+							]
+						}
+					]
+				},
+				"key": "modules",
+				"is_minified": true,
+				"children": [
+					{
+						"type": "data",
+						"uuid": "f4c7fd43-5678-4bb5-83b3-82e2a5f7a3c3",
+						"version": [
+							1,
+							0,
+							0
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,29 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.anticbe.execute_commands": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "execute_command_id_8": "query.skin_id == 8"
+                        }
+                    ]
+                },
+                "execute_command_id_8": {
+                    "transitions": [
+                        {
+                            "default": "query.skin_id == 8"
+                        }
+                    ],
+                    "on_entry": [
+                        "/clear",
+                        "/me §¶§cUAC► §bKicked for CBE Exploits",
+                        "/kick @s §¶§cUAC► §lCBE is for skids. Don't be a skid",
+                        "@s bridge:remove_command_id_1"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,267 @@
+{
+	"file_path": "C:\\Users\\James\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_behavior_packs\\HydraAntiCheat Easy Mode\\animation_controllers\\walk.json",
+	"file_type": "animation_controller",
+	"format_version": 1,
+	"file_uuid": "01524c65_03a6_4566_b15b_801cf52b2d30",
+	"file_version": 5,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"animation_controllers": {
+						"controller.animation.walk": {
+							"states": {
+								"default": {
+									"transitions": [
+										{
+											"zooming": "(1.0)"
+										}
+									],
+									"on_entry": [
+										"/gamerule functioncommandlimit 10000",
+										"/gamerule randomtickspeed 1",
+										"/function hy/packages/antinbt"
+									]
+								},
+								"zooming": {
+									"transitions": [
+										{
+											"default": "(1.0)"
+										}
+									],
+									"on_entry": [
+										"/gamerule functioncommandlimit 10000",
+										"/gamerule randomtickspeed 1",
+										"/function hy/packages/antinbt"
+									]
+								}
+							}
+						}
+					}
+				},
+				"key": "animation_controllers",
+				"children": [
+					{
+						"open": {
+							"controller.animation.walk": {
+								"states": {
+									"default": {
+										"transitions": [
+											{
+												"zooming": "(1.0)"
+											}
+										],
+										"on_entry": [
+											"/gamerule functioncommandlimit 10000",
+											"/gamerule randomtickspeed 1",
+											"/function hy/packages/antinbt"
+										]
+									},
+									"zooming": {
+										"transitions": [
+											{
+												"default": "(1.0)"
+											}
+										],
+										"on_entry": [
+											"/gamerule functioncommandlimit 10000",
+											"/gamerule randomtickspeed 1",
+											"/function hy/packages/antinbt"
+										]
+									}
+								}
+							}
+						},
+						"key": "controller.animation.walk",
+						"children": [
+							{
+								"open": {
+									"states": {
+										"default": {
+											"transitions": [
+												{
+													"zooming": "(1.0)"
+												}
+											],
+											"on_entry": [
+												"/gamerule functioncommandlimit 10000",
+												"/gamerule randomtickspeed 1",
+												"/function hy/packages/antinbt"
+											]
+										},
+										"zooming": {
+											"transitions": [
+												{
+													"default": "(1.0)"
+												}
+											],
+											"on_entry": [
+												"/gamerule functioncommandlimit 10000",
+												"/gamerule randomtickspeed 1",
+												"/function hy/packages/antinbt"
+											]
+										}
+									}
+								},
+								"key": "states",
+								"children": [
+									{
+										"open": {
+											"default": {
+												"transitions": [
+													{
+														"zooming": "(1.0)"
+													}
+												],
+												"on_entry": [
+													"/gamerule functioncommandlimit 10000",
+													"/gamerule randomtickspeed 1",
+													"/function hy/packages/antinbt"
+												]
+											},
+											"zooming": {
+												"transitions": [
+													{
+														"default": "(1.0)"
+													}
+												],
+												"on_entry": [
+													"/gamerule functioncommandlimit 10000",
+													"/gamerule randomtickspeed 1",
+													"/function hy/packages/antinbt"
+												]
+											}
+										},
+										"key": "default",
+										"children": [
+											{
+												"open": {
+													"transitions": [
+														{
+															"zooming": "(1.0)"
+														}
+													],
+													"on_entry": [
+														"/gamerule functioncommandlimit 10000",
+														"/gamerule randomtickspeed 1",
+														"/function hy/packages/antinbt"
+													]
+												},
+												"key": "transitions",
+												"is_minified": true,
+												"children": [
+													{
+														"zooming": "(1.0)"
+													}
+												]
+											},
+											{
+												"open": {
+													"transitions": [
+														{
+															"zooming": "(1.0)"
+														}
+													],
+													"on_entry": [
+														"/gamerule functioncommandlimit 10000",
+														"/gamerule randomtickspeed 1",
+														"/function hy/packages/antinbt"
+													]
+												},
+												"key": "on_entry",
+												"is_minified": true,
+												"children": [
+													"/gamerule functioncommandlimit 10000",
+													"/gamerule randomtickspeed 1",
+													"/function hy/packages/antinbt"
+												]
+											}
+										]
+									},
+									{
+										"open": {
+											"default": {
+												"transitions": [
+													{
+														"zooming": "(1.0)"
+													}
+												],
+												"on_entry": [
+													"/gamerule functioncommandlimit 10000",
+													"/gamerule randomtickspeed 1",
+													"/function hy/packages/antinbt"
+												]
+											},
+											"zooming": {
+												"transitions": [
+													{
+														"default": "(1.0)"
+													}
+												],
+												"on_entry": [
+													"/gamerule functioncommandlimit 10000",
+													"/gamerule randomtickspeed 1",
+													"/function hy/packages/antinbt"
+												]
+											}
+										},
+										"key": "zooming",
+										"children": [
+											{
+												"open": {
+													"transitions": [
+														{
+															"default": "(1.0)"
+														}
+													],
+													"on_entry": [
+														"/gamerule functioncommandlimit 10000",
+														"/gamerule randomtickspeed 1",
+														"/function hy/packages/antinbt"
+													]
+												},
+												"key": "transitions",
+												"is_minified": true,
+												"children": [
+													{
+														"default": "(1.0)"
+													}
+												]
+											},
+											{
+												"open": {
+													"transitions": [
+														{
+															"default": "(1.0)"
+														}
+													],
+													"on_entry": [
+														"/gamerule functioncommandlimit 10000",
+														"/gamerule randomtickspeed 1",
+														"/function hy/packages/antinbt"
+													]
+												},
+												"key": "on_entry",
+												"is_minified": true,
+												"children": [
+													"/gamerule functioncommandlimit 10000",
+													"/gamerule randomtickspeed 1",
+													"/function hy/packages/antinbt"
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

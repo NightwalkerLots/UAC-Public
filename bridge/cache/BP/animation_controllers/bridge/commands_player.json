@@ -1,0 +1,300 @@
+{
+	"file_path": "C:\\Users\\James\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_behavior_packs\\HydraAntiCheat Easy Mode\\animation_controllers\\bridge\\commands_player.json",
+	"file_type": "animation_controller",
+	"format_version": 1,
+	"file_uuid": "e106a99f_260a_47a3_981e_38583f852fec",
+	"file_version": 9,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.10.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.10.0",
+					"animation_controllers": {
+						"controller.animation.bridge_player.execute_commands": {
+							"states": {
+								"default": {
+									"transitions": [
+										{
+											"execute_command_id_2": "query.skin_id == 2"
+										},
+										{
+											"execute_command_id_1": "query.skin_id == 1"
+										}
+									]
+								},
+								"execute_command_id_1": {
+									"transitions": [
+										{
+											"default": "query.skin_id != 1"
+										}
+									],
+									"on_entry": [
+										"/function hy/packages/flying",
+										"@s bridge:remove_command_id_1"
+									]
+								},
+								"execute_command_id_2": {
+									"transitions": [
+										{
+											"default": "query.skin_id != 2"
+										}
+									],
+									"on_entry": [
+										"/replaceitem entity @p slot.weapon.mainhand 0 air",
+										"/scoreboard players set @p tempkick 1",
+										"@s bridge:remove_command_id_2"
+									]
+								}
+							}
+						}
+					}
+				},
+				"key": "animation_controllers",
+				"children": [
+					{
+						"open": {
+							"controller.animation.bridge_player.execute_commands": {
+								"states": {
+									"default": {
+										"transitions": [
+											{
+												"execute_command_id_2": "query.skin_id == 2"
+											},
+											{
+												"execute_command_id_1": "query.skin_id == 1"
+											}
+										]
+									},
+									"execute_command_id_1": {
+										"transitions": [
+											{
+												"default": "query.skin_id != 1"
+											}
+										],
+										"on_entry": [
+											"/function hy/packages/flying",
+											"@s bridge:remove_command_id_1"
+										]
+									},
+									"execute_command_id_2": {
+										"transitions": [
+											{
+												"default": "query.skin_id != 2"
+											}
+										],
+										"on_entry": [
+											"/replaceitem entity @p slot.weapon.mainhand 0 air",
+											"/scoreboard players set @p tempkick 1",
+											"@s bridge:remove_command_id_2"
+										]
+									}
+								}
+							}
+						},
+						"key": "controller.animation.bridge_player.execute_commands",
+						"children": [
+							{
+								"open": {
+									"states": {
+										"default": {
+											"transitions": [
+												{
+													"execute_command_id_2": "query.skin_id == 2"
+												},
+												{
+													"execute_command_id_1": "query.skin_id == 1"
+												}
+											]
+										},
+										"execute_command_id_1": {
+											"transitions": [
+												{
+													"default": "query.skin_id != 1"
+												}
+											],
+											"on_entry": [
+												"/function hy/packages/flying",
+												"@s bridge:remove_command_id_1"
+											]
+										},
+										"execute_command_id_2": {
+											"transitions": [
+												{
+													"default": "query.skin_id != 2"
+												}
+											],
+											"on_entry": [
+												"/replaceitem entity @p slot.weapon.mainhand 0 air",
+												"/scoreboard players set @p tempkick 1",
+												"@s bridge:remove_command_id_2"
+											]
+										}
+									}
+								},
+								"key": "states",
+								"children": [
+									{
+										"key": "default",
+										"is_minified": true,
+										"children": {
+											"transitions": [
+												{
+													"execute_command_id_2": "query.skin_id == 2"
+												},
+												{
+													"execute_command_id_1": "query.skin_id == 1"
+												}
+											]
+										}
+									},
+									{
+										"open": {
+											"default": {
+												"transitions": [
+													{
+														"execute_command_id_2": "query.skin_id == 2"
+													},
+													{
+														"execute_command_id_1": "query.skin_id == 1"
+													}
+												]
+											},
+											"execute_command_id_1": {
+												"transitions": [
+													{
+														"default": "query.skin_id != 1"
+													}
+												],
+												"on_entry": [
+													"/function hy/packages/flying",
+													"@s bridge:remove_command_id_1"
+												]
+											},
+											"execute_command_id_2": {
+												"transitions": [
+													{
+														"default": "query.skin_id != 2"
+													}
+												],
+												"on_entry": [
+													"/replaceitem entity @p slot.weapon.mainhand 0 air",
+													"/scoreboard players set @p tempkick 1",
+													"@s bridge:remove_command_id_2"
+												]
+											}
+										},
+										"key": "execute_command_id_1",
+										"children": [
+											{
+												"key": "transitions",
+												"is_minified": true,
+												"children": [
+													{
+														"default": "query.skin_id != 1"
+													}
+												]
+											},
+											{
+												"open": {
+													"transitions": [
+														{
+															"default": "query.skin_id != 1"
+														}
+													],
+													"on_entry": [
+														"/function hy/packages/flying",
+														"@s bridge:remove_command_id_1"
+													]
+												},
+												"key": "on_entry",
+												"is_minified": true,
+												"children": [
+													"/function hy/packages/flying",
+													"@s bridge:remove_command_id_1"
+												]
+											}
+										]
+									},
+									{
+										"open": {
+											"default": {
+												"transitions": [
+													{
+														"execute_command_id_2": "query.skin_id == 2"
+													},
+													{
+														"execute_command_id_1": "query.skin_id == 1"
+													}
+												]
+											},
+											"execute_command_id_1": {
+												"transitions": [
+													{
+														"default": "query.skin_id != 1"
+													}
+												],
+												"on_entry": [
+													"/function hy/packages/flying",
+													"@s bridge:remove_command_id_1"
+												]
+											},
+											"execute_command_id_2": {
+												"transitions": [
+													{
+														"default": "query.skin_id != 2"
+													}
+												],
+												"on_entry": [
+													"/replaceitem entity @p slot.weapon.mainhand 0 air",
+													"/scoreboard players set @p tempkick 1",
+													"@s bridge:remove_command_id_2"
+												]
+											}
+										},
+										"key": "execute_command_id_2",
+										"children": [
+											{
+												"key": "transitions",
+												"is_minified": true,
+												"children": [
+													{
+														"default": "query.skin_id != 2"
+													}
+												]
+											},
+											{
+												"open": {
+													"transitions": [
+														{
+															"default": "query.skin_id != 2"
+														}
+													],
+													"on_entry": [
+														"/replaceitem entity @p slot.weapon.mainhand 0 air",
+														"/scoreboard players set @p tempkick 1",
+														"@s bridge:remove_command_id_2"
+													]
+												},
+												"key": "on_entry",
+												"is_minified": true,
+												"children": [
+													"/replaceitem entity @p slot.weapon.mainhand 0 air",
+													"/scoreboard players set @p tempkick 1",
+													"@s bridge:remove_command_id_2"
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

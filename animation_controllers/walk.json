@@ -1,0 +1,34 @@
+//bridge-file-version: #5
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.walk": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"zooming": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/gamerule functioncommandlimit 10000",
+						"/gamerule randomtickspeed 1",
+						"/function UAC/packages/antinbt"
+					]
+				},
+				"zooming": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/gamerule functioncommandlimit 10000",
+						"/gamerule randomtickspeed 1",
+						"/function UAC/packages/antinbt"
+					]
+				}
+			}
+		}
+	}
+}

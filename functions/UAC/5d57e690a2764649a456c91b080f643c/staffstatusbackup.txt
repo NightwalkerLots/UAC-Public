@@ -1,0 +1,35 @@
+#Makes sure you can't have the staffcheck without staff tag
+execute @r[scores={staff=1..999},tag=!staff] ~~~ scoreboard players reset @s staff
+execute @r[tag=!staff] ~~~ tag @s[tag=!staff] remove staffcheck
+execute @r[tag=staffcheck] ~~~ tag @s[tag=!staff] remove staffcheck
+
+#Removes the check if there the score isn't 1 (can't check if there's no score cause bedrock garbage)
+execute @r[scores={staff=!1}] ~~~ tag @s remove staffcheck
+
+
+#Removes staffstatus tag from those who don't have staffcheck
+execute @r[tag=!staffcheck] ~~~ tag @s remove staffstatus
+execute @r[tag=!staff] ~~~ tag @s remove staffstatus
+
+
+#Removes score from those without tags
+execute @r[tag=!staffcheck] ~~~ scoreboard players reset @s staff
+execute @r[tag=!staff] ~~~ scoreboard players reset @s staff
+
+#Chain order ~ staff tag ~ staffscore ~ staffcheck tag ~ staffstatus tag
+
+
+
+
+key
+
+tag @s add staff
+execute @s[scores={staff=1}] ~~~ scoreboard players add @s staff 1
+execute @s[tag=!staffcheck] ~~~ scoreboard players set @s staff 1
+tag @s add staffcheck
+tag @s add staffstatus
+tellraw @s[tag=staff,tag=staffcheck,tag=staffstatus,scores={staff=1}] {"rawtext":[{"text":"§¶§cUAC ► §bStaff status §2given §bsuccessfully"}]}
+
+execute @s[scores={staff=2}] ~~~ tag @s remove staff
+execute @s[scores={staff=2}] ~~~ scoreboard players reset @s staff
+tellraw @s[tag=!staff] {"rawtext":[{"text":"§¶§cUAC ► §bStaff status §cremoved §bsuccessfully"}]}

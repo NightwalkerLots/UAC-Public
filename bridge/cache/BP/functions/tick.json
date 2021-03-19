@@ -1,0 +1,33 @@
+{
+	"file_path": "C:\\Users\\James\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\development_behavior_packs\\HydraAntiCheat Easy Mode\\functions\\tick.json",
+	"file_type": "function_tick",
+	"format_version": 1,
+	"file_uuid": "ce5c6143_15b0_4cbd_9ff8_e5f52c80a2b6",
+	"file_version": 13,
+	"cache_content": {
+		"children": [
+			{
+				"open": {
+					"values": [
+						"hy/packages/credit",
+						"hy/packages/scoreboards",
+						"hy/packages/bans",
+						"hy/packages/antinbt",
+						"hy/packages/tagscores",
+						"settings"
+					]
+				},
+				"key": "values",
+				"is_minified": true,
+				"children": [
+					"hy/packages/credit",
+					"hy/packages/scoreboards",
+					"hy/packages/bans",
+					"hy/packages/antinbt",
+					"hy/packages/tagscores",
+					"settings"
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,713 @@
+{
+	"file_path": "C:\\Users\\James\\Desktop\\eeeee\\animations\\player.json",
+	"file_type": "animation",
+	"format_version": 1,
+	"file_uuid": "c07541b2_7d76_4777_ae3f_01f23ce4820c",
+	"file_version": 1,
+	"cache_content": {
+		"children": [
+			{
+				"data": "1.8.0",
+				"key": "format_version"
+			},
+			{
+				"open": {
+					"format_version": "1.8.0",
+					"animations": {
+						"animation.0": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 0"
+								]
+							}
+						},
+						"animation.1": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 1"
+								]
+							}
+						},
+						"animation.2": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 2"
+								]
+							}
+						},
+						"animation.3": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 3"
+								]
+							}
+						},
+						"animation.4": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 4"
+								]
+							}
+						},
+						"animation.5": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 5"
+								]
+							}
+						},
+						"animation.6": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 6"
+								]
+							}
+						},
+						"animation.7": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 7"
+								]
+							}
+						},
+						"animation.8": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 8"
+								]
+							}
+						},
+						"animation.9": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 9"
+								]
+							}
+						},
+						"animation.10": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 10"
+								]
+							}
+						},
+						"animation.11": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 11"
+								]
+							}
+						},
+						"animation.12": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 12"
+								]
+							}
+						},
+						"animation.13": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 13"
+								]
+							}
+						},
+						"animation.14": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 14"
+								]
+							}
+						},
+						"animation.15": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 15"
+								]
+							}
+						},
+						"animation.16": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 16"
+								]
+							}
+						},
+						"animation.17": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 17"
+								]
+							}
+						},
+						"animation.18": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 18"
+								]
+							}
+						},
+						"animation.19": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 19"
+								]
+							}
+						},
+						"animation.20": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 20"
+								]
+							}
+						}
+					}
+				},
+				"key": "animations",
+				"children": [
+					{
+						"open": {
+							"animation.0": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 0"
+									]
+								}
+							},
+							"animation.1": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 1"
+									]
+								}
+							},
+							"animation.2": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 2"
+									]
+								}
+							},
+							"animation.3": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 3"
+									]
+								}
+							},
+							"animation.4": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 4"
+									]
+								}
+							},
+							"animation.5": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 5"
+									]
+								}
+							},
+							"animation.6": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 6"
+									]
+								}
+							},
+							"animation.7": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 7"
+									]
+								}
+							},
+							"animation.8": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 8"
+									]
+								}
+							},
+							"animation.9": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 9"
+									]
+								}
+							},
+							"animation.10": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 10"
+									]
+								}
+							},
+							"animation.11": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 11"
+									]
+								}
+							},
+							"animation.12": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 12"
+									]
+								}
+							},
+							"animation.13": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 13"
+									]
+								}
+							},
+							"animation.14": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 14"
+									]
+								}
+							},
+							"animation.15": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 15"
+									]
+								}
+							},
+							"animation.16": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 16"
+									]
+								}
+							},
+							"animation.17": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 17"
+									]
+								}
+							},
+							"animation.18": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 18"
+									]
+								}
+							},
+							"animation.19": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 19"
+									]
+								}
+							},
+							"animation.20": {
+								"loop": true,
+								"animation_length": 0.5,
+								"timeline": {
+									"0": [
+										"/scoreboard players set @s health 20"
+									]
+								}
+							}
+						},
+						"key": "animation.0",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 0"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.1",
+						"children": [
+							{
+								"data": "true",
+								"key": "loop"
+							},
+							{
+								"open": {
+									"loop": true,
+									"animation_length": 0.5,
+									"timeline": {
+										"0": [
+											"/scoreboard players set @s health 1"
+										]
+									}
+								},
+								"data": "0.5",
+								"key": "animation_length"
+							},
+							{
+								"open": {
+									"loop": true,
+									"animation_length": 0.5,
+									"timeline": {
+										"0": [
+											"/scoreboard players set @s health 1"
+										]
+									}
+								},
+								"key": "timeline",
+								"children": [
+									{
+										"open": {
+											"0": [
+												"/scoreboard players set @s health 1"
+											]
+										},
+										"key": "0",
+										"is_minified": true,
+										"children": [
+											"/scoreboard players set @s health 1"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"key": "animation.2",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 2"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.3",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 3"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.4",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 4"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.5",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 5"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.6",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 6"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.7",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 7"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.8",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 8"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.9",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 9"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.10",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 10"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.11",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 11"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.12",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 12"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.13",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 13"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.14",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 14"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.15",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 15"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.16",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 16"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.17",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 17"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.18",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 18"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.19",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 19"
+								]
+							}
+						}
+					},
+					{
+						"key": "animation.20",
+						"is_minified": true,
+						"children": {
+							"loop": true,
+							"animation_length": 0.5,
+							"timeline": {
+								"0": [
+									"/scoreboard players set @s health 20"
+								]
+							}
+						}
+					}
+				]
+			}
+		]
+	}
+}

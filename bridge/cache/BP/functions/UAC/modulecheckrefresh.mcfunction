@@ -1,0 +1,8 @@
+{
+	"file_path": "C:\\Users\\night\\AppData\\Local\\Packages\\Microsoft.MinecraftUWP_8wekyb3d8bbwe\\LocalState\\games\\com.mojang\\minecraftWorlds\\g-4hYI7KCAA=\\behavior_packs\\behavior_packs(1)\\functions\\UAC\\modulecheckrefresh.mcfunction",
+	"file_type": "unknown",
+	"format_version": 0,
+	"file_uuid": "e7607c4d_390b_4cc6_aa31_ef792771c342",
+	"file_version": 2,
+	"cache_content": "execute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove hotbarmessagemodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove itemcommandmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove lagtimermodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove nofrostwalkermodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove permbanmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove rulestimermodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove staffstatusmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove timeplayedmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove vipmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove antiflypmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove antiphasepmodule\r\nexecute @s[tag=staffstatus] ~~~ tag @a[tag=staffstatus] remove noechestmodule\r\n\r\nexecute @s[tag=!staffstatus] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§¶§cUAC §¶§b► You must be staff to use this command!\"}]}\r\nexecute @s[tag=staffstatus] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§¶§cUAC §¶§b► Status of all modules have been reloaded\"}]}\r\n"
+}

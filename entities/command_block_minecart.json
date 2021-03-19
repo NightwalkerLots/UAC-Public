@@ -1,0 +1,71 @@
+{
+  "format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "minecraft:command_block_minecart",
+			"is_spawnable": false,
+			"is_summonable": false,
+			"is_experimental": false
+			
+		},
+    "component_groups": {
+		"serenity:spawn": {
+			"minecraft:is_chested": {}
+		},
+		"serenity:despawn": {
+			"minecraft:despawn": {},
+			"minecraft:is_ignited": {}
+		}
+    },
+
+    "components": {
+		"minecraft:environment_sensor": [
+				{
+					"on_environment": {
+						"filters": {
+							"any_of": [
+								{
+									"test": "is_family",
+									"subject": "self",
+									"value": "player"
+								}
+							]
+						},
+						"event": "serenity:spawned"
+					}
+				}
+			],
+		"minecraft:timer": {
+        "looping": false,
+        "random_time_choices": {
+           "value": 0.5 
+        },
+        "time_down_event": {
+          "event": "serenity:start_despawn",
+          "target": "self"
+        }
+      }
+    },
+
+    "events": {
+		"minecraft:entity_spawned": {
+			"add": {
+				"component_groups": [
+					"serenity:spawn"
+				]
+			},
+			"remove": {}
+		},
+		"serenity:start_despawn": {
+			"add": {
+				"component_groups": [
+					"serenity:despawn"
+				]
+			},
+			"remove": [
+				"serenity:spawn"
+			]
+		}
+    }
+  }
+}
