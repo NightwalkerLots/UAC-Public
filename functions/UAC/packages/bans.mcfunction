@@ -25,8 +25,6 @@ tag @a[tag=bypass] add BanBypass
 tag @a[tag=!staffstatus,m=c] add BanCreative
 
 #Kick Messages
-#execute @a[tag=BanCreative] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c► UAC - Player Kicked - Changing Gamemode"}]}
-#execute @a[tag=staff,m=c] ~~~ execute @s[tag=!staffcheck] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c► UAC - Player Kicked - Changing Gamemode"}]}
 execute @a[tag=BanCBE] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for CBE exploits"}]}
 execute @a[tag=BanBypass] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for bypass attempt"}]}
 execute @a[tag=Ban] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned by a operator"}]}

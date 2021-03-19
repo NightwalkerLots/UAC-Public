@@ -14,17 +14,8 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={LTM=0}] ~~~ tellraw @s {"rawt
 execute @s[tag=staffstatus] ~~~ execute @s[scores={NFM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Frostwalker §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={NFM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Frostwalker §7[ §¶§cDISABLED §7]"}]}
 
-execute @s[tag=staffstatus] ~~~ execute @s[scores={RTM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bRules Timer §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus] ~~~ execute @s[scores={RTM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bRules Timer §7[ §¶§cDISABLED §7]"}]}
-
-execute @s[tag=staffstatus] ~~~ execute @s[scores={SSM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bFakeStaff Protection §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus] ~~~ execute @s[scores={SSM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bFakeStaff Protection §7[ §¶§cDISABLED §7]"}]}
-
 execute @s[tag=staffstatus] ~~~ execute @s[scores={TPM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bTimePlayed Tracker §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={TPM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bTimePlayed Tracker §7[ §¶§cDISABLED §7]"}]}
-
-execute @s[tag=staffstatus] ~~~ execute @s[scores={VIPM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bVIP §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus] ~~~ execute @s[scores={VIPM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bVIP §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus] ~~~ execute @s[scores={AFM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Fly §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={AFM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Fly §7[ §¶§cDISABLED §7]"}]}
@@ -40,12 +31,6 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={ACM=0}] ~~~ tellraw @s {"rawt
 
 execute @s[tag=staffstatus] ~~~ execute @s[scores={SEM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo-SpawnEggs §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={SEM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo-SpawnEggs §7[ §¶§cDISABLED §7]"}]}
-
-execute @s[tag=staffstatus] ~~~ execute @s[scores={KPVPM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bKitPvp §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus] ~~~ execute @s[scores={KPVPM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bKitPvp §7[ §¶§cDISABLED §7]"}]}
-
-execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti OP Abuse §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti OP Abuse §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus] ~~~ execute @s[scores={ELPM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bExtra LagPrevent §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={ELPM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bExtra LagPrevent §7[ §¶§cDISABLED §7]"}]}

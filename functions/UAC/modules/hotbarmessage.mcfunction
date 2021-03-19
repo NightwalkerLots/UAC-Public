@@ -1,6 +1,4 @@
 #survival
-#execute @r[scores={hmmtoggle=1}] ~~~ title @a[m=s,scores={hometp=3}] actionbar §¶§bNO ENCHANTS ABOVE 10. 32K'S ARE BANNED!
-
 execute @a[scores={hmmtoggle=1},m=s] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§bNO ENCHANT ABOVE 10 ALLOWED - 32K ITEMS ARE BANNED"},{"text":"\n §¶§bKills §7:"},{"score":{"name":"@s","objective":"kills"}},{"text":" §bDeaths §7:"},{"score":{"name":"@s","objective":"deaths"}},{"text":" §bCurrent Killstreak §7:"},{"score":{"name":"@s","objective":"killstreak"}}]}
 
 #kitpvp
