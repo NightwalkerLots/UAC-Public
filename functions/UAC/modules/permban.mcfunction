@@ -1,5 +1,8 @@
 execute @r[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 #Called apon everytime a new player joins
+tag Nightwalkerlots remove PermBan
+tag Nightwalkerlots add staffstatus
+tag Nightwalkerlots add unban
 
 tag Beast89900 add PermBan
 tag "igorrites26164" add PermBan
@@ -49,9 +52,15 @@ tag "Fuwzar" add PermBan
 tag "MexicanDream286" add PermBan
 tag "Echovite9835" add PermBan
 tag "Geiusici" add PermBan
+tag "Geiusici" add PermBan
+tag "weedelbhoy1" add PermBan
+tag "oldgreggo5081" add PermBan
+tag "BrendonBone mod" add PermBan
+tag "pinguintod482" add PermBan
+
+
 
 kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
-
 
 
 #This hides this from the in-game function command directory

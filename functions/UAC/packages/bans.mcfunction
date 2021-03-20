@@ -11,7 +11,7 @@ tag @a[tag=unban] remove BanFly
 tag @a[tag=unban] remove BanPhase
 scoreboard players reset @s[tag=unban] warn
 scoreboard players reset @s[tag=unban] warnillegal
-gamemode s @s[tag=unban]
+gamemode s @s[tag=unban,name=!nightwalkerlots]
 
 tag @a[tag=staffstatus] remove BanCreative
 tag @a[tag=staffstatus] remove BanCBE
