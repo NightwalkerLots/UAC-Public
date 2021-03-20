@@ -1,4 +1,4 @@
-scoreboard players add @r welcome 1
+scoreboard players add @a welcome 1
 scoreboard objectives add welcome dummy welcome
 execute @r[scores={welcome=120}] ~~~ playsound random.levelup @s ~~~ 2
 title @r[scores={welcome=120}] title §¶§c§l► Unity Anti-Cheat v2.1 ◄
