@@ -7,6 +7,11 @@ tellraw @r[scores={welcome=120}] {"rawtext":[{"text":"§¶§cUAC §b► §bType 
 tellraw @r[scores={welcome=120}] {"rawtext":[{"text":"§¶§c► /function UAC/help"}]}
 execute @r[scores={welcome=120}] ~~~ tellraw @r[scores={antiphasepmodule=1}] {"rawtext":[{"text":"§¶§cWARNING ► Anti-Phase §2Enabled§7! §bDo not enter the End or Nether"}]}
 execute @r[scores={welcome=120}] ~~~ function UAC/asset/uac-init-asset
+execute @r[scores={welcome=120}] ~~~ function UAC/asset/createdby
+execute @r[scores={welcome=120}] ~~~ function UAC/asset/discord
+execute @r[scores={welcome=120}] ~~~ function UAC/asset/version
+
+
 execute @r[scores={welcome=120..121}] ~~~ function UAC/modules/permban
 
 

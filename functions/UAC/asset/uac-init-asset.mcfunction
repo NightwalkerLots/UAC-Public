@@ -141,6 +141,11 @@ scoreboard players set @a[tag=!staffstatus] GFS98 0
 scoreboard players set @a[tag=!staffstatus] D98AD 0
 scoreboard players set @a[tag=!staffstatus] I2IO2NO 0
 
+#Public Hotbar Lock
+scoreboard players set hmmtoggledummy hmmtoggle 1
+scoreboard players operation @a hmmtoggle = hmmtoggledummy hmmtoggle
+scoreboard players set @a HMM 1
+
 #Other utiltiy
 execute @a[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
 execute @a[tag=vipmodule] ~~~ scoreboard objectives setdisplay sidebar vip
