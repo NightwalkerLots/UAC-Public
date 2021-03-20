@@ -6,8 +6,9 @@ execute @r[scores={icmtoggle=1}] ~~~ scoreboard players remove @s[scores={hometp
 execute @r[scores={hometimer=20}] ~~~ kill @s[scores={hometp=1}]
 execute @r[scores={hometimer=45..50}] ~~~ gamerule doimmediaterespawn true
 execute @r[scores={hometimer=45..50}] ~~~ gamerule keepinventory true
-execute @r[scores={hometimer=1..10}] ~~~ gamerule keepinventory false
-execute @r[scores={hometimer=1..10}] ~~~ gamerule doimmediaterespawn false
+execute @r[scores={hometimer=1..15}] ~~~ gamerule keepinventory false
+execute @r[scores={hometimer=1..15}] ~~~ gamerule doimmediaterespawn false
+execute @r[scores={hometimer=-2..-10}] ~~~ scoreboard players set @s hometp 3
 scoreboard players reset @r[scores={hometp=3}] hometimer
 
 #Item Commands
