@@ -270,6 +270,11 @@
 							{
 								"test": "has_equipment",
 								"domain": "any",
+								"value": "minecraft:target"
+							},
+							{
+								"test": "has_equipment",
+								"domain": "any",
 								"value": "minecraft:chemical_heat"
 							},
 							{
@@ -456,6 +461,11 @@
 								"test": "has_equipment",
 								"domain": "any",
 								"value": "minecraft:bedrock"
+							},
+							{
+								"test": "has_equipment",
+								"domain": "any",
+								"value": "minecraft:crossbow"
 							},
 							{
 								"test": "has_equipment",
