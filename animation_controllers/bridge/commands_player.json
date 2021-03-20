@@ -35,7 +35,7 @@
 						"@s bridge:remove_command_id_1"
 					]
 				},
-				"execute_command_id_2": {-
+				"execute_command_id_2": {
 					"transitions": [
 						{
 							"default": "query.skin_id != 2"
