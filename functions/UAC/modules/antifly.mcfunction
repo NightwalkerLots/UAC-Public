@@ -8,8 +8,8 @@ execute @r[scores={afmtoggle=1}] ~~~ clear @s elytra
 
 #Tempkick
 #tag @r[tag=!staffstatus,scores={flycount=120}] add BanFly
-execute @r[scores={flycount=120}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas banned for fly hacks"}]}
-execute @r[scores={afmtoggle=1}] ~~~ kick @s[tag=!staffstatus,scores={flycount=120}] §¶§cUAC §¶§b► banned for fly hacks
+execute @r[tag=!staffstatus,scores={flycount=120}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas banned for fly hacks"}]}
+execute @r[scores={afmtoggle=1}] ~~~ kick @s[m=!c,tag=!staffstatus,scores={flycount=120}] §¶§cUAC §¶§b► banned for fly hacks
 
 #Adds a tag for the enabled/disabled check
 execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @r AFM 1
