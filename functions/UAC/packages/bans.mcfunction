@@ -41,8 +41,6 @@ tag @a remove BanCreative
 kick @a[scores={warn=3}] §¶§cUAC ► Season Banned - 3 Warnings Recieved
 kick @a[tag=illegalitemban] §¶§cUAC ► Season Banned - Illegal Items
 kick @a[tag=BanCBE] §¶§cUAC ► Season Banned - CBE
-#kick @s[tag=BanCreative] §¶§cUAC ►  Changing Gamemode
-execute @a[tag=staff,m=c] ~~~ execute @s[tag=!staffcheck] ~~~ kick @s §¶§cUAC ►  Changing Gamemode
 kick @a[tag=BanBypass] §¶§cUAC ► Season Banned - Attempting Bypass
 kick @a[tag=Ban] §¶§cUAC ► Season Banned - Banned By Operator
 
