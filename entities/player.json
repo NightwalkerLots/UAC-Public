@@ -450,11 +450,6 @@
 							{
 								"test": "has_equipment",
 								"domain": "any",
-								"value": "minecraft:ender_chest"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
 								"value": "minecraft:barrier"
 							},
 							{
