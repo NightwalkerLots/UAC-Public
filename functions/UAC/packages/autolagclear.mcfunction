@@ -12,6 +12,7 @@ execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 execute @a[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
+function UAC/asset/utility
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

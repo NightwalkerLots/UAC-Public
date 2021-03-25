@@ -13,7 +13,6 @@ execute @r[scores={acmtoggle=1}] ~~~ clear @s tropical_fish_bucket
 execute @r[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace beehive
 execute @r[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace bee_nest
 
-
 #Adds a tag for the enabled/disabled check
 execute @r[scores={acmtoggle=1}] ~~~ scoreboard players set @r ACM 1
 execute @r[scores={acmtoggle=0}] ~~~ scoreboard players set @r ACM 0
