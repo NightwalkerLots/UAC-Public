@@ -10,8 +10,8 @@ execute @r[scores={acmtoggle=1}] ~~~ clear @s salmon_bucket
 execute @r[scores={acmtoggle=1}] ~~~ clear @s tropical_fish_bucket
 
 #Remove placed Stuff
-execute @r[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace beehive
-execute @r[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace bee_nest
+execute @r[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace beehive
+execute @r[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace bee_nest
 
 #Adds a tag for the enabled/disabled check
 execute @r[scores={acmtoggle=1}] ~~~ scoreboard players set @r ACM 1
