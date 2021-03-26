@@ -1,12 +1,11 @@
 #Phantoms that spawn exessively, and item with no use
-execute @r[scores={elpmtoggle=1}] ~~~ kill @e[r=20,type=item,name="rotten flesh"]
-execute @r[scores={elpmtoggle=1}] ~~~ kill @e[r=20,type=phantom]
+execute @r[scores={elpmtoggle=1}] ~~~ kill @e[r=40,type=phantom]
 
 #Anti wither spam
 execute @r[scores={elpmtoggle=1}] ~~~ execute @e[r=20,type=wither] ~~~ difficulty peaceful
 
 #Teleports xp orbs to Closest Player so they arne't left behind taking up memory.
-execute @r[scores={elpmtoggle=1}] ~~~ execute @e[r=50,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
+execute @r[scores={elpmtoggle=1}] ~~~ execute @e[r=90,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
 
 
 #Adds a tag for the enabled/disabled check
