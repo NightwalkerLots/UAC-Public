@@ -19,11 +19,11 @@ execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~~~ execute @e[type=item,r=4]
 execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~~~ execute @e[type=item,r=4] ~~~ kill @s[type=item,name="Invisible Bedrock"]
 
 #Placed Items bypass
-execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace barrier
-execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace bedrock
-execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace command_block
-execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace repeating_command_block
-execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~8 ~8 ~-8 ~-8 ~-8 air 0 replace chain_command_block
+execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace barrier
+execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace bedrock
+execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace command_block
+execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace repeating_command_block
+execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace chain_command_block
 
 #Adds a tag for the enabled/disabled check
 execute @r[scores={uoimtoggle=1}] ~~~ scoreboard players set @r UOIM 1
