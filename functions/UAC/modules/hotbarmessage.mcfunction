@@ -1,8 +1,8 @@
-#survival
-execute @a[scores={hmmtoggle=1},m=s] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.1§7] Public §b - Made by §dNightwalkerLots"},{"text":"\n §¶§bKills §7:"},{"score":{"name":"@s","objective":"kills"}},{"text":" §bDeaths §7:"},{"score":{"name":"@s","objective":"deaths"}},{"text":" §bCurrent Killstreak §7:"},{"score":{"name":"@s","objective":"killstreak"}}]}
+#survival (with score)
+execute @a[scores={hmmtoggle=1},m=s] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"},{"text":"\n §¶§bKills §7:"},{"score":{"name":"@s","objective":"kills"}},{"text":" §bDeaths §7:"},{"score":{"name":"@s","objective":"deaths"}},{"text":" §bCurrent Killstreak §7:"},{"score":{"name":"@s","objective":"killstreak"}}]}
 
-#kitpvp
-title @a[m=a,scores={hmmtoggle=1}] actionbar §¶§cUnity KitPVP §¶§b► §bDiscord.gg/UQ56g9a
+#survival (without score)
+execute @a[scores={hmmtoggle=2},m=s] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"}]}
 
 #creative
 execute @r[scores={hmmtoggle=1}] ~~~ execute @s[tag=staffstatus,scores={OPAM=0},m=c] ~~~ titleraw @s[scores={opamtoggle=0}] actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` | §7[§2v2.1§7]§b\n §bTotal Entities §7: "},{"score":{"name":"@r[scores={entitycount=0..9999}]","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"x-axis"}},{"text":" Z = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"z-axis"}}]}
@@ -21,8 +21,8 @@ execute @r[scores={hmmtoggle=1}] ~~~ execute @s[scores={hometp=1}] ~~~ title @s[
 
 
 #Adds a tag for the enabled/disabled check
+execute @r[scores={hmmtoggle=2}] ~~~ scoreboard players set @r HMM 1
 execute @r[scores={hmmtoggle=1}] ~~~ scoreboard players set @r HMM 1
-execute @r[scores={hmmtoggle=0}] ~~~ scoreboard players set @r HMM 0
 scoreboard players operation @r hmmtoggle = hmmtoggledummy hmmtoggle
 
 #This hides this from the in-game function command directory

@@ -24,8 +24,6 @@ scoreboard objectives add hometp dummy hometp
 scoreboard objectives add welcomed dummy welcomed
 scoreboard objectives add entitycount dummy entitycount
 scoreboard objectives add vip dummy vip
-scoreboard objectives add kit1 dummy kit1
-scoreboard objectives add vipkit dummy vipkit
 
 
 #module scoreboards
@@ -88,67 +86,67 @@ scoreboard objectives add x-axis dummy x-axis
 scoreboard objectives add z-axis dummy y-axis
 
 #Default Toggles
-scoreboard players set @a SSDEBUG 0
-scoreboard players set @a acmtoggle 0
-scoreboard players set @a bbmtoggle 0
-scoreboard players set @a semtoggle 0
-scoreboard players set @a elpmtoggle 0
-scoreboard players set @a hmmtoggle 0
-scoreboard players set @a icmtoggle 0
-scoreboard players set @a kpvpmtoggle 0
-scoreboard players set @a ltmtoggle 0
-scoreboard players set @a nemtoggle 0
-scoreboard players set @a nfmtoggle 0
-scoreboard players set @a opamtoggle 0
-scoreboard players set @a rsmtoggle 0
-scoreboard players set @a rtmtoggle 0
-scoreboard players set @a ssmtoggle 0
-scoreboard players set @a tpmtoggle 0
-scoreboard players set @a vipmtoggle 0
-scoreboard players set @a wbmtoggle 0
-scoreboard players set @a uoimtoggle 0
+scoreboard players set @s SSDEBUG 0
+scoreboard players set @s acmtoggle 0
+scoreboard players set @s bbmtoggle 0
+scoreboard players set @s semtoggle 0
+scoreboard players set @s elpmtoggle 0
+scoreboard players set @s hmmtoggle 0
+scoreboard players set @s icmtoggle 0
+scoreboard players set @s kpvpmtoggle 0
+scoreboard players set @s ltmtoggle 0
+scoreboard players set @s nemtoggle 0
+scoreboard players set @s nfmtoggle 0
+scoreboard players set @s opamtoggle 0
+scoreboard players set @s rsmtoggle 0
+scoreboard players set @s rtmtoggle 0
+scoreboard players set @s ssmtoggle 0
+scoreboard players set @s tpmtoggle 0
+scoreboard players set @s vipmtoggle 0
+scoreboard players set @s wbmtoggle 0
+scoreboard players set @s uoimtoggle 0
 
 #Kit pvp
-scoreboard players set @a kit1 1
-scoreboard players set @a vipkit 0
+scoreboard players set @s kit1 1
+scoreboard players set @s vipkit 0
 
 #Give everyone default module scoreboard scores
-scoreboard players set @a ACM 0
-scoreboard players set @a AFM 0
-scoreboard players set @a APM 0
-scoreboard players set @a BBM 0
-scoreboard players set @a SEM 0
-scoreboard players set @a ELPM 0
-scoreboard players set @a HMM 0
-scoreboard players set @a ICM 0
-scoreboard players set @a KPVPM 0
-scoreboard players set @a LTM 0
-scoreboard players set @a NEM 0
-scoreboard players set @a NFM 0
-scoreboard players set @a OPAM 0
-scoreboard players set @a RSM 0
-scoreboard players set @a RTM 0
-scoreboard players set @a SSM 0
-scoreboard players set @a TPM 0
-scoreboard players set @a VIPM 0
-scoreboard players set @a WBM 0
-scoreboard players set @a UOIM 0
+scoreboard players set @s ACM 0
+scoreboard players set @s AFM 0
+scoreboard players set @s APM 0
+scoreboard players set @s BBM 0
+scoreboard players set @s SEM 0
+scoreboard players set @s ELPM 0
+scoreboard players set @s HMM 0
+scoreboard players set @s ICM 0
+scoreboard players set @s KPVPM 0
+scoreboard players set @s LTM 0
+scoreboard players set @s NEM 0
+scoreboard players set @s NFM 0
+scoreboard players set @s OPAM 0
+scoreboard players set @s RSM 0
+scoreboard players set @s RTM 0
+scoreboard players set @s SSM 0
+scoreboard players set @s TPM 0
+scoreboard players set @s VIPM 0
+scoreboard players set @s WBM 0
+scoreboard players set @s UOIM 0
 
 #Staff Protection
-scoreboard players set @a[tag=!staffstatus] 2DI3N 0
-scoreboard players set @a[tag=!staffstatus] 39SN230 0
-scoreboard players set @a[tag=!staffstatus] GFS98 0
-scoreboard players set @a[tag=!staffstatus] D98AD 0
-scoreboard players set @a[tag=!staffstatus] I2IO2NO 0
+scoreboard players set @s[tag=!staffstatus] 2DI3N 0
+scoreboard players set @s[tag=!staffstatus] 39SN230 0
+scoreboard players set @s[tag=!staffstatus] GFS98 0
+scoreboard players set @s[tag=!staffstatus] D98AD 0
+scoreboard players set @s[tag=!staffstatus] I2IO2NO 0
 
 #Public Hotbar Lock
 scoreboard players set hmmtoggledummy hmmtoggle 1
-scoreboard players operation @a hmmtoggle = hmmtoggledummy hmmtoggle
-scoreboard players set @a HMM 1
+scoreboard players operation @s hmmtoggle = hmmtoggledummy hmmtoggle
+scoreboard players set @s HMM 1
 
 #Other utiltiy
-execute @a[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
-execute @a[tag=vipmodule] ~~~ scoreboard objectives setdisplay sidebar vip
+execute @s[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
+execute @s[tag=vipmodule] ~~~ scoreboard objectives setdisplay sidebar vip
 gamerule functioncommandlimit 10000
 gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
