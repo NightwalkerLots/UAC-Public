@@ -19,7 +19,9 @@ tag @a[tag=staffstatus] remove BanBypass
 tag @a[tag=staffstatus] remove Ban
 tag @a[tag=bypass] add BanBypass
 
-
+#Global Bans
+execute @r[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
+kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
 #Autoban Creative/CBE
 tag @a[tag=!staffstatus,m=c] add BanCreative
