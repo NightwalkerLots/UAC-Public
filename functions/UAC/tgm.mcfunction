@@ -1,5 +1,4 @@
 #Deny if antiopabuse is on
-execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=1}] ~~~ tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bThis can't be used with Anti OP Abuse enabled."}]}
 execute @s[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bOnly staff can use this command"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={OPAM=1}] ~~~ playsound note.bass @s ~ ~ ~

@@ -19,7 +19,6 @@ scoreboard objectives add cbespawn dummy cbespawn
 scoreboard objectives add flycount dummy flycount
 scoreboard objectives add flyreset dummy flyreset
 scoreboard objectives add phasecount dummy phasecount
-scoreboard objectives add kitreplace dummy
 scoreboard objectives add hometp dummy hometp
 scoreboard objectives add welcomed dummy welcomed
 scoreboard objectives add entitycount dummy entitycount
@@ -77,10 +76,6 @@ scoreboard objectives add GFS98 dummy 23LHNK
 scoreboard objectives add D98AD dummy 9DAU32
 scoreboard objectives add I2IO2NO dummy 7D798D8
 
-#Kitpvp dummy scores
-scoreboard objectives add kit1dummy dummy kit1dummy
-scoreboard objectives add vipkitdummy dummy vipkitdummy
-
 #Current Worldspawn debug
 scoreboard objectives add x-axis dummy x-axis
 scoreboard objectives add z-axis dummy y-axis
@@ -105,10 +100,6 @@ scoreboard players set @s tpmtoggle 0
 scoreboard players set @s vipmtoggle 0
 scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
-
-#Kit pvp
-scoreboard players set @s kit1 1
-scoreboard players set @s vipkit 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0

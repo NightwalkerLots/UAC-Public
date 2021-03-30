@@ -11,3 +11,5 @@ scoreboard players operation @r nfmtoggle = nfmtoggledummy nfmtoggle
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide
+
+/title @a[m=c] actionbar §l§bCreative Mode : §2ENABLED §7|§b PVP : §cDISABLED

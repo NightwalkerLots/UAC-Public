@@ -19,7 +19,6 @@ tag "Sweetdream2you" add PermBan
 tag "starthree477738" add PermBan
 tag "realherobrine73" add PermBan
 tag "Worrer" add PermBan
-tag "I might drop jr" add PermBan
 tag "sithlordsoth" add PermBan
 tag "Skullkid7800" add PermBan
 tag "thekoolkrab" add PermBan
@@ -51,7 +50,6 @@ tag "SEBA7321" add PermBan
 tag "Fuwzar" add PermBan
 tag "MexicanDream286" add PermBan
 tag "Echovite9835" add PermBan
-tag "Geiusici" add PermBan
 tag "Geiusici" add PermBan
 tag "weedelbhoy1" add PermBan
 tag "oldgreggo5081" add PermBan
