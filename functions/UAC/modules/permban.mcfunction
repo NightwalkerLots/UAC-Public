@@ -55,6 +55,9 @@ tag "weedelbhoy1" add PermBan
 tag "oldgreggo5081" add PermBan
 tag "BrendonBone mod" add PermBan
 tag "pinguintod482" add PermBan
+tag "azxpert" add PermBan
+tag "fatmole" add PermBan
+tag "Ayxet" add PermBan
 
 
 
