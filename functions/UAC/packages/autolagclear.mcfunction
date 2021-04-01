@@ -13,6 +13,7 @@ execute @a[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
 function UAC/asset/utility
+function UAC/modules/permban
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

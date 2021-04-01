@@ -1,15 +1,14 @@
 execute @r[scores={afmtoggle=1}] ~~~ execute @s ~~~ detect ~-1 ~-1 ~-1 air -1 execute @s ~~~ detect ~ ~-1 ~-1 air -1 execute @s ~~~ detect ~1 ~-1 ~-1 air -1 execute @s ~~~ detect ~-1 ~-1 ~ air -1 execute @s ~~~ detect ~ ~-1 ~ air -1 execute @s ~~~ detect ~1 ~-1 ~ air -1 execute @s ~~~ detect ~-1 ~-1 ~1 air -1 execute @s ~~~ detect ~ ~-1 ~1 air -1 execute @s ~~~ detect ~1 ~-1 ~1 air -1 execute @s ~~~ detect ~-1 ~ ~-1 air -1 execute @s ~~~ detect ~ ~ ~-1 air -1 execute @s ~~~ detect ~1 ~ ~-1 air -1 execute @s ~~~ detect ~-1 ~ ~ air -1 execute @s ~~~ detect ~ ~ ~ air -1 execute @s ~~~ detect ~1 ~ ~ air -1 execute @s ~~~ detect ~-1 ~ ~1 air -1 execute @s ~~~ detect ~ ~ ~1 air -1 execute @s ~~~ detect ~1 ~ ~1 air -1 execute @s ~~~ detect ~-1 ~1 ~-1 air -1 execute @s ~~~ detect ~ ~1 ~-1 air -1 execute @s ~~~ detect ~1 ~1 ~-1 air -1 execute @s ~~~ detect ~-1 ~1 ~ air -1 execute @s ~~~ detect ~ ~1 ~ air -1 execute @s ~~~ detect ~1 ~1 ~ air -1 execute @s ~~~ detect ~-1 ~1 ~1 air -1 execute @s ~~~ detect ~ ~1 ~1 air -1 execute @s ~~~ detect ~1 ~1 ~1 air -1 scoreboard players add @s flycount 1
 
 #counter reset
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players add @s flyreset 1
+execute @r[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0}] flyreset 1
 execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..160}] flycount 0
 execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..160}] flyreset 0
-execute @r[scores={afmtoggle=1}] ~~~ clear @s elytra
+execute @r[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
 
 #Tempkick
-#tag @r[tag=!staffstatus,scores={flycount=120}] add BanFly
-execute @r[tag=!staffstatus,scores={flycount=120}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas banned for fly hacks"}]}
-execute @r[scores={afmtoggle=1}] ~~~ kick @s[m=!c,tag=!staffstatus,scores={flycount=120}] §¶§cUAC §¶§b► Tempkicked for fly hacks
+execute @r[tag=!staffstatus,scores={flycount=120}] ~~~ execute @s[scores={2KK001=0}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas banned for fly hacks"}]}
+execute @r[scores={afmtoggle=1}] ~~~ execute @s[scores={2KK001=0}] ~~~ kick @s[m=!c,tag=!staffstatus,scores={flycount=120}] §¶§cUAC §¶§b► Tempkicked for fly hacks
 
 #Adds a tag for the enabled/disabled check
 execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @r AFM 1
