@@ -136,6 +136,8 @@ scoreboard players operation @s hmmtoggle = hmmtoggledummy hmmtoggle
 scoreboard players set @s HMM 1
 
 #Other utiltiy
+scoreboard objectives add 2KK001 dummy 2KK001
+scoreboard players set @s 2KK001 0
 execute @s[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
 execute @s[tag=vipmodule] ~~~ scoreboard objectives setdisplay sidebar vip
 gamerule functioncommandlimit 10000
