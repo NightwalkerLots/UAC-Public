@@ -425,21 +425,6 @@
 							{
 								"test": "has_equipment",
 								"domain": "any",
-								"value": "minecraft:map"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
-								"value": "minecraft:empty_map"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
-								"value": "minecraft:filled_map"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
 								"value": "minecraft:writable_book"
 							},
 							{
