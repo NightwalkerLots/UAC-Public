@@ -2,8 +2,8 @@ execute @r[scores={afmtoggle=1}] ~~~ execute @s ~~~ detect ~-1 ~-1 ~-1 air -1 ex
 
 #counter reset
 execute @r[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0}] flyreset 1
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..160}] flycount 0
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..160}] flyreset 0
+execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flycount 0
+execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flyreset 0
 execute @r[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
 
 #Tempkick
