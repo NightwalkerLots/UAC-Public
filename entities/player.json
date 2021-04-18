@@ -270,11 +270,6 @@
 							{
 								"test": "has_equipment",
 								"domain": "any",
-								"value": "minecraft:target"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
 								"value": "minecraft:chemical_heat"
 							},
 							{
@@ -405,27 +400,12 @@
 							{
 								"test": "has_equipment",
 								"domain": "any",
-								"value": "minecraft:activator_rail"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
-								"value": "minecraft:activator_rail"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
 								"value": "minecraft:light_block"
 							},
 							{
 								"test": "has_equipment",
 								"domain": "any",
 								"value": "minecraft:jigsaw"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
-								"value": "minecraft:writable_book"
 							},
 							{
 								"test": "has_equipment",
@@ -445,17 +425,7 @@
 							{
 								"test": "has_equipment",
 								"domain": "any",
-								"value": "minecraft:crossbow"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
 								"value": "minecraft:mob_spawner"
-							},
-							{
-								"test": "has_equipment",
-								"domain": "any",
-								"value": "minecraft:dispenser"
 							},
 							{
 								"test": "has_equipment",
