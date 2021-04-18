@@ -20,9 +20,6 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={TPM=0}] ~~~ tellraw @s {"rawt
 execute @s[tag=staffstatus] ~~~ execute @s[scores={AFM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Fly §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={AFM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Fly §7[ §¶§cDISABLED §7]"}]}
 
-execute @s[tag=staffstatus] ~~~ execute @s[scores={APM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Phase §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus] ~~~ execute @s[scores={APM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Phase §7[ §¶§cDISABLED §7]"}]}
-
 execute @s[tag=staffstatus] ~~~ execute @s[scores={NEM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bDisable-Echest §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={NEM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bDisable-Echest §7[ §¶§cDISABLED §7]"}]}
 
