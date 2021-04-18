@@ -58,8 +58,11 @@ tag "pinguintod482" add PermBan
 tag "azxpert" add PermBan
 tag "fatmole" add PermBan
 tag "Ayxet" add PermBan
-
-
+tag "Nun Souls" add PermBan
+tag "RandomYTvideos" add PermBan
+tag "POPB0B 2B2T" add PermBan
+tag "KingLeo332" add PermBan
+tag "xIlIlIIlIIlIx55" add PermBan
 
 kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
