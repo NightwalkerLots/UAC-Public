@@ -10,6 +10,7 @@ execute @r[scores={rsmtoggle=1}] ~~~ function UAC/asset/random-spawn-asset
 execute @a[scores={vipmtoggle=1}] ~~~ function UAC/modules/vip
 execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 execute @a[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
+execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
 function UAC/asset/utility
