@@ -44,6 +44,9 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={WBM=0}] ~~~ tellraw @s {"rawt
 execute @s[tag=staffstatus] ~~~ execute @s[scores={RSM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bRandom Spawn §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={RSM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bRandom Spawn §7[ §¶§cDISABLED §7]"}]}
 
+execute @s[tag=staffstatus] ~~~ execute @s[scores={IBM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bCustom Item Ban §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus] ~~~ execute @s[scores={IBM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bCustom Item Ban §7[ §¶§cDISABLED §7]"}]}
+
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c===Modules can be enabled/disabled in the settings file==="}]}
 
 

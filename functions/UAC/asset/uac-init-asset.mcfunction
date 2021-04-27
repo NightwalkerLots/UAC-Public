@@ -46,6 +46,7 @@ scoreboard objectives add TPM dummy TPM
 scoreboard objectives add VIPM dummy VIPM
 scoreboard objectives add WBM dummy WBM
 scoreboard objectives add UOIM dummy UOIM
+scoreboard objectives add IBM dummy IBM
 
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
@@ -68,6 +69,12 @@ scoreboard objectives add tpmtoggle dummy tpmtoggle
 scoreboard objectives add vipmtoggle dummy vipmtoggle
 scoreboard objectives add wbmtoggle dummy wbmtoggle
 scoreboard objectives add uoimtoggle dummy uoimtoggle
+scoreboard objectives add ibmtoggle dummy ibmtoggle
+
+#Item Ban dummy Toggles
+scoreboard objectives add BNA dummy BNA
+scoreboard objectives add BNM dummy BNM
+scoreboard objectives add BNCB dummy BNCB
 
 #Fake Staff Protection
 scoreboard objectives add 2DI3N dummy 203knK
@@ -79,6 +86,11 @@ scoreboard objectives add I2IO2NO dummy 7D798D8
 #Current Worldspawn debug
 scoreboard objectives add x-axis dummy x-axis
 scoreboard objectives add z-axis dummy y-axis
+
+#Default Itemban Toggles
+scoreboard players set @s BNA 0
+scoreboard players set @s BNM 0
+scoreboard players set @s BNCB 0
 
 #Default Toggles
 scoreboard players set @s SSDEBUG 0
@@ -100,6 +112,7 @@ scoreboard players set @s tpmtoggle 0
 scoreboard players set @s vipmtoggle 0
 scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
+scoreboard players set @s ibmtoggle 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -122,6 +135,7 @@ scoreboard players set @s TPM 0
 scoreboard players set @s VIPM 0
 scoreboard players set @s WBM 0
 scoreboard players set @s UOIM 0
+scoreboard players set @s IBM 0
 
 #Staff Protection
 scoreboard players set @s[tag=!staffstatus] 2DI3N 0
