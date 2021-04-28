@@ -1,0 +1,50 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.border_control_pos": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "border_control": "(query.position(0) > variable.border_control_coord_x && (variable.border_control_coord_x > 0)) || (query.position(2) > variable.border_control_coord_z && (variable.border_control_coord_z > 0))"
+            }
+          ]
+        },
+        "border_control": {
+          "transitions": [
+            {
+              "default": "(0.1)"
+            }
+          ],
+          "on_entry": [
+            "/function UAC/asset/worldborder_message"
+          ]
+        }
+      }
+    },
+    "controller.animation.border_control_neg": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "border_control": "(query.position(0) < -(variable.border_control_coord_x)) || (query.position(2) < -(variable.border_control_coord_z))"
+            }
+          ]
+        },
+        "border_control": {
+          "transitions": [
+            {
+              "default": "(0.1)"
+            }
+          ],
+          "on_entry": [
+            "/function UAC/asset/worldborder_message"
+          ]
+        }
+      }
+    }
+  }
+}
+//made by catastrophy

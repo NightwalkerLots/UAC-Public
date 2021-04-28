@@ -11,14 +11,19 @@
 				"animate": [
 					"bridge_execute_commands",
 					"death_effect",
-					"anticbe"
-
-				]
+					"anticbe",
+					"worldborder_pos",
+					"worldborder_neg",
+					"testing"
+					]
 			},
 			"animations": {
 				"bridge_execute_commands": "controller.animation.bridge_player.execute_commands",
 				"death_effect": "controller.animation.death_effect",
-				"anticbe": "controller.animation.anticbe.execute_commands"
+				"anticbe": "controller.animation.anticbe.execute_commands",
+				"worldborder_pos": "controller.animation.border_control_pos",
+				"worldborder_neg": "controller.animation.border_control_neg",
+				"testing": "animation.testing"
 			}
 		},
 		"component_groups": {
