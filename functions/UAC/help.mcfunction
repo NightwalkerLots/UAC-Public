@@ -11,7 +11,12 @@ tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Unban     §2- /func
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Lag §2- /function UAC/lagclear"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Area§2- /function UAC/cleararea"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Godmode   §2- /function UAC/tgm"}]}
-tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Toggle    §2- /function toggle"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Modules   §2- /function UAC/modulecheck"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Itembans  §2- /function UAC/itembancheck"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§c==== Custom Toggles ===="}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Toggle Modules    §2- /function toggle"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Toggle Banned Items   §2- /function banitem"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Toggle WorldBorder Size   §2- /function worldborder"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§c---------------------------------"}]}
 execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=!staffstatus] ~~~ playsound note.bass @s ~ ~ ~

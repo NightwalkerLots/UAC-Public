@@ -1,3 +1,6 @@
+#WB initial_state
+scoreboard objectives add Border_Coord_X dummy Border_Coord_X
+scoreboard objectives add Border_Coord_Z dummy Border_Coord_Z
 
 #This adds all the scoreboard stuff we need
 scoreboard objectives add warn dummy warn
@@ -150,6 +153,7 @@ scoreboard players operation @s hmmtoggle = hmmtoggledummy hmmtoggle
 scoreboard players set @s HMM 1
 
 #Other utiltiy
+gamerule showcoordinates true
 scoreboard objectives add 2KK001 dummy 2KK001
 scoreboard players set @s 2KK001 0
 execute @s[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
@@ -159,6 +163,9 @@ gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
 scoreboard players set @s opabusemodule 2
 
+#WB init default value
+execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000
+execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_Z 70000
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
