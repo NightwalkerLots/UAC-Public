@@ -3,9 +3,6 @@ clear @r[tag=!staffstatus,scores={uoimtoggle=1}] bedrock
 clear @r[tag=!staffstatus,scores={uoimtoggle=1}] barrier
 clear @r[tag=!staffstatus,scores={uoimtoggle=1}] end_portal_frame
 clear @r[tag=!staffstatus,scores={uoimtoggle=1}] mob_spawner
-clear @r[tag=!staffstatus,scores={uoimtoggle=1}] map
-clear @r[tag=!staffstatus,scores={uoimtoggle=1}] empty_map
-clear @r[tag=!staffstatus,scores={uoimtoggle=1}] filled_map
 
 #Dropped Items bypass
 execute @r[tag=!staffstatus,scores={uoimtoggle=1}] ~~~ execute @e[type=item,r=4] ~~~ kill @s[type=item,name="bedrock"]
