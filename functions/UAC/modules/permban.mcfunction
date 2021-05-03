@@ -63,6 +63,7 @@ tag "RandomYTvideos" add PermBan
 tag "POPB0B 2B2T" add PermBan
 tag "KingLeo332" add PermBan
 tag "xIlIlIIlIIlIx55" add PermBan
+tag "PointNetwork341" add PermBan
 
 kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
