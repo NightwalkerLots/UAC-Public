@@ -79,6 +79,11 @@ scoreboard objectives add BNA dummy BNA
 scoreboard objectives add BNM dummy BNM
 scoreboard objectives add BNCB dummy BNCB
 
+#Default Itemban Toggles
+scoreboard players set @s BNA 0
+scoreboard players set @s BNM 0
+scoreboard players set @s BNCB 0
+
 #Fake Staff Protection
 scoreboard objectives add 2DI3N dummy 203knK
 scoreboard objectives add 39SN230 dummy D93N3ND
@@ -89,11 +94,6 @@ scoreboard objectives add I2IO2NO dummy 7D798D8
 #Current Worldspawn debug
 scoreboard objectives add x-axis dummy x-axis
 scoreboard objectives add z-axis dummy y-axis
-
-#Default Itemban Toggles
-scoreboard players set @s BNA 0
-scoreboard players set @s BNM 0
-scoreboard players set @s BNCB 0
 
 #Default Toggles
 scoreboard players set @s SSDEBUG 0
