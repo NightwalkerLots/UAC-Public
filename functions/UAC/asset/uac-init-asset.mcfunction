@@ -78,11 +78,17 @@ scoreboard objectives add ibmtoggle dummy ibmtoggle
 scoreboard objectives add BNA dummy BNA
 scoreboard objectives add BNM dummy BNM
 scoreboard objectives add BNCB dummy BNCB
+scoreboard objectives add BNSB dummy BNSB
+scoreboard objectives add BNBQ dummy BNBQ
+scoreboard objectives add BNTN dummy BNTN
 
 #Default Itemban Toggles
 scoreboard players set @s BNA 0
 scoreboard players set @s BNM 0
 scoreboard players set @s BNCB 0
+scoreboard players set @s BNSB 0
+scoreboard players set @s BNBQ 0
+scoreboard players set @s BNTN 0
 
 #Fake Staff Protection
 scoreboard objectives add 2DI3N dummy 203knK
