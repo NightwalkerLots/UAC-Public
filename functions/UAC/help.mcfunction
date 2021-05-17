@@ -1,8 +1,8 @@
 #bridge-file-version: #31
-tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b==== UAC Staff Commands (Caps Sensitive) ===="}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§c==== UAC Staff Commands (Caps Sensitive) ===="}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Stats     §2- /execute (player) ~~~ function UAC/stats"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Stats: §2Shows player's time played, warns, and current gamemode"}]}
-tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Warn      §2- /execute (player) ~~~ function UAC/warn"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Warn:     §2- /execute (player) ~~~ function UAC/warn"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Warn Reset§2- /execute (player) ~~~ function UAC/warnreset"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Punish    §2- /execute (player) ~~~ function UAC/punish"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Punish:§2 This clears Inv and Echest then gives warning"}]}

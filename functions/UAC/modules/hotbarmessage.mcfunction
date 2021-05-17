@@ -5,7 +5,7 @@ execute @a[scores={hmmtoggle=1},m=s] ~~~ titleraw @s[scores={hometp=3}] actionba
 execute @a[scores={hmmtoggle=2},m=s] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"}]}
 
 #creative
-execute @r[scores={hmmtoggle=1}] ~~~ execute @s[tag=staffstatus,scores={OPAM=0},m=c] ~~~ titleraw @s[scores={opamtoggle=0}] actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` | §7[§2v2.1§7]§b\n §bTotal Entities §7: "},{"score":{"name":"@r[scores={entitycount=0..9999}]","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"x-axis"}},{"text":" Z = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"z-axis"}}]}
+execute @r[scores={hmmtoggle=1}] ~~~ execute @s[tag=staffstatus,scores={OPAM=0},m=c] ~~~ titleraw @s[scores={opamtoggle=0}] actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` | §7[§2v2.2§7]§b\n §bTotal Entities §7: "},{"score":{"name":"@r[scores={entitycount=0..9999}]","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"x-axis"}},{"text":" Z = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"z-axis"}}]}
 
 #home progress bar
 execute @r[scores={hmmtoggle=1}] ~~~ execute @s[scores={hometp=1}] ~~~ title @s[scores={hometimer=500..550}] actionbar §¶§dWARPING HOME§7: §c❚❚❚❚❚❚❚❚❚
