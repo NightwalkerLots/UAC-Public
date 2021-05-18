@@ -1,0 +1,146 @@
+//re-organized with: https://jsoneditoronline.org/
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.enchanted_helmet": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "helmet_on": "variable.helmet_other || variable.helmet_leather"
+            },
+            {
+              "helmet_off": "!variable.helmet_other && !variable.helmet_leather"
+            }
+          ]
+        },
+        "helmet_on": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s add Helmet_Enchanted",
+            "/tell @e[type=player,tag=Test] Helmet is enchanted"//This is just a testing command so we know the animation_controller works in-game
+          ]//                                                             (Note:This will only work when the player has the Test tag)
+        },
+        "helmet_off": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s remove Helmet_Enchanted"
+          ]
+        }
+      }
+    },
+    "controller.animation.enchanted_chestplate": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "chestplate_on": "variable.chestplate_other || variable.chestplate_leather"
+            },
+            {
+              "chestplate_off": "!variable.chestplate_other || !variable.chestplate_leather"
+            }
+          ]
+        },
+        "chestplate_on": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s add Chestplate_On",
+            "/tell @e[type=player,tag=Test] Chestplate is enchanted"
+          ]
+        },
+        "chestplate_off": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s remove Chestplate_On"
+          ]
+        }
+      }
+    },
+    "controller.animation.enchanted_leggings": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "leggings_on": "variable.leggings_other || variable.leggings_leather"
+            },
+            {
+              "leggings_off": "variable.leggings_other || variable.leggings_leather"
+            }
+          ]
+        },
+        "leggings_on": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s add Leggings_Enchanted",
+            "/tell @e[type=player,tag=Test] Leggings is enchanted"
+          ]
+        },
+        "leggings_off": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s remove Leggings_Enchanted"
+          ]
+        }
+      }
+    },
+    "controller.animation.enchanted_boots": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "boots_on": "variable.boots_other || variable.boots_leather"
+            },
+            {
+              "boots_off": "variable.boots_other || variable.boots_leather"
+            }
+          ]
+        },
+        "boots_on": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s add Boots_Enchanted",
+            "/tell @e[type=player,tag=Test] Boots is enchanted"
+          ]
+        },
+        "boots_off": {
+          "transitions": [
+            {
+              "default": "(1.0)"
+            }
+          ],
+          "on_entry": [
+            "/tag @s remove Boots_Enchanted"
+          ]
+        }
+      }
+    }
+  }
+}
