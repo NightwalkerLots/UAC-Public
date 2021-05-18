@@ -11,9 +11,10 @@ execute @a[scores={vipmtoggle=1}] ~~~ function UAC/modules/vip
 execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @a[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
 execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
+execute @a[scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
+execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
-function UAC/asset/utility
 function UAC/modules/permban
 
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
