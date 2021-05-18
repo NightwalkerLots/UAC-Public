@@ -1,6 +1,6 @@
 execute @s[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► You must be staff to use this command!"}]}
 
-execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c=========Module Status========="}]}
+execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c========= Module Status ========="}]}
 
 execute @s[tag=staffstatus] ~~~ execute @s[scores={HMM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={HMM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§cDISABLED §7]"}]}
@@ -47,7 +47,13 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={RSM=0}] ~~~ tellraw @s {"rawt
 execute @s[tag=staffstatus] ~~~ execute @s[scores={IBM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bCustom Item Ban §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={IBM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bCustom Item Ban §7[ §¶§cDISABLED §7]"}]}
 
-execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c===Modules can be enabled/disabled in the settings file==="}]}
+execute @s[tag=staffstatus] ~~~ execute @s[scores={SSM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bFake Staff Protection §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus] ~~~ execute @s[scores={SSM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bFake Staff Protection §7[ §¶§cDISABLED §7]"}]}
+
+execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Op Abuse §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Op Abuse §7[ §¶§cDISABLED §7]"}]}
+
+execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c=== Use ``/function toggle` to toggle modules==="}]}
 
 
 #This hides this from the in-game function command directory

@@ -1,8 +1,5 @@
 execute @r[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 #Called apon everytime a new player joins
-tag Nightwalkerlots remove PermBan
-tag Nightwalkerlots add staffstatus
-tag Nightwalkerlots add unban
 
 tag Beast89900 add PermBan
 tag "igorrites26164" add PermBan
