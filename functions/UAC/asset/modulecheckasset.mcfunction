@@ -53,6 +53,9 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={SSM=0}] ~~~ tellraw @s {"rawt
 execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Op Abuse §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-Op Abuse §7[ §¶§cDISABLED §7]"}]}
 
+execute @s[tag=staffstatus] ~~~ execute @s[scores={DAM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo Enchanted Armor §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus] ~~~ execute @s[scores={DAM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo Enchanted Armor §7[ §¶§cDISABLED §7]"}]}
+
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c=== Use ``/function toggle` to toggle modules==="}]}
 
 

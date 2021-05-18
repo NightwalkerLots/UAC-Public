@@ -2,6 +2,18 @@
 scoreboard objectives add Border_Coord_X dummy Border_Coord_X
 scoreboard objectives add Border_Coord_Z dummy Border_Coord_Z
 
+#Adds scores for the armor sensor
+scoreboard objectives add headen dummy headen
+scoreboard objectives add chesten dummy chesten
+scoreboard objectives add legen dummy legen
+scoreboard objectives add feeten dummy feeten
+
+#Default Values for the armor sensor
+scoreboard players set @s headen 0
+scoreboard players set @s chesten 0
+scoreboard players set @s legen 0
+scoreboard players set @s feeten 0
+
 #This adds all the scoreboard stuff we need
 scoreboard objectives add warn dummy warn
 scoreboard objectives add warnillegal dummy warnillegal
@@ -50,6 +62,7 @@ scoreboard objectives add VIPM dummy VIPM
 scoreboard objectives add WBM dummy WBM
 scoreboard objectives add UOIM dummy UOIM
 scoreboard objectives add IBM dummy IBM
+scoreboard objectives add DAM dummy DAM
 
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
@@ -73,6 +86,7 @@ scoreboard objectives add vipmtoggle dummy vipmtoggle
 scoreboard objectives add wbmtoggle dummy wbmtoggle
 scoreboard objectives add uoimtoggle dummy uoimtoggle
 scoreboard objectives add ibmtoggle dummy ibmtoggle
+scoreboard objectives add damtoggle dummy damtoggle
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -122,6 +136,7 @@ scoreboard players set @s vipmtoggle 0
 scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
 scoreboard players set @s ibmtoggle 0
+scoreboard players set @s damtoggle 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -145,6 +160,7 @@ scoreboard players set @s VIPM 0
 scoreboard players set @s WBM 0
 scoreboard players set @s UOIM 0
 scoreboard players set @s IBM 0
+scoreboard players set @s DAM 0
 
 #Staff Protection
 scoreboard players set @s[tag=!staffstatus] 2DI3N 0
