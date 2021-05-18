@@ -4,8 +4,19 @@
     "animation.testing": {
       "timeline": {
         "0.0": [
+        //This is for the world_border
         "variable.border_control_coord_x = query.scoreboard('Border_Coord_X');",
-        "variable.border_control_coord_z = query.scoreboard('Border_Coord_Z');"
+        "variable.border_control_coord_z = query.scoreboard('Border_Coord_Z');",
+
+        //This is for the enchanted armor
+        "variable.helmet_other = query.armor_material_slot(0) == 1;",
+        "variable.helmet_leather = query.armor_material_slot(0) == 3;",
+        "variable.chestplate_other = query.armor_material_slot(1) == 1;",
+        "variable.chestplate_leather = query.armor_material_slot(1) == 3;",
+        "variable.leggings_other = query.armor_material_slot(2) == 1;",
+        "variable.leggings_leather = query.armor_material_slot(2) == 3;",
+        "variable.boots_other = query.armor_material_slot(3) == 1;",
+        "variable.boots_leather = query.armor_material_slot(3) == 3;"
         ]
       },
       "animation_length": 0.01,
