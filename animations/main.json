@@ -16,7 +16,13 @@
         "variable.leggings_other = query.armor_material_slot(2) == 1;",
         "variable.leggings_leather = query.armor_material_slot(2) == 3;",
         "variable.boots_other = query.armor_material_slot(3) == 1;",
-        "variable.boots_leather = query.armor_material_slot(3) == 3;"
+        "variable.boots_leather = query.armor_material_slot(3) == 3;",
+
+
+        //This is for the coordinates system
+        "variable.x_coordinate = query.scoreboard('X_Coordinate');",
+        "variable.y_coordinate = query.scoreboard('Y_Coordinate');",
+        "variable.z_coordinate = query.scoreboard('Z_Coordinate');"
         ]
       },
       "animation_length": 0.01,
