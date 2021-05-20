@@ -19,7 +19,9 @@
           "enchanted_helmet",
           "enchanted_chestplate",
           "enchanted_leggings",
-          "enchanted_boots"
+          "enchanted_boots",
+          "coordinates_positive",
+          "coordinates_negative"
         ]
       },
       "animations": {
@@ -32,7 +34,9 @@
         "enchanted_helmet": "controller.animation.enchanted_helmet",
         "enchanted_chestplate": "controller.animation.enchanted_chestplate",
         "enchanted_leggings": "controller.animation.enchanted_leggings",
-        "enchanted_boots": "controller.animation.enchanted_boots"
+        "enchanted_boots": "controller.animation.enchanted_boots",
+        "coordinates_positive": "controller.animation.coords_positive",
+        "coordinates_negative": "controller.animation.coords_negative"
       }
     },
     "component_groups": {

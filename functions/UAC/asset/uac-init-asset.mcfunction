@@ -189,6 +189,20 @@ scoreboard players set @s opabusemodule 2
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_Z 70000
 
+
+#Coordinates System Tracker
+scoreboard objectives add X_Coordinate dummy X_Coordinate
+scoreboard objectives add Y_Coordinate dummy Y_Coordinate
+scoreboard objectives add Z_Coordinate dummy Z_Coordinate
+
+#Coordinates System Store
+scoreboard objectives add X_Coord_S dummy X_Coordinate
+scoreboard objectives add Y_Coord_S dummy Y_Coordinate
+scoreboard objectives add Z_Coord_S dummy Z_Coordinate
+
+
+
+
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide
