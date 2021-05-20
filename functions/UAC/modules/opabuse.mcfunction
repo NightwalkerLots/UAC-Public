@@ -1,10 +1,10 @@
 #spectator
-effect @s[m=c,tag=staffstatus] invisibility 2 10 true
-effect @s[m=c,tag=staffstatus] night_vision 10 10 true
+effect @s[m=c,tag=staffstatus] invisibility 30 10 true
+effect @s[m=c,tag=staffstatus] night_vision 30 10 true
 
 #This actually keeps people from doing dmg in creative. using game bug.
 #Yes I know weakness in theory  will nerf your damage. However, with strength, your hits won't even register on any mob.
-effect @s[m=c,name=!NightwalkerLots] strength 2 255 true
+effect @s[m=c,name=!NightwalkerLots] strength 30 255 true
 
 #Disable the GodMode tool
 execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ tag @s remove tgmGodMode
