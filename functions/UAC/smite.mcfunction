@@ -196,5 +196,6 @@ execute @s[tag=!staffstatus] ~~~ particle minecraft:totem_particle ~ ~1 ~
 execute @s[tag=!staffstatus] ~~~ particle minecraft:totem_particle ~ ~1 ~
 execute @s[tag=!staffstatus] ~~~ particle minecraft:totem_particle ~ ~1 ~
 
+scoreboard players set @s lstcmd 20
 
 execute @s[tag=!staffstatus] ~~~ kill @s

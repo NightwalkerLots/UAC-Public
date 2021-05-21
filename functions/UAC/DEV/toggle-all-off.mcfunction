@@ -18,6 +18,7 @@ execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/unobtainabl
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/vip-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/kitpvp-off
 
+scoreboard players set @s lstcmd 3
 
 #Deny NonDeveloper
 execute @s[tag=!staffstatus,name=!nightwalkerlots] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bOnly staff can use this command"}]}

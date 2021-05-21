@@ -27,3 +27,5 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ execute @s[tag=t
 execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ execute @s[tag=tgmGodMode] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ effect @s conduit_power 99999999 255 true
 execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ execute @s[tag=tgmGodMode] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ effect @s slow_falling 99999999 255 true
 execute @s[tag=staffstatus] ~~~ execute @s[scores={OPAM=0}] ~~~ execute @s[tag=tgmGodMode] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ effect @s strength 99999999 50 true
+
+scoreboard players set @s lstcmd 22
