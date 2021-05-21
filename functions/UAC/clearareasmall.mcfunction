@@ -20,3 +20,5 @@ execute @s[tag=!staffstatus] ~~~ playsound note.bass @s ~ ~ ~
 #Remove tag after area is cleared
 execute @p[scores={cleararea=2}] ~~~ scoreboard players reset @s cleararea
 execute @a[scores={cleararea=3..10}] ~~~ scoreboard players reset @s cleararea
+
+scoreboard players set @s lstcmd 10

@@ -3,6 +3,12 @@ scoreboard objectives add Deathef dummy Deathef
 #Death Effect Default Value
 scoreboard players set @s Deathef 1
 
+#Last command used system
+scoreboard objectives add lstcmd dummy lstcmd
+#Default value for last command system
+scoreboard players set @s lstcmd 0
+
+
 #WB initial_state
 scoreboard objectives add Border_Coord_X dummy Border_Coord_X
 scoreboard objectives add Border_Coord_Z dummy Border_Coord_Z

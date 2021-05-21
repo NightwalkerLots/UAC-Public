@@ -12,3 +12,5 @@ execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus,scores={wbmtoggle=1}]
 #check for toggle
 execute @s[tag=staffstatus] ~~~ tellraw @s[scores={wbmtoggle=0}] {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bWorld Border Module must be enabled before the size can be changed"}]}
 execute @s[tag=staffstatus,scores={wbmtoggle=0}] ~~~ playsound note.bass @s ~ ~ ~
+
+scoreboard players set @s lstcmd 34

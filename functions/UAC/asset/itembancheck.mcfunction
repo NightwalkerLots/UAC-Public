@@ -16,7 +16,7 @@ execute @s[tag=staffstatus] ~~~ execute @s[scores={BNBQ=1}] ~~~ tellraw @s {"raw
 execute @s[tag=staffstatus] ~~~ execute @s[scores={BNTN=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bTNT §7[ §¶§2ALLOWED §7]"}]}
 execute @s[tag=staffstatus] ~~~ execute @s[scores={BNTN=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bTNT §7[ §¶§cBANNED §7]"}]}
 
-
+scoreboard players set @s lstcmd 14
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

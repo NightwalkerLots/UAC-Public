@@ -7,7 +7,7 @@ kill @e[type=item,name=setspawn]
 execute @f ~~~ hide
 tag @f[tag=""] add hide
 
-
+scoreboard players set @s lstcmd 7
 
 
 #Edited By Catastophe

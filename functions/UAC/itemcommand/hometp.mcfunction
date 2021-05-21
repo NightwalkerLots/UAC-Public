@@ -5,7 +5,7 @@ scoreboard players set @s hometimer 550
 effect @s slowness 510 3
 kill @e[type=item,name=home]
 
-
+scoreboard players set @s lstcmd 5
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

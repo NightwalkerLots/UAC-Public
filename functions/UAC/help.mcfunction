@@ -24,3 +24,5 @@ execute @p[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► 
 execute @p[tag=staffstatus] ~~~ function UAC/asset/version
 execute @p[tag=staffstatus] ~~~ function UAC/asset/discord
 execute @p[tag=staffstatus] ~~~ function UAC/asset/createdby
+
+scoreboard players set @s lstcmd 13
