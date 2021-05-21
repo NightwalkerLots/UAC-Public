@@ -1,5 +1,5 @@
 #Checks for the lstcmd value given by the last command they used
-execute @s[scores={lstcmd=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"§bhas not used a command yet"}]}
+execute @s[scores={lstcmd=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"§b has not used a command yet"}]}
 execute @s[scores={lstcmd=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6Staff Key §bcommand §bcommand"}]}
 execute @s[scores={lstcmd=2}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/DEV/tgm §bcommand"}]}
 execute @s[scores={lstcmd=3}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/DEV/toggle-all-off §bcommand"}]}
@@ -36,3 +36,7 @@ execute @s[scores={lstcmd=33}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"tex
 execute @s[scores={lstcmd=34}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/worldborder/80k-border §bcommand"}]}
 execute @s[scores={lstcmd=35}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/worldborder/90k-border §bcommand"}]}
 execute @s[scores={lstcmd=36}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/worldborder/100k-border §bcommand"}]}
+
+#This hides this from the in-game function command directory
+execute @f ~~~ hide
+tag @f[tag=""] add hide
