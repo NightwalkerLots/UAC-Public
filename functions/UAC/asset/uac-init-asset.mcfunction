@@ -1,3 +1,8 @@
+#Death Effect Toggle
+scoreboard objectives add Deathef dummy Deathef
+#Death Effect Default Value
+scoreboard players set @s Deathef 1
+
 #WB initial_state
 scoreboard objectives add Border_Coord_X dummy Border_Coord_X
 scoreboard objectives add Border_Coord_Z dummy Border_Coord_Z
