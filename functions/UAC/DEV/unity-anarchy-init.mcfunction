@@ -12,8 +12,11 @@ execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/opabuse-on
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/randomspawn-on
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/timeplayed-on
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/unobtainableitems-on
-execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/vip-on
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/itemban-on
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/worldborder-on
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function banitem/crossbow-ban
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function banitem/maps-ban
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function banitem/book_and_quill-ban
 
 #Deny Nonstaff
 execute @s[tag=!staffstatus,name=!nightwalkerlots] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bOnly staff can use this command"}]}

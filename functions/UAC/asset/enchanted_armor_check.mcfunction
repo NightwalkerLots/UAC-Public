@@ -1,4 +1,4 @@
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l► §d"},{"selector":"@s"},{"text":"'s §cARMOR STATUS"},{"text":" §¶§c§b◄"}]}
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l► §d"},{"selector":"@s"},{"text":"'s §6ARMOR STATUS"},{"text":" §¶§c§b◄"}]}
 
 execute @s[scores={headen=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§b Helmet§7: §2ENCHANTED"}]}
 execute @s[scores={headen=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§b Helmet§7: §cNO ENCHANTS"}]}

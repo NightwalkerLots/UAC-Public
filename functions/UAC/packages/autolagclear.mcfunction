@@ -7,7 +7,7 @@ execute @r[scores={ltmtoggle=1}] ~~~ execute @e[family=monster] ~~~ scoreboard p
 execute @r[scores={entitycount=100..9999}] ~~~ execute @s[scores={ltmtoggle=1}] ~~~ function UAC/packages/autolagclearasset
 execute @r[scores={ltmtoggle=1}] ~~~ scoreboard players reset @a lagtimer
 execute @r[scores={rsmtoggle=1}] ~~~ function UAC/asset/random-spawn-asset
-execute @a[scores={vipmtoggle=1}] ~~~ function UAC/modules/vip
+
 execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @a[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
 execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
@@ -18,8 +18,13 @@ execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestd
 function UAC/packages/bans
 function UAC/modules/permban
 
+#Syncs the worldborder size for everyone
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_X = BDXdummy Border_Coord_X
+
+#Syncs the Death Effect Toggle for everyone
+scoreboard players operation @a Deathef = BDXdummy Deathef
+
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
