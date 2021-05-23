@@ -8,3 +8,5 @@ execute @s[tag=!staffstatus] ~~~ playsound note.bass @s ~ ~ ~
 execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §6Fake Staff Protection §bhas been toggled §2ON §bby §d"},{"selector":"@s"}]}
 execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §bYou now need to execute the Staff Key Command on a player to give them staff access."}]}
+
+scoreboard players set @s lstcmd 52
