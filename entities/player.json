@@ -1864,7 +1864,7 @@
         "run_command": {
           "target": "self",
           "command": [
-            "tag @s add Effect:levitation"
+            "tag @s add Effect:Levitation"
           ]
         }
       },
