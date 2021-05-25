@@ -8,6 +8,11 @@ scoreboard objectives add lstcmd dummy lstcmd
 #Default value for last command system
 scoreboard players set @s lstcmd 0
 
+#Freeze Player
+scoreboard objectives add fzplr dummy fzplr
+#Freeze Player default value
+scoreboard players set @s fzplr 0
+
 
 #WB initial_state
 scoreboard objectives add Border_Coord_X dummy Border_Coord_X

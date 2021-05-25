@@ -1,8 +1,12 @@
 #survival (with score)
-execute @a[scores={hmmtoggle=1},m=s] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"},{"text":"\n §¶§bKills §7:"},{"score":{"name":"@s","objective":"kills"}},{"text":" §bDeaths §7:"},{"score":{"name":"@s","objective":"deaths"}},{"text":" §bCurrent Killstreak §7:"},{"score":{"name":"@s","objective":"killstreak"}}]}
+execute @a[scores={hmmtoggle=1},m=s] ~~~ execute @s[scores={fzplr=0}] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"},{"text":"\n §¶§bKills §7:"},{"score":{"name":"@s","objective":"kills"}},{"text":" §bDeaths §7:"},{"score":{"name":"@s","objective":"deaths"}},{"text":" §bCurrent Killstreak §7:"},{"score":{"name":"@s","objective":"killstreak"}}]}
 
 #survival (without score)
-execute @a[scores={hmmtoggle=2},m=s] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"}]}
+execute @a[scores={hmmtoggle=2},m=s] ~~~ execute @s[scores={fzplr=0}] ~~~ titleraw @s[scores={hometp=3}] actionbar {"rawtext":[{"text":"§¶§bUnity AntiCheat §7[§2v2.2§7] Public §b - Made by §dNightwalkerLots"}]}
+
+#Frozen Player
+execute @a[scores={fzplr=1}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§bYOU HAVE BEEN §cFROZEN §bBY AN OPERATOR \n §¶§bLEAVING MAY RESULT IN A BAN"}]}
+
 
 #creative
 execute @a[scores={hmmtoggle=1}] ~~~ execute @s[tag=staffstatus,scores={OPAM=0},m=c] ~~~ titleraw @s[scores={opamtoggle=0}] actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` | §7[§2v2.2§7]§b\n §bTotal Entities §7: "},{"score":{"name":"@r[scores={entitycount=0..9999}]","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"x-axis"}},{"text":" Z = "},{"score":{"name":"@r[scores={randomspawn=10..340}]","objective":"z-axis"}}]}
