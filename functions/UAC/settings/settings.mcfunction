@@ -61,7 +61,7 @@ function UAC/packages/unbantimer
 # =TimePlayed=
 # When enabled, you can see people's time played with the "stats" command. The amount of ticks can be calculated into hours played.
 # Enabled by default
-function UAC/modules/timeplayedticker
+# location: function UAC/modules/timeplayedticker
 #
 # =Staffstatus=
 # DO NOT DISABLE THIS, THIS IS ESSENTIAL FOR STAFF BYPASSES TO WORK
