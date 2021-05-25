@@ -21,7 +21,15 @@
           "enchanted_leggings",
           "enchanted_boots",
           "coordinates_positive",
-          "coordinates_negative"
+          "coordinates_negative",
+
+          //Detection Animations
+          "is_jumping",
+          "is_levitating",
+          "is_on_ground",
+          "is_gliding",
+
+          "timer"
         ]
       },
       "animations": {
@@ -36,7 +44,15 @@
         "enchanted_leggings": "controller.animation.enchanted_leggings",
         "enchanted_boots": "controller.animation.enchanted_boots",
         "coordinates_positive": "controller.animation.coords_positive",
-        "coordinates_negative": "controller.animation.coords_negative"
+        "coordinates_negative": "controller.animation.coords_negative",
+
+        //Detection Animation Controllers
+        "is_jumping": "controller.animation.is_jumping",
+        "is_levitating": "controller.animation.is_levitating",
+        "is_on_ground": "controller.animation.is_on_ground",
+        "is_gliding": "controller.animation.is_gliding",
+
+        "timer": "controller.animation.timer"
       }
     },
     "component_groups": {
@@ -764,6 +780,32 @@
               ]
             },
             "event": "minecraft:leather_boots"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_mob_effect",
+                  "operator": "==",
+                  "subject": "self",
+                  "value": "levitation"
+                }
+              ]
+            },
+            "event": "minecraft:has_levitation"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_mob_effect",
+                  "operator": "!=",
+                  "subject": "self",
+                  "value": "levitation"
+                }
+              ]
+            },
+            "event": "minecraft:no_levitation"
           }
         ]
       },
@@ -1815,6 +1857,22 @@
           "target": "self",
           "command": [
             "tag @s add Leather_Boots"
+          ]
+        }
+      },
+      "minecraft:has_levitation": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "tag @s add Effect:Levitation"
+          ]
+        }
+      },
+      "minecraft:no_levitation": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "tag @s remove Effect:Levitation"
           ]
         }
       },
