@@ -33,7 +33,11 @@ scoreboard objectives setdisplay belowname staff
 scoreboard objectives add lagtimer dummy lagtimer
 scoreboard objectives add hometimer dummy hometimer
 scoreboard objectives add rulestimer dummy rulestimer
-scoreboard objectives add timeplayed dummy timeplayed
+scoreboard objectives add timeplayedtick dummy timeplayedtick
+scoreboard objectives add timeplayedsec dummy timeplayedsec
+scoreboard objectives add timeplayedmin dummy timeplayedmin
+scoreboard objectives add timeplayedhr dummy timeplayedhr
+scoreboard objectives add timeplayedday dummy timeplayedday
 scoreboard objectives add timealive dummy timealive
 scoreboard objectives add uac dummy uac
 scoreboard objectives add deaths dummy deaths
