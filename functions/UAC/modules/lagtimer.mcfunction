@@ -2,6 +2,7 @@
 scoreboard players add @r lagtimer 1
 execute @r ~~~ execute @s[scores={lagtimer=50..9999999}] ~~~ function UAC/packages/autolagclear
 
+#Freeze Player utility
 execute @r[tag=!staffstatus,scores={fzplr=1}] ~~~ tp @s @e[r=4,name=fzplr]
 
 #Adds a tag for the enabled/disabled check
