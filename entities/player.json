@@ -22,13 +22,10 @@
           "enchanted_boots",
           "coordinates_positive",
           "coordinates_negative",
-
-          //Detection Animations
           "is_jumping",
           "is_levitating",
           "is_on_ground",
           "is_gliding",
-
           "timer"
         ]
       },
@@ -45,17 +42,24 @@
         "enchanted_boots": "controller.animation.enchanted_boots",
         "coordinates_positive": "controller.animation.coords_positive",
         "coordinates_negative": "controller.animation.coords_negative",
-
-        //Detection Animation Controllers
         "is_jumping": "controller.animation.is_jumping",
         "is_levitating": "controller.animation.is_levitating",
         "is_on_ground": "controller.animation.is_on_ground",
         "is_gliding": "controller.animation.is_gliding",
-
         "timer": "controller.animation.timer"
       }
     },
     "component_groups": {
+      "minecraft:spectate": {
+        "minecraft:scale": {
+          "value": 0
+        }
+      },
+      "minecraft:no_spectate": {
+        "minecraft:scale": {
+          "value": 1.0
+        }
+      },
       "minecraft:add_bad_omen": {
         "minecraft:spell_effects": {
           "add_effects": [
@@ -157,6 +161,32 @@
     "components": {
       "minecraft:environment_sensor": {
         "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "operator": "==",
+                  "subject": "self",
+                  "value": "spectate"
+                }
+              ]
+            },
+            "event": "minecraft:spectate"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "operator": "!=",
+                  "subject": "self",
+                  "value": "spectate"
+                }
+              ]
+            },
+            "event": "minecraft:no_spectate"
+          },
           {
             "filters": {
               "all_of": [
@@ -1449,6 +1479,20 @@
         "triggers": [
           {
             "on_damage": {
+              "filters": [
+                {
+                  "test": "has_tag",
+                  "operator": "==",
+                  "subject": "self",
+                  "value": "godmode"
+                }
+              ],
+              "cause": "all"
+            },
+            "deals_damage": false
+          },
+          {
+            "on_damage": {
               "filters": {
                 "all_of": [
                   {
@@ -1476,6 +1520,20 @@
       }
     },
     "events": {
+      "minecraft:spectate": {
+        "add": {
+          "component_groups": [
+            "minecraft:spectate"
+          ]
+        }
+      },
+      "minecraft:no_spectate": {
+        "add": {
+          "component_groups": [
+            "minecraft:no_spectate"
+          ]
+        }
+      },
       "minecraft:no_netherite_helmet": {
         "run_command": {
           "target": "self",
