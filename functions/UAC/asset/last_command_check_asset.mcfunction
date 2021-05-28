@@ -99,6 +99,11 @@ execute @s[scores={lstcmd=88}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"tex
 execute @s[scores={lstcmd=89}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/tnt-allow §bcommand"}]}
 execute @s[scores={lstcmd=90}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/tnt-ban §bcommand"}]}
 
+#Mining Detection
+execute @s[scores={lstcmd=91}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function toggle/mining_detection-off §bcommand"}]}
+execute @s[scores={lstcmd=92}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function toggle/mining_detection-on §bcommand"}]}
+execute @s[scores={lstcmd=93}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/diamonds-off §bcommand"}]}
+
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

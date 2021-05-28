@@ -14,6 +14,7 @@ execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
 execute @a[scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
 execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
 execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/enchanted_armor
+execute @a[scores={mdmtoggle=1}] ~~~ function UAC/modules/mining_detection
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
 function UAC/modules/permban
@@ -21,6 +22,9 @@ function UAC/modules/permban
 #Syncs the worldborder size for everyone
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_X = BDXdummy Border_Coord_X
+
+#Syncs toggle for mining detection module
+scoreboard players operation @s mdmtoggle = mdmtoggledummy mdmtoggle
 
 #Syncs the Death Effect Toggle for everyone
 scoreboard players operation @a Deathef = BDXdummy Deathef
