@@ -39,7 +39,8 @@
 						}
 					],
 					"on_entry": [
-						"/function UAC/modules/timeplayedticker"
+						"/function UAC/modules/timeplayedticker",
+						"/function UAC/settings/settings"
 					]
 				},
 				"timer": {
@@ -49,7 +50,8 @@
 						}
 					],
 					"on_entry": [
-						"/function UAC/modules/timeplayedticker"
+						"/function UAC/modules/timeplayedticker",
+						"/function UAC/settings/settings"
 					]
 				}
 			}
