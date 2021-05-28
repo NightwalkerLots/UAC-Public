@@ -1,3 +1,33 @@
+#Mining Detection Vaules
+scoreboard objectives add diamondmd dummy diamondmd
+scoreboard objectives add goldmd dummy goldmd
+scoreboard objectives add lapizmd dummy lapizmd
+scoreboard objectives add scrapmd dummy scrapmd
+scoreboard objectives add emeraldmd dummy emeraldmd
+scoreboard objectives add ironmd dummy ironmd
+
+scoreboard objectives add diamondfnd dummy diamondfnd
+scoreboard objectives add goldfnd dummy goldfnd
+scoreboard objectives add lapizfnd dummy lapizfnd
+scoreboard objectives add scrapfnd dummy scrapfnd
+scoreboard objectives add emeraldfnd dummy emeraldfnd
+scoreboard objectives add ironfnd dummy ironfnd
+
+#Mining Detection init values
+scoreboard players set @s diamondmd 0
+scoreboard players set @s goldmd 0
+scoreboard players set @s lapizmd 0
+scoreboard players set @s scrapmd 0
+scoreboard players set @s emeraldmd 0
+scoreboard players set @s ironmd 0
+
+scoreboard players set @s diamondfnd 0
+scoreboard players set @s goldfnd 0
+scoreboard players set @s lapizfnd 0
+scoreboard players set @s scrapfnd 0
+scoreboard players set @s emeraldfnd 0
+scoreboard players set @s ironfnd 0
+
 #Death Effect Toggle
 scoreboard objectives add Deathef dummy Deathef
 #Death Effect Default Value
@@ -83,6 +113,7 @@ scoreboard objectives add WBM dummy WBM
 scoreboard objectives add UOIM dummy UOIM
 scoreboard objectives add IBM dummy IBM
 scoreboard objectives add DAM dummy DAM
+scoreboard objectives add MDM dummy MDM
 
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
@@ -107,6 +138,7 @@ scoreboard objectives add wbmtoggle dummy wbmtoggle
 scoreboard objectives add uoimtoggle dummy uoimtoggle
 scoreboard objectives add ibmtoggle dummy ibmtoggle
 scoreboard objectives add damtoggle dummy damtoggle
+scoreboard objectives add mdmtoggle dummy mdmtoggle
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -157,6 +189,7 @@ scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
 scoreboard players set @s ibmtoggle 0
 scoreboard players set @s damtoggle 0
+scoreboard players set @s mdmtoggle 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -181,6 +214,7 @@ scoreboard players set @s WBM 0
 scoreboard players set @s UOIM 0
 scoreboard players set @s IBM 0
 scoreboard players set @s DAM 0
+scoreboard players set @s MDM 0
 
 #Staff Protection
 scoreboard players set @s[tag=!staffstatus] 2DI3N 0
