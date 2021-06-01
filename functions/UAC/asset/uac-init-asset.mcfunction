@@ -1,3 +1,7 @@
+#Vanish detection / defaul value
+scoreboard objectives add vnsh dummy
+scoreboard players set @s vnsh 0
+
 #Mining Detection Vaules
 scoreboard objectives add diamondmd dummy diamondmd
 scoreboard objectives add goldmd dummy goldmd
