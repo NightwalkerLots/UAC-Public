@@ -1,7 +1,5 @@
 #Anti-FrostWalker
-replaceitem entity @s[m=s,scores={nfmtoggle=1}] slot.armor.feet 1 netherite_boots 1 0 {"item_lock": {"mode": "lock_in_slot"}}
-replaceitem entity @s[m=c,scores={nfmtoggle=1}] slot.armor.feet 1 air
-execute @s[scores={nfmtoggle=1}] ~~~ execute @e[r=10,type=item,name="netherite boots"] ~~~ kill @s
+replaceitem entity @s[m=c,scores={nfmtoggle=1,feeten=1}] slot.armor.feet 1 air
 
 #Adds a tag for the enabled/disabled check
 execute @s[scores={nfmtoggle=1}] ~~~ scoreboard players set @s NFM 1
