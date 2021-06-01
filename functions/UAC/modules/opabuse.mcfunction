@@ -1,7 +1,9 @@
 #This actually keeps people from doing dmg in creative. using game bug.
 #Yes I know weakness in theory  will nerf your damage. However, with strength, your hits won't even register on any mob.
-execute @s[m=c,name=!NightwalkerLots] ~~~ effect @s strength 30 5 true
-execute @s[m=!c,name=!NightwalkerLots] ~~~ effect @s strength 30 5 true
+execute @s[m=!c] ~~~ effect @s strength 30 5 true
+execute @s[m=!c] ~~~ effect @s strength 30 5 true
+execute @s[m=!c] ~~~ kill @e[type=splash_potion,r=3]
+execute @s[m=!c] ~~~ kill @e[type=arrow,r=3]
 
 #Disable the GodMode tool & vanish mode
 execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ tag @s remove tgmGodMode

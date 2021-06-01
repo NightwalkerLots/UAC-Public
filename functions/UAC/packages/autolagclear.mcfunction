@@ -20,9 +20,7 @@ function UAC/packages/bans
 function UAC/modules/permban
 
 #Extra stuff for TPS control
-#kill @e[type=phantom]
 execute @a ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
-#execute @r[scores={elpmtoggle=1}] ~~~ execute @e[r=20,type=wither] ~~~ difficulty peaceful
 
 #Syncs the worldborder size for everyone
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
