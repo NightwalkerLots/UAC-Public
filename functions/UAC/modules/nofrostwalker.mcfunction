@@ -1,5 +1,6 @@
 #Anti-FrostWalker
-replaceitem entity @s[m=c,scores={nfmtoggle=1,feeten=1}] slot.armor.feet 1 air
+execute @s[scores={nfmtoggle=1,feeten=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §6Anti Frostwalker §dremoved enchanted boots from"},{"selector":"@s"}]}
+replaceitem entity @s[scores={nfmtoggle=1,feeten=1}] slot.armor.feet 1 air
 
 #Adds a tag for the enabled/disabled check
 execute @s[scores={nfmtoggle=1}] ~~~ scoreboard players set @s NFM 1
