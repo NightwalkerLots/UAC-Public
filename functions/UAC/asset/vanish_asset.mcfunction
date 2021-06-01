@@ -15,4 +15,4 @@ execute @s[tag=staffstatus,scores={OPAM=0,vnsh=2}] ~~~ tag @s remove spectate
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=2}] ~~~ effect @s clear
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=2}] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=2}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §cDISABLED §6Vanish Mode"}]}
-execute @s[tag=staffstatus,scores={OPAM=0,vnsh=2}] ~~~ scoreboard players add @s vnsh 0
+execute @s[tag=staffstatus,scores={OPAM=0,vnsh=2}] ~~~ scoreboard players set @s vnsh 0
