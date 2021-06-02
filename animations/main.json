@@ -22,7 +22,14 @@
         //This is for the coordinates system
         "variable.x_coordinate = query.scoreboard('X_Coordinate');",
         "variable.y_coordinate = query.scoreboard('Y_Coordinate');",
-        "variable.z_coordinate = query.scoreboard('Z_Coordinate');"
+        "variable.z_coordinate = query.scoreboard('Z_Coordinate');",
+
+        //This is for teleporting home -> I am re-using this score so not other objectives are needed to be created :)
+        "variable.home_position_x = query.scoreboard('X_Coord_S');",
+        "variable.home_position_y = query.scoreboard('Y_Coord_S');",
+        "variable.home_position_z = query.scoreboard('Z_Coord_S');",
+        "variable.teleport_home = query.scoreboard('teleporting_home');",
+        "variable.teleporting = query.scoreboard('teleporting');"
         ]
       },
       "animation_length": 0.01,

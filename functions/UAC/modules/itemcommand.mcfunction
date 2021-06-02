@@ -3,11 +3,7 @@
 
 #Timer for home command
 execute @s[scores={icmtoggle=1}] ~~~ scoreboard players remove @s[scores={hometp=1}] hometimer 1
-execute @s[scores={hometimer=20}] ~~~ kill @s[scores={hometp=1}]
-execute @s[scores={hometimer=45..50}] ~~~ gamerule doimmediaterespawn true
-execute @s[scores={hometimer=45..50}] ~~~ gamerule keepinventory true
-execute @s[scores={hometimer=1..15}] ~~~ gamerule keepinventory false
-execute @s[scores={hometimer=1..15}] ~~~ gamerule doimmediaterespawn false
+execute @s[scores={hometimer=20}] ~~~ scoreboard players set @s[scores={hometp=1}] teleporting_home 1
 execute @s[scores={hometimer=1..5}] ~~~ scoreboard players set @s hometp 3
 scoreboard players reset @s[scores={hometp=3}] hometimer
 
