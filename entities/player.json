@@ -26,27 +26,56 @@
           "is_levitating",
           "is_on_ground",
           "is_gliding",
-          "timer"
+          "timer",
+          "home_x_positive",
+          "home_y_positive",
+          "home_z_positive",
+          "home_x_negative",
+          "home_y_negative",
+          "home_z_negative",
+          "home_teleport_reset"
         ]
       },
       "animations": {
+        //Misc
         "bridge_execute_commands": "controller.animation.bridge_player.execute_commands",
         "death_effect": "controller.animation.death_effect",
         "anticbe": "controller.animation.anticbe.execute_commands",
+
+        //World Border System
         "worldborder_pos": "controller.animation.border_control_pos",
         "worldborder_neg": "controller.animation.border_control_neg",
+
+        //Animation File
         "testing": "animation.testing",
+
+        //Enchanted Armor
         "enchanted_helmet": "controller.animation.enchanted_helmet",
         "enchanted_chestplate": "controller.animation.enchanted_chestplate",
         "enchanted_leggings": "controller.animation.enchanted_leggings",
         "enchanted_boots": "controller.animation.enchanted_boots",
+
+        //Coordinates system
         "coordinates_positive": "controller.animation.coords_positive",
         "coordinates_negative": "controller.animation.coords_negative",
+
+        //Animtion_Controller Conditions
         "is_jumping": "controller.animation.is_jumping",
         "is_levitating": "controller.animation.is_levitating",
         "is_on_ground": "controller.animation.is_on_ground",
         "is_gliding": "controller.animation.is_gliding",
-        "timer": "controller.animation.timer"
+
+        //This is for time played
+        "timer": "controller.animation.timer",
+
+        //This is for the home function
+        "home_x_negative": "controller.animation.home_x_negative",
+        "home_y_negative": "controller.animation.home_y_negative",
+        "home_z_negative": "controller.animation.home_z_negative",
+        "home_x_positive": "controller.animation.home_x_positive",
+        "home_y_positive": "controller.animation.home_y_positive",
+        "home_z_positive": "controller.animation.home_z_positive",
+        "home_teleport_reset": "controller.animation.home_teleport_reset"
       }
     },
     "component_groups": {
