@@ -56,6 +56,9 @@ execute @s[tag=staffstatus,scores={DAM=0}] ~~~ tellraw @s {"rawtext":[{"text":"�
 execute @s[tag=staffstatus,scores={Deathef=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bDeath Effects §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={Deathef=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bDeath Effects §7[ §¶§cDISABLED §7]"}]}
 
+execute @s[tag=staffstatus,scores={MDM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bMining Detection §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus,scores={MDM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bMining Detection §7[ §¶§cDISABLED §7]"}]}
+
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c=== Use ``/function toggle` to toggle modules==="}]}
 
 

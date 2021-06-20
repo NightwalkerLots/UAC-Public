@@ -11,6 +11,7 @@ tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Unban     §2- /func
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Lag §2- /function UAC/lagclear"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Area§2- /function UAC/cleararea"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Godmode   §2- /function UAC/tgm"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Vanish   §2- /function UAC/vanish"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Modules   §2- /function UAC/modulecheck"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Itembans  §2- /function UAC/itembancheck"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§c==== Custom Toggles ===="}]}

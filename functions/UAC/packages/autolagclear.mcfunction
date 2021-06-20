@@ -1,12 +1,12 @@
 execute @r[scores={ltmtoggle=1}] ~~~ scoreboard players reset @a entitycount
-execute @r[scores={ltmtoggle=1}] ~~~ scoreboard players set @s lagtimer 600
-execute @r[scores={ltmtoggle=1}] ~~~ execute @e[type=item] ~~~ scoreboard players add @r[scores={lagtimer=600}] entitycount 1
-execute @r[scores={ltmtoggle=1}] ~~~ execute @e[family=monster] ~~~ scoreboard players add @r[scores={lagtimer=600}] entitycount 1
+#execute @r[scores={ltmtoggle=1}] ~~~ scoreboard players set @s lagtimer 600
+execute @r[scores={ltmtoggle=1}] ~~~ execute @e[type=item] ~~~ scoreboard players add @a entitycount 1
+execute @r[scores={ltmtoggle=1}] ~~~ execute @e[family=monster] ~~~ scoreboard players add @a entitycount 1
 execute @r[scores={entitycount=100..9999}] ~~~ execute @s[scores={ltmtoggle=1}] ~~~ function UAC/packages/autolagclearasset
 
 
 execute @r[scores={ltmtoggle=1}] ~~~ scoreboard players reset @a lagtimer
-execute @r[scores={rsmtoggle=1}] ~~~ function UAC/asset/random-spawn-asset
+execute @a[tag=staffstatus,scores={rsmtoggle=1}] ~~~ function UAC/asset/random-spawn-asset
 
 execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @a[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
