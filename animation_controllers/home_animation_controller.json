@@ -1,6 +1,46 @@
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
+		"controller.animation.home_conditions": {//This will only activate the other animation_controllers if the conditions are met... This will prevent a lot of lag within the world by not executing files that dont need to be run at the moment.
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"activate": "(variable.itemcommand_toggle == 1)"
+						}
+					]
+				},
+				"activate": {
+					"animations": [ "home_teleport_reset", "home_x_positve", "home_x_negative", "home_y_positive", "home_y_negative", "home_z_positive", "home_z_negative", "spawn_points" ],
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.spawn_points": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"sleeping": "query.is_sleeping"
+						}
+					]
+				},
+				"sleeping": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/function UAC/packages/setspawn"
+					]
+				}
+			}
+		},
 		"controller.animation.home_teleport_reset": {
 			"states": {
 				"default": {
