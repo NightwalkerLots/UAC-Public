@@ -10,8 +10,13 @@
       "is_experimental": false,
       "scripts": {
         "animate": [
+
+          //Conditions
+          "death_effect_conditions",
+          "home_conditions",
+
+
           "bridge_execute_commands",
-          "death_effect",
           "anticbe",
           "worldborder_pos",
           "worldborder_neg",
@@ -26,20 +31,30 @@
           "is_levitating",
           "is_on_ground",
           "is_gliding",
-          "timer",
-          "home_x_positive",
-          "home_y_positive",
-          "home_z_positive",
-          "home_x_negative",
-          "home_y_negative",
-          "home_z_negative",
-          "home_teleport_reset"
+          "timer"
         ]
       },
       "animations": {
+//Conditions
+        "death_effect_conditions": "controller.animation.death_effect_conditions",
+        "home_conditions": "controller.animation.home_conditions",
+
+//Upon Death
+        "death_effect": "controller.animation.death_effect",
+        "on_death": "controller.animation.on_death",
+
+//Home/Spawn Functions
+        "home_x_negative": "controller.animation.home_x_negative",
+        "home_y_negative": "controller.animation.home_y_negative",
+        "home_z_negative": "controller.animation.home_z_negative",
+        "home_x_positive": "controller.animation.home_x_positive",
+        "home_y_positive": "controller.animation.home_y_positive",
+        "home_z_positive": "controller.animation.home_z_positive",
+        "home_teleport_reset": "controller.animation.home_teleport_reset",
+        "spawn_points": "controller.animation.spawn_points",
+
         //Misc
         "bridge_execute_commands": "controller.animation.bridge_player.execute_commands",
-        "death_effect": "controller.animation.death_effect",
         "anticbe": "controller.animation.anticbe.execute_commands",
 
         //World Border System
@@ -66,16 +81,7 @@
         "is_gliding": "controller.animation.is_gliding",
 
         //This is for time played
-        "timer": "controller.animation.timer",
-
-        //This is for the home function
-        "home_x_negative": "controller.animation.home_x_negative",
-        "home_y_negative": "controller.animation.home_y_negative",
-        "home_z_negative": "controller.animation.home_z_negative",
-        "home_x_positive": "controller.animation.home_x_positive",
-        "home_y_positive": "controller.animation.home_y_positive",
-        "home_z_positive": "controller.animation.home_z_positive",
-        "home_teleport_reset": "controller.animation.home_teleport_reset"
+        "timer": "controller.animation.timer"
       }
     },
     "component_groups": {
@@ -1521,6 +1527,20 @@
             "deals_damage": false
           },
           {
+              "on_damage": {
+                "filters": [
+                  {
+                    "test": "has_damage",
+                    "operator": "==",
+                    "subject": "self",
+                    "value": "fatal"
+                  }
+                ],
+                "target": "other",
+                "event": "uac:on_death_by_player"
+              }
+          },
+          {
             "on_damage": {
               "filters": {
                 "all_of": [
@@ -1549,6 +1569,16 @@
       }
     },
     "events": {
+      "uac:on_death_by_player": {
+        "run_command": {
+          "target": "other",
+          "command": [
+            "scoreboard players add @s kills 1",
+            "scoreboard players add @s killstreak 1",
+            "execute @s[scores={killstreak=10..}] ~~~ function UAC/asset/killstreak-msg"//This will now execute only if the player has 10 or more
+          ]
+        }
+      },
       "minecraft:spectate": {
         "add": {
           "component_groups": [

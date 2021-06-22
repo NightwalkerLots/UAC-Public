@@ -6,7 +6,7 @@ execute @s[tag=!staffstatus] ~~~ execute @s[scores={OPAM=1}] ~~~ playsound note.
 #give the godmode status
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ tag @s add tgmGodMode
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ scoreboard objectives add tgmGodMode dummy
-execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ scoreboard players add @s tgmGodMode 1
+execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ scoreboard players set @s tgmGodMode 1
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ execute @s[tag=tgmGodMode] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §2ENABLED §6Godmode"}]}
 
 #remove the godmode status
