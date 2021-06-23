@@ -13,5 +13,6 @@ scoreboard players reset @s IIB
 scoreboard players reset @s BanFly
 scoreboard players reset @s BanPhase
 execute @s ~~~ function UAC/warnreset
+scoreboard players set @s lstcmd 23
 
-kill @s 
+kill @s

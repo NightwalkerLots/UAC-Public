@@ -24,8 +24,8 @@ execute @s[scores={lstcmd=19}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"tex
 execute @s[scores={lstcmd=20}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/smite §bcommand"}]}
 execute @s[scores={lstcmd=21}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/stats §bcommand"}]}
 execute @s[scores={lstcmd=22}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/tgm §bcommand"}]}
-execute @s[scores={lstcmd=23}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/unbanclose §bcommand"}]}
-execute @s[scores={lstcmd=24}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/unbanopen §bcommand"}]}
+execute @s[scores={lstcmd=23}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/uban §bcommand"}]}
+execute @s[scores={lstcmd=24}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/vanish §bcommand"}]}
 execute @s[scores={lstcmd=25}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/warn §bcommand"}]}
 execute @s[scores={lstcmd=26}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function UAC/warnreset §bcommand"}]}
 
