@@ -62,7 +62,7 @@ tag "KingLeo332" add PermBan
 tag "xIlIlIIlIIlIx55" add PermBan
 tag "PointNetwork341" add PermBan
 
-kick @s[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
+#kick @s[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
 
 #This hides this from the in-game function command directory
