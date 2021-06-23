@@ -1,37 +1,37 @@
 #bridge-file-version: #106
 hide
 
-#Unban
-tag @a[tag=unban] remove BanCreative
-tag @a[tag=unban] remove BanCBE
-tag @a[tag=unban] remove BanBypass
-tag @a[tag=unban] remove Ban
-tag @a[tag=unban] remove illegalitemban
-tag @a[tag=unban] remove BanFly
-tag @a[tag=unban] remove BanPhase
-scoreboard players reset @s[tag=unban] warn
-scoreboard players reset @s[tag=unban] warnillegal
-gamemode s @s[tag=unban,name=!nightwalkerlots]
+
 
 tag @a[tag=staffstatus] remove BanCreative
 tag @a[tag=staffstatus] remove BanCBE
 tag @a[tag=staffstatus] remove BanBypass
 tag @a[tag=staffstatus] remove Ban
-tag @a[tag=bypass] add BanBypass
 
 #Global Bans
-execute @r[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
-kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
+#execute @r[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
+#kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
 #Autoban Creative/CBE
 tag @a[tag=!staffstatus,m=c] add BanCreative
 
 #Kick Messages
-execute @a[tag=BanCBE] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for CBE exploits"}]}
-execute @a[tag=BanBypass] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for bypass attempt"}]}
-execute @a[tag=Ban] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned by a operator"}]}
-execute @a[scores={warn=3}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for reaching 3 warnings"}]}
-execute @a[tag=illegalitemban] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for illegal items"}]}
+#execute @a[tag=BanCBE] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for CBE exploits"}]}
+#execute @a[scores={warn=3}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for reaching 3 warnings"}]}
+#execute @a[tag=illegalitemban] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for illegal items"}]}
+
+
+# The 1.17 ban messages are in UAC/asset/ban_asset
+#Restrict Player's Gameplay
+title @s times 0 10 0
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=PermBan] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCBE] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=Ban] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=illegalitemban] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanFly] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanPhase] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3}] ~~~ function UAC/asset/ban_asset
+
 
 #Anti-Creative Stuff
 execute @a[m=c,tag=!staffstatus] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cChanging gamemode isn't allowed"}]}
@@ -40,11 +40,12 @@ kill @a[tag=BanCreative]
 tag @a remove BanCreative
 
 #AutoKick
-kick @a[scores={warn=3}] §¶§cUAC ► Season Banned - 3 Warnings Recieved
-kick @a[tag=illegalitemban] §¶§cUAC ► Season Banned - Illegal Items
-kick @a[tag=BanCBE] §¶§cUAC ► Season Banned - CBE
-kick @a[tag=BanBypass] §¶§cUAC ► Season Banned - Attempting Bypass
-kick @a[tag=Ban] §¶§cUAC ► Season Banned - Banned By Operator
+#kick @a[scores={warn=3}] §¶§cUAC ► Season Banned - 3 Warnings Recieved
+#kick @a[tag=illegalitemban] §¶§cUAC ► Season Banned - Illegal Items
+#kick @a[tag=BanCBE] §¶§cUAC ► Season Banned - CBE
+#kick @a[tag=BanBypass] §¶§cUAC ► Season Banned - Attempting Bypass
+#kick @a[tag=Ban] §¶§cUAC ► Season Banned - Banned By Operator
+
 
 
 

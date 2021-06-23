@@ -64,7 +64,7 @@
 					],
 					"on_entry": [
 						"/scoreboard players set @s[scores={teleporting=!1..}] teleporting_home 0",
-						"/gamerule sendcommandfeedback true"
+						"/gamerule sendcommandfeedback false"
 					]
 				},
 				"check": {

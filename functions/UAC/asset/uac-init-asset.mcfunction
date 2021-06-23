@@ -1,3 +1,14 @@
+#Ban Checks
+scoreboard objectives add PermBan dummy PermBan
+scoreboard objectives add BanCBE dummy BanCBE
+scoreboard objectives add Ban dummy Ban
+scoreboard objectives add IIB dummy IIB
+scoreboard objectives add BanFly dummy BanFly
+scoreboard objectives add BanPhase dummy BanPhase
+scoreboard objectives add BanWarn dummy BanWarn
+
+
+
 #Vanish detection / defaul value
 scoreboard objectives add vnsh dummy
 scoreboard players set @s vnsh 0
@@ -234,6 +245,7 @@ scoreboard players set @s HMM 1
 
 #Other utiltiy
 gamerule showcoordinates true
+gamerule sendcommandfeedback false
 scoreboard objectives add 2KK001 dummy 2KK001
 scoreboard players set @s 2KK001 0
 execute @s[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
