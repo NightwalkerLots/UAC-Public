@@ -23,7 +23,7 @@ tag @a[tag=!staffstatus,m=c] add BanCreative
 
 # The 1.17 ban messages are in UAC/asset/ban_asset
 #Restrict Player's Gameplay
-title @s times 0 10 0
+title @s times 0 100 0
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=PermBan] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCBE] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=Ban] ~~~ function UAC/asset/ban_asset
