@@ -38,20 +38,20 @@ execute @s[scores={legen=1},tag=Golden_Leggings] ~~~ tellraw @a[tag=staffstatus]
 execute @s[scores={legen=1},tag=Chain_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bChain Leggings§7: §2ENCHANTED"}]}
 execute @s[scores={legen=1},tag=Leather_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeather Leggings§7: §2ENCHANTED"}]}
 #unenchanted Leggings
-execute @s[scores={legen=0},tag=Netherite_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bNetherite Leggings§7: §cNO ENCHANTS"}]}
-execute @s[scores={legen=0},tag=Diamond_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bDiamond Leggings§7: §cNO ENCHANTS"}]}
-execute @s[scores={legen=0},tag=Iron_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bIron Leggings§7: §cNO ENCHANTS"}]}
-execute @s[scores={legen=0},tag=Golden_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bGolden Leggings§7: §cNO ENCHANTS"}]}
-execute @s[scores={legen=0},tag=Chain_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bChain Leggings§7: §cNO ENCHANTS"}]}
-execute @s[scores={legen=0},tag=Leather_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bLeather Leggings§7: §cNO ENCHANTS"}]}
+execute @s[scores={legen=0},tag=Netherite_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite Leggings§7: §cNO ENCHANTS"}]}
+execute @s[scores={legen=0},tag=Diamond_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bDiamond Leggings§7: §cNO ENCHANTS"}]}
+execute @s[scores={legen=0},tag=Iron_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bIron Leggings§7: §cNO ENCHANTS"}]}
+execute @s[scores={legen=0},tag=Golden_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bGolden Leggings§7: §cNO ENCHANTS"}]}
+execute @s[scores={legen=0},tag=Chain_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bChain Leggings§7: §cNO ENCHANTS"}]}
+execute @s[scores={legen=0},tag=Leather_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeather Leggings§7: §cNO ENCHANTS"}]}
 execute @s[scores={legen=0},tag=!Netherite_Leggings,tag=!Diamond_Leggings,tag=!Iron_Leggings,tag=!Golden_Leggings,tag=!Chain_Leggings,tag=!Leather_Leggings] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeggings§7: §cNONE EQUIPED"}]}
 #enchanted boots
-execute @s[scores={feeten=1},tag=Netherite_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bNetherite Boots§7: §2ENCHANTED"}]}
-execute @s[scores={feeten=1},tag=Diamond_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bDiamond Boots§7: §2ENCHANTED"}]}
-execute @s[scores={feeten=1},tag=Iron_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bIron Boots§7: §2ENCHANTED"}]}
-execute @s[scores={feeten=1},tag=Golden_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bGolden Boots§7: §2ENCHANTED"}]}
-execute @s[scores={feeten=1},tag=Chain_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bChain Boots§7: §2ENCHANTED"}]}
-execute @s[scores={feeten=1},tag=Leather_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":"§¶§bLeather Boots§7: §2ENCHANTED"}]}
+execute @s[scores={feeten=1},tag=Netherite_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite Boots§7: §2ENCHANTED"}]}
+execute @s[scores={feeten=1},tag=Diamond_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bDiamond Boots§7: §2ENCHANTED"}]}
+execute @s[scores={feeten=1},tag=Iron_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bIron Boots§7: §2ENCHANTED"}]}
+execute @s[scores={feeten=1},tag=Golden_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bGolden Boots§7: §2ENCHANTED"}]}
+execute @s[scores={feeten=1},tag=Chain_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bChain Boots§7: §2ENCHANTED"}]}
+execute @s[scores={feeten=1},tag=Leather_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeather Boots§7: §2ENCHANTED"}]}
 #unenchanted boots
 execute @s[scores={feeten=0},tag=Netherite_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite Boots§7: §cNO ENCHANTS"}]}
 execute @s[scores={feeten=0},tag=Diamond_Boots] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bDiamond Boots§7: §cNO ENCHANTS"}]}
