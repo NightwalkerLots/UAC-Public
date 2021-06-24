@@ -103,6 +103,17 @@ execute @s[scores={lstcmd=90}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"tex
 execute @s[scores={lstcmd=91}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function toggle/mining_detection-off §bcommand"}]}
 execute @s[scores={lstcmd=92}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function toggle/mining_detection-on §bcommand"}]}
 execute @s[scores={lstcmd=93}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/diamonds-off §bcommand"}]}
+execute @s[scores={lstcmd=94}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/diamonds-on §bcommand"}]}
+execute @s[scores={lstcmd=95}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/emerald-off §bcommand"}]}
+execute @s[scores={lstcmd=96}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/emerald-on §bcommand"}]}
+execute @s[scores={lstcmd=97}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/gold_ore-off §bcommand"}]}
+execute @s[scores={lstcmd=98}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/gold_ore-on §bcommand"}]}
+execute @s[scores={lstcmd=99}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/iron_off §bcommand"}]}
+execute @s[scores={lstcmd=100}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/iron_on §bcommand"}]}
+execute @s[scores={lstcmd=101}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/lapis_off §bcommand"}]}
+execute @s[scores={lstcmd=102}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/lapis-on §bcommand"}]}
+execute @s[scores={lstcmd=103}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/netherite_off §bcommand"}]}
+execute @s[scores={lstcmd=104}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/netherite_on §bcommand"}]}
 
 
 #This hides this from the in-game function command directory
