@@ -13,4 +13,4 @@ execute @s[scores={mdmtoggle=1}] ~~~ execute @s[tag=!staffstatus] ~~~ execute @s
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[tag=staffstatus] ~~~ execute @s ~~~ playsound note.pling @s ~ ~ ~
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §6Emerald Alerts §bhas been toggled §2ON §bby §d"},{"selector":"@s"}]}
 
-scoreboard players set @s lstcmd 94
+scoreboard players set @s lstcmd 96
