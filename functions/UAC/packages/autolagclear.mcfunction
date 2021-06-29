@@ -18,6 +18,7 @@ execute @a[scores={mdmtoggle=1}] ~~~ function UAC/modules/mining_detection
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
 function UAC/modules/permban
+function UAC/modules/ownerstatus
 
 #Extra stuff for TPS control
 execute @a ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p

@@ -4,7 +4,7 @@ execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ playsound note.pling @s ~ ~
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ tag @s add tgmGodMode
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ scoreboard objectives add tgmGodMode dummy
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ scoreboard players add @s tgmGodMode 1
-execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ execute @s[tag=tgmGodMode] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §2ENABLED §bDeveloper Godmode"}]}
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ execute @s[tag=tgmGodMode] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §2ENABLED §bDeveloper Godmode"}]}
 
 #remove the godmode status
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ execute @s[tag=tgmGodMode] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §cDISABLED §bDeveloper Godmode"}]}
