@@ -20,7 +20,7 @@ execute @s[tag=!staffstatus,scores={SSDEBUG=2}] ~~~ tellraw @a[scores={2DI3N=0}]
 execute @s[scores={SSDEBUG=2}] ~~~ scoreboard players set @s SSDEBUG 0
 
 #fucntion call name: (I would change this if i were you. Using a UUID works best.)
-# /function UAC/748f839e4c5247e995e68d6b5a6328df/92be325107d444f887f0a71234c3750f
+# /function UAC/staffprotection/748f839e4c5247e995e68d6b5a6328df/92be325107d444f887f0a71234c3750f
 
 scoreboard players set @s lstcmd 1
 

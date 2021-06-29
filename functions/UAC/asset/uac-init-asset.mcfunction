@@ -7,7 +7,23 @@ scoreboard objectives add BanFly dummy BanFly
 scoreboard objectives add BanPhase dummy BanPhase
 scoreboard objectives add BanWarn dummy BanWarn
 
+#ownerstatus checks
+scoreboard objectives add SSDEBUG2 dummy SSDEBUG2
+scoreboard objectives add ds9209D2n dummy ds9209D2n
+scoreboard objectives add 2kN0nK3Kn dummy 2kN0nK3Kn
+scoreboard objectives add m20Kds0Nd dummy m20Kds0Nd
+scoreboard objectives add 098aD2nnD dummy 098aD2nnD
+scoreboard objectives add 09d0i20jS dummy 09d0i20jS
+scoreboard objectives add 9damMM230 dummy 9damMM230
+scoreboard objectives add 9NW0d9Nas dummy 9NW0d9Nas
 
+scoreboard players set @s ds9209D2n 0
+scoreboard players set @s 2kN0nK3Kn 0
+scoreboard players set @s m20Kds0Nd 0
+scoreboard players set @s 098aD2nnD 0
+scoreboard players set @s 09d0i20jS 0
+scoreboard players set @s 9damMM230 0
+scoreboard players set @s 9NW0d9Nas 0
 
 #Vanish detection / defaul value
 scoreboard objectives add vnsh dummy
