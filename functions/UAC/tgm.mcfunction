@@ -13,8 +13,8 @@ execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=1}
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ execute @s[tag=tgmGodMode] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §cDISABLED §6Godmode"}]}
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ tag @s remove tgmGodMode
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ effect @s clear
-execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ scoreboard players reset @s tgmGodMode
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ tag @s remove godmode
+execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={tgmGodMode=2}] ~~~ scoreboard players reset @s tgmGodMode
 #give godmode effects
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[scores={OPAM=0}] ~~~ execute @s[tag=tgmGodMode,scores={tgmGodMode=1}] ~~~ effect @s resistance 99999999 255 true
 execute @s[tag=staffstatus,scores={OPAM=0}] ~~~ execute @s[tag=tgmGodMode,scores={tgmGodMode=1}] ~~~ effect @s fire_resistance 99999999 255 true
