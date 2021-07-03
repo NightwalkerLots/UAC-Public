@@ -31,7 +31,7 @@
         "variable.teleport_home = query.scoreboard('teleporting_home');",
         "variable.teleporting = query.scoreboard('teleporting');",
 
-        //Conditions
+        //Conditions & Toggles
         "variable.death_effect = query.scoreboard('Deathef');",
         "variable.itemcommand_toggle = query.scoreboard('icmtoggle');"
         ]

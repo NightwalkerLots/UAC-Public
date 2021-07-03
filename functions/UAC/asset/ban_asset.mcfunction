@@ -1,3 +1,5 @@
+//This is not meant to be seen
+
 #Prohibit further gameplay from player {you got better ideas please add}
 execute @s[tag=!staffstatus] ~~~ tp @s 0 900 0
 execute @s[tag=!staffstatus] ~~~ effect @s strength 99999999 255 false
@@ -40,7 +42,3 @@ execute @s[scores={IIB=4}] ~~~ scoreboard players set @s IIB 3
 execute @s[scores={BanFly=4}] ~~~ scoreboard players set @s BanFly 3
 execute @s[scores={BanPhase=4}] ~~~ scoreboard players set @s BanPhase 3
 execute @s[scores={BanWarn=4}] ~~~ scoreboard players set @s BanWarn 3
-
-#This hides this from the in-game function command directory
-execute @f ~~~ hide
-tag @f[tag=""] add hide

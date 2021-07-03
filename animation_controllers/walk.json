@@ -2,34 +2,6 @@
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
-		"controller.animation.walk": {
-			"states": {
-				"default": {
-					"transitions": [
-						{
-							"zooming": "(1.0)"
-						}
-					],
-					"on_entry": [
-						"/gamerule functioncommandlimit 10000",
-						"/gamerule randomtickspeed 1",
-						"/function UAC/packages/antinbt"
-					]
-				},
-				"zooming": {
-					"transitions": [
-						{
-							"default": "(1.0)"
-						}
-					],
-					"on_entry": [
-						"/gamerule functioncommandlimit 10000",
-						"/gamerule randomtickspeed 1",
-						"/function UAC/packages/antinbt"
-					]
-				}
-			}
-		},
 		"controller.animation.timer": {
 			"states": {
 				"default": {
@@ -71,7 +43,7 @@
 				"is_on_ground": {
 					"transitions": [
 						{
-							"default": "(1.0)"
+							"default": "!query.is_on_ground"
 						}
 					],
 					"on_entry": [
@@ -95,7 +67,7 @@
 				"is_levitating": {
 					"transitions": [
 						{
-							"default": "(1.0)"
+							"default": "!query.is_levitating"
 						}
 					],
 					"on_entry": [
@@ -119,7 +91,7 @@
 				"is_gliding": {
 					"transitions": [
 						{
-							"default": "(1.0)"
+							"default": "!query.is_gliding"
 						}
 					],
 					"on_entry": [
@@ -143,7 +115,7 @@
 				"is_jumping": {
 					"transitions": [
 						{
-							"default": "(1.0)"
+							"default": "!query.is_jumping"
 						}
 					],
 					"on_entry": [
@@ -151,6 +123,30 @@
 					]
 				}
 			}
+		},
+		"controller.animation.is_sneaking": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_sneaking": "query.is_sneaking"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove Sneaking"
+					]
+				},
+				"is_sneaking": {
+					"transitions": [
+						{
+							"default": "!query.is_sneaking"
+						}
+					],
+					"on_entry": [
+						"/tag @s add Sneaking"
+					]
+				}
+			}
 		}
 	}
-}//Edited 5/24/2021
+}//Edited 6/29/2021
