@@ -1,12 +1,12 @@
 #Anti-FrostWalker
-replaceitem entity @r[m=s,scores={nfmtoggle=1}] slot.armor.feet 1 netherite_boots 1 0 {"item_lock": {"mode": "lock_in_slot"}}
-replaceitem entity @r[m=c,scores={nfmtoggle=1}] slot.armor.feet 1 air
-execute @r[scores={nfmtoggle=1}] ~~~ execute @e[r=10,type=item,name="netherite boots"] ~~~ kill @s
+execute @s[scores={nfmtoggle=1,feeten=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §6Anti Frostwalker §bremoved enchanted boots from §d"},{"selector":"@s"}]}
+replaceitem entity @s[scores={nfmtoggle=1,feeten=1}] slot.armor.feet 1 air
+execute @s[scores={nfmtoggle=1,feeten=1}] ~~~ scoreboard players set @s feeten 0
 
 #Adds a tag for the enabled/disabled check
-execute @r[scores={nfmtoggle=1}] ~~~ scoreboard players set @r NFM 1
-execute @r[scores={nfmtoggle=0}] ~~~ scoreboard players set @r NFM 0
-scoreboard players operation @r nfmtoggle = nfmtoggledummy nfmtoggle
+execute @s[scores={nfmtoggle=1}] ~~~ scoreboard players set @s NFM 1
+execute @s[scores={nfmtoggle=0}] ~~~ scoreboard players set @s NFM 0
+scoreboard players operation @s nfmtoggle = nfmtoggledummy nfmtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

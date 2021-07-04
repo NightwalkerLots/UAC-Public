@@ -2,33 +2,151 @@
 {
 	"format_version": "1.10.0",
 	"animation_controllers": {
-		"controller.animation.walk": {
+		"controller.animation.timer": {
 			"states": {
 				"default": {
 					"transitions": [
 						{
-							"zooming": "(1.0)"
+							"timer": "(1.0)"
 						}
 					],
 					"on_entry": [
-						"/gamerule functioncommandlimit 10000",
-						"/gamerule randomtickspeed 1",
-						"/function UAC/packages/antinbt"
+						"/function UAC/modules/timeplayedticker",
+						"/function UAC/settings/settings"
 					]
 				},
-				"zooming": {
+				"timer": {
 					"transitions": [
 						{
 							"default": "(1.0)"
 						}
 					],
 					"on_entry": [
-						"/gamerule functioncommandlimit 10000",
-						"/gamerule randomtickspeed 1",
-						"/function UAC/packages/antinbt"
+						"/function UAC/modules/timeplayedticker",
+						"/function UAC/settings/settings"
+					]
+				}
+			}
+		},
+		"controller.animation.is_on_ground": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_on_ground": "query.is_on_ground"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove Is_On_Ground"
+					]
+				},
+				"is_on_ground": {
+					"transitions": [
+						{
+							"default": "!query.is_on_ground"
+						}
+					],
+					"on_entry": [
+						"/tag @s add Is_On_Ground"
+					]
+				}
+			}
+		},
+		"controller.animation.is_levitating": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_levitating": "query.is_levitating"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove Effect:Levitation"
+					]
+				},
+				"is_levitating": {
+					"transitions": [
+						{
+							"default": "!query.is_levitating"
+						}
+					],
+					"on_entry": [
+						"/tag @s add Effect:Levitation"
+					]
+				}
+			}
+		},
+		"controller.animation.is_gliding": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_gliding": "query.is_gliding"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove Is_Gliding"
+					]
+				},
+				"is_gliding": {
+					"transitions": [
+						{
+							"default": "!query.is_gliding"
+						}
+					],
+					"on_entry": [
+						"/tag @s add Is_Gliding"
+					]
+				}
+			}
+		},
+		"controller.animation.is_jumping": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_jumping": "query.is_jumping"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove Is_Jumping"
+					]
+				},
+				"is_jumping": {
+					"transitions": [
+						{
+							"default": "!query.is_jumping"
+						}
+					],
+					"on_entry": [
+						"/tag @s add Is_Jumping"
+					]
+				}
+			}
+		},
+		"controller.animation.is_sneaking": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"is_sneaking": "query.is_sneaking"
+						}
+					],
+					"on_entry": [
+						"/tag @s remove Sneaking"
+					]
+				},
+				"is_sneaking": {
+					"transitions": [
+						{
+							"default": "!query.is_sneaking"
+						}
+					],
+					"on_entry": [
+						"/tag @s add Sneaking"
 					]
 				}
 			}
 		}
 	}
-}
+}//Edited 6/29/2021

@@ -1,0 +1,797 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.spawn_points": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"sleeping": "query.is_sleeping"
+						}
+					]
+				},
+				"sleeping": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/function UAC/packages/setspawn"
+					]
+				}
+			}
+		},
+		"controller.animation.home_teleport_reset": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"check_not_alive": "!query.is_alive"
+						},
+						{
+							"check": "variable.teleporting > 0"
+						},
+						{
+							"reset": "query.is_moving && variable.teleporting <= 0"
+						}
+					]
+				},
+				"reset": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s[scores={teleporting=!1..}] teleporting_home 0",
+						"/gamerule sendcommandfeedback false"
+					]
+				},
+				"check": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s[scores={teleporting=1..}] teleporting -1",
+						"/gamerule sendcommandfeedback false"
+					]
+				},
+				"check_not_alive": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s hometimer 0",
+						"/scoreboard players set @s teleporting 0",
+						"/scoreboard players set @s teleport_home 0"
+					]
+				}
+			}
+		},
+		"controller.animation.home_x_positive": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"home_1000000_x": "(query.position(0) < ((variable.home_position_x) - 1000000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100000_x": "(query.position(0) < ((variable.home_position_x) - 100000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10000_x": "(query.position(0) < ((variable.home_position_x) - 10000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1000_x": "(query.position(0) < ((variable.home_position_x) - 1000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100_x": "(query.position(0) < ((variable.home_position_x) - 100)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10_x": "(query.position(0) < ((variable.home_position_x) - 10)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_5_x": "(query.position(0) < ((variable.home_position_x) - 5)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1_x": "(query.position(0) < ((variable.home_position_x) - 1)) && (variable.teleport_home == 1) "
+						}
+					]
+				},
+				"home_1_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~1 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_5_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~5 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~10 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~100 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~1000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~10000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~100000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~1000000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				}
+			}
+		},
+		"controller.animation.home_y_positive": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"home_1000000_y": "(query.position(1) < ((variable.home_position_y) - 1000000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100000_y": "(query.position(1) < ((variable.home_position_y) - 100000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10000_y": "(query.position(1) < ((variable.home_position_y) - 10000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1000_y": "(query.position(1) < ((variable.home_position_y) - 1000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100_y": "(query.position(1) < ((variable.home_position_y) - 100)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10_y": "(query.position(1) < ((variable.home_position_y) - 10)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_5_y": "(query.position(1) < ((variable.home_position_y) - 5)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1_y": "(query.position(1) < ((variable.home_position_y) - 1)) && (variable.teleport_home == 1) "
+						}
+					]
+				},
+				"home_1_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~1 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_5_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~5 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~10 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~100 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~1000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~10000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~100000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~1000000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				}
+			}
+		},
+		"controller.animation.home_z_positive": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"home_1000000_z": "(query.position(2) < ((variable.home_position_z) - 1000000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100000_z": "(query.position(2) < ((variable.home_position_z) - 100000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10000_z": "(query.position(2) < ((variable.home_position_z) - 10000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1000_z": "(query.position(2) < ((variable.home_position_z) - 1000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100_z": "(query.position(2) < ((variable.home_position_z) - 100)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10_z": "(query.position(2) < ((variable.home_position_z) - 10)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_5_z": "(query.position(2) < ((variable.home_position_z) - 5)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1_z": "(query.position(2) < ((variable.home_position_z) - 1)) && (variable.teleport_home == 1) "
+						}
+					]
+				},
+				"home_1_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~1",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_5_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~5",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~10",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~100",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~1000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~10000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~100000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~1000000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				}
+			}
+		},
+		"controller.animation.home_x_negative": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"home_1000000_x": "(query.position(0) > ((variable.home_position_x) + 1000000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100000_x": "(query.position(0) > ((variable.home_position_x) + 100000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10000_x": "(query.position(0) > ((variable.home_position_x) + 10000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1000_x": "(query.position(0) > ((variable.home_position_x) + 1000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100_x": "(query.position(0) > ((variable.home_position_x) + 100)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10_x": "(query.position(0) > ((variable.home_position_x) + 10)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_5_x": "(query.position(0) > ((variable.home_position_x) + 5)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1_x": "(query.position(0) > ((variable.home_position_x) + 1)) && (variable.teleport_home == 1) "
+						}
+					]
+				},
+				"home_1_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-1 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_5_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-5 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-10 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-100 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-1000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-10000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-100000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000000_x": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~-1000000 ~ ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				}
+			}
+		},
+		"controller.animation.home_y_negative": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"home_1000000_y": "(query.position(1) > ((variable.home_position_y) + 1000000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100000_y": "(query.position(1) > ((variable.home_position_y) + 100000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10000_y": "(query.position(1) > ((variable.home_position_y) + 10000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1000_y": "(query.position(1) > ((variable.home_position_y) + 1000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100_y": "(query.position(1) > ((variable.home_position_y) + 100)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10_y": "(query.position(1) > ((variable.home_position_y) + 10)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_5_y": "(query.position(1) > ((variable.home_position_y) + 5)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1_y": "(query.position(1) > ((variable.home_position_y) + 1)) && (variable.teleport_home == 1) "
+						}
+					]
+				},
+				"home_1_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-1 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_5_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-5 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-10 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-100 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-1000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-10000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-100000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000000_y": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~-1000000 ~",
+						"/scoreboard players set @s teleporting 3"
+					]
+				}
+			}
+		},
+		"controller.animation.home_z_negative": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"home_1000000_z": "(query.position(2) > ((variable.home_position_z) + 1000000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100000_z": "(query.position(2) > ((variable.home_position_z) + 100000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10000_z": "(query.position(2) > ((variable.home_position_z) + 10000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1000_z": "(query.position(2) > ((variable.home_position_z) + 1000)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_100_z": "(query.position(2) > ((variable.home_position_z) + 100)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_10_z": "(query.position(2) > ((variable.home_position_z) + 10)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_5_z": "(query.position(2) > ((variable.home_position_z) + 5)) && (variable.teleport_home == 1) "
+						},
+						{
+							"home_1_z": "(query.position(2) > ((variable.home_position_z) + 1)) && (variable.teleport_home == 1) "
+						}
+					]
+				},
+				"home_1_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-1",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_5_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-5",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-10",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-100",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-1000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_10000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-10000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_100000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-100000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				},
+				"home_1000000_z": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/tp @s ~ ~ ~-1000000",
+						"/scoreboard players set @s teleporting 3"
+					]
+				}
+			}
+		}
+	}
+}

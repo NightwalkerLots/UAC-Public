@@ -1,8 +1,8 @@
 #bridge-file-version: #31
-tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b==== UAC Staff Commands (Caps Sensitive) ===="}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§c==== UAC Staff Commands (Caps Sensitive) ===="}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Stats     §2- /execute (player) ~~~ function UAC/stats"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Stats: §2Shows player's time played, warns, and current gamemode"}]}
-tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Warn      §2- /execute (player) ~~~ function UAC/warn"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Warn:     §2- /execute (player) ~~~ function UAC/warn"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Warn Reset§2- /execute (player) ~~~ function UAC/warnreset"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Punish    §2- /execute (player) ~~~ function UAC/punish"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Punish:§2 This clears Inv and Echest then gives warning"}]}
@@ -11,6 +11,7 @@ tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Unban     §2- /func
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Lag §2- /function UAC/lagclear"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Area§2- /function UAC/cleararea"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Godmode   §2- /function UAC/tgm"}]}
+tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Vanish   §2- /function UAC/vanish"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Modules   §2- /function UAC/modulecheck"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Itembans  §2- /function UAC/itembancheck"}]}
 tellraw @p[tag=staffstatus] {"rawtext":[{"text":"§¶§c==== Custom Toggles ===="}]}
@@ -24,3 +25,5 @@ execute @p[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► 
 execute @p[tag=staffstatus] ~~~ function UAC/asset/version
 execute @p[tag=staffstatus] ~~~ function UAC/asset/discord
 execute @p[tag=staffstatus] ~~~ function UAC/asset/createdby
+
+scoreboard players set @s lstcmd 13

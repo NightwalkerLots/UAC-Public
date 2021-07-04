@@ -1,19 +1,18 @@
-execute @r[scores={afmtoggle=1}] ~~~ execute @s ~~~ detect ~-1 ~-1 ~-1 air -1 execute @s ~~~ detect ~ ~-1 ~-1 air -1 execute @s ~~~ detect ~1 ~-1 ~-1 air -1 execute @s ~~~ detect ~-1 ~-1 ~ air -1 execute @s ~~~ detect ~ ~-1 ~ air -1 execute @s ~~~ detect ~1 ~-1 ~ air -1 execute @s ~~~ detect ~-1 ~-1 ~1 air -1 execute @s ~~~ detect ~ ~-1 ~1 air -1 execute @s ~~~ detect ~1 ~-1 ~1 air -1 execute @s ~~~ detect ~-1 ~ ~-1 air -1 execute @s ~~~ detect ~ ~ ~-1 air -1 execute @s ~~~ detect ~1 ~ ~-1 air -1 execute @s ~~~ detect ~-1 ~ ~ air -1 execute @s ~~~ detect ~ ~ ~ air -1 execute @s ~~~ detect ~1 ~ ~ air -1 execute @s ~~~ detect ~-1 ~ ~1 air -1 execute @s ~~~ detect ~ ~ ~1 air -1 execute @s ~~~ detect ~1 ~ ~1 air -1 execute @s ~~~ detect ~-1 ~1 ~-1 air -1 execute @s ~~~ detect ~ ~1 ~-1 air -1 execute @s ~~~ detect ~1 ~1 ~-1 air -1 execute @s ~~~ detect ~-1 ~1 ~ air -1 execute @s ~~~ detect ~ ~1 ~ air -1 execute @s ~~~ detect ~1 ~1 ~ air -1 execute @s ~~~ detect ~-1 ~1 ~1 air -1 execute @s ~~~ detect ~ ~1 ~1 air -1 execute @s ~~~ detect ~1 ~1 ~1 air -1 scoreboard players add @s flycount 1
+execute @s[tag=!Is_Gliding,tag=!Effect:Levitation,tag=!Is_Jumping,tag=!Is_On_Ground,scores={afmtoggle=1}] ~~~ execute @s ~~~ detect ~-1 ~-1 ~-1 air -1 execute @s ~~~ detect ~ ~-1 ~-1 air -1 execute @s ~~~ detect ~1 ~-1 ~-1 air -1 execute @s ~~~ detect ~-1 ~-1 ~ air -1 execute @s ~~~ detect ~ ~-1 ~ air -1 execute @s ~~~ detect ~1 ~-1 ~ air -1 execute @s ~~~ detect ~-1 ~-1 ~1 air -1 execute @s ~~~ detect ~ ~-1 ~1 air -1 execute @s ~~~ detect ~1 ~-1 ~1 air -1 execute @s ~~~ detect ~-1 ~ ~-1 air -1 execute @s ~~~ detect ~ ~ ~-1 air -1 execute @s ~~~ detect ~1 ~ ~-1 air -1 execute @s ~~~ detect ~-1 ~ ~ air -1 execute @s ~~~ detect ~ ~ ~ air -1 execute @s ~~~ detect ~1 ~ ~ air -1 execute @s ~~~ detect ~-1 ~ ~1 air -1 execute @s ~~~ detect ~ ~ ~1 air -1 execute @s ~~~ detect ~1 ~ ~1 air -1 execute @s ~~~ detect ~-1 ~1 ~-1 air -1 execute @s ~~~ detect ~ ~1 ~-1 air -1 execute @s ~~~ detect ~1 ~1 ~-1 air -1 execute @s ~~~ detect ~-1 ~1 ~ air -1 execute @s ~~~ detect ~ ~1 ~ air -1 execute @s ~~~ detect ~1 ~1 ~ air -1 execute @s ~~~ detect ~-1 ~1 ~1 air -1 execute @s ~~~ detect ~ ~1 ~1 air -1 execute @s ~~~ detect ~1 ~1 ~1 air -1 scoreboard players add @s flycount 1
 
 #counter reset
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0}] flyreset 1
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flycount 0
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flyreset 0
-execute @r[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0}] flyreset 1
+execute @s[scores={afmtoggle=1,2KK001=0}] ~~~ tag @s[scores={flycount=150..9999},tag=!staffstatus] add BanFly
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flycount 0
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flyreset 0
+execute @s[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
 
-#Tempkick
-execute @r[tag=!staffstatus,scores={flycount=120}] ~~~ execute @s[scores={2KK001=0}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas banned for fly hacks"}]}
-execute @r[scores={afmtoggle=1}] ~~~ execute @s[scores={2KK001=0}] ~~~ kick @s[m=!c,tag=!staffstatus,scores={flycount=120}] §¶§cUAC §¶§b► Tempkicked for fly hacks
+
 
 #Adds a tag for the enabled/disabled check
-execute @r[scores={afmtoggle=1}] ~~~ scoreboard players set @r AFM 1
-execute @r[scores={afmtoggle=0}] ~~~ scoreboard players set @r AFM 0
-scoreboard players operation @r afmtoggle = afmtoggledummy afmtoggle
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s AFM 1
+execute @s[scores={afmtoggle=0}] ~~~ scoreboard players set @s AFM 0
+scoreboard players operation @s afmtoggle = afmtoggledummy afmtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

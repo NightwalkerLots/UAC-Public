@@ -1,7 +1,7 @@
 #Adds a tag for the enabled/disabled check
-execute @r[scores={rsmtoggle=1}] ~~~ scoreboard players set @r RSM 1
-execute @r[scores={rsmtoggle=0}] ~~~ scoreboard players set @r RSM 0
-scoreboard players operation @r rsmtoggle = rsmtoggledummy rsmtoggle
+execute @s[scores={rsmtoggle=1}] ~~~ scoreboard players set @s RSM 1
+execute @s[scores={rsmtoggle=0}] ~~~ scoreboard players set @s RSM 0
+scoreboard players operation @s rsmtoggle = rsmtoggledummy rsmtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
