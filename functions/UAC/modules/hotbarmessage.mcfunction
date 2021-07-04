@@ -7,7 +7,6 @@ execute @s[scores={hmmtoggle=2,fzplr=0,hometp=3},m=s] ~~~ titleraw @s actionbar 
 #Frozen Player
 execute @s[scores={fzplr=1}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§bYOU HAVE BEEN §cFROZEN §bBY AN OPERATOR \n §¶§bLEAVING MAY RESULT IN A BAN"}]}
 
-
 #creative with score
 execute @a[tag=staffstatus,m=c,scores={hmmtoggle=1,OPAM=0,opamtoggle=0}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` | §7[§2v2.2§7]§b\n §bTotal Entities §7: "},{"score":{"name":"@s[scores={entitycount=0..9999}]","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@s[scores={randomspawn=10..340}]","objective":"x-axis"}},{"text":" Z = "},{"score":{"name":"@s[scores={randomspawn=10..340}]","objective":"z-axis"}}]}
 #creative without score
