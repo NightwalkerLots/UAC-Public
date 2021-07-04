@@ -14,7 +14,6 @@ execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
 execute @a[scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
 execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
 execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/enchanted_armor
-execute @a[scores={mdmtoggle=1}] ~~~ function UAC/modules/mining_detection
 execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
 function UAC/packages/bans
 function UAC/modules/permban

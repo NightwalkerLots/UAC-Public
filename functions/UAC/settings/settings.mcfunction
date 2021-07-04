@@ -44,6 +44,9 @@ function UAC/modules/lagtimer
 # Enabled by default
 function UAC/modules/hotbarmessage
 #
+# =Mining Detection=
+function UAC/modules/mining_detection
+#
 # =AUTOMATED RULES MESSGAE=
 # This displays the rules in chat every 10 minues
 # Disable by default, people can see rules in the UAC UI from their inventory
