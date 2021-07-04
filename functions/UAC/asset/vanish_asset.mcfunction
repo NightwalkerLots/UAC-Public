@@ -7,6 +7,7 @@ execute @s[tag=staffstatus,scores={OPAM=1}] ~~~ tellraw @s {"rawtext":[{"text":"
 execute @s[tag=staffstatus] ~~~ scoreboard players add @s vnsh 1
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=1}] ~~~ tag @s add spectate
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=1}] ~~~ effect @s night_vision 99999999 10 true
+execute @s[tag=staffstatus,scores={OPAM=0,vnsh=1}] ~~~ effect @s invisibility 99999999 10 true
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=1}] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=staffstatus,scores={OPAM=0,vnsh=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bHas §2ENABLED §6Vanish Mode"}]}
 
