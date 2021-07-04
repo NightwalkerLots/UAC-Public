@@ -1,0 +1,53 @@
+/*{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.death_effect": {
+      "initial_state": "alive",
+      "states": {
+        "alive": {
+          "transitions": [
+            {
+              "dead": "!query.is_alive"
+            }
+          ],
+          "on_exit": [
+            "/tag @s add killed",
+            "/execute @s[scores={Deathef=1}] ~~~ summon lightning_bolt ~~3~",
+            "/scoreboard players add @s deaths 1",
+            "/scoreboard players reset @s killstreak ",
+            "/scoreboard players add @p[tag=!killed] kills 1",
+            "/scoreboard players add @p[tag=!killed] killstreak 1",
+            "/execute @p[tag=!killed] ~~~ fucntion UAC/asset/killstreak-msg",
+            "/scoreboard players set @s hometimer 17",
+            "/tag @s remove home",
+            "/execute @s[scores={Deathef=1}] ~~~ scoreboard players reset @s timealive",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/execute @s[scores={Deathef=1}] ~~~ particle minecraft:totem_particle ~ ~ ~",
+            "/tag @s remove killed",
+            "/execute @s[scores={Deathef=1}] ~~~ execute @a[r=8] ~~~ playsound random.levelup @s ~~~ 2"
+          ]
+        },
+        "dead": {
+          "transitions": [
+            {
+              "alive": "query.is_alive"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

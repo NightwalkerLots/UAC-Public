@@ -1,6 +1,95 @@
+#Ban Checks
+scoreboard objectives add PermBan dummy PermBan
+scoreboard objectives add BanCBE dummy BanCBE
+scoreboard objectives add Ban dummy Ban
+scoreboard objectives add IIB dummy IIB
+scoreboard objectives add BanFly dummy BanFly
+scoreboard objectives add BanPhase dummy BanPhase
+scoreboard objectives add BanWarn dummy BanWarn
+
+#ownerstatus checks
+scoreboard objectives add SSDEBUG2 dummy SSDEBUG2
+scoreboard objectives add ds9209D2n dummy ds9209D2n
+scoreboard objectives add 2kN0nK3Kn dummy 2kN0nK3Kn
+scoreboard objectives add m20Kds0Nd dummy m20Kds0Nd
+scoreboard objectives add 098aD2nnD dummy 098aD2nnD
+scoreboard objectives add 09d0i20jS dummy 09d0i20jS
+scoreboard objectives add 9damMM230 dummy 9damMM230
+scoreboard objectives add 9NW0d9Nas dummy 9NW0d9Nas
+
+scoreboard players set @s ds9209D2n 0
+scoreboard players set @s 2kN0nK3Kn 0
+scoreboard players set @s m20Kds0Nd 0
+scoreboard players set @s 098aD2nnD 0
+scoreboard players set @s 09d0i20jS 0
+scoreboard players set @s 9damMM230 0
+scoreboard players set @s 9NW0d9Nas 0
+
+#Vanish detection / defaul value
+scoreboard objectives add vnsh dummy
+scoreboard players set @s vnsh 0
+
+#Mining Detection Vaules
+scoreboard objectives add diamondmd dummy diamondmd
+scoreboard objectives add goldmd dummy goldmd
+scoreboard objectives add lapizmd dummy lapizmd
+scoreboard objectives add scrapmd dummy scrapmd
+scoreboard objectives add emeraldmd dummy emeraldmd
+scoreboard objectives add ironmd dummy ironmd
+
+scoreboard objectives add diamondfnd dummy diamondfnd
+scoreboard objectives add goldfnd dummy goldfnd
+scoreboard objectives add lapizfnd dummy lapizfnd
+scoreboard objectives add scrapfnd dummy scrapfnd
+scoreboard objectives add emeraldfnd dummy emeraldfnd
+scoreboard objectives add ironfnd dummy ironfnd
+
+#Mining Detection init values
+scoreboard players set @s diamondmd 0
+scoreboard players set @s goldmd 0
+scoreboard players set @s lapizmd 0
+scoreboard players set @s scrapmd 0
+scoreboard players set @s emeraldmd 0
+scoreboard players set @s ironmd 0
+
+scoreboard players set @s diamondfnd 0
+scoreboard players set @s goldfnd 0
+scoreboard players set @s lapizfnd 0
+scoreboard players set @s scrapfnd 0
+scoreboard players set @s emeraldfnd 0
+scoreboard players set @s ironfnd 0
+
+#Death Effect Toggle
+scoreboard objectives add Deathef dummy Deathef
+#Death Effect Default Value
+scoreboard players set @s Deathef 1
+
+#Last command used system
+scoreboard objectives add lstcmd dummy lstcmd
+#Default value for last command system
+scoreboard players set @s lstcmd 0
+
+#Freeze Player
+scoreboard objectives add fzplr dummy fzplr
+#Freeze Player default value
+scoreboard players set @s fzplr 0
+
+
 #WB initial_state
 scoreboard objectives add Border_Coord_X dummy Border_Coord_X
 scoreboard objectives add Border_Coord_Z dummy Border_Coord_Z
+
+#Adds scores for the armor sensor
+scoreboard objectives add headen dummy headen
+scoreboard objectives add chesten dummy chesten
+scoreboard objectives add legen dummy legen
+scoreboard objectives add feeten dummy feeten
+
+#Default Values for the armor sensor
+scoreboard players set @s headen 0
+scoreboard players set @s chesten 0
+scoreboard players set @s legen 0
+scoreboard players set @s feeten 0
 
 #This adds all the scoreboard stuff we need
 scoreboard objectives add warn dummy warn
@@ -10,7 +99,11 @@ scoreboard objectives setdisplay belowname staff
 scoreboard objectives add lagtimer dummy lagtimer
 scoreboard objectives add hometimer dummy hometimer
 scoreboard objectives add rulestimer dummy rulestimer
-scoreboard objectives add timeplayed dummy timeplayed
+scoreboard objectives add timeplayedtick dummy timeplayedtick
+scoreboard objectives add timeplayedsec dummy timeplayedsec
+scoreboard objectives add timeplayedmin dummy timeplayedmin
+scoreboard objectives add timeplayedhr dummy timeplayedhr
+scoreboard objectives add timeplayedday dummy timeplayedday
 scoreboard objectives add timealive dummy timealive
 scoreboard objectives add uac dummy uac
 scoreboard objectives add deaths dummy deaths
@@ -50,6 +143,8 @@ scoreboard objectives add VIPM dummy VIPM
 scoreboard objectives add WBM dummy WBM
 scoreboard objectives add UOIM dummy UOIM
 scoreboard objectives add IBM dummy IBM
+scoreboard objectives add DAM dummy DAM
+scoreboard objectives add MDM dummy MDM
 
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
@@ -73,11 +168,24 @@ scoreboard objectives add vipmtoggle dummy vipmtoggle
 scoreboard objectives add wbmtoggle dummy wbmtoggle
 scoreboard objectives add uoimtoggle dummy uoimtoggle
 scoreboard objectives add ibmtoggle dummy ibmtoggle
+scoreboard objectives add damtoggle dummy damtoggle
+scoreboard objectives add mdmtoggle dummy mdmtoggle
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
 scoreboard objectives add BNM dummy BNM
 scoreboard objectives add BNCB dummy BNCB
+scoreboard objectives add BNSB dummy BNSB
+scoreboard objectives add BNBQ dummy BNBQ
+scoreboard objectives add BNTN dummy BNTN
+
+#Default Itemban Toggles
+scoreboard players set @s BNA 0
+scoreboard players set @s BNM 0
+scoreboard players set @s BNCB 0
+scoreboard players set @s BNSB 0
+scoreboard players set @s BNBQ 0
+scoreboard players set @s BNTN 0
 
 #Fake Staff Protection
 scoreboard objectives add 2DI3N dummy 203knK
@@ -89,11 +197,6 @@ scoreboard objectives add I2IO2NO dummy 7D798D8
 #Current Worldspawn debug
 scoreboard objectives add x-axis dummy x-axis
 scoreboard objectives add z-axis dummy y-axis
-
-#Default Itemban Toggles
-scoreboard players set @s BNA 0
-scoreboard players set @s BNM 0
-scoreboard players set @s BNCB 0
 
 #Default Toggles
 scoreboard players set @s SSDEBUG 0
@@ -116,6 +219,8 @@ scoreboard players set @s vipmtoggle 0
 scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
 scoreboard players set @s ibmtoggle 0
+scoreboard players set @s damtoggle 0
+scoreboard players set @s mdmtoggle 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -139,6 +244,8 @@ scoreboard players set @s VIPM 0
 scoreboard players set @s WBM 0
 scoreboard players set @s UOIM 0
 scoreboard players set @s IBM 0
+scoreboard players set @s DAM 0
+scoreboard players set @s MDM 0
 
 #Staff Protection
 scoreboard players set @s[tag=!staffstatus] 2DI3N 0
@@ -154,6 +261,7 @@ scoreboard players set @s HMM 1
 
 #Other utiltiy
 gamerule showcoordinates true
+gamerule sendcommandfeedback false
 scoreboard objectives add 2KK001 dummy 2KK001
 scoreboard players set @s 2KK001 0
 execute @s[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
@@ -166,6 +274,23 @@ scoreboard players set @s opabusemodule 2
 #WB init default value
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_Z 70000
+
+
+#Coordinates System Tracker
+scoreboard objectives add X_Coordinate dummy X_Coordinate
+scoreboard objectives add Y_Coordinate dummy Y_Coordinate
+scoreboard objectives add Z_Coordinate dummy Z_Coordinate
+
+#Coordinates System Store
+scoreboard objectives add X_Coord_S dummy X_Coordinate
+scoreboard objectives add Y_Coord_S dummy Y_Coordinate
+scoreboard objectives add Z_Coord_S dummy Z_Coordinate
+
+#Teleporting Home Trigger -> this will allow animation controllers to determine if its been activated or not
+scoreboard objectives add teleporting_home dummy teleporting_home
+scoreboard objectives add teleporting dummy teleporting
+
+
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
