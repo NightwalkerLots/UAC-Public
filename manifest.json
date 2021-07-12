@@ -1,9 +1,9 @@
 {
 	"format_version": 1,
 	"header": {
-		"name": "§¶§c⋰       Unity Anticheat   Public   2.2    ⋱",
+		"name": "§¶§c⋰       Unity Anticheat   Public   2.2.6 Official    ⋱",
 		"description": "§¶§c⋮ Made By NightwalkerLots ",
-		"uuid": "5b2433dd-821c-4a7d-a151-26c54976e1d4",
+		"uuid": "7d14e93a-bd13-4142-bca0-3dee02441630",
 		"version": [
 			1,
 			0,
@@ -18,7 +18,7 @@
 	"modules": [
 		{
 			"type": "data",
-			"uuid": "08ca3e40-e97d-4c93-9b71-22725ca02465",
+			"uuid": "96a26699-ba8c-4e8a-9978-8f6a87196215",
 			"version": [
 				1,
 				1,

@@ -15,6 +15,7 @@ execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNCB=1}] ~~~ clear @s cr
 execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNSB=1}] ~~~ clear @s shulker_box
 execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNBQ=1}] ~~~ clear @s writable_book
 execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNTN=1}] ~~~ clear @s tnt
+execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNTD=1}] ~~~ clear @s trident
 
 
 #Precache for module check toggle status

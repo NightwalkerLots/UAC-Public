@@ -17,7 +17,7 @@ execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~~~ execute @e[type=item,r=4]
 
 #Placed Items bypass
 execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace barrier
-execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ execute @s[scores={bbmtoggle=0}] ~~~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace bedrock
+execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ execute @s[scores={bbmtoggle=0,Y_Coordinate=6..}] ~~~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace bedrock
 execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace command_block
 execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace repeating_command_block
 execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace chain_command_block
