@@ -178,6 +178,7 @@ scoreboard objectives add BNCB dummy BNCB
 scoreboard objectives add BNSB dummy BNSB
 scoreboard objectives add BNBQ dummy BNBQ
 scoreboard objectives add BNTN dummy BNTN
+scoreboard objectives add BNTD dummy BNTD
 
 #Default Itemban Toggles
 scoreboard players set @s BNA 0
@@ -186,6 +187,7 @@ scoreboard players set @s BNCB 0
 scoreboard players set @s BNSB 0
 scoreboard players set @s BNBQ 0
 scoreboard players set @s BNTN 0
+scoreboard players set @s BNTD 0
 
 #Fake Staff Protection
 scoreboard objectives add 2DI3N dummy 203knK
@@ -254,18 +256,12 @@ scoreboard players set @s[tag=!staffstatus] GFS98 0
 scoreboard players set @s[tag=!staffstatus] D98AD 0
 scoreboard players set @s[tag=!staffstatus] I2IO2NO 0
 
-#Public Hotbar Lock
-scoreboard players set hmmtoggledummy hmmtoggle 1
-scoreboard players operation @s hmmtoggle = hmmtoggledummy hmmtoggle
-scoreboard players set @s HMM 1
 
 #Other utiltiy
 gamerule showcoordinates true
 gamerule sendcommandfeedback false
 scoreboard objectives add 2KK001 dummy 2KK001
 scoreboard players set @s 2KK001 0
-execute @s[tag=vipmodule] ~~~ scoreboard objectives add vip dummy §¶§5VIP
-execute @s[tag=vipmodule] ~~~ scoreboard objectives setdisplay sidebar vip
 gamerule functioncommandlimit 10000
 gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
