@@ -64,6 +64,9 @@ clear @a[tag=!staffstatus] zombie_horse_spawn_egg
 clear @a[tag=!staffstatus] zombie_pigman_spawn_egg
 clear @a[tag=!staffstatus] zombie_spawn_egg
 clear @a[tag=!staffstatus] zombie_villager_spawn_egg
+clear @a[tag=!staffstatus] axolotl_spawn_egg
+clear @a[tag=!staffstatus] glow_squid_spawn_egg
+clear @a[tag=!staffstatus] goat_spawn_egg
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

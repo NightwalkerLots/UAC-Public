@@ -4,7 +4,6 @@ scoreboard players add @s SSDEBUG2 1
 
 #deny messages
 execute @s[scores={ssmtoggle=1,I2IO2NO=!273},tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bFake Staff Protection §2ENABLED. §bOwner must execute hidden staffstatus key first."}]}
-execute @s[tag=staffstatus,scores={ssmtoggle=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bFake Staff Protection must be enabled"}]}
 execute @s[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bOnly staff can use this command"}]}
 execute @s[scores={ssmtoggle=1,I2IO2NO=273}] ~~~ tellraw @s[tag=!staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bOnly staff can use this command"}]}
 

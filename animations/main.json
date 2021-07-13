@@ -31,9 +31,9 @@
         "variable.teleport_home = query.scoreboard('teleporting_home');",
         "variable.teleporting = query.scoreboard('teleporting');",
 
-        //Conditions & Toggles
-        "variable.death_effect = query.scoreboard('Deathef');",
-        "variable.itemcommand_toggle = query.scoreboard('icmtoggle');"
+        //Conditions & Toggles  {conditions remove by NightwalkerLots  7/12/21}
+        variable.death_effect = query.scoreboard('Deathef');,
+        variable.itemcommand_toggle = query.scoreboard('icmtoggle');
         ]
       },
       "animation_length": 0.01,

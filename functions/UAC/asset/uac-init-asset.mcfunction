@@ -1,3 +1,54 @@
+#Default values for armor checks
+scoreboard objectives add leathboots dummy leathboots
+scoreboard objectives add chainboots dummy chainboots
+scoreboard objectives add goldboots dummy goldboots
+scoreboard objectives add ironboots dummy ironboots
+scoreboard objectives add diaboots dummy diaboots
+scoreboard objectives add nethboots dummy nethboots
+scoreboard objectives add leathlegs dummy leathlegs
+scoreboard objectives add chainlegs dummy chainlegs
+scoreboard objectives add goldlegs dummy goldlegs
+scoreboard objectives add ironlegs dummy ironlegs
+scoreboard objectives add dialegs dummy dialegs
+scoreboard objectives add nethlegs dummy nethlegs
+scoreboard objectives add leathchest dummy leathchest
+scoreboard objectives add chainchest dummy chainchest
+scoreboard objectives add goldchest dummy goldchest
+scoreboard objectives add ironchest dummy ironchest
+scoreboard objectives add diachest dummy diachest
+scoreboard objectives add nethchest dummy nethchest
+scoreboard objectives add leathhelm dummy leathhelm
+scoreboard objectives add chainhelm dummy chainhelm
+scoreboard objectives add goldhelm dummy goldhelm
+scoreboard objectives add ironhelm dummy ironhelm
+scoreboard objectives add diahelm dummy diahelm
+scoreboard objectives add nethhelm dummy nethhelm
+
+scoreboard players set @s leathboots 0
+scoreboard players set @s chainboots 0
+scoreboard players set @s goldboots 0
+scoreboard players set @s ironboots 0
+scoreboard players set @s diaboots 0
+scoreboard players set @s nethboots 0
+scoreboard players set @s leathlegs 0
+scoreboard players set @s chainlegs 0
+scoreboard players set @s goldlegs 0
+scoreboard players set @s ironlegs 0
+scoreboard players set @s dialegs 0
+scoreboard players set @s nethlegs 0
+scoreboard players set @s leathchest 0
+scoreboard players set @s chainchest 0
+scoreboard players set @s goldchest 0
+scoreboard players set @s ironchest 0
+scoreboard players set @s diachest 0
+scoreboard players set @s nethchest 0
+scoreboard players set @s leathhelm 0
+scoreboard players set @s chainhelm 0
+scoreboard players set @s goldhelm 0
+scoreboard players set @s ironhelm 0
+scoreboard players set @s diahelm 0
+scoreboard players set @s nethhelm 0
+
 #Ban Checks
 scoreboard objectives add PermBan dummy PermBan
 scoreboard objectives add BanCBE dummy BanCBE
