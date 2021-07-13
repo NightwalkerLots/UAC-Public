@@ -753,4 +753,8 @@
     },
 
 
-    //This was taken out of player.json because we already have a item list, and this did nothing
+    //This was taken out of player.json because we already have a item list, and this did nothing ^
+
+    //Conditions & Toggles
+    "variable.death_effect = query.scoreboard('Deathef');",
+    "variable.itemcommand_toggle = query.scoreboard('icmtoggle');"

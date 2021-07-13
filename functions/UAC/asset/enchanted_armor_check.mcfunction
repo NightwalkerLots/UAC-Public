@@ -50,7 +50,7 @@ execute @s[scores={legen=0,ironlegs=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtex
 execute @s[scores={legen=0,goldlegs=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bGolden Leggings§7: §cNO ENCHANTS"}]}
 execute @s[scores={legen=0,chainlegs=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bChain Leggings§7: §cNO ENCHANTS"}]}
 execute @s[scores={legen=0,leathlegs=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeather Leggings§7: §cNO ENCHANTS"}]}
-execute @a[scores={legen=0,nethlegs=0,dialegs=0,ironlegs=0,goldlegs=0,chainlegs=0,leathlegs=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeggings§7: §cNONE EQUIPED"}]}
+execute @s[scores={legen=0,nethlegs=0,dialegs=0,ironlegs=0,goldlegs=0,chainlegs=0,leathlegs=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeggings§7: §cNONE EQUIPED"}]}
 #enchanted boots
 execute @s[scores={feeten=1,nethboots=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite Boots§7: §2ENCHANTED"}]}
 execute @s[scores={feeten=1,diaboots=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bDiamond Boots§7: §2ENCHANTED"}]}
