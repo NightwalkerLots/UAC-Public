@@ -27,10 +27,9 @@
 					],
 					"on_entry": [
 						"/execute @s[tag=!staffstatus,scores={UOIM=1}] ~~~ replaceitem entity @s slot.weapon.mainhand 0 air",
-						"/execute @s[tag=!staffstatus,scores={SEM=1}] ~~~ function UAC/asset/clearspawneggasset",
+						"/execute @s[tag=!staffstatus,scores={UOIM=1}] ~~~ function UAC/asset/clearspawneggasset",
 						"/execute @s[tag=!staffstatus] ~~~ execute @s[scores={UOIM=1}] ~~~ function UAC/asset/illegalitemkickmsg",
 						"/execute @s[tag=!staffstatus] ~~~ execute @s[scores={UOIM=1}] ~~~ function UAC/asset/illegalitemwarn",
-						"/execute @s[tag=!staffstatus] ~~~ execute @s[scores={UOIM=1}] ~~~ kick @s §¶§cUAC ► Tempkicked for illegal items",
 						"@s bridge:remove_command_id_1"
 					]
 				},
