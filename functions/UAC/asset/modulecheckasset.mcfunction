@@ -26,9 +26,6 @@ execute @s[tag=staffstatus,scores={NEM=0}] ~~~ tellraw @s {"rawtext":[{"text":"�
 execute @s[tag=staffstatus,scores={ACM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-CBE §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={ACM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-CBE §7[ §¶§cDISABLED §7]"}]}
 
-execute @s[tag=staffstatus,scores={SEM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo-SpawnEggs §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus,scores={SEM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo-SpawnEggs §7[ §¶§cDISABLED §7]"}]}
-
 execute @s[tag=staffstatus,scores={UOIM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo Unobtainable Items §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={UOIM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bNo Unobtainable Items §7[ §¶§cDISABLED §7]"}]}
 
