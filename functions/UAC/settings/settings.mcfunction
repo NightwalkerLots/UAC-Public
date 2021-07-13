@@ -20,10 +20,6 @@ function UAC/modules/anticbe
 # Enabled by default
 function UAC/modules/antifly
 #
-# =No spawn EGGS=
-# Non-staff members are cleared of spawn eggs
-# Enabled by default
-function UAC/modules/clearspawneggs
 #
 # =No Unobtainable Items=
 # Clears players of Unobtainable items
