@@ -29,11 +29,8 @@
         "variable.home_position_y = query.scoreboard('Y_Coord_S');",
         "variable.home_position_z = query.scoreboard('Z_Coord_S');",
         "variable.teleport_home = query.scoreboard('teleporting_home');",
-        "variable.teleporting = query.scoreboard('teleporting');",
+        "variable.teleporting = query.scoreboard('teleporting');"
 
-        //Conditions & Toggles  {conditions remove by NightwalkerLots  7/12/21}
-        variable.death_effect = query.scoreboard('Deathef');,
-        variable.itemcommand_toggle = query.scoreboard('icmtoggle');
         ]
       },
       "animation_length": 0.01,
