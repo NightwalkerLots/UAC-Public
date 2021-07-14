@@ -239,6 +239,29 @@
             },
             "use_item": false,
             "interact_text": "Testing Function"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "staffstatus"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "Sneaking"
+                  }
+                ]
+              },
+              "event": "uac:display_nonstaff_stats"
+            },
+            "use_item": false,
+            "interact_text": "View Player Stats"
           }
         ]
       },
@@ -1660,6 +1683,14 @@
           "target": "self",
           "command": [
             "function UAC/testing"
+          ]
+        }
+      },
+      "uac:display_nonstaff_stats": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "function UAC/asset/local_player_stats"
           ]
         }
       },

@@ -98,6 +98,8 @@ execute @s[scores={lstcmd=87}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"tex
 execute @s[scores={lstcmd=88}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/shulkerbox-ban §bcommand"}]}
 execute @s[scores={lstcmd=89}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/tnt-allow §bcommand"}]}
 execute @s[scores={lstcmd=90}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/tnt-ban §bcommand"}]}
+execute @s[scores={lstcmd=105}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/trident-allow §bcommand"}]}
+execute @s[scores={lstcmd=106}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function banitem/trident-ban §bcommand"}]}
 
 #Mining Detection
 execute @s[scores={lstcmd=91}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function toggle/mining_detection-off §bcommand"}]}
@@ -115,7 +117,13 @@ execute @s[scores={lstcmd=102}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"te
 execute @s[scores={lstcmd=103}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/netherite_off §bcommand"}]}
 execute @s[scores={lstcmd=104}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function ore_alerts/netherite_on §bcommand"}]}
 
+#Kit commands
+execute @s[scores={lstcmd=107}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function KIT/iron_kit §bcommand"}]}
+execute @s[scores={lstcmd=108}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function KIT/diamond_kit §bcommand"}]}
+execute @s[scores={lstcmd=109}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §blast command was the §6function KIT/netherite_kit §bcommand"}]}
 
+
+# highest is 106
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

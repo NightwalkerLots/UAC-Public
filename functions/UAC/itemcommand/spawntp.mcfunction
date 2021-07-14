@@ -1,6 +1,7 @@
 playsound note.pling @s ~ ~ ~
-tellraw @s {"rawtext":[{"text":"§¶§cUAC §b► Teleported §d"},{"selector":"@s"},{"text":" §bto world spawn"}]}
-tp @s 885 75 380
+tellraw @s {"rawtext":[{"text":"§¶§cUAC §b► Teleporting §d"},{"selector":"@s"},{"text":" §¶§bto World Spawn §230 §bseconds. Make sure to stay still."}]}
+scoreboard players set @s hometp 4
+scoreboard players set @s hometimer 550
 kill @e[type=item,name=spawn]
 scoreboard players set @s lstcmd 8
 
