@@ -29,6 +29,17 @@ execute @s[scores={hmmtoggle=1,hometp=1,hometimer=150..200}] ~~~ title @s action
 execute @s[scores={hmmtoggle=1,hometp=1,hometimer=70..150}] ~~~ title @s actionbar §¶§dWARPING HOME§7: §2❚❚❚❚❚❚❚❚§c❚
 execute @s[scores={hmmtoggle=1,hometp=1,hometimer=25..70}] ~~~ title @s actionbar §¶§dWARPING HOME§7: §2❚❚❚❚❚❚❚❚❚
 
+#spawntp progress bar
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=500..550}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §c❚❚❚❚❚❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=450..500}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚§c❚❚❚❚❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=400..450}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚§c❚❚❚❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=350..400}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚§c❚❚❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=300..350}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚❚§c❚❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=250..300}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚❚❚§c❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=200..250}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚❚❚❚§c❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=150..200}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚❚❚❚❚§c❚❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=70..150}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚❚❚❚❚❚§c❚
+execute @s[scores={hmmtoggle=1,hometp=4,hometimer=25..70}] ~~~ title @s actionbar §¶§dWARPING TO SPAWN§7: §2❚❚❚❚❚❚❚❚❚
 
 #Adds a tag for the enabled/disabled check
 execute @s[scores={hmmtoggle=2}] ~~~ scoreboard players set @s HMM 1

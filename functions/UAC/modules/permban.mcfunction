@@ -61,6 +61,15 @@ tag "POPB0B 2B2T" add PermBan
 tag "KingLeo332" add PermBan
 tag "xIlIlIIlIIlIx55" add PermBan
 tag "PointNetwork341" add PermBan
+tag "STARKILLER" add PermBan
+tag "GravityBot" add PermBan
+tag "UrgentTrash7032" add PermBan
+tag "BeadiXBL" add PermBan
+tag "NinjaXhunter130" add PermBan
+tag "frickyea99" add PermBan
+tag "timmy_is_daddy57" add PermBan
+tag "Julisco21" add PermBan
+
 
 #kick @s[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 

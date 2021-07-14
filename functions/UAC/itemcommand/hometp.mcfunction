@@ -1,5 +1,5 @@
 playsound note.pling @s ~ ~ ~
-tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §¶§bGoing to §d"},{"selector":"@s"},{"text":"'s §¶§bspawnpoint in §230 seconds. Make sure to stay still."}]}
+tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §¶§bGoing to §d"},{"selector":"@s"},{"text":"'s §¶§bspawnpoint in §230 §bseconds. Make sure to stay still."}]}
 scoreboard players set @s hometp 1
 scoreboard players set @s hometimer 550
 kill @e[type=item,name=home]
