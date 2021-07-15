@@ -31,7 +31,7 @@ scoreboard players operation @s mdmtoggle = mdmtoggledummy mdmtoggle
 
 #Syncs the Death Effect Toggle for everyone
 scoreboard players operation @a Deathef = BDXdummy Deathef
-
+scoreboard players operation @a dethtoggle = dethtoggledummy dethtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

@@ -112,9 +112,12 @@ scoreboard players set @s ironfnd 0
 
 #Death Effect Toggle
 scoreboard objectives add Deathef dummy Deathef
+scoreboard objectives add dethtoggle dummy dethtoggle
 #Death Effect Default Value
 scoreboard players set @s Deathef 1
-
+scoreboard players set @s dethtoggle 1
+scoreboard players operation @s Deathef = BDXdummy Deathef
+scoreboard players operation @s dethtoggle = dethtoggledummy dethtoggle
 #Last command used system
 scoreboard objectives add lstcmd dummy lstcmd
 #Default value for last command system
@@ -317,6 +320,7 @@ gamerule functioncommandlimit 10000
 gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
 scoreboard players set @s opabusemodule 2
+scoreboard players set @s welcomed 1
 
 #WB init default value
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000

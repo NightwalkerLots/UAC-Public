@@ -1,0 +1,60 @@
+{
+	"format_version": "1.14",
+	"minecraft:npc_dialogue":
+	{
+		"scenes":
+		[
+			{
+				"scene_tag": "uac_basic_commands",
+				"npc_name": { "rawtext": [ { "text": "§l§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§l§cUAC ► §5GUI BASIC COMMANDS MENU" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§l§2VANISH" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/vanish",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_basic_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2TGM" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/tgm",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_basic_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2LAGCLEAR" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/lagclear",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_basic_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2CLEARCHAT" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/clearchat",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_basic_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2CREDIT" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/credit",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_basic_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§5MAIN MENU" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/gui"
+						]
+					}
+				],
+				"on_close_commands": [
+                    "  "
+				]
+			}
+		]
+	}
+}

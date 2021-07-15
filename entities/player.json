@@ -1667,7 +1667,36 @@
             }
           }
         ]
+      },
+        "minecraft:npc": {
+          "npc_data": {
+					"portrait_offsets": {
+						"translate": [
+							0,
+							50,
+							0
+						],
+						"scale": [
+							1.7,
+							1.7,
+							1.7
+						]
+					},
+					"picker_offsets": {
+						"translate": [
+							0,
+							50,
+							0
+						],
+						"scale": [
+							1.7,
+							1.7,
+							1.7
+						]
+					}
+				}
       }
+}
     },
     "events": {
       "uac:display_main_stats": {

@@ -25,7 +25,7 @@ execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ execute @s[tag=tgmGodMode] 
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ execute @s[tag=tgmGodMode] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ effect @s slow_falling 99999999 255 true
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ execute @s[tag=tgmGodMode] ~~~ execute @s[scores={tgmGodMode=1}] ~~~ effect @s strength 99999999 50 true
 
-#Deny Nonstaff
+#Deny Nondev
 execute @s[tag=!staffstatus,name=!nightwalkerlots] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bOnly staff can use this command"}]}
 execute @s[tag=staffstatus,name=!nightwalkerlots] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► Access §cDENIED§7! §bDeveloper access is needed"}]}
 execute @s[tag=!staffstatus,name=!nightwalkerlots] ~~~ execute @s ~~~ playsound note.bass @s ~ ~ ~
