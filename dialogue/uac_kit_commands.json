@@ -1,0 +1,61 @@
+{
+	"format_version": "1.14",
+	"minecraft:npc_dialogue":
+	{
+		"scenes":
+		[
+			{
+				"scene_tag": "uac_kit_commands",
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI KITS MENU" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§l§2IRON" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function KIT/iron_kit",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2DIAMOND" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function KIT/diamond_kit",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2NETHITE" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function KIT/netherite_kit",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2CLEAR INV" } ] },
+						"commands": [
+							"/clear",
+              "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§5MAIN MENU" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/gui"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§cTEST" } ] },
+						"commands": [
+							"/function UAC/test",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+						]
+					}
+				],
+				"on_close_commands": [
+                    " "
+				]
+			}
+		]
+	}
+}

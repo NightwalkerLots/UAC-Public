@@ -7,16 +7,17 @@ execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/itemcommand
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/noechest-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/nofrostwalker-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/randomspawn-off
-execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/rulestimer-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/worldborder-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/fakestaffprotection-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/hotbarmessage-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/lagclear-off
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/mining_detection-off
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/itemban-off
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/enchanted_armor_disable-off
+execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/deatheffect-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/opabuse-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/timeplayed-off
 execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/unobtainableitems-off
-execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/vip-off
-execute @s[tag=staffstatus,name=nightwalkerlots] ~~~ function toggle/kitpvp-off
 
 scoreboard players set @s lstcmd 3
 

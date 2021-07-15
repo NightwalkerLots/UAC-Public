@@ -16,10 +16,8 @@ execute @r[scores={welcome=120}] ~~~ function UAC/asset/version
 execute @r[scores={welcome=120..121}] ~~~ function UAC/modules/permban
 
 
-scoreboard players set @r[scores={welcome=121..999}] welcomed 1
-execute @r[scores={welcomed=1}] ~~~ scoreboard players reset @s welcome
-execute @r[scores={vipmodule=1}] ~~~ scoreboard objectives setdisplay sidebar vip
 
+execute @r[scores={welcomed=1}] ~~~ scoreboard players reset @s welcome
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

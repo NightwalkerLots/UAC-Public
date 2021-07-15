@@ -1,0 +1,58 @@
+{
+	"format_version": "1.14",
+	"minecraft:npc_dialogue":
+	{
+		"scenes":
+		[
+			{
+				"scene_tag": "uac_dev_gui_debug",
+				"npc_name": { "rawtext": [ { "text": "§l§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§l§cUAC ► §5GUI §2DEVELOPER DEBUG §5MENU" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§l§2KILL SWITCH" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/toggle-all-off",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2DEV TGM" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/tgm",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2ANARCHY INIT" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/unity-anarchy-init",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2STATS" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/stats"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§cCLOSE MENU" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function dialogue/close_dev_message"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§5MAIN MENU" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/gui"
+						]
+					}
+				],
+				"on_close_commands": [
+                    "  "
+				]
+			}
+		]
+	}
+}
