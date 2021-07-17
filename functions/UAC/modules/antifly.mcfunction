@@ -8,12 +8,6 @@ execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=
 execute @s[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
 
 
-
-#Adds a tag for the enabled/disabled check
-execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s AFM 1
-execute @s[scores={afmtoggle=0}] ~~~ scoreboard players set @s AFM 0
-scoreboard players operation @s afmtoggle = afmtoggledummy afmtoggle
-
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

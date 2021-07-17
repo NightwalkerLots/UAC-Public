@@ -1,0 +1,91 @@
+{
+	"format_version": "1.14",
+	"minecraft:npc_dialogue":
+	{
+		"scenes":
+		[
+			{
+				"scene_tag": "uac_teleports1",
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI TELEPORT MENU" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§l§2SPAWN" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ tp @s 10 90 -10",
+              "/execute @s[tag=staffstatus] ~~~ function dialogue_messages/spawntp_message",
+              "/execute @s[tag=staffstatus] ~~~ effect @s slow_falling 4 1 true",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2TP @R" } ] },
+						"commands": [
+              "/execute @s[tag=staffstatus] ~~~ tp @s @r[tag=!staffstatus]",
+              "/execute @s[tag=staffstatus] ~~~ function dialogue_messages/r_playertp_message",
+              "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2SPAWN SET" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/itemcommand/setspawn",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_teleports1",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2TP HOME" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus,tag=spawnset] ~~~ scoreboard players set @s teleporting_home 1",
+              "/execute @s[tag=staffstatus] ~~~ function dialogue_messages/hometp_message",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+          {
+						"name": { "rawtext": [ { "text": "§l§5MAIN MENU" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/gui"
+						]
+					},
+          {
+						"name": { "rawtext": [ { "text": "§l§cCLOSE MENU" } ] },
+						"commands": [
+							"/function dialogue_messages/close_message"
+						]
+					}
+				],
+				"on_close_commands": [
+                    " "
+				]
+			},
+			{
+				"scene_tag": "welcome_screen",
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§5§lClose" } ] },
+						"commands": [
+							" "
+						]
+					}
+				],
+				"on_close_commands": [
+                    " "
+				]
+			},
+			{
+				"scene_tag": "manage_player",
+				"npc_name": { "rawtext": [ { "text": "" } ] },
+				"text": { "rawtext": [ { "text": "" } ] },
+				"buttons": [
+
+				],
+				"on_close_commands": [
+
+				]
+			}
+		]
+	}
+}

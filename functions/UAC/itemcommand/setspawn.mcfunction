@@ -1,6 +1,7 @@
 tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §¶§bSpawn Point has been set for §d"},{"selector":"@s"}]}
 spawnpoint @s ~~~
 playsound note.pling @s ~ ~ ~
+tag @s add spawnset
 kill @e[type=item,name=setspawn]
 
 #This hides this from the in-game function command directory

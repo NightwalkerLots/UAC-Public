@@ -13,10 +13,6 @@ execute @s[scores={ssmtoggle=1,I2IO2NO=!273}] ~~~ tag @s remove staffstatus
 tag @s[tag=!staffstatus] remove spectate
 tag @s[tag=!staffstatus] remove godmode
 
-#Adds a tag for the enabled/disabled check
-execute @s[scores={ssmtoggle=1}] ~~~ scoreboard players set @s SSM 1
-execute @s[scores={ssmtoggle=0}] ~~~ scoreboard players set @s SSM 0
-scoreboard players operation @s ssmtoggle = ssmtoggledummy ssmtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

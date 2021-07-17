@@ -336,6 +336,8 @@ scoreboard objectives add Z_Coordinate dummy Z_Coordinate
 scoreboard objectives add X_Coord_S dummy X_Coordinate
 scoreboard objectives add Y_Coord_S dummy Y_Coordinate
 scoreboard objectives add Z_Coord_S dummy Z_Coordinate
+scoreboard players set @s X_Coord_S 0
+scoreboard players set @s Z_Coord_S 0
 
 #Teleporting Home Trigger -> this will allow animation controllers to determine if its been activated or not
 scoreboard objectives add teleporting_home dummy teleporting_home

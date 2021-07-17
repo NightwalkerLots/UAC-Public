@@ -1,7 +1,8 @@
 playsound note.pling @s ~ ~ ~
-tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §¶§bGoing to §d"},{"selector":"@s"},{"text":"'s §¶§bspawnpoint in §230 §bseconds. Make sure to stay still."}]}
-scoreboard players set @s hometp 1
-scoreboard players set @s hometimer 550
+tellraw @s[tag=spawnset] {"rawtext":[{"text":"§¶§cUAC ► §¶§bGoing to §d"},{"selector":"@s"},{"text":"'s §¶§bspawnpoint in §230 §bseconds. Make sure to stay still."}]}
+tellraw @s[tag=!spawnset] {"rawtext":[{"text":"§¶§cUAC ► §bYou must set spawn with a item command, sleeping in bed, or through the setspawn GUI option first."}]}
+scoreboard players set @s[tag=spawnset] hometp 1
+scoreboard players set @s[tag=spawnset] hometimer 550
 kill @e[type=item,name=home]
 
 scoreboard players set @s lstcmd 5

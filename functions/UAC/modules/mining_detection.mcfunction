@@ -25,15 +25,6 @@ execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={lapizmd=1}] ~~~ execute 
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={scrapmd=1}] ~~~ execute @e[type=item,name="ancient debris",r=5] ~~~ scoreboard players set @a[r=5] scrapfnd 1
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={ironmd=1}] ~~~ execute @e[type=item,name="raw iron",r=5] ~~~ scoreboard players set @a[r=5] ironfnd 1
 
-#Adds a tag for the enabled/disabled check
-scoreboard players set @s[scores={mdmtoggle=1}] MDM 1
-execute @s[scores={mdmtoggle=0}] ~~~ scoreboard players set @s MDM 0
-scoreboard players operation @s diamondmd = mdmtoggledummy diamondmd
-scoreboard players operation @s goldmd = mdmtoggledummy goldmd
-scoreboard players operation @s lapizmd = mdmtoggledummy lapizmd
-scoreboard players operation @s scrapmd = mdmtoggledummy scrapmd
-scoreboard players operation @s emeraldmd = mdmtoggledummy emeraldmd
-scoreboard players operation @s ironmd = mdmtoggledummy ironmd
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
