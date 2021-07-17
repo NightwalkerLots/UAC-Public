@@ -18,13 +18,13 @@ execute @a[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestd
 function UAC/packages/bans
 function UAC/modules/permban
 function UAC/modules/ownerstatus
+function UAC/asset/toggle_sync
 
 #Extra stuff for TPS control
 execute @a ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
 
-#Syncs the worldborder size for everyone
-execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
-execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_X = BDXdummy Border_Coord_X
+
+
 
 #Syncs toggle for mining detection module
 scoreboard players operation @s mdmtoggle = mdmtoggledummy mdmtoggle

@@ -2,10 +2,6 @@ execute @s[scores={tpmtoggle=1}] ~~~ function UAC/asset/timeplayedtimer
 
 scoreboard players add @s[scores={tpmtoggle=1}] timealive 1
 
-#Adds a tag for the enabled/disabled check
-execute @s[scores={tpmtoggle=1}] ~~~ scoreboard players set @s TPM 1
-execute @s[scores={tpmtoggle=0}] ~~~ scoreboard players set @s TPM 0
-scoreboard players operation @s tpmtoggle = tpmtoggledummy tpmtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

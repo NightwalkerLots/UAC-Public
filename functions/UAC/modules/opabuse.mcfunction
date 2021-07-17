@@ -10,10 +10,6 @@ execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ scoreboard players reset @
 execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ tag @s remove spectate
 execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ scoreboard players reset @s vnsh
 
-#Adds a tag for the enabled/disabled check
-execute @s[scores={opamtoggle=1}] ~~~ scoreboard players set @s OPAM 1
-execute @s[scores={opamtoggle=0}] ~~~ scoreboard players set @s OPAM 0
-scoreboard players operation @s opamtoggle = opamtoggledummy opamtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

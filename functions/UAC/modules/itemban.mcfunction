@@ -18,10 +18,6 @@ execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNTN=1}] ~~~ clear @s tn
 execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNTD=1}] ~~~ clear @s trident
 
 
-#Precache for module check toggle status
-execute @s[scores={ibmtoggle=1}] ~~~ scoreboard players set @s IBM 1
-execute @s[scores={ibmtoggle=0}] ~~~ scoreboard players set @s IBM 0
-
 #This file is called apon every 5 seconds from UAC/packages/autolagclear if the module is enabled
 
 #This hides this from the in-game function command directory

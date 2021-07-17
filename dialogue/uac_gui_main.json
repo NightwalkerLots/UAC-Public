@@ -10,28 +10,28 @@
 				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI MAIN MENU" } ] },
 				"buttons": [
 					{
-						"name": { "rawtext": [ { "text": "§l§5BASIC CMDS" } ] },
+						"name": { "rawtext": [ { "text": "§l§5UAC COMMANDS" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_basic_commands",
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_gui_uac_commands",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§5KITS" } ] },
+						"name": { "rawtext": [ { "text": "§l§5EFFECTS" } ] },
 						"commands": [
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_effects_gui",
               "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§5MODULES" } ] },
+						"name": { "rawtext": [ { "text": "§l§5TELEPORTS" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s toggle_module_pag1",
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_teleports1",
 							"//execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§cEmpty" } ] },
+						"name": { "rawtext": [ { "text": "§l§5REALM CMDS" } ] },
 						"commands": [
 							"/function UAC/test",
 							"/function UAC/test"
@@ -47,39 +47,12 @@
 					{
 						"name": { "rawtext": [ { "text": "§l§cCLOSE MENU" } ] },
 						"commands": [
-							"  "
-						]
-					}
-				],
-				"on_close_commands": [
-                    "/function dialogue_messages/close_message"
-				]
-			},
-			{
-				"scene_tag": "welcome_screen",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
-				"buttons": [
-					{
-						"name": { "rawtext": [ { "text": "§5§lClose" } ] },
-						"commands": [
 							"/function dialogue_messages/close_message"
 						]
 					}
 				],
 				"on_close_commands": [
-                    "/function dialogue_messages/close_message"
-				]
-			},
-			{
-				"scene_tag": "manage_player",
-				"npc_name": { "rawtext": [ { "text": "" } ] },
-				"text": { "rawtext": [ { "text": "" } ] },
-				"buttons": [
-
-				],
-				"on_close_commands": [
-
+                    " "
 				]
 			}
 		]

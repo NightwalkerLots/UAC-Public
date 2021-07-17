@@ -16,11 +16,6 @@ execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="setspawn"] ~
 execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="stats"] ~~~ execute @p ~~~ function UAC/itemcommand/playerstats
 
 
-#Adds a tag for the enabled/disabled check
-execute @s[scores={icmtoggle=1}] ~~~ scoreboard players set @s ICM 1
-execute @s[scores={icmtoggle=0}] ~~~ scoreboard players set @s ICM 0
-scoreboard players operation @s icmtoggle = icmtoggledummy icmtoggle
-
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

@@ -18,10 +18,6 @@ execute @s[scores={acmtoggle=1}] ~~~ clear @s axolotl_bucket
 execute @s[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace beehive
 execute @s[tag=!staffstatus,scores={acmtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace bee_nest
 
-#Adds a tag for the enabled/disabled check
-scoreboard players operation @s ACM = acmtoggledummy ACM
-scoreboard players operation @s acmtoggle = acmtoggledummy acmtoggle
-
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

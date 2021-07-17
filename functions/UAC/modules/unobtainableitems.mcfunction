@@ -22,10 +22,6 @@ execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~
 execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace repeating_command_block
 execute @s[tag=!staffstatus,scores={uoimtoggle=1}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace chain_command_block
 
-#Adds a tag for the enabled/disabled check
-execute @s[scores={uoimtoggle=1}] ~~~ scoreboard players set @s UOIM 1
-execute @s[scores={uoimtoggle=0}] ~~~ scoreboard players set @s UOIM 0
-scoreboard players operation @s uoimtoggle = uoimtoggledummy uoimtoggle
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

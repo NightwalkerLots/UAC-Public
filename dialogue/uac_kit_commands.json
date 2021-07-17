@@ -45,10 +45,9 @@
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§cTEST" } ] },
+						"name": { "rawtext": [ { "text": "§l§cCLOSE" } ] },
 						"commands": [
-							"/function UAC/test",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+              "/execute @s[tag=staffstatus] ~~~ function dialogue_messages/close_message"
 						]
 					}
 				],
