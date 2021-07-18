@@ -49,6 +49,8 @@ scoreboard players operation @a lapizmd = mdmtoggledummy lapizmd
 scoreboard players operation @a scrapmd = mdmtoggledummy scrapmd
 scoreboard players operation @a emeraldmd = mdmtoggledummy emeraldmd
 scoreboard players operation @a ironmd = mdmtoggledummy ironmd
+
+scoreboard players operation @a pvp = pvpdummy pvp
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

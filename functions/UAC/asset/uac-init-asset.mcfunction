@@ -326,6 +326,11 @@ scoreboard players set @s welcomed 1
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_Z 70000
 
+#pvp gui toggle
+scoreboard objectives add pvp dummy pvp
+scoreboard players set @s pvp 0
+scoreboard players operation @s pvp = pvpdummy pvp
+
 
 #Coordinates System Tracker
 scoreboard objectives add X_Coordinate dummy X_Coordinate
