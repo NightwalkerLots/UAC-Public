@@ -1,0 +1,93 @@
+{
+	"format_version": "1.14",
+	"minecraft:npc_dialogue":
+	{
+		"scenes":
+		[
+			{
+				"scene_tag": "uac_music_gui2",
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI MUSIC MENU PAGE 2" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§l§2CHIRP" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ execute @a ~~~ music play record.chirp 1 0 play_once",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_music_gui2",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2FAR" } ] },
+						"commands": [
+              "/execute @s[tag=staffstatus] ~~~ execute @a ~~~ music play record.far 1 0 play_once",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_music_gui2",
+              "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2MALL" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ execute @a ~~~ music play record.mall 1 0 play_once",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_music_gui2",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2MELLOHI" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ execute @a ~~~ music play record.mellohi 1 0 play_once",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_music_gui2",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+          {
+						"name": { "rawtext": [ { "text": "§l§2STRAD" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ execute @a ~~~ music play record.strad 1 0 play_once",
+              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_music_gui2",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§9PAGE 3" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_music_gui3",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					}
+				],
+				"on_close_commands": [
+                    " "
+				]
+			},
+			{
+				"scene_tag": "welcome_screen",
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§5§lClose" } ] },
+						"commands": [
+							" "
+						]
+					}
+				],
+				"on_close_commands": [
+                    " "
+				]
+			},
+			{
+				"scene_tag": "manage_player",
+				"npc_name": { "rawtext": [ { "text": "" } ] },
+				"text": { "rawtext": [ { "text": "" } ] },
+				"buttons": [
+
+				],
+				"on_close_commands": [
+
+				]
+			}
+		]
+	}
+}

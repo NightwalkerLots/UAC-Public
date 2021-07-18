@@ -70,6 +70,8 @@ tag "frickyea99" add PermBan
 tag "timmy_is_daddy57" add PermBan
 tag "Julisco21" add PermBan
 
+tag @a[tag=Ban] add PermBan
+
 
 #kick @s[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 

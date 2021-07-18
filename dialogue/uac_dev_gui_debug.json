@@ -31,9 +31,9 @@
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2STATS" } ] },
+						"name": { "rawtext": [ { "text": "§l§2DEBUG INIT" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ function UAC/stats"
+							"/execute @s[name=nightwalkerlots] ~~~ function UAC/DEV/debug-init"
 						]
 					},
 					{
