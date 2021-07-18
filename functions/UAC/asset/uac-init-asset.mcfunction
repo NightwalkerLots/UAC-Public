@@ -343,6 +343,8 @@ scoreboard players set @s Z_Coord_S 0
 scoreboard objectives add teleporting_home dummy teleporting_home
 scoreboard objectives add teleporting dummy teleporting
 
+#Player Facing
+scoreboard objectives add Player_Facing dummy Player_Facing
 
 
 #This hides this from the in-game function command directory

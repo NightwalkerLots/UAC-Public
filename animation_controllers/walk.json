@@ -76,6 +76,102 @@
 				}
 			}
 		},
+		"controller.animation.player_facing": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"down": "query.cardinal_facing == 0"
+						},
+						{
+							"up": "query.cardinal_facing == 1"
+						},
+						{
+							"north": "query.cardinal_facing == 2"
+						},
+						{
+							"south": "query.cardinal_facing == 3"
+						},
+						{
+							"west": "query.cardinal_facing == 4"
+						},
+						{
+							"east": "query.cardinal_facing == 5"
+						}
+					]
+				},
+				"down": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 0"
+					]
+				},
+				"up": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 1"
+					]
+				},
+				"north": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 2"
+					]
+				},
+				"south": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 3"
+					]
+				},
+				"west": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 4"
+					]
+				},
+				"east": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 5"
+					]
+				},
+				"down": {
+					"transitions": [
+						{
+							"default": "(1.0)"
+						}
+					],
+					"on_entry": [
+						"/scoreboard players set @s Player_Facing 0"
+					]
+				}
+			}
+		},
 		"controller.animation.is_gliding": {
 			"states": {
 				"default": {
@@ -120,30 +216,6 @@
 					],
 					"on_entry": [
 						"/tag @s add Is_Jumping"
-					]
-				}
-			}
-		},
-		"controller.animation.is_sneaking": {
-			"states": {
-				"default": {
-					"transitions": [
-						{
-							"is_sneaking": "query.is_sneaking"
-						}
-					],
-					"on_entry": [
-						"/tag @s remove Sneaking"
-					]
-				},
-				"is_sneaking": {
-					"transitions": [
-						{
-							"default": "!query.is_sneaking"
-						}
-					],
-					"on_entry": [
-						"/tag @s add Sneaking"
 					]
 				}
 			}
