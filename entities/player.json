@@ -186,6 +186,29 @@
             },
             "use_item": false,
             "interact_text": "View Player Stats"
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "staffstatus"
+                  },
+                  {
+                    "test": "is_sneaking",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": true
+                  }
+                ]
+              },
+              "event": "uac:open_player_options_gui"
+            },
+            "use_item": false,
+            "interact_text": "Open Player GUI"
           }
         ]
       },
@@ -887,6 +910,25 @@
               ]
             },
             "event": "minecraft:no_levitation"
+          },
+          {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:torch"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:lantern"
+                }
+              ]
+            },
+            "event": "uac:torchlight"
           },
           {
             "filters": {
@@ -1908,6 +1950,14 @@
           ]
         }
       },
+      "uac:torchlight": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "function test/torchlight"
+          ]
+        }
+      },
       "uac:display_main_stats": {
         "run_command": {
           "target": "self",
@@ -1929,6 +1979,14 @@
           "target": "self",
           "command": [
             "function UAC/asset/local_player_stats"
+          ]
+        }
+      },
+      "uac:open_player_options_gui": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "dialogue open @s @p[tag=staffstatus] uac_player_options_gui"
           ]
         }
       },
