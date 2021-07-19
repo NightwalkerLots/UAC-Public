@@ -351,6 +351,9 @@ scoreboard objectives add teleporting dummy teleporting
 #Player Facing
 scoreboard objectives add Player_Facing dummy Player_Facing
 
+#Torchlight Testing timer
+scoreboard objectives add torchtimer dummy torchtimer
+
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

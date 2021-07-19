@@ -5,35 +5,28 @@
 		"scenes":
 		[
 			{
-				"scene_tag": "uac_gui_main",
+				"scene_tag": "uac_player_options_gui",
         "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI MAIN MENU" } ] },
+				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI PLAYER OPTIONS MENU" } ] },
 				"buttons": [
 					{
-						"name": { "rawtext": [ { "text": "§l§5UAC COMMANDS" } ] },
+						"name": { "rawtext": [ { "text": "§l§2STATS" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_gui_uac_commands",
+							"/function UAC/stats",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§5EFFECTS" } ] },
+						"name": { "rawtext": [ { "text": "§l§2TEST" } ] },
 						"commands": [
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_effects_gui",
+              "/say test",
               "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§5TELEPORTS" } ] },
+						"name": { "rawtext": [ { "text": "§cEmpty" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_teleports1",
-							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
-						]
-					},
-					{
-						"name": { "rawtext": [ { "text": "§l§5REALM CMDS" } ] },
-						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
+							"/function UAC/test",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
@@ -41,7 +34,14 @@
 						"name": { "rawtext": [ { "text": "§cEmpty" } ] },
 						"commands": [
 							"/function UAC/test",
-							"/function UAC/test"
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§cEmpty" } ] },
+						"commands": [
+							"/function UAC/test",
+							"execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{

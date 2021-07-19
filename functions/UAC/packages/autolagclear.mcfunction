@@ -22,7 +22,7 @@ function UAC/asset/toggle_sync
 
 #Extra stuff for TPS control
 execute @a ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
-
+execute @a ~~~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace light_block
 
 
 
