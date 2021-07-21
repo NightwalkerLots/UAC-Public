@@ -22,6 +22,7 @@ give @s[tag=staffstatus] totem_of_undying 1 0 {"minecraft:keep_on_death":{}}
 give @s[tag=staffstatus] totem_of_undying 1 0 {"minecraft:keep_on_death":{}}
 give @s[tag=staffstatus] firework_rocket 64 3 {"minecraft:keep_on_death":{}}
 give @s[tag=staffstatus] elytra 1 0 {"minecraft:keep_on_death":{}}
+give @s[tag=staffstatus] torch 32 0 {"minecraft:keep_on_death":{}}
 effect @s[tag=staffstatus] strength 150 1 true
 effect @s[tag=staffstatus] resistance 150 1 true
 scoreboard players set @s lstcmd 107
