@@ -43,10 +43,10 @@ function UAC/modules/hotbarmessage
 # =Mining Detection=
 function UAC/modules/mining_detection
 #
-# =AUTOMATED RULES MESSGAE=
+# =Testing Features=
 # This displays the rules in chat every 10 minues
 # Disable by default, people can see rules in the UAC UI from their inventory
-function UAC/modules/rulestimer
+function UAC/modules/testing
 #
 # =ANTI FROSTWALKER=
 # This will disable people from using frostwalker by autoreplaceing their feet slot with netherite boots

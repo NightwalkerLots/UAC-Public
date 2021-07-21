@@ -353,7 +353,8 @@ scoreboard objectives add Player_Facing dummy Player_Facing
 
 #Torchlight Testing timer
 scoreboard objectives add torchtimer dummy torchtimer
-
+scoreboard objectives add hastorch dummy hastorch
+scoreboard objectives add testin dummy testin
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

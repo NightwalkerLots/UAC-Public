@@ -1954,7 +1954,8 @@
         "run_command": {
           "target": "self",
           "command": [
-            "function test/torchlight"
+            "function test/test",
+            "execute @s[scores={hastorch=0}] ~~~ scoreboard players set @s hastorch 1"
           ]
         }
       },
