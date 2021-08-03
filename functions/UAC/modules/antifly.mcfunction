@@ -5,7 +5,7 @@ execute @s[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0}
 execute @s[scores={afmtoggle=1,2KK001=0}] ~~~ tag @s[scores={flycount=150..9999},tag=!staffstatus] add BanFly
 execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flycount 0
 execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flyreset 0
-execute @s[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
+#execute @s[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
 
 
 #This hides this from the in-game function command directory

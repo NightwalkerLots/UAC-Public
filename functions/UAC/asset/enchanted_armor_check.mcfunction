@@ -1,10 +1,5 @@
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l► §d"},{"selector":"@s"},{"text":"'s §6ARMOR STATUS"},{"text":" §¶§c§b◄"}]}
 
-#The values of enchanted armor gets stuck, this switches it back before checking their actual value
-scoreboard players set @s headen 0
-scoreboard players set @s chesten 0
-scoreboard players set @s legen 0
-scoreboard players set @s feeten 0
 
 #Enchanted helmets
 execute @s[scores={headen=1,nethhelm=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite Helmet§7: §2ENCHANTED"}]}
@@ -24,9 +19,9 @@ execute @s[scores={headen=0,leathhelm=0,chainhelm=0,goldhelm=0,ironhelm=0,diahel
 #enchanted chests
 execute @s[scores={chesten=1,nethchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite Chestplate§7: §2ENCHANTED"}]}
 execute @s[scores={chesten=1,diachest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bDiamond Chestplate§7: §2ENCHANTED"}]}
-execute @s[scores={chesten=1,goldchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bIron Chestplate§7: §2ENCHANTED"}]}
-execute @s[scores={chesten=1,ironchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bGolden Chestplate§7: §2ENCHANTED"}]}
-execute @s[scores={chesten=1,goldchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bChain Chestplate§7: §2ENCHANTED"}]}
+execute @s[scores={chesten=1,goldchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bGolden Chestplate§7: §2ENCHANTED"}]}
+execute @s[scores={chesten=1,ironchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bIron Chestplate§7: §2ENCHANTED"}]}
+execute @s[scores={chesten=1,chainchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bChain Chestplate§7: §2ENCHANTED"}]}
 execute @s[scores={chesten=1,leathchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bLeather Chestplate§7: §2ENCHANTED"}]}
 #unenchanted chests
 execute @s[scores={chesten=0,nethchest=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§d"},{"selector":"@s"}, {"text":" §¶§bNetherite ChestPlate§7: §cNO ENCHANTS"}]}

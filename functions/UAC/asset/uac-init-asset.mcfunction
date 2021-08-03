@@ -76,9 +76,13 @@ scoreboard players set @s 09d0i20jS 0
 scoreboard players set @s 9damMM230 0
 scoreboard players set @s 9NW0d9Nas 0
 
-#Vanish detection / defaul value
-scoreboard objectives add vnsh dummy
+#Vanish detection / default value
+scoreboard objectives add vnsh dummy vnsh
 scoreboard players set @s vnsh 0
+
+#Ban status value
+scoreboard objectives add Ban dummy Ban
+scoreboard players set @s Ban 0
 
 #Mining Detection Vaules
 scoreboard objectives add diamondmd dummy diamondmd

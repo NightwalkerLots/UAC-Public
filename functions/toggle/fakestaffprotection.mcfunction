@@ -11,7 +11,7 @@ execute @s[tag=ownerstatus,scores={SSM=2}] ~~~ scoreboard players operation @a s
 execute @s[tag=ownerstatus,scores={SSM=2}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §6Fake Staff Protection §bhas been toggled §cOFF §bby §d"},{"selector":"@s"}]}
 execute @s[tag=ownerstatus,scores={SSM=2}] ~~~ scoreboard players set ssmtoggledummy SSM 0
 #Deny Nonstaff
-execute @s[tag=!ownerstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► This is ment for owners who have more knowledge with add-ons. \nPreform the ownerstatus key, then the Ownerstatus key to unlock this command.\n When this is enabled, you must execute the ownerstatus key onto your staff so they may have the ownerstatus tag."}]}
+execute @s[tag=!ownerstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► This is ment for owners who have more knowledge with add-ons.\nPreform the Staff Key, then the Ownerstatus Key to unlock this command.\nWhen this is enabled, you must execute the Staff key onto your staff so they may have the staffstatus tag."}]}
 execute @s[tag=!ownerstatus] ~~~ execute @s ~~~ playsound note.bass @s ~ ~ ~
 execute @s[tag=ownerstatus] ~~~ execute @s ~~~ playsound note.pling @s ~ ~ ~
 
