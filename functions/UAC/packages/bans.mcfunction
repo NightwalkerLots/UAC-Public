@@ -2,7 +2,6 @@
 hide
 
 
-
 tag @a[tag=staffstatus] remove BanCreative
 tag @a[tag=staffstatus] remove BanCBE
 tag @a[tag=staffstatus] remove BanBypass

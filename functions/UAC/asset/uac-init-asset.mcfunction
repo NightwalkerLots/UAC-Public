@@ -84,6 +84,10 @@ scoreboard players set @s vnsh 0
 scoreboard objectives add Ban dummy Ban
 scoreboard players set @s Ban 0
 
+#unban window timer
+scoreboard objectives add unbantimer dummy unbantimer
+scoreboard objectives add unban dummy unban
+
 #Mining Detection Vaules
 scoreboard objectives add diamondmd dummy diamondmd
 scoreboard objectives add goldmd dummy goldmd

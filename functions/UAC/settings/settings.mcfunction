@@ -5,6 +5,9 @@
 #
 #####################################################################################################
 #
+#=Unban Timer=
+function UAC/modules/unbantimer
+#
 # =ITEM COMMANDS=
 # This will allow people to run commands like home, setspawn and spawn by dropping a named item.
 # Enabled by default
