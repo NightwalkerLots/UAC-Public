@@ -1992,6 +1992,12 @@
         }
       },
       "uac:ban_main": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "execute @s ~~~ function UAC/asset/ban_disconnect_message"
+          ]
+        },
         "add": {
           "component_groups": [
             "uac:ban"

@@ -31,6 +31,7 @@ execute @s[tag=!staffstatus] ~~~ execute @s[tag=illegalitemban] ~~~ function UAC
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanFly] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanPhase] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3}] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus,scores={Ban=1}] ~~~ tag @s add Ban
 
 
 #Anti-Creative Stuff

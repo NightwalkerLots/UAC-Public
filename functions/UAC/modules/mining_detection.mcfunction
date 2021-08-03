@@ -21,7 +21,7 @@ execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={diamondmd=1}] ~~~ execut
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={emeraldmd=1}] ~~~ execute @e[type=item,name="emerald",r=5] ~~~ scoreboard players set @a[r=5] emeraldfnd 1
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={goldmd=1}] ~~~ execute @e[type=item,name="raw gold",r=5] ~~~ scoreboard players set @a[r=5] goldfnd 1
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={goldmd=1}] ~~~ execute @e[type=item,name="gold nugget",r=5] ~~~ scoreboard players set @a[r=5] goldfnd 1
-execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={lapizmd=1}] ~~~ execute @e[type=item,name="Lapis Lazuli",r=5] ~~~ scoreboard players set @a[r=5] laepizfnd 1
+execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={lapizmd=1}] ~~~ execute @e[type=item,name="Lapis Lazuli",r=5] ~~~ scoreboard players set @a[r=5] lapizfnd 1
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={scrapmd=1}] ~~~ execute @e[type=item,name="ancient debris",r=5] ~~~ scoreboard players set @a[r=5] scrapfnd 1
 execute @s[scores={mdmtoggle=1}] ~~~ execute @s[scores={ironmd=1}] ~~~ execute @e[type=item,name="raw iron",r=5] ~~~ scoreboard players set @a[r=5] ironfnd 1
 
