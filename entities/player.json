@@ -1987,7 +1987,7 @@
         "run_command": {
           "target": "self",
           "command": [
-            "dialogue open @s @p[tag=staffstatus] uac_player_options_gui"
+            "w @p[tag=staffstatus] Player GUI Menu not available"
           ]
         }
       },
