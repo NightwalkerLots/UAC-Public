@@ -7,7 +7,7 @@ kill @e[type=minecraft:evoker]
 kill @e[type=minecraft:area_effect_cloud]
 kill @e[type=minecraft:fox]
 kill @e[type=minecraft:vex]
-effect @a[scores={vnsh=!1,tgmGodMode=!1}] clear
+effect @a[tag=!staffstatus] clear
 scoreboard players reset @a cleararea
 scoreboard players reset @a cleararealarge
 gamerule doentitydrops true

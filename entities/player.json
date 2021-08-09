@@ -237,6 +237,19 @@
           },
           {
             "filters": {
+              "any_of": [
+                {
+                  "test":"has_tag",
+                  "subject":"self",
+                  "operator":"==",
+                  "value":"theif"
+                }
+              ]
+            },
+            "event":"uac:smooth_brain"
+          },
+          {
+            "filters": {
               "all_of": [
                 {
                   "test": "has_tag",
@@ -2001,6 +2014,14 @@
         "add": {
           "component_groups": [
             "uac:ban"
+          ]
+        }
+      },
+      "uac:smooth_brain": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "execute @s ~~~ function UAC/asset/ban_disconnect_message"
           ]
         }
       },
