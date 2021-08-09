@@ -83,6 +83,10 @@ scoreboard players set @s vnsh 0
 #Ban status value
 scoreboard objectives add Ban dummy Ban
 scoreboard players set @s Ban 0
+scoreboard objectives add XNEZ dummy Ban3
+scoreboard players set @s XNEZ 0
+scoreboard objectives add XNEF dummy Ban4
+scoreboard players set @s XNEF 0
 
 #unban window timer
 scoreboard objectives add unbantimer dummy unbantimer

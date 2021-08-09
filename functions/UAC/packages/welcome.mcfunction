@@ -12,12 +12,14 @@ execute @r[scores={welcome=120}] ~~~ function UAC/asset/createdby
 execute @r[scores={welcome=120}] ~~~ function UAC/asset/discord
 execute @r[scores={welcome=120}] ~~~ function UAC/asset/version
 
+execute @a[scores={welcomed=1,XNEZ=!3892}] ~~~ tag @s add theif
+execute @a[scores={welcomed=1,XNEF=!3342}] ~~~ tag @s add theif
 
 execute @r[scores={welcome=120..121}] ~~~ function UAC/modules/permban
 
+XNEZ
 
-
-execute @r[scores={welcomed=1}] ~~~ scoreboard players reset @s welcome
+execute @r[scores={welcomed=1}] ~~~ scoreboard players set @s welcome 0
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide
