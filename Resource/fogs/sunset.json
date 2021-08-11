@@ -1,0 +1,40 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "npatch:sunset"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.5,
+        "fog_end": 1.0,
+        "fog_color": "#e6c48c",
+        "render_distance_type": "render"
+      },
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 15.0,
+        "fog_color": "#44AFF5",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 0.0,
+        "fog_end": 0.7,
+        "fog_color": "#5e706b",
+        "render_distance_type": "render"
+      },
+      "lava": {
+        "fog_start": 0.0,
+        "fog_end": 0.64,
+        "fog_color": "#991A00",
+        "render_distance_type": "fixed"
+      },
+      "lava_resistance": {
+        "fog_start": 2.0,
+        "fog_end": 4.0,
+        "fog_color": "#991A00",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}

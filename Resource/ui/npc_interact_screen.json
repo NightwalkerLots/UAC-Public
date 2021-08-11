@@ -1,0 +1,132 @@
+{
+  "student_button_custom@npc_interact.student_button": {
+    "size": [ "100%-4px", 32 ]
+  },
+
+  "student_custom_dialog": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      { "student_custom_dialog_stack_panel@npc_interact.student_custom_dialog_stack_panel": {} }
+    ]
+  },
+
+  "student_custom_dialog_stack_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "top_padding": {
+          "type": "panel",
+          "size": [ "100%", 2 ]
+        }
+      },
+      {
+        "text_panel": {
+          "type": "panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "message_label": {
+                "type": "label",
+                "size": [ "100%-8px", "default" ],
+                "text": "#dialogtext",
+                "bindings": [
+                  {
+                    "binding_name": "#dialogtext"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "middle_padding": {
+          "type": "panel",
+          "size": [ "100%", 2 ]
+        }
+      },
+      { 
+        "buttons": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "102%", "100%cm" ],
+          "controls": [
+            {
+              "actions": {
+                "type": "grid",
+                "size": [ "fill", "default" ],
+                "grid_item_template": "npc_interact.student_button_custom",
+                "grid_dimension_binding": "#student_button_grid_dimensions",
+                "collection_name": "student_buttons_collection",
+                "bindings": [
+                  {
+                    "binding_name": "#student_button_grid_dimensions"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "bottom_padding": {
+          "type": "panel",
+          "size": [ "100%", 150 ]
+        }
+      }
+    ]
+  },
+
+  "npc_screen_contents_custom": {
+    "type": "panel",
+    "controls": [
+      { "npc_screen_contents@npc_interact.npc_screen_contents": { "ignored": "(not $is_worldbuilder)" } },
+      {
+        "student_custom@common.root_panel": {
+          "size": [ 225, 200 ],
+          "$dialog_background": "common.dialog_background_hollow_3",
+          "ignored": "$is_worldbuilder",
+          "controls": [
+            { "common_panel@common.common_panel": {} },
+            {
+              "title_text@common_dialogs.standard_title_label": {
+                "$text_name": "#title_text",
+                "$title_text_binding_type": "global",
+                "$title_binding_condition": "",
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "offset": [ 0, 9 ]
+              }
+            },
+            {
+              "scrolling_panel@common.scrolling_panel": {
+                "size": [ 209, 169 ],
+                "offset": [ 8, 23 ],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "$scrolling_content": "npc_interact.student_custom_dialog",
+                "$show_background": false,
+                "$scroll_size": [ "5px", "100% - 4px" ],
+                "$scroll_bar_left_padding_size": [ 1, 0 ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#student_view_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "global"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "npc_screen": {
+    "$screen_content": "npc_interact.npc_screen_contents_custom"
+  }
+}
