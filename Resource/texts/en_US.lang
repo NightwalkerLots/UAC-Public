@@ -1,0 +1,82 @@
+menu.howToPlay=§¶§c§l►UAC Help Menu
+menu.howToPlay.generalMessage=§l§bCreated by §2NightwalkerLots §b& §2UnknownCatastrophy§7.
+howtoplay.category.uac=§¶§c§lUAC ► UI Menu
+
+howtoplay.uac_home=§¶§c§lUAC ► §l§bHome Page
+
+howtoplay.uac_home.title=§l§¶§bUnity Anti-Cheat Menu
+
+uac.home.header.title0=§l§¶§bUnity Anti-Cheat
+uac.home.text0=§¶§b► Discord.gg/UQ56g9a
+uac.home.text1=§¶§b► youtube.com/c/nightwalkerlots
+
+uac.home.header.title2=§l§bCreated by §2NightwalkerLots §b& §2UnknownCatastrophy§7.
+uac.home.text2=§¶§5► Optimize your gameplay
+uac.home.text3=§¶§5► User friendly
+uac.home.text4=§¶§5► Tools for staff and players
+uac.home.text5=§¶§5► Placeholder
+uac.home.text6=§¶§5► Placeholder
+uac.home.text7=§¶§5► Placeholder
+uac.home.text8=§¶§5► Placeholder
+
+
+howtoplay.uac_player=§l§¶§cUAC ► §l§bPlayer Instructions
+
+howtoplay.uac_player.title=§l§¶§cUAC ► §l§bPlayer Instructions
+
+
+uac.player.header.title0=§l§¶§cUAC ► §l§bPlayer Instructions
+uac.player.text0=§¶§b► Right click on a player to see their stats!
+uac.player.text1=§¶§b► Lay down in a bed to set spawn coords in UAC, or use a setspawn item command
+uac.player.text2=§¶§b► Placeholder
+uac.player.text3=§¶§b► Placeholder
+uac.player.text4=§¶§b► Placeholder
+uac.player.text5=§¶§b► Placeholder
+uac.player.text6=§¶§b► Placeholder
+uac.player.text7=§¶§b► Placeholder
+uac.player.text8=§¶§b► Placeholder
+uac.player.text9=§¶§b► Discord.gg/UQ56g9a
+uac.player.header.title1=§l§¶§cUAC ► §l§bPlayer Instructions
+
+
+howtoplay.uac_itemcommands=§¶§c§lUAC ► §l§bItem Commands
+
+howtoplay.uac_itemcommands.title=§¶§c§lUAC ► §l§bItem Commands
+
+
+uac.itemcommands.header.title0=§¶§c§lUAC ► §l§bItem Commands
+uac.itemcommands.text0=§¶§b► Step 1: Name any item one of the following words with a anvil
+uac.itemcommands.text1=§¶§b (Make sure the word is all lowercase and spelled correctly)
+uac.itemcommands.text2=§¶§b► home
+uac.itemcommands.text3=§¶§b► The above command will take you directly to your current spawn point
+uac.itemcommands.text4=§¶§b► spawn
+uac.itemcommands.text5=§¶§b► The above command teleport you close to world spawn.
+uac.itemcommands.text6=§¶§b► setspawn
+uac.itemcommands.text7=§¶§b► The above command will set your spawn at your current position.
+uac.itemcommands.text8=§¶§b► Step 2: Once you have named the item, dropping the item will trigger the command.
+uac.itemcommands.header.title1=§¶§c§lUAC ► §l§bItem Commands
+
+
+howtoplay.uac_faq=§¶§c§lUAC ► §l§bFAQ
+
+howtoplay.uac_faq.title=§¶§c§lUAC ► §l§bFAQ
+
+
+uac.faq.header.title0=§¶§c§lUAC ► §l§bFAQ
+uac.faq.text0=§¶§b► Q: World Border not working? UAC not tracking player coords right?
+uac.faq.text1=§¶§2► A: This is because you did not enable Experimental Features on the world before putting it on the realm.
+uac.faq.text2=§¶§b► Q: I'm having problems with Fake Staff Protection
+uac.faq.text3=§¶§2► A: There's is better documentation on how to properly use this on our discord. §¶§e Discord.gg/UQ56g9a
+uac.faq.text4=§¶§b► Q: I can't equip enchanted boots
+uac.faq.text5=§¶§2► A: This realm may have Anti-Frostwalker Enabled
+uac.faq.text6=§¶§b► Q: I can't enter creative mode or do commands even though I am staff
+uac.faq.text7=§¶§2► A: Preform the §e/function UAC/help §2command, and it will show you the tag you need to have
+uac.faq.text8=§¶§b► Q: How do I turn off hotbar messages?
+uac.faq.text9=§¶§2► A: The toggle has three modes. 1st: Enabled, 2nd: Enabled without K/D stats in Survival, 3rd: Disabled
+uac.faq.text10=§¶§c► Q: Placeholder
+uac.faq.text11=§¶§c► Q: Placeholder
+uac.faq.text12=§¶§c► Q: Placeholder
+uac.faq.text13=§¶§c► Q: Placeholder
+uac.faq.header.title1=§¶§c§lUAC ► §l§bFAQ
+
+uac.emptyspace.text0=

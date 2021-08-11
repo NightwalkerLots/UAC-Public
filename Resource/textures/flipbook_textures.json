@@ -1,0 +1,102 @@
+[
+  {
+    "flipbook_texture": "textures/blocks/fire_0",
+    "atlas_tile": "fire_0",
+    "frames": [ 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/fire_1",
+    "atlas_tile": "fire_1",
+    "frames": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/carrots_stage_3",
+    "atlas_tile": "carrots_stage_3",
+    "frames": [ 4, 3, 2, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 8, 8, 8, 8, 8, 7, 7, 7, 6, 5 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/leaves_oak",
+    "atlas_tile": "leaves_oak"
+  },
+  {
+    "flipbook_texture": "textures/blocks/leaves_big_oak",
+    "atlas_tile": "leaves_big_oak"
+  },
+  {
+    "flipbook_texture": "textures/blocks/nether_wart_stage_1",
+    "atlas_tile": "nether_wart_stage_1",
+	"frames": [ 2, 2, 2, 1, 0, 0, 0, 0, 0, 1, 2, 2, 2, 3, 4, 4, 4, 4, 4, 3 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/carrots_stage_2",
+    "atlas_tile": "carrots_stage_2",
+    "frames": [ 3, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 4 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/potatoes_stage_2",
+    "atlas_tile": "potatoes_stage_2",
+    "frames": [ 3, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 4 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/wheat_stage_7",
+    "atlas_tile": "wheat_stage_7",
+    "frames": [ 0, 1, 2, 3, 3, 3, 3, 8, 8, 8, 8, 8, 3, 3, 3, 2, 1, 0, 4, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 6, 6, 6, 5, 4 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/wheat_stage_6",
+    "atlas_tile": "wheat_stage_6",
+    "frames": [ 3, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 4 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/wheat_stage_5",
+    "atlas_tile": "wheat_stage_5",
+    "frames": [ 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/wheat_stage_4",
+    "atlas_tile": "wheat_stage_4",
+    "frames": [ 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/potatoes_stage_3",
+    "atlas_tile": "potatoes_stage_3",
+    "frames": [ 3, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 4 ]
+  },
+  {
+    "flipbook_texture": "textures/blocks/water_still",
+    "atlas_tile": "still_water",
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/water_flow",
+    "atlas_tile": "flowing_water",
+    "replicate": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/cauldron_water",
+    "atlas_tile": "cauldron_water",
+    "ticks_per_frame": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/lava_still",
+    "atlas_tile": "still_lava",
+    "ticks_per_frame": 16
+  },
+  {
+    "flipbook_texture": "textures/blocks/lava_flow",
+    "atlas_tile": "flowing_lava",
+    "ticks_per_frame": 10,
+    "replicate": 2
+  },
+  {
+    "flipbook_texture": "textures/blocks/portal",
+    "atlas_tile": "portal"
+  },
+  {
+    "flipbook_texture": "textures/blocks/sea_lantern",
+    "atlas_tile": "sea_lantern",
+    "ticks_per_frame": 5
+  }
+]
+
+

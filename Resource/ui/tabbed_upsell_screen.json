@@ -1,0 +1,24 @@
+//Links fixed by NightwalkerLots
+
+	//made by Unity_Deicide, Dakonblackrose, NightwalkerLots, ShatteredMatrix
+	//All rights reserved - UECMT Modding Team
+{
+ "namespace": "tabbed_upsell",
+
+ "Unity_Deicide": {
+  "type": "label",
+  "text":
+"§¶§cUAC ► §bCreated by §2NightwalkerLots §b& §2UnknownCatastrophe\n§¶§cUAC ► §bDiscord.gg/7Us7ER8WUw\n§¶§cUAC ► §bhttps://github.com/NightwalkerLots/UAC-Public\n§¶§cUAC ► §bhttps://mcpedl.com/unity-anticheat-addon/"
+ },
+
+ "scroll@common.scrolling_panel": {
+  "$show_background": false,
+  "$scrolling_content": "tabbed_upsell.Unity_Deicide"
+ },
+
+ "tabbed_upseel_screen_panel@common_dialogs.main_panel_no_buttons": {
+  "size": ["80%" ,"80%" ],
+  "$text_name": "§¶§cUAC ► §7[ §bUnity Anti-Cheat §2v2.3 §7]",
+  "$child_control": "tabbed_upsell.scroll"
+ }
+}

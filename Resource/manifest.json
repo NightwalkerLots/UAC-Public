@@ -1,0 +1,17 @@
+{
+    "format_version": 1,
+    "header": {
+        "description": "§o§byoutube.com/c/nightwalkerlots\n§e§o@Lastofthesorrow\n§7[ §bUnity Anti-Cheat Resource §2v2.3 §7]",
+        "name": "§¶§cUAC ► §7[ §bUnity Anti-Cheat Resource §2v2.3 §7]",
+        "uuid": "f091c9cd-c228-4849-b8a3-89842ab84a48",
+        "version": [1, 5, 35]
+    },
+    "modules": [
+        {
+            "description": "§7[ §bUnity Anti-Cheat Resource §2v2.3 §7]",
+            "type": "resources",
+            "uuid": "9f955b4f-26c8-4fec-8728-0ad8e0a2a34f",
+            "version": [1, 5, 35]
+        }
+    ]
+}

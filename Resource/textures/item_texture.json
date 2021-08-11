@@ -1,0 +1,15 @@
+{
+	"resource_pack_name": "vanilla",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"debug": {
+			"textures": "textures/items/debug"
+		},
+		"home": {
+			"textures": "textures/items/debug"
+		},
+		"spawn": {
+			"textures": "textures/items/debug"
+		}
+	}
+}

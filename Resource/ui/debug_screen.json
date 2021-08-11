@@ -1,0 +1,89 @@
+{
+  "namespace": "debug_screen",
+
+  //--------------------------------------------------------------------------------
+  // Access Console
+  //--------------------------------------------------------------------------------
+
+  "access_button@common_buttons.light_content_button": {
+    "$pressed_button_name": "button.access",
+    "size": [ 20, 20 ],
+    "offset": [ 20, 20 ],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "bindings": [
+      {
+        "binding_name": "#access_screen_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  //--------------------------------------------------------------------------------
+  // Pack Info
+  //--------------------------------------------------------------------------------
+
+  "pack_info": {
+    "type": "label",
+    "text": "§¶§c§lUAC ► §bUnity Anti-Cheat",
+    "color": [ 1.0, 1.0, 1.0 ],
+    "shadow": true,
+    "font_size": "medium",
+    "visible": "$pack_info_debug",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "alpha": 11
+  },
+    //--------------------------------------------------------------------------------
+  // Beta Info
+  //--------------------------------------------------------------------------------
+
+  "special_render": {
+    "type": "label",
+    "text": "",
+    "color": [ 1.0, 1.0, 1.0 ],
+    "shadow": true,
+    "font_size": "medium",
+    "visible": "$pack_info_debug",
+    "text_alignment": "center",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "alpha": 10
+  },
+
+//--------------------------------------------------------------------------------
+  // Debug Global Screen Panel 
+  //--------------------------------------------------------------------------------
+
+  "debug_global_screen_panel": {
+    "type": "panel",
+    "clips_children": false,
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { "access_button@debug_screen.access_button": { } },
+      { "special_render@debug_screen.special_render": { } },
+      { "FPS_desktop@debug_screen.FPS_desktop": { } },
+      { "pack_info@debug_screen.pack_info": { } }
+    ]
+  },
+
+  //--------------------------------------------------------------------------------
+  // Debug Screen
+  //--------------------------------------------------------------------------------
+
+  "debug_screen@common.base_screen": {
+    "send_telemetry": false,
+    "screen_not_flushable": true,
+    "render_game_behind": true,
+    "is_showing_menu": false,
+    "low_frequency_rendering": true,
+    "is_modal": true,
+    "should_steal_mouse": false,
+    "render_only_when_topmost": false,
+    "screen_draws_last": true,
+    "always_accepts_input": true,
+    "$screen_content": "debug_screen.debug_global_screen_panel",
+    "$screen_animations": [],
+    "$use_loading_bars": false
+  }
+}

@@ -1,0 +1,13 @@
+/*
+Nightwalker - Fixed transparancy bug
+  */
+{
+  "biomes": {
+    "default": {
+      "water_surface_color": "#1b81c1",
+      "water_surface_transparency": 0.8,
+      "water_fog_color": "#1b81c1",
+      "water_fog_distance": 200
+    }
+  }
+}
