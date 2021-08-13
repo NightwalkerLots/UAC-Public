@@ -130,6 +130,11 @@ scoreboard players set @s Deathef 1
 scoreboard players set @s dethtoggle 1
 scoreboard players operation @s Deathef = BDXdummy Deathef
 scoreboard players operation @s dethtoggle = dethtoggledummy dethtoggle
+#Death coord values
+scoreboard objectives add X_Coord_D dummy
+scoreboard objectives add Y_Coord_D dummy
+scoreboard objectives add Z_Coord_D dummy
+
 #Last command used system
 scoreboard objectives add lstcmd dummy lstcmd
 #Default value for last command system

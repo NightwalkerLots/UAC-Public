@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "toggle_module_pag3",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.2§7]" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.3§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 3\n\n§¶§l§0NEM ► Disable EnderChests \n§¶§l§0NFM ► Anti-Frostwalker \n§¶§l§0OPAM ► Anti OP Abuse \n§¶§l§0RSM ► Random World Spawn \n§¶§l§0TPM ► Time Played Tracker" } ] },
 				"buttons": [
 					{
