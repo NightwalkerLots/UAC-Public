@@ -1,7 +1,7 @@
 scoreboard players add @a welcome 1
 scoreboard objectives add welcome dummy welcome
 execute @r[scores={welcome=120}] ~~~ playsound random.levelup @s ~~~ 2
-title @r[scores={welcome=120}] title §¶§c§l► Unity Anti-Cheat v2.2 ◄
+title @r[scores={welcome=120}] title §¶§c§l► Unity Anti-Cheat v2.3 ◄
 execute @r[scores={welcome=120}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":" §¶§bhas joined for the first time! Let's welcome them."}]}
 tellraw @r[scores={welcome=120}] {"rawtext":[{"text":"§¶§cUAC §b► §bType the following to perform the help command"}]}
 tellraw @r[scores={welcome=120}] {"rawtext":[{"text":"§¶§c► /function UAC/help"}]}
