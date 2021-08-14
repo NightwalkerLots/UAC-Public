@@ -92,7 +92,7 @@
           "text": "('howtoplay.' + $section_topic)",
           "layer": 3,
           "color": "$text_color",
-          "alpha": "$content_alpha"
+          "alpha": "black"
         }
       }
     ]
@@ -294,7 +294,7 @@
                 "anchor_to": "left_middle",
                 "$screen_header_title": "#section_title",
                 "$screen_header_title_binding_type": "global",
-                "layer": 2                
+                "layer": 2
               }
             },
             { "gamepad_bumper_helpers@how_to_play_common.gamepad_bumper_helpers": {} }
