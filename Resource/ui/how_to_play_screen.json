@@ -29,8 +29,9 @@
             { "uac_category@how_to_play_common.topic_category": { "$category": "uac" } },
             { "uac_home_button@how_to_play.uac_home_button": { "$toggle_group_forced_index": 0 } },
             { "uac_player_button@how_to_play.uac_player_button": { "$toggle_group_forced_index": 1 } },
-            { "uac_itemcommands_button@how_to_play.uac_itemcommands_button": { "$toggle_group_forced_index": 2 } },
-            { "uac_faq_button@how_to_play.uac_faq_button": { "$toggle_group_forced_index": 3 } },
+            { "uac_staff_button@how_to_play.uac_staff_button": { "$toggle_group_forced_index": 2 } },
+            { "uac_itemcommands_button@how_to_play.uac_itemcommands_button": { "$toggle_group_forced_index": 3 } },
+            { "uac_faq_button@how_to_play.uac_faq_button": { "$toggle_group_forced_index": 4 } },
             {
               "padding_1@how_to_play_common.padding": {
                 "size": [ 0, 10 ]
@@ -58,6 +59,7 @@
             },
             { "uac_home_section@how_to_play.uac_home_section": { } },
             { "uac_player_section@how_to_play.uac_player_section": { } },
+            { "uac_staff_section@how_to_play.uac_staff_section": { } },
             { "uac_itemcommands_section@how_to_play.uac_itemcommands_section": { } },
             { "uac_faq_section@how_to_play.uac_faq_section": { } },
             {
@@ -84,39 +86,17 @@
     ],
     "controls": [
       { "header_0@how_to_play_common.header": {
-         "$text": "uac.home.header.title0" } },
-         { "padding_0@how_to_play_common.padding": { } },
-      { "paragraph_0@how_to_play_common.paragraph": {
-         "$text": "uac.home.text0" } },
-      { "paragraph_0@how_to_play_common.paragraph": {
-        "$text": "uac.home.text1" } },
-      { "padding_1@how_to_play_common.padding": { } },
+        "$text": "uac.home.header.title0" } },
+      { "padding_2@how_to_play_common.padding": { } },
       { "image_0@how_to_play_common.image": {
-         "texture": "textures/ui_asset/uac_logo1" } },
-         { "padding_2@how_to_play_common.padding": { } },
-
-      { "header_1@how_to_play_common.header": {
-         "$text": "uac.home.header.title2" } },
-         { "padding_3@how_to_play_common.padding": { } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-         "$text": "uac.home.text2" } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-        "$text": "uac.home.text3" } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-        "$text": "uac.home.text4" } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-        "$text": "uac.home.text5" } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-        "$text": "uac.home.text6" } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-        "$text": "uac.home.text7" } },
-      { "paragraph_1@how_to_play_common.paragraph": {
-        "$text": "uac.home.text8" } },
-         { "padding_4@how_to_play_common.padding": { } },
-      { "image_1@how_to_play_common.image": {
          "texture": "textures/ui_asset/uac_logo2" } },
-         { "padding_5@how_to_play_common.padding": { }
-    }
+      { "padding_2@how_to_play_common.padding": { } },
+      { "image_0@how_to_play_common.image": {
+        "texture": "textures/ui_asset/uac_discord" } },
+      { "image_0@how_to_play_common.image": {
+        "texture": "textures/ui_asset/uac_youtube" } },
+      { "header_1@how_to_play_common.header": {
+        "$text": "uac.home.header.title2" } }
   ]
 },
 
@@ -160,6 +140,47 @@
               "$text": "uac.player.header.title1" } }
      ]
    },
+//staff's how-to menu
+  "uac_staff_button@how_to_play_common.section_toggle_button": {
+    "$section_topic": "uac_staff"
+  },
+  "uac_staff_section@how_to_play_common.main_sections": {
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "uac_staff_button_toggle",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+        }
+ ],
+  "controls": [
+           { "header_0@how_to_play_common.header": {
+            "$text": "uac.staff.header.title0" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text0" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text1" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text2" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text3" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text4" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text5" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text6" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text7" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text8" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text9" } },
+           { "header_0@how_to_play_common.header": {
+             "$text": "uac.staff.header.title1" } }
+    ]
+  },
+
 //item commands tab
    "uac_itemcommands_button@how_to_play_common.section_toggle_button": {
     "$section_topic": "uac_itemcommands"
