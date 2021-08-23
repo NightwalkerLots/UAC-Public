@@ -11,6 +11,7 @@
           "testing",
           "death_effect",
           "on_death",
+          "oneshot",
           "home_x_negative",
           "home_y_negative",
           "home_z_negative",
@@ -40,6 +41,7 @@
         "testing": "animation.testing",
         "death_effect": "controller.animation.death_effect",
         "on_death": "controller.animation.on_death",
+        "oneshot": "controller.animation.player.oneshot",
         "home_x_negative": "controller.animation.home_x_negative",
         "home_y_negative": "controller.animation.home_y_negative",
         "home_z_negative": "controller.animation.home_z_negative",
@@ -1868,6 +1870,29 @@
             },
             "deals_damage": false
           },
+          //oneshot framework given to UAC by balloon
+          //Damage Sensor Channel in this discord -> discord.gg/BDeDTefE47
+          {
+            "on_damage": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                    {
+                      "test": "has_tag",
+                      "value": "can_oneshot"
+                    },
+                    {
+                      "test": "has_damage",
+                      "value": "fatal"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "deals_damage": false
+          },
           {
             "on_damage": {
               "filters": {
@@ -1969,6 +1994,14 @@
           "command": [
             "function test/test",
             "execute @s[scores={hastorch=0}] ~~~ scoreboard players set @s hastorch 1"
+          ]
+        }
+      },
+      "uac:oneshot_flag": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "function UAC/asset/oneshot_flag_asset"
           ]
         }
       },
