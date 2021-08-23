@@ -216,6 +216,7 @@ scoreboard objectives add UOIM dummy UOIM
 scoreboard objectives add IBM dummy IBM
 scoreboard objectives add DAM dummy DAM
 scoreboard objectives add MDM dummy MDM
+scoreboard objectives add OSM dummy
 
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
@@ -241,6 +242,7 @@ scoreboard objectives add uoimtoggle dummy uoimtoggle
 scoreboard objectives add ibmtoggle dummy ibmtoggle
 scoreboard objectives add damtoggle dummy damtoggle
 scoreboard objectives add mdmtoggle dummy mdmtoggle
+scoreboard objectives add osmtoggle dummy
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -294,6 +296,7 @@ scoreboard players set @s uoimtoggle 0
 scoreboard players set @s ibmtoggle 0
 scoreboard players set @s damtoggle 0
 scoreboard players set @s mdmtoggle 0
+scoreboard players set @s osmtoggle 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -319,6 +322,7 @@ scoreboard players set @s UOIM 0
 scoreboard players set @s IBM 0
 scoreboard players set @s DAM 0
 scoreboard players set @s MDM 0
+scoreboard players set @s OSM 0
 
 #Staff Protection
 scoreboard players set @s[tag=!staffstatus] 2DI3N 0
@@ -338,6 +342,7 @@ gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
 scoreboard players set @s opabusemodule 2
 scoreboard players set @s welcomed 1
+
 
 #WB init default value
 execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000
