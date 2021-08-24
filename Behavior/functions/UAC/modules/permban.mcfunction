@@ -69,6 +69,7 @@ tag "NinjaXhunter130" add PermBan
 tag "frickyea99" add PermBan
 tag "timmy_is_daddy57" add PermBan
 tag "Julisco21" add PermBan
+tag "xIlSHNAGSlIx" add PermBan
 
 tag @a[tag=Ban] add PermBan
 

@@ -4,6 +4,9 @@
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_X = BDXdummy Border_Coord_X
 
+#fix tag-sync for oneshot
+execute @a[scores={osmtoggle=0}] ~~~ tag @s remove can_oneshot
+
 #module toggles
 scoreboard players operation @a ACM = acmtoggledummy ACM
 scoreboard players operation @a acmtoggle = acmtoggledummy acmtoggle
@@ -41,6 +44,9 @@ scoreboard players operation @a UOIM = uoimtoggledummy UOIM
 scoreboard players operation @a uoimtoggle = uoimtoggledummy uoimtoggle
 scoreboard players operation @a WBM = wbmtoggledummy WBM
 scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle
+scoreboard players operation @a osmtoggle = osmtoggledummy osmtoggle
+scoreboard players operation @a OSM = osmtoggledummy OSM
+
 
 #Ore Alert toggles
 scoreboard players operation @a diamondmd = mdmtoggledummy diamondmd
@@ -49,6 +55,21 @@ scoreboard players operation @a lapizmd = mdmtoggledummy lapizmd
 scoreboard players operation @a scrapmd = mdmtoggledummy scrapmd
 scoreboard players operation @a emeraldmd = mdmtoggledummy emeraldmd
 scoreboard players operation @a ironmd = mdmtoggledummy ironmd
+
+
+scoreboard players operation @a Deathef = BDXdummy Deathef
+scoreboard players operation @a dethtoggle = dethtoggledummy dethtoggle
+scoreboard players operation @a osmtoggle = osmtoggledummy osmtoggle
+scoreboard players operation @a mdmtoggle = mdmtoggledummy mdmtoggle
+
+#precache all itemban toggled items
+scoreboard players operation @s BNA = BNAdummy BNA
+scoreboard players operation @s BNM = BNAdummy BNM
+scoreboard players operation @s BNCB = BNAdummy BNCB
+scoreboard players operation @s BNSB = BNAdummy BNSB
+scoreboard players operation @s BNBQ = BNAdummy BNBQ
+scoreboard players operation @s BNTN = BNAdummy BNTN
+scoreboard players operation @s BNTD = BNAdummy BNTD
 
 scoreboard players operation @a pvp = pvpdummy pvp
 #This hides this from the in-game function command directory

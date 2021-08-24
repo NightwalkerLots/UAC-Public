@@ -11,6 +11,7 @@ execute @s[tag=!staffstatus] ~~~ clear @s
 #1.17 ban title messages  (06/22/2021)
 execute @s[tag=!staffstatus] ~~~ title @s[tag=PermBan] title §¶§cUAC ► You are UAC Global Banned!
 execute @s[tag=!staffstatus] ~~~ title @s[tag=BanCBE] title §¶§cUAC ► Flagged for CBE
+execute @s[tag=!staffstatus] ~~~ title @s[tag=BanCreative] title §¶§cUAC ► Flagged Creative Mode
 execute @s[tag=!staffstatus] ~~~ title @s[tag=Ban] title §¶§cUAC ► BANNED BY OPERATOR
 execute @s[tag=!staffstatus] ~~~ title @s[tag=illegalitemban] title §¶§cUAC ► Flagged for Illegal Items
 execute @s[tag=!staffstatus] ~~~ title @s[tag=BanFly] title §¶§cUAC ► Flagged for Fly Hacks

@@ -165,6 +165,7 @@ scoreboard players set @s feeten 0
 #This adds all the scoreboard stuff we need
 scoreboard objectives add warn dummy warn
 scoreboard objectives add warnillegal dummy warnillegal
+scoreboard objectives add warncbe dummy
 scoreboard objectives add staff dummy §¶§bStaff
 scoreboard objectives setdisplay belowname staff
 scoreboard objectives add lagtimer dummy lagtimer
@@ -342,6 +343,7 @@ gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
 scoreboard players set @s opabusemodule 2
 scoreboard players set @s welcomed 1
+scoreboard objectives add gmc_flag dummy
 
 
 #WB init default value
