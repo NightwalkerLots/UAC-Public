@@ -12,7 +12,7 @@ tag @a[tag=staffstatus] remove Ban
 #kick @r[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
 #Autoban Creative/CBE
-tag @a[tag=!staffstatus,m=c] add BanCreative
+execute @a[m=c,tag=!staffstatus] ~~~ function UAC/asset/creative_flag_asset
 
 #Kick Messages
 #execute @a[tag=BanCBE] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cwas season banned for CBE exploits"}]}
@@ -25,6 +25,7 @@ tag @a[tag=!staffstatus,m=c] add BanCreative
 title @s times 0 100 0
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=PermBan] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCBE] ~~~ function UAC/asset/ban_asset
+execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCreative] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=Ban] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=illegalitemban] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanFly] ~~~ function UAC/asset/ban_asset
@@ -32,12 +33,6 @@ execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanPhase] ~~~ function UAC/asset
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3}] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus,scores={Ban=1}] ~~~ tag @s add Ban
 
-
-#Anti-Creative Stuff
-execute @a[m=c,tag=!staffstatus] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cChanging gamemode isn't allowed"}]}
-gamemode s @a[m=c,tag=!staffstatus]
-kill @a[tag=BanCreative]
-tag @a remove BanCreative
 
 #AutoKick
 #kick @a[scores={warn=3}] §¶§cUAC ► Season Banned - 3 Warnings Recieved

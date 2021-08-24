@@ -960,6 +960,93 @@
                   "test": "has_equipment",
                   "domain": "any",
                   "operator": "==",
+                  "value": "minecraft:pufferfish_bucket"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:salmon_bucket"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:tropical_fish_bucket"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:cod_bucket"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:powder_snow_bucket"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:axolotl_bucket"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:bee_nest"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:beehive"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:movingBlock"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:command_block"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:chain_command_block"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:repeating_command_block"
+                }
+              ]
+            },
+            "event": "uac:cbe_flag"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_tag",
+                  "subject": "self",
+                  "operator": "!=",
+                  "value": "staffstatus"
+                }
+              ],
+              "any_of": [
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
                   "value": "minecraft:pumpkin_stem"
                 },
                 {
@@ -1134,7 +1221,7 @@
                   "test": "has_equipment",
                   "domain": "any",
                   "operator": "==",
-                  "value": "minecraft:movingBlock"
+                  "value": "minecraft:movingblock"
                 },
                 {
                   "test": "has_equipment",
@@ -1170,7 +1257,7 @@
                   "test": "has_equipment",
                   "domain": "any",
                   "operator": "==",
-                  "value": "minecraft:jugsaw"
+                  "value": "minecraft:jigsaw"
                 },
                 {
                   "test": "has_equipment",
@@ -1236,19 +1323,13 @@
                   "test": "has_equipment",
                   "domain": "any",
                   "operator": "==",
-                  "value": "minecraft:bee_nest"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:beehive"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
                   "value": "minecraft:border_block"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:border"
                 },
                 {
                   "test": "has_equipment",
@@ -1291,6 +1372,12 @@
                   "domain": "any",
                   "operator": "==",
                   "value": "minecraft:glowingobsidian"
+                },
+                {
+                  "test": "has_equipment",
+                  "domain": "any",
+                  "operator": "==",
+                  "value": "minecraft:glowstick"
                 },
                 {
                   "test": "has_equipment",
@@ -1711,42 +1798,6 @@
                   "domain": "any",
                   "operator": "==",
                   "value": "minecraft:npc_spawn_egg"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:pufferfish_bucket"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:salmon_bucket"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:tropical_fish_bucket"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:cod_bucket"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:powder_snow_bucket"
-                },
-                {
-                  "test": "has_equipment",
-                  "domain": "any",
-                  "operator": "==",
-                  "value": "minecraft:axolotl_bucket"
                 }
               ]
             },
@@ -1994,6 +2045,15 @@
           "command": [
             "function test/test",
             "execute @s[scores={hastorch=0}] ~~~ scoreboard players set @s hastorch 1"
+          ]
+        }
+      },
+      "uac:cbe_flag": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "execute @s[tag=!staffstatus,scores={acmtoggle=1}] ~~~ replaceitem entity @s slot.weapon.mainhand 0 air",
+            "execute @s[scores={acmtoggle=1}] ~~~ function UAC/asset/cbeitemwarn"
           ]
         }
       },

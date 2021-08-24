@@ -5,6 +5,7 @@ tag @s remove Ban
 tag @s remove illegalitemban
 tag @s remove BanFly
 tag @s remove BanPhase
+tag @s remove BanCreative
 
 scoreboard players reset @s BanCBE
 scoreboard players reset @s BanWarn
@@ -12,6 +13,7 @@ scoreboard players reset @s Ban
 scoreboard players reset @s IIB
 scoreboard players reset @s BanFly
 scoreboard players reset @s BanPhase
+scoreboard players reset @s gmc_flag
 execute @s ~~~ function UAC/warnreset
 scoreboard players set @s lstcmd 23
 

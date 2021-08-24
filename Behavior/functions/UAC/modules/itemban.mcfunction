@@ -1,11 +1,3 @@
-#precache all toggled items
-scoreboard players operation @s BNA = BNAdummy BNA
-scoreboard players operation @s BNM = BNAdummy BNM
-scoreboard players operation @s BNCB = BNAdummy BNCB
-scoreboard players operation @s BNSB = BNAdummy BNSB
-scoreboard players operation @s BNBQ = BNAdummy BNBQ
-scoreboard players operation @s BNTN = BNAdummy BNTN
-
 #Remove banned items
 execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNA=1}] ~~~ clear @s arrow 24
 execute @s[scores={ibmtoggle=1}] ~~~ execute @s[scores={BNA=1}] ~~~ clear @s arrow 25

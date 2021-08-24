@@ -158,6 +158,8 @@
             "$text": "uac.staff.header.title0" } },
            { "paragraph_0@how_to_play_common.paragraph": {
              "$text": "uac.staff.text0" } },
+           { "header_0@how_to_play_common.header": {
+            "$text": "uac.staff.header.title1" } },
            { "paragraph_0@how_to_play_common.paragraph": {
              "$text": "uac.staff.text1" } },
            { "paragraph_0@how_to_play_common.paragraph": {
@@ -176,8 +178,47 @@
              "$text": "uac.staff.text8" } },
            { "paragraph_0@how_to_play_common.paragraph": {
              "$text": "uac.staff.text9" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text10" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text11" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text12" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text13" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text14" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text15" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text16" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text17" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text18" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text19" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text20" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text21" } },
+           { "padding_2@how_to_play_common.padding": { } },
            { "header_0@how_to_play_common.header": {
-             "$text": "uac.staff.header.title1" } }
+             "$text": "uac.staff.header.title2" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text22" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text23" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text24" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text25" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text26" } },
+           { "paragraph_0@how_to_play_common.paragraph": {
+             "$text": "uac.staff.text27" } },
+           { "header_0@how_to_play_common.header": {
+             "$text": "uac.staff.header.title3" } }
     ]
   },
 
@@ -201,20 +242,34 @@
               "$text": "uac.itemcommands.text0" } },
             { "paragraph_0@how_to_play_common.paragraph": {
                "$text": "uac.itemcommands.text1" } },
+            { "padding_2@how_to_play_common.padding": { } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text2" } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text3" } },
+            { "padding_2@how_to_play_common.padding": { } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text4" } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text5" } },
+            { "padding_2@how_to_play_common.padding": { } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text6" } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text7" } },
+            { "padding_2@how_to_play_common.padding": { } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text8" } },
+            { "paragraph_0@how_to_play_common.paragraph": {
+              "$text": "uac.itemcommands.text9" } },
+            { "padding_2@how_to_play_common.padding": { } },
+            { "paragraph_0@how_to_play_common.paragraph": {
+              "$text": "uac.itemcommands.text10" } },
+            { "paragraph_0@how_to_play_common.paragraph": {
+              "$text": "uac.itemcommands.text11" } },
+            { "padding_2@how_to_play_common.padding": { } },
+            { "paragraph_0@how_to_play_common.paragraph": {
+              "$text": "uac.itemcommands.text12" } },
             { "header_0@how_to_play_common.header": {
               "$text": "uac.itemcommands.header.title1" } },
             { "image_0@how_to_play_common.image": {
