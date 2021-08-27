@@ -3,10 +3,12 @@
 #Prohibit further gameplay from player {you got better ideas please add}
 execute @s[tag=!staffstatus] ~~~ tp @s 0 900 0
 execute @s[tag=!staffstatus] ~~~ effect @s strength 99999999 255 false
+execute @s[tag=!staffstatus] ~~~ effect @s resistance 99999999 255 false
 execute @s[tag=!staffstatus] ~~~ effect @s blindness 99999999 10 false
 execute @s[tag=!staffstatus] ~~~ effect @s slow_falling 99999999 255 false
 execute @s[tag=!staffstatus] ~~~ effect @s mining_fatigue 99999999 255 false
-execute @s[tag=!staffstatus] ~~~ clear @s
+execute @s[tag=!staffstatus] ~~~ tag @s godmode
+execute @s[tag=!staffstatus] ~~~ function UAC/asset/inv_lock
 
 #1.17 ban title messages  (06/22/2021)
 execute @s[tag=!staffstatus] ~~~ title @s[tag=PermBan] title §¶§cUAC ► You are UAC Global Banned!

@@ -1,10 +1,10 @@
-execute @s[scores={acmtoggle=1}] ~~~ kill @e[r=10,type=command_block_minecart]
-execute @s[scores={acmtoggle=1}] ~~~ kill @e[r=10,name="minecart"]
-execute @s[scores={acmtoggle=1}] ~~~ kill @e[r=10,type=npc]
-execute @s[scores={acmtoggle=1}] ~~~ kill @e[r=10,name="Epic BadMan User"]
+execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=command_block_minecart]
+execute @s[scores={acmtoggle=1}] ~~~ kill @e[name="minecart"]
+execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=npc]
 
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[r=10,type=moving_block]
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[r=10,type=falling_block]
+execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=leash_knot]
 
 #buckets
 execute @s[scores={acmtoggle=1}] ~~~ clear @s cod_bucket

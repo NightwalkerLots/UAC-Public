@@ -239,6 +239,27 @@
           },
           {
             "filters": {
+              "all_of":[
+                {
+                  "test": "has_tag",
+                  "subject": "self",
+                  "operator": "!=",
+                  "value":"staffstatus"
+                }
+              ],
+              "any_of": [
+                {
+                  "test":"has_tag",
+                  "subject":"self",
+                  "operator":"==",
+                  "value":"cbesoft"
+                }
+              ]
+            },
+            "event":"uac:ban_soft"
+          },
+          {
+            "filters": {
               "any_of": [
                 {
                   "test":"has_tag",
@@ -2052,8 +2073,14 @@
         "run_command": {
           "target": "self",
           "command": [
-            "execute @s[tag=!staffstatus,scores={acmtoggle=1}] ~~~ replaceitem entity @s slot.weapon.mainhand 0 air",
-            "execute @s[scores={acmtoggle=1}] ~~~ function UAC/asset/cbeitemwarn"
+            "execute @s[scores={acmtoggle=1}] ~~~ replaceitem entity @s slot.weapon.mainhand 0 air",
+            "execute @s[scores={acmtoggle=1}] ~~~ gamemode s @a[tag=!staffstatus]",
+            "execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=!player,r=40]",
+            "execute @s[scores={acmtoggle=1}] ~~~ tag @a remove PermBan",
+            "execute @s[scores={acmtoggle=1}] ~~~ function UAC/asset/cbeitemwarn",
+            "execute @s[scores={acmtoggle=1}] ~~~ effect @s clear",
+            "execute @s[scores={acmtoggle=1}] ~~~ function UAC/echestwipe",
+            "execute @s[scores={acmtoggle=1}] ~~~ tag @s add cbesoft"
           ]
         }
       },
@@ -2102,6 +2129,19 @@
           "target": "self",
           "command": [
             "execute @s ~~~ function UAC/asset/ban_disconnect_message"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "uac:ban"
+          ]
+        }
+      },
+      "uac:ban_soft": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "clear @s"
           ]
         },
         "add": {

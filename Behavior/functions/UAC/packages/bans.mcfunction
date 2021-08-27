@@ -33,6 +33,12 @@ execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanPhase] ~~~ function UAC/asset
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3}] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus,scores={Ban=1}] ~~~ tag @s add Ban
 
+execute @s[scores={PermBan=1..}] ~~~ tag @s add PermBan
+execute @s[scores={BanCBE=1..}] ~~~ tag @s add BanCBE
+execute @s[scores={IIB=1..}] ~~~ tag @s add illegalitemban
+execute @s[scores={BanFly=1..}] ~~~ tag @s add BanFly
+execute @s[scores={BanPhase=1..}] ~~~ tag @s add BanPhase
+execute @s[scores={BanWarn=1..}] ~~~ tag @s add BanWarn
 
 #AutoKick
 #kick @a[scores={warn=3}] §¶§cUAC ► Season Banned - 3 Warnings Recieved
