@@ -1,6 +1,4 @@
-execute @s[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
-#Called apon everytime a new player joins
-
+tag @s remove PermBan
 tag Beast89900 add PermBan
 tag "igorrites26164" add PermBan
 tag "gingerfrog79175" add PermBan
@@ -48,8 +46,6 @@ tag "Fuwzar" add PermBan
 tag "MexicanDream286" add PermBan
 tag "Echovite9835" add PermBan
 tag "Geiusici" add PermBan
-tag "weedelbhoy1" add PermBan
-tag "oldgreggo5081" add PermBan
 tag "BrendonBone mod" add PermBan
 tag "pinguintod482" add PermBan
 tag "azxpert" add PermBan
@@ -73,9 +69,7 @@ tag "xIlSHNAGSlIx" add PermBan
 tag "PianoPandora948" add PermBan
 tag "DribFR" add PermBan
 
-
-tag @a[tag=Ban] add PermBan
-
+#execute @s[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 
 #kick @s[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
