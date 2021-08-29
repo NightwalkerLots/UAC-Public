@@ -23,7 +23,7 @@ execute @a[m=c,tag=!staffstatus] ~~~ function UAC/asset/creative_flag_asset
 # The 1.17 ban messages are in UAC/asset/ban_asset
 #Restrict Player's Gameplay
 title @s times 0 100 0
-execute @s[tag=!staffstatus] ~~~ execute @s[tag=PermBan] ~~~ function UAC/asset/ban_asset
+#execute @s[tag=!staffstatus] ~~~ execute @s[tag=PermBan] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCBE] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCreative] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=Ban] ~~~ function UAC/asset/ban_asset
@@ -33,7 +33,7 @@ execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanPhase] ~~~ function UAC/asset
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3}] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus,scores={Ban=1}] ~~~ tag @s add Ban
 
-execute @s[scores={PermBan=1..}] ~~~ tag @s add PermBan
+
 execute @s[scores={BanCBE=1..}] ~~~ tag @s add BanCBE
 execute @s[scores={IIB=1..}] ~~~ tag @s add illegalitemban
 execute @s[scores={BanFly=1..}] ~~~ tag @s add BanFly

@@ -232,6 +232,12 @@
                   "subject":"self",
                   "operator":"==",
                   "value":"Ban"
+                },
+                {
+                  "test":"has_tag",
+                  "subject":"self",
+                  "operator":"==",
+                  "value":"PermBan"
                 }
               ]
             },

@@ -31,14 +31,14 @@ execute @s[tag=!staffstatus,scores={warn=3}] ~~~ scoreboard players add @s BanWa
 #1.17 ban chat messages  (06/22/2021)
 execute @s[scores={BanCBE=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b's §¶§cgameplay has been restricted due to CBE exploits"}]}
 execute @s[scores={BanWarn=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b's §¶§cgameplay has been restricted due to Reaching 3 Warnings"}]}
-execute @s[scores={PermBan=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
+#execute @s[scores={PermBan=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 execute @s[scores={Ban=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cWas Banned by a OPERATOR"}]}
 execute @s[scores={IIB=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b's §¶§cgameplay has been restricted due to Illegal Items"}]}
 execute @s[scores={BanFly=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b's §¶§cgameplay has been restricted due to Fly Hacks"}]}
 execute @s[scores={BanPhase=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b's §¶§cgameplay has been restricted due to Phase Hacks"}]}
 
 #Prevents overflow from ban checks
-execute @s[scores={PermBan=4}] ~~~ scoreboard players set @s PermBan 3
+#execute @s[scores={PermBan=4}] ~~~ scoreboard players set @s PermBan 3
 execute @s[scores={BanCBE=4}] ~~~ scoreboard players set @s BanCBE 3
 execute @s[scores={Ban=4}] ~~~ scoreboard players set @s Ban 3
 execute @s[scores={IIB=4}] ~~~ scoreboard players set @s IIB 3
