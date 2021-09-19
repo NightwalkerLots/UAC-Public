@@ -87,6 +87,3 @@ function UAC/modules/extralagprevent
 # Disables echests for nonstaff
 function UAC/modules/noechest
 #
-# =Spawn Randomizer=
-# This makes the default spawn point random within a 1k radius
-function UAC/modules/randomspawn
