@@ -1,5 +1,6 @@
 {
 	"values": [
-		"UAC/packages/welcome"
+		"UAC/packages/welcome",
+		"UAC/modules/randomspawn"
 	]
 }

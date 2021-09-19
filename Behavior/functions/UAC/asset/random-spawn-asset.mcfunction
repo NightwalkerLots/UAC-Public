@@ -1,5 +1,9 @@
+tag @s add randomspawn
 scoreboard players reset @a randomspawn
+tag @s add rstemp
 scoreboard players random @s randomspawn 10 340
+tag @a[tag=!rstemp] remove randomspawn
+tag @s remove rstemp
 
 execute @s[scores={randomspawn=10..20}] ~~~ setworldspawn 450 85 -580
 execute @s[scores={randomspawn=20..30}] ~~~ setworldspawn -850 85 290

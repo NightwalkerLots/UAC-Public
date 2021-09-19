@@ -1,5 +1,4 @@
 execute @s ~~~ scoreboard players reset @s lagtimer
-execute @s[tag=staffstatus,scores={rsmtoggle=1}] ~~~ function UAC/asset/random-spawn-asset
 
 execute @s[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @s[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
@@ -11,6 +10,10 @@ function UAC/packages/bans
 function UAC/modules/permban
 function UAC/modules/ownerstatus
 function UAC/asset/toggle_sync
+
+#player counter
+scoreboard players reset playerdummy playercount
+execute @a ~~~ scoreboard players add playerdummy playercount 1
 
 #Extra stuff for TPS control
 execute @s ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p

@@ -14,6 +14,7 @@ tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Unban HardBan: §2Ha
 tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Lag §2- /function UAC/lagclear"}]}
 tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Clear Area§2- /function UAC/cleararea"}]}
 tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Godmode   §2- /function UAC/tgm"}]}
+tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Give Kit   §2- /function KIT/"}]}
 tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Vanish   §2- /function UAC/vanish"}]}
 tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Modules   §2- /function UAC/modulecheck"}]}
 tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§b► Itembans  §2- /function UAC/itembancheck"}]}
