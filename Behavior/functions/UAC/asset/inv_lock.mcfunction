@@ -14,6 +14,7 @@ replaceitem entity @s slot.inventory 12 nether_star 1 0 {"minecraft:item_lock":{
 replaceitem entity @s slot.inventory 13 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
 replaceitem entity @s slot.inventory 14 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
 replaceitem entity @s slot.inventory 15 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
+replaceitem entity @s slot.inventory 16 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
 replaceitem entity @s slot.inventory 17 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
 replaceitem entity @s slot.inventory 18 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
 replaceitem entity @s slot.inventory 19 nether_star 1 0 {"minecraft:item_lock":{"mode":"lock_in_inventory"},"minecraft:keep_on_death":{}}
