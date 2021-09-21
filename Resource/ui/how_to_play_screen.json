@@ -321,6 +321,7 @@
               "$text": "uac.faq.text10" } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.faq.text11" } },
+              { "paragraph_0@how_to_play_common.paragraph": {"$text": "" }},
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.faq.text12" } },
             { "paragraph_0@how_to_play_common.paragraph": {
