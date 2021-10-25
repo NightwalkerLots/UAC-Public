@@ -9,11 +9,11 @@ execute @s[scores={hometimer=1..5}] ~~~ scoreboard players set @s hometp 3
 scoreboard players reset @s[scores={hometp=3}] hometimer
 
 #Item Commands
-execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="spawn"] ~~~ execute @p ~~~ function UAC/itemcommand/spawntp
-execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="home"] ~~~ execute @p ~~~ function UAC/itemcommand/hometp
-execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="setspawn"] ~~~ execute @p ~~~ function UAC/itemcommand/setspawn
-execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="stats"] ~~~ execute @p ~~~ function UAC/itemcommand/playerstats
-execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="lastdeath"] ~~~ execute @p ~~~ function UAC/itemcommand/death_coord
+execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="spawn"] ~~~ execute @p[r=7] ~~~ function UAC/itemcommand/spawntp
+execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="home"] ~~~ execute @p[r=7] ~~~ function UAC/itemcommand/hometp
+execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="setspawn"] ~~~ execute @p[r=7] ~~~ function UAC/itemcommand/setspawn
+execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="stats"] ~~~ execute @p[r=7] ~~~ function UAC/itemcommand/playerstats
+execute @s[scores={icmtoggle=1}] ~~~ execute @e[r=7,type=item,name="lastdeath"] ~~~ execute @p[r=7] ~~~ function UAC/itemcommand/death_coord
 
 
 #This hides this from the in-game function command directory

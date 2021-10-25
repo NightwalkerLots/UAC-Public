@@ -111,7 +111,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~1 ~ ~",
-						"/scoreboard players set @s teleporting 3"
+						"/scoreboard players set @s teleporting 3",
+						"/scoreboard players reset @s teleport_home "
 					]
 				},
 				"home_5_x": {
@@ -231,7 +232,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~1 ~",
-						"/scoreboard players set @s teleporting 3"
+						"/scoreboard players set @s teleporting 3",
+						"/scoreboard players reset @s teleport_home "
 					]
 				},
 				"home_5_y": {
@@ -351,7 +353,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~ ~1",
-						"/scoreboard players set @s teleporting 3"
+						"/scoreboard players set @s teleporting 3",
+						"/scoreboard players reset @s teleport_home "
 					]
 				},
 				"home_5_z": {
@@ -471,7 +474,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~-1 ~ ~",
-						"/scoreboard players set @s teleporting 3"
+						"/scoreboard players set @s teleporting 3",
+						"/scoreboard players reset @s teleport_home "
 					]
 				},
 				"home_5_x": {
@@ -591,7 +595,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~-1 ~",
-						"/scoreboard players set @s teleporting 3"
+						"/scoreboard players set @s teleporting 3",
+						"/scoreboard players reset @s teleport_home "
 					]
 				},
 				"home_5_y": {
@@ -711,7 +716,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~ ~-1",
-						"/scoreboard players set @s teleporting 3"
+						"/scoreboard players set @s teleporting 3",
+						"/scoreboard players reset @s teleport_home "
 					]
 				},
 				"home_5_z": {

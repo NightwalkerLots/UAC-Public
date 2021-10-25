@@ -191,6 +191,7 @@ scoreboard objectives add hometp dummy hometp
 scoreboard objectives add welcomed dummy welcomed
 scoreboard objectives add entitycount dummy entitycount
 scoreboard objectives add playercount dummy
+scoreboard objectives add tpa dummy
 
 
 #module scoreboards
