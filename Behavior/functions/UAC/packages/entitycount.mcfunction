@@ -1,4 +1,5 @@
 execute @s[scores={ltmtoggle=1}] ~~~ scoreboard players reset entitydummy entitycount
+execute @s[scores={ltmtoggle=1}] ~~~ scoreboard players reset @a entitycount
 execute @s[scores={ltmtoggle=1}] ~~~ execute @e[type=item] ~~~ scoreboard players add entitydummy entitycount 1
 execute @s[scores={ltmtoggle=1}] ~~~ execute @e[family=monster] ~~~ scoreboard players add entitydummy entitycount 1
 execute @s[scores={ltmtoggle=1}] ~~~ scoreboard players operation @s entitycount = entitydummy entitycount
