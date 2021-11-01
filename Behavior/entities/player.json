@@ -13,13 +13,13 @@
           "death_effect",
           "on_death",
           "oneshot",
-          "home_x_negative",
-          "home_y_negative",
-          "home_z_negative",
-          "home_x_positive",
-          "home_y_positive",
-          "home_z_positive",
-          "home_teleport_reset",
+          //"home_x_negative",
+          //"home_y_negative",
+          //"home_z_negative",
+          //"home_x_positive",
+          //"home_y_positive",
+          //"home_z_positive",
+          //"home_teleport_reset",
           "spawn_points",
           "anticbe",
           "worldborder_pos",
@@ -43,13 +43,13 @@
         "death_effect": "controller.animation.death_effect",
         "on_death": "controller.animation.on_death",
         "oneshot": "controller.animation.player.oneshot",
-        "home_x_negative": "controller.animation.home_x_negative",
-        "home_y_negative": "controller.animation.home_y_negative",
-        "home_z_negative": "controller.animation.home_z_negative",
-        "home_x_positive": "controller.animation.home_x_positive",
-        "home_y_positive": "controller.animation.home_y_positive",
-        "home_z_positive": "controller.animation.home_z_positive",
-        "home_teleport_reset": "controller.animation.home_teleport_reset",
+        //"home_x_negative": "controller.animation.home_x_negative",
+        //"home_y_negative": "controller.animation.home_y_negative",
+        //"home_z_negative": "controller.animation.home_z_negative",
+        //"home_x_positive": "controller.animation.home_x_positive",
+        //"home_y_positive": "controller.animation.home_y_positive",
+        //"home_z_positive": "controller.animation.home_z_positive",
+        //"home_teleport_reset": "controller.animation.home_teleport_reset",
         "spawn_points": "controller.animation.spawn_points",
         "anticbe": "controller.animation.anticbe.execute_commands",
         "worldborder_pos": "controller.animation.border_control_pos",
@@ -145,73 +145,15 @@
                 "all_of": [
                   {
                     "test": "has_tag",
-                    "subject": "other",
+                    "operator": "!=",
                     "value": "staffstatus"
-                  },
-                  {
-                    "test": "is_sneaking",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": true
-                  },
-                  {
-                    "test": "has_equipment",
-                    "domain": "hand",
-                    "subject": "other",
-                    "value": "minecraft:wooden_axe"
                   }
                 ]
               },
               "event": "uac:display_all_stats"
             },
             "use_item": false,
-            "interact_text": "Testing Function"
-          },
-          {
-            "on_interact": {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "has_tag",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": "staffstatus"
-                  },
-                  {
-                    "test": "is_sneaking",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": true
-                  }
-                ]
-              },
-              "event": "uac:display_nonstaff_stats"
-            },
-            "use_item": false,
-            "interact_text": "View Player Stats"
-          },
-          {
-            "on_interact": {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "has_tag",
-                    "subject": "other",
-                    "operator": "==",
-                    "value": "staffstatus"
-                  },
-                  {
-                    "test": "is_sneaking",
-                    "subject": "other",
-                    "operator": "!=",
-                    "value": true
-                  }
-                ]
-              },
-              "event": "uac:open_player_options_gui"
-            },
-            "use_item": false,
-            "interact_text": "Open Player GUI"
+            "interact_text": "Player Interact"
           }
         ]
       },
@@ -2112,22 +2054,6 @@
           "target": "self",
           "command": [
             "function UAC/testing"
-          ]
-        }
-      },
-      "uac:display_nonstaff_stats": {
-        "run_command": {
-          "target": "self",
-          "command": [
-            "function UAC/asset/local_player_stats"
-          ]
-        }
-      },
-      "uac:open_player_options_gui": {
-        "run_command": {
-          "target": "self",
-          "command": [
-            "w @p[tag=staffstatus] Player GUI Menu not available"
           ]
         }
       },

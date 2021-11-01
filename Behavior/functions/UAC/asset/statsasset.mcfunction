@@ -3,8 +3,6 @@ execute @s ~~~ function UAC/asset/gmcheck
 execute @s[tag=staffstatus] ~~~ function UAC/asset/last_command_check_asset
 execute @s[scores={tpmtoggle=1}] ~~~ execute @s ~~~ function UAC/asset/timeplayed
 execute @s[scores={tpmtoggle=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"§b has played for §7{§bTimePlayed Tracker §cDISABLED§7}"}]}
-execute @s[scores={tpmtoggle=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bTime Played in ticks§7: §7"},{"score":{"name":"@s","objective":"timeplayed"}}]}
-execute @s[scores={tpmtoggle=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bTime Played in ticks§7: §7{§bTimePlayed Tracker §cDISABLED§7}"}]}
 execute @s ~~~ function UAC/asset/timealive
 execute @s ~~~ function UAC/asset/ban_check_asset
 
