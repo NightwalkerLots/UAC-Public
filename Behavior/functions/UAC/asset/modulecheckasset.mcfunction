@@ -5,8 +5,8 @@ execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c=========
 execute @s[tag=staffstatus,scores={HMM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={HMM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§cDISABLED §7]"}]}
 
-execute @s[tag=staffstatus,scores={ICM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bItem Commands §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus,scores={ICM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bItem Commands §7[ §¶§cDISABLED §7]"}]}
+execute @s[tag=staffstatus,scores={ICM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bPlayer Commands §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus,scores={ICM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bPlayer Commands §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus,scores={LTM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAuto Lagclear §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={LTM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAuto Lagclear §7[ §¶§cDISABLED §7]"}]}

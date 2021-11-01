@@ -8,11 +8,6 @@
 #=Unban Timer=
 function UAC/modules/unbantimer
 #
-# =ITEM COMMANDS=
-# This will allow people to run commands like home, setspawn and spawn by dropping a named item.
-# Enabled by default
-function UAC/modules/itemcommand
-#
 # =AntiCbe=
 # Protection against the command block exploit
 # Enabled by default
@@ -27,11 +22,6 @@ function UAC/modules/antifly
 # =No Unobtainable Items=
 # Clears players of Unobtainable items
 function UAC/modules/unobtainableitems
-#
-# =Antiphase=
-# Protection against phase hacks
-# Enabled by default
-X function UAC/modules/antiphase
 #
 # =AUTOMATED CLEAR LAG=
 # This will automatically clear dropped items and hostile entities every 6 minutes
@@ -61,27 +51,13 @@ function UAC/modules/nofrostwalker
 # Enabled be default
 function UAC/packages/unbantimer
 #
-# =TimePlayed=
-# When enabled, you can see people's time played with the "stats" command. The amount of ticks can be calculated into hours played.
-# Enabled by default
-# location: function UAC/modules/timeplayedticker
-#
 # =Staffstatus=
 # DO NOT DISABLE THIS, THIS IS ESSENTIAL FOR STAFF BYPASSES TO WORK
 function UAC/modules/staffstatus
 #
-# =KitPVP=
-# Custom unity gamemode
-function UAC/modules/kitpvp
-#
 # =Prevent OP abuse =
 # Can't do damange when in creative mode
 function UAC/modules/opabuse
-#
-# =Extra Lag Prevention=
-# A more extreme measure that prevents realm lags, more for smp/anarchy and such.
-function UAC/modules/extralagprevent
-
 #
 # =No Echests=
 # Disables echests for nonstaff
