@@ -23,7 +23,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let removeOptions = ['remove', 'unadd'];
     let warpOptions = ['warp', 'tp'];
     if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lPlayer Commands aren't enabled `, chatmsg.sender.nameTag);
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
     } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
 
         if (!args.length || listOptions.includes(args[0])) {

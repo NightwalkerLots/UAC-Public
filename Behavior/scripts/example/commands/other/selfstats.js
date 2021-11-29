@@ -17,7 +17,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         one: Server.player.find(`${args[1]}`),
         two: Server.player.find(`${args[1]} ${args[2]}`),
         three: Server.player.find(`${args[1]} ${args[2]} ${args[3]}`),
-        four: Server.player.find(`${args[1]} ${args[2]} ${args[3]} ${args[4]}`),
+        four: Server.player.find(`${args[1]} ${args[2]} ${args[3]} ${args[4]}`), 
     }
     const PlayerStringStats = {
         one: `execute "${args[1]}" ~~~ /function UAC/itemcommand/playerstats`,
@@ -26,7 +26,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         four: `execute "${args[1]} ${args[2]} ${args[3]} ${args[4]}" ~~~ /function UAC/itemcommand/playerstats`
     }
     if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lPlayer Commands aren't enabled `, chatmsg.sender.nameTag);
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
     } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
     Server.runCommand( `tag "${chatmsg.sender.nameTag}" add stats_temp` );  //gives tag
         if(cmdUsage.includes(args[0])) {

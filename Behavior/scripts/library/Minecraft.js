@@ -4,7 +4,7 @@ import { compressNumber, formatNumber, MS, rainbowText } from "./utils/formatter
 export { compressNumber, formatNumber, MS, rainbowText };
 import Database from "./build/classes/databaseBuilder.js";
 export { Database };
-import { World } from 'mojang-minecraft';
+import { World, Commands } from 'mojang-minecraft';
 import { Entity } from "./build/classes/entityBuilder.js";
 import { Player } from "./build/classes/playerBuilder.js";
 import { Command } from "./build/classes/commandBuilder.js";

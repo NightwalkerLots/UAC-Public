@@ -16,7 +16,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let off = ['off', 'disable'];
 
     if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lPlayer Commands aren't enabled `, chatmsg.sender.nameTag);
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
     }else if( Server.player.getScore('hmmtoggle', chatmsg.sender.nameTag) === 1 || Server.player.getScore('hmmtoggle', chatmsg.sender.nameTag) === 2 ) {
         return Server.broadcast(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `, chatmsg.sender.nameTag);
     }else if( registerInformation.name.match('display') ){
