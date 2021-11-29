@@ -8,8 +8,8 @@ execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coor
 execute @a[scores={osmtoggle=0}] ~~~ tag @s remove can_oneshot
 
 #module toggles
-scoreboard players operation @a ACM = acmtoggledummy ACM
 scoreboard players operation @a acmtoggle = acmtoggledummy acmtoggle
+scoreboard players operation @a ACM = acmtoggledummy ACM
 scoreboard players operation @a afmtoggle = afmtoggledummy afmtoggle
 scoreboard players operation @a AFM = afmtoggledummy AFM
 scoreboard players operation @a bbmtoggle = bbmtoggledummy bbmtoggle

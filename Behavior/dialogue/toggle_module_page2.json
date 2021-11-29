@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "toggle_module_pag2",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.3§7]" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.4§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 2\n\n§¶§l§0HMM ► Hotbar Messages \n§¶§l§0IBM ► Custom Item Ban \n§¶§l§0ICM ► Item Commands \n§¶§l§0LTM ► Auto Lag Clear \n§¶§l§0MDM ► Mining Detection \n§¶§l§0NEM ► Disable Ender Chests" } ] },
 				"buttons": [
 					{

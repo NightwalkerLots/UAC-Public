@@ -16,7 +16,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let tpsclose = ['close', 'cancel'];
 
     if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lPlayer Commands aren't enabled `, chatmsg.sender.nameTag);
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
     } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
 
         if( registerInformation.name.match(chatmsg) ){

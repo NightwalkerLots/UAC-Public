@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "toggle_module_pag4",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.3§7]" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.4§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 4\n\n§¶§l§0UOIM ► Unobtainable Items Protection \n§¶§l§0WBM ► World Border \n§¶§l§0DEM ► Death Effects " } ] },
 				"buttons": [
 					{

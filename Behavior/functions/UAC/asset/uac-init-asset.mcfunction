@@ -381,6 +381,10 @@ scoreboard objectives add torchtimer dummy torchtimer
 scoreboard objectives add hastorch dummy hastorch
 scoreboard objectives add testin dummy testin
 
+#This sets up all objectives for the fine-tuning settings
+function UAC/settings/ft_setup_init
+function UAC/settings/ft_settings
+
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide
