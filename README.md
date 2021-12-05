@@ -1,5 +1,8 @@
-
-<img src="https://i.imgur.com/XSoKqE1.png" border="0">
+<div align="center">
+  <br />
+    <p>
+      <a href="https://unityentertainment.xyz/"><img src="https://i.imgur.com/XSoKqE1.png" width="600" alt="Unity Entertainment" /></a>
+    </p>
 
 UAC is an anticheat designed for Minecraft Bedrock edition realms or servers ran by BDS. This has been tested on many Major Networks and has never had a false positive.
 
