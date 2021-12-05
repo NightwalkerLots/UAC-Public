@@ -4,6 +4,12 @@
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_Z = BDXdummy Border_Coord_Z
 execute @a[scores={wbmtoggle=1}] ~~~ scoreboard players operation @a Border_Coord_X = BDXdummy Border_Coord_X
 
+#Sync World Spawn Configuration Coords
+scoreboard players operation @a Worldx = worlddum Worldx
+scoreboard players operation @a Worldy = worlddum Worldy
+scoreboard players operation @a Worldz = worlddum Worldz
+scoreboard players operation @a worldcustom = worlddum worldcustom
+
 #fix tag-sync for oneshot
 execute @a[scores={osmtoggle=0}] ~~~ tag @s remove can_oneshot
 
