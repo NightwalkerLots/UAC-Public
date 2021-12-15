@@ -10,6 +10,9 @@ scoreboard players operation @a Worldy = worlddum Worldy
 scoreboard players operation @a Worldz = worlddum Worldz
 scoreboard players operation @a worldcustom = worlddum worldcustom
 
+#fine tuning value sync
+scoreboard players operation @a CBEBU = ftDummy CBEBU
+
 #fix tag-sync for oneshot
 execute @a[scores={osmtoggle=0}] ~~~ tag @s remove can_oneshot
 

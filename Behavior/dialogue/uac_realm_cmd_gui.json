@@ -13,31 +13,31 @@
 						"name": { "rawtext": [ { "text": "§l§2STOP RAIN" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ toggledownfall",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
 						"name": { "rawtext": [ { "text": "§l§2SET DAYTIME" } ] },
 						"commands": [
-              "/execute @s[tag=staffstatus] ~~~ time set 100",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
-              "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+							"/execute @s[tag=staffstatus] ~~~ time set 100",
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
 						"name": { "rawtext": [ { "text": "§l§2PVP TOGGLE" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function dialogue_messages/pvp_toggle_message",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2KILL ALL" } ] },
+						"name": { "rawtext": [ { "text": "§l§2KILL Entities" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ kill @e[type=!player]",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_realm_cmd_gui",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
