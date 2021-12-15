@@ -13,21 +13,21 @@
 						"name": { "rawtext": [ { "text": "§l§2KILL SWITCH" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/toggle-all-off",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
 						]
 					},
 					{
 						"name": { "rawtext": [ { "text": "§l§2DEV TGM" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/tgm",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
 						]
 					},
 					{
 						"name": { "rawtext": [ { "text": "§l§2ANARCHY INIT" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/unity-anarchy-init",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
 						]
 					},
 					{

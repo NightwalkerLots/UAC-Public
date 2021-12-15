@@ -38,10 +38,9 @@
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§cEmpty" } ] },
+						"name": { "rawtext": [ { "text": "§l§5Fine Tuning" } ] },
 						"commands": [
-							"/function UAC/test",
-							"/function UAC/test"
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_fine_tune_main"
 						]
 					},
 					{
