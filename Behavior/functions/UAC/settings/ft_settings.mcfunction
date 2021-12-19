@@ -14,6 +14,8 @@ scoreboard players set @s CBEBU 1
 #Clear placed tiles around player / Command Blocks, Beehvies ect.. 
 scoreboard players set @s CBECO 0
 #
+#Prevents Extra CBE Methods at the expense of useful items
+scoreboard players set @s CBEEM 0
 ################ Bottom Bedrock Fine-Tuning ################
 #
 #Set the Y level for Caves and Cliffs (On By Default)
