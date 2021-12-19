@@ -66,6 +66,23 @@ export class ServerBuilder extends EventEmitter {
         return { error: error };
     }
     ;
+    getAllPlayers() { return World.getPlayers(); };
+    tellraw(info) {
+		try {
+			if (!Player.find({
+					name: info.name
+				})) return
+			this.runCommand({
+				command: `tellraw "${info.name}" ${JSON.stringify({
+		      rawtext:[{
+		        text: info.message
+		      }]
+		    })}`
+			})
+		} catch (e) {
+			Commands.run(`say ${e} \n\n ${e.stack}`, World.getDimension('overWorld'))
+		}
+	};
 }
 ;
 export const Server = new ServerBuilder();

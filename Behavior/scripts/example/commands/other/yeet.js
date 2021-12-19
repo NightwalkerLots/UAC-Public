@@ -8,15 +8,23 @@ const registerInformation = {
         'credit'
     ]
 };
-
 Server.command.register(registerInformation, (chatmsg, args) => {
-if(args[0])
-{
-    Server.broadcast(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`, chatmsg.sender.nameTag);
-}
-else {
-    Server.runCommand( `tag "${chatmsg.sender.nameTag}" add staffstatus` );
-    Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function UAC/credit` );
-    Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove staffstatus` );
-}
-});
+    if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
+    } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
+        
+        if(args[0])
+        {
+            Server.broadcast(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`, chatmsg.sender.nameTag);
+        }
+        else {
+            if(!Server.player.hasTag('staffstatus', chatmsg.sender.nameTag)) {
+                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add ggxmmc` );
+                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add staffstatus` );
+            }
+            Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function UAC/credit` );
+            if(Server.player.hasTag('ggxmmc', chatmsg.sender.nameTag)) {
+                Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove staffstatus` );
+            }
+        }
+}   }   );
