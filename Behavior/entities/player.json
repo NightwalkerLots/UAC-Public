@@ -2042,10 +2042,10 @@
         "run_command": {
           "target": "self",
           "command": [
-            "execute @s[scores={acmtoggle=1}] ~~~ replaceitem entity @s slot.weapon.mainhand 0 air",
+            "execute @s[scores={acmtoggle=1}] ~~~ function UAC/asset/clearhotbar",
             "execute @s[scores={acmtoggle=1}] ~~~ gamemode s @a[tag=!staffstatus]",
             "execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=!player,r=40]",
-            "execute @s[scores={acmtoggle=1}] ~~~ tag @a remove PermBan",
+            "execute @s[scores={acmtoggle=1}] ~~~ function UAC/unban",
             "execute @s[scores={acmtoggle=1}] ~~~ function UAC/asset/cbeitemwarn",
             "execute @s[scores={acmtoggle=1}] ~~~ effect @s clear",
             "execute @s[scores={acmtoggle=1}] ~~~ function UAC/echestwipe",
