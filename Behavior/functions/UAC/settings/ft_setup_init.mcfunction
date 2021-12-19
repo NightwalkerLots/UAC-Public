@@ -1,6 +1,7 @@
-scoreboard objectives add CBEBU dummy 
-scoreboard objectives add CBECO dummy 
-scoreboard objectives add BBMCC dummy 
+scoreboard objectives add CBEBU dummy
+scoreboard objectives add CBECO dummy
+scoreboard objectives add BBMCC dummy
+scoreboard objectives add CBEEM dummy
 
 scoreboard objectives add Worldx dummy
 scoreboard objectives add Worldy dummy
