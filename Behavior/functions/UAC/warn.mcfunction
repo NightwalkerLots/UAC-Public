@@ -7,5 +7,4 @@ execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=2}] ~~~ tellraw @s {"ra
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §bLast Warning §d"},{"selector":"@s"},{"text":"§b, You may no longer play this realm.§c [3/3]"}]}
 execute @s[tag=!staffstatus] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":" §¶§cwas warned by a operator"}]}
 execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=4..99}] ~~~ scoreboard players set @s warn 3
-
 scoreboard players set @s lstcmd 25

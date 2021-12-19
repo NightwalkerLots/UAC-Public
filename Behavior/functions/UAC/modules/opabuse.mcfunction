@@ -10,6 +10,10 @@ execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ scoreboard players reset @
 execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ tag @s remove spectate
 execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ scoreboard players reset @s vnsh
 
+#Disable autototem
+tag @s[tag=staffstatus,scores={opamtoggle=1}] remove totemaut
+scoreboard players set @s[tag=staffstatus,scores={opamtoggle=1}] totemaut 0
+scoreboard players set @s[tag=staffstatus,scores={opamtoggle=1}] totemtog 0
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

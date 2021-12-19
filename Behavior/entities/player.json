@@ -91,10 +91,19 @@
               "display_on_screen_animation": true
             }
           ]
+        },
+        "minecraft:timer": {
+          "time": [ 0.0, 0.0 ],
+          "looping": false,
+          "time_down_event": {
+            "event": "minecraft:clear_add_bad_omen",
+            "target": "self"
+          }
         }
       },
       "minecraft:clear_bad_omen_spell_effect": {
-        "minecraft:spell_effects": {}
+        "minecraft:spell_effects": {
+        }
       },
       "minecraft:raid_trigger": {
         "minecraft:raid_trigger": {
@@ -919,6 +928,23 @@
             "filters": {
               "all_of": [
                 {
+                  "test": "has_mob_effect",
+                  "subject": "self",
+                  "value": "bad_omen"
+                },
+                {
+                  "test": "is_in_village",
+                  "subject": "self",
+                  "value": true
+                }
+              ]
+            },
+            "event": "minecraft:trigger_raid"
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
                   "test": "has_tag",
                   "subject": "self",
                   "operator": "!=",
@@ -1341,7 +1367,7 @@
                   "test": "has_equipment",
                   "domain": "any",
                   "operator": "==",
-                  "value": "minecraft:glowstick"
+                  "value": "minecraft:glow_stick"
                 },
                 {
                   "test": "has_equipment",
@@ -2526,6 +2552,11 @@
           "component_groups": [
             "minecraft:clear_bad_omen_spell_effect"
           ]
+        }
+      },
+      "minecraft:trigger_raid": {
+        "add": {
+          "component_groups": [ "minecraft:raid_trigger" ]
         }
       },
       "minecraft:remove_raid_trigger": {

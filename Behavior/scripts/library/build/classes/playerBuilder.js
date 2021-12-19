@@ -99,6 +99,25 @@ export class PlayerBuilder {
         return itemCount ? itemCount : [];
     }
     ;
+    getInventory({ name }) {
+        let player = Server.getAllPlayers().filter(p => p.name == name || p.nameTag == name)[0]
+        if(!player) return
+        
+        let items = []
+        let container = player.getComponent('minecraft:inventory').container
+        for(let i = 0; i < container.size; i++) {
+          let slot = container.getItem(i)
+          let itemData = {
+            id: slot?.id ?? 'minecraft:air',
+            amount: slot?.amount ?? 0,
+            slot: i + 1,
+            data: slot?.data ?? undefined,
+          }
+          items.push(itemData)
+        }
+        return items
+
+    };
     /**
      * Get players score on a specific objective
      * @param {string} objective Objective name you want to search

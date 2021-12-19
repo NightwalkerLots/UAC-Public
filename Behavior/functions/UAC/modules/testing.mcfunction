@@ -8,6 +8,8 @@ execute @s[scores={hastorch=1,testin=1,lagtimer=20}] ~~~ scoreboard players set 
 execute @s[scores={hastorch=1,testin=1,lagtimer=25}] ~~~ scoreboard players set @s hastorch 0
 execute @s[scores={hastorch=1,testin=1,lagtimer=30}] ~~~ scoreboard players set @s hastorch 0
 
+execute @s[tag=staffstatus,scores={opamtoggle=0}] ~~~ replaceitem entity @s[scores={totemaut=329},tag=totemaut] slot.weapon.offhand 0 totem_of_undying 1 0 {"minecraft:keep_on_death":{}}
+
 scoreboard players operation @s testin = testindummy testin
 
 #This hides this from the in-game function command directory

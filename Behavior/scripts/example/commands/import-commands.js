@@ -8,3 +8,6 @@ import './other/tpa.js';
 import './other/display.js';
 import './other/yeet.js';
 import './other/setworldspawn.js';
+import './other/inventoryview.js';
+import './other/spawntp.js';
+import './other/bbmnew.js';

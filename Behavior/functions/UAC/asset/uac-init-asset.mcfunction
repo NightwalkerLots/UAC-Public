@@ -345,6 +345,8 @@ scoreboard players set @s hometp 3
 scoreboard players set @s opabusemodule 2
 scoreboard players set @s welcomed 1
 scoreboard objectives add gmc_flag dummy
+scoreboard objectives add totemaut dummy
+scoreboard objectives add totemtog dummy
 
 
 #WB init default value

@@ -44,7 +44,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
             }
             else if(tpaIntString.includes(args[0])) {
-                Server.broadcast(`tp "${chatmsg.sender.nameTag}" @p[scores={tpa=${args[0]}}]`, chatmsg.sender.nameTag);
+                //Server.broadcast(`tp "${chatmsg.sender.nameTag}" @p[scores={tpa=${args[0]}}]`, chatmsg.sender.nameTag);
                 Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                 Server.runCommand( `tellraw "${chatmsg.sender.nameTag}" {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}` );
                 Server.runCommand( `tp "${chatmsg.sender.nameTag}" @p[scores={tpa=${args[0]}}]` );
