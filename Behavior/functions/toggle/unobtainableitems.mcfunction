@@ -5,6 +5,7 @@ execute @s[tag=staffstatus] ~~~ scoreboard players operation @a UOIM = uoimtoggl
 execute @s[tag=staffstatus,scores={UOIM=1}] ~~~ scoreboard players set uoimtoggledummy uoimtoggle 1
 execute @s[tag=staffstatus,scores={UOIM=1}] ~~~ scoreboard players operation @a uoimtoggle = uoimtoggledummy uoimtoggle
 execute @s[tag=staffstatus,scores={UOIM=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §6Unobtainable Items §bhas been toggled §2ON §bby §d"},{"selector":"@s"}]}
+tellraw @a[tag=staffstatus,scores={has_xx=0,UOIM=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §cNot Enabled §7|| §cThis module may not work!"}]}
 #turn off
 execute @s[tag=staffstatus,scores={UOIM=2}] ~~~ scoreboard players set uoimtoggledummy uoimtoggle 0
 execute @s[tag=staffstatus,scores={UOIM=2}] ~~~ scoreboard players operation @a uoimtoggle = uoimtoggledummy uoimtoggle

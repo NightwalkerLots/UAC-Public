@@ -5,6 +5,7 @@ execute @s[tag=staffstatus] ~~~ scoreboard players operation @a WBM = wbmtoggled
 execute @s[tag=staffstatus,scores={WBM=1}] ~~~ scoreboard players set wbmtoggledummy wbmtoggle 1
 execute @s[tag=staffstatus,scores={WBM=1}] ~~~ scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle
 execute @s[tag=staffstatus,scores={WBM=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §6World Border §bhas been toggled §2ON §bby §d"},{"selector":"@s"}]}
+tellraw @a[tag=staffstatus,scores={has_xx=0,WBM=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §cNot Enabled §7|| §cThis module may not work!"}]}
 #turn off
 execute @s[tag=staffstatus,scores={WBM=2}] ~~~ scoreboard players set wbmtoggledummy wbmtoggle 0
 execute @s[tag=staffstatus,scores={WBM=2}] ~~~ scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle

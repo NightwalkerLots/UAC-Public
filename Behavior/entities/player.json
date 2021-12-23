@@ -2038,6 +2038,16 @@
           ]
         }
       },
+      //A test event to see if they have the proper experimental feature enabled for animation controllers to work
+      "uac:test_experimental": {
+        "run_command": {
+          "target": "self",
+          "command": [
+            "scoreboard objectives add has_xx dummy",
+            "scoreboard players set @s has_xx 1"
+          ]
+        }
+      },
       "uac:cbe_flag": {
         "run_command": {
           "target": "self",

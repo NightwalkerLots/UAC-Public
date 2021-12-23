@@ -6,36 +6,36 @@
 		[
 			{
 				"scene_tag": "uac_kit_commands",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.4§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI KITS MENU" } ] },
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.4§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI KITS Main MENU" } ] },
 				"buttons": [
 					{
-						"name": { "rawtext": [ { "text": "§l§2IRON" } ] },
+						"name": { "rawtext": [ { "text": "§l§5IRON" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function KIT/iron_kit",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2DIAMOND" } ] },
+						"name": { "rawtext": [ { "text": "§l§5DIAMOND" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function KIT/diamond_kit",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2NETHITE" } ] },
+						"name": { "rawtext": [ { "text": "§l§5NETHITE" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ function KIT/netherite_kit",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_netherite"
 						]
 					},
 					{
 						"name": { "rawtext": [ { "text": "§l§2CLEAR INV" } ] },
 						"commands": [
 							"/clear",
-              "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
 						]
 					},
 					{
@@ -47,7 +47,7 @@
 					{
 						"name": { "rawtext": [ { "text": "§l§cCLOSE" } ] },
 						"commands": [
-              "/execute @s[tag=staffstatus] ~~~ function dialogue_messages/close_message"
+              				"/execute @s[tag=staffstatus] ~~~ function dialogue_messages/close_message"
 						]
 					}
 				],
