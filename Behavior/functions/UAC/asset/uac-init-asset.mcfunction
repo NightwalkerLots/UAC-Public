@@ -1,3 +1,9 @@
+#Test for needed experimental features
+scoreboard objectives add has_xx dummy
+scoreboard players set @s has_xx 0
+scoreboard objectives add has_gt dummy
+scoreboard players set @s has_gt 0
+
 #Default values for armor checks
 scoreboard objectives add leathboots dummy leathboots
 scoreboard objectives add chainboots dummy chainboots
@@ -387,6 +393,12 @@ scoreboard objectives add testin dummy testin
 function UAC/settings/ft_setup_init
 function UAC/settings/ft_settings
 
+#If experimental features are on, set to true
+event entity @a uac:test_experimental
+tellraw @s[scores={has_xx=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §cNot Enabled §7|| §cSome features may not work"}]}
+tellraw @s[scores={has_xx=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §2ENABLED"}]}
+tellraw @s[scores={has_gt=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §2ENABLED"}]}
+tellraw @s[scores={has_gt=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §cNot Enabled §7|| §cPlayer Chat commands will not work"}]}
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

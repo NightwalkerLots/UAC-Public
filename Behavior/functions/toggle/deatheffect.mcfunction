@@ -5,6 +5,7 @@ execute @s[tag=staffstatus] ~~~ scoreboard players operation @a dethtoggle = det
 execute @s[tag=staffstatus,scores={dethtoggle=1}] ~~~ scoreboard players set BDXdummy Deathef 1
 execute @s[tag=staffstatus,scores={dethtoggle=1}] ~~~ scoreboard players operation @a Deathef = BDXdummy Deathef
 execute @s[tag=staffstatus,scores={dethtoggle=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► §6Death Effect §bhas been toggled §2ON §bby §d"},{"selector":"@s"}]}
+tellraw @a[tag=staffstatus,scores={has_xx=0,dethtoggle=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §cNot Enabled §7|| §cThis module may not work!"}]}
 #turn off
 execute @s[tag=staffstatus,scores={dethtoggle=2}] ~~~ scoreboard players set BDXdummy Deathef 0
 execute @s[tag=staffstatus,scores={dethtoggle=2}] ~~~ scoreboard players operation @a Deathef = BDXdummy Deathef

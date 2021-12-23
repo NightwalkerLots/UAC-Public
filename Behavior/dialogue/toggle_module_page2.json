@@ -19,8 +19,8 @@
 					{
 						"name": { "rawtext": [ { "text": "§l§2IBM" } ] },
 						"commands": [
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s toggle_module_pag2",
-              "/execute @s[tag=staffstatus] ~~~ function toggle/itemban"
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s toggle_module_pag2",
+							"/execute @s[tag=staffstatus] ~~~ function toggle/itemban"
 						]
 					},
 					{

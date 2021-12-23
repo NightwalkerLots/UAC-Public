@@ -1,11 +1,12 @@
 import './commands/import-commands.js';
-import { World, Commands } from "mojang-minecraft";
+import { World, Commands } from 'mojang-minecraft';
 
-/*
 World.events.tick.subscribe(() => {
-    Commands.run("say ran every tick!", World.getDimension("overworld"));
+    const gt_test = `scoreboard players set @r[scores={has_gt=0}] has_gt 1`
+    //const gt_test = `say yeet`
+    Commands.run(gt_test, World.getDimension("overworld"));
 })
-*/
+
 
 /*
 World.events.tick.subscribe(() => {

@@ -1,0 +1,63 @@
+{
+	"format_version": "1.14",
+	"minecraft:npc_dialogue":
+	{
+		"scenes":
+		[
+			{
+				"scene_tag": "uac_kit_iron",
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.4§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI Iron Kits" } ] },
+				"buttons": [
+					{
+						"name": { "rawtext": [ { "text": "§l§2Starter Kit" } ] },
+						"commands": [
+                            "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+							"/execute @s[tag=staffstatus] ~~~ function KIT/netherite_kit_starter",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_netherite"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2Big Kit" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+							"/execute @s[tag=staffstatus] ~~~ function KIT/netherite_kit_big",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_netherite"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2Unbreak-Legit" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+							"/execute @s[tag=staffstatus] ~~~ function KIT/netherite_unbreakable_legit",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_netherite"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§2Unbreak-32k" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
+							"/execute @s[tag=staffstatus] ~~~ function KIT/netherite_unbreakable_32k",
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_netherite"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§5MAIN MENU" } ] },
+						"commands": [
+							"/execute @s[tag=staffstatus] ~~~ function UAC/gui"
+						]
+					},
+					{
+						"name": { "rawtext": [ { "text": "§l§cCLOSE" } ] },
+						"commands": [
+              				"/execute @s[tag=staffstatus] ~~~ function dialogue_messages/close_message"
+						]
+					}
+				],
+				"on_close_commands": [
+                    " "
+				]
+			}
+		]
+	}
+}
