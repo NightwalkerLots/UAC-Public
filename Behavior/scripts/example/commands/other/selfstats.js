@@ -28,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
         return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
     } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
-    Server.runCommand( `tag "${chatmsg.sender.nameTag}" add stats_temp` );  //gives tag
+        Server.runCommand( `tag "${chatmsg.sender.nameTag}" add stats_temp` );  //gives tag
         if(cmdUsage.includes(args[0])) {
             if(!args[1]) {
                 Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
@@ -40,6 +40,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                     Server.runCommand( `${PlayerStringStats.one}` );
                     Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove stats_temp` );
+                    return Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused stats §d${args.join(' ')}`);
                 }
                 else 
                 {
@@ -51,6 +52,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                     Server.runCommand( `${PlayerStringStats.two}` );
                     Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove stats_temp` );
+                    return Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused stats §d${args.join(' ')}`);
                 }
                 else 
                 {
@@ -62,6 +64,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                     Server.runCommand( `${PlayerStringStats.three}` );
                     Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove stats_temp` );
+                    return Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused stats §d${args.join(' ')}`);
                 }
                 else 
                 {
@@ -73,6 +76,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                     Server.runCommand( `${PlayerStringStats.four}` );
                     Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove stats_temp` );
+                    return Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused stats §d${args.join(' ')}`);
                 }
                 else 
                 {
@@ -88,6 +92,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             Server.runCommand( `${ComStringStats}` );
             Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove stats_temp` );
             Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
+            return Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bchecked their stats`);
         }else {
             return Server.broadcast(`§¶§cUAC ► §c§lError : Command Failed`, chatmsg.sender.nameTag);
         }

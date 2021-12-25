@@ -10,4 +10,4 @@ import './other/yeet.js';
 import './other/setworldspawn.js';
 import './other/inventoryview.js';
 import './other/spawntp.js';
-import './other/bbmnew.js';
+import './other/suicide.js';

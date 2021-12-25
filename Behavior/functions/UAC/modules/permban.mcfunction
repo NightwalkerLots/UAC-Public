@@ -56,7 +56,6 @@ tag "RandomYTvideos" add PermBan
 tag "POPB0B 2B2T" add PermBan
 tag "KingLeo332" add PermBan
 tag "xIlIlIIlIIlIx55" add PermBan
-tag "PointNetwork341" add PermBan
 tag "STARKILLER" add PermBan
 tag "GravityBot" add PermBan
 tag "UrgentTrash7032" add PermBan
@@ -68,6 +67,14 @@ tag "Julisco21" add PermBan
 tag "xIlSHNAGSlIx" add PermBan
 tag "PianoPandora948" add PermBan
 tag "DribFR" add PermBan
+tag "SlmplyLogicPvP" add PermBan
+tag "Kingkarter8013" add PermBan
+tag "slimesalt" add PermBan
+tag "Aleximont" add PermBan
+tag "ninjabals360" add PermBan
+tag "Bluefire5975" add PermBan
+tag "SlappsKing" add PermBan
+tag "Destroyer C00L" add PermBan
 
 #execute @s[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 

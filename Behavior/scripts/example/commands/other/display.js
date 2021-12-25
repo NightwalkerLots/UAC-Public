@@ -25,16 +25,19 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
             Server.broadcast(`§l§¶§cUAC ► §b§lNow showing display for self stats `, chatmsg.sender.nameTag);
             Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" hometp 1337` );
+            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bset their hotbar display to §epersonal`);
         }
         else if(realm.includes(args[0])) {
             Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
             Server.broadcast(`§l§¶§cUAC ► §b§lNow showing display for server stats `, chatmsg.sender.nameTag);
             Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" hometp 420` );
+            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bset their hotbar display to §eserver`);
         }
         else if(off.includes(args[0])) {
             Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
             Server.broadcast(`§l§¶§cUAC ► §b§lStats Display has been §cDISABLED `, chatmsg.sender.nameTag);
             Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" hometp 3` );
+            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bset their hotbar display to §eoff`);
         }else {
             return Server.broadcast(`§¶§cUAC ► §cERROR! §6Usage Example §7:§b§l UAC.display [ self | server | off ]`, chatmsg.sender.nameTag);
         }

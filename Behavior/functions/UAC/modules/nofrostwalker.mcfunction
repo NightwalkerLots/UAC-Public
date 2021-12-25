@@ -1,6 +1,6 @@
 #Anti-FrostWalker Messages
 execute @s[scores={nfmtoggle=1,feeten=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §6Anti Frostwalker §bremoved enchanted boots from §d"},{"selector":"@s"}]}
-
+execute @s[scores={nfmtoggle=1,has_xx=0}] ~~~ replaceitem entity @s slot.armor.feet 0 netherite_boots 1 0 {"minecraft:item_lock":{"mode":"lock_in_slot"},"minecraft:keep_on_death":{}}
 execute @s[scores={nfmtoggle=1,feeten=1,nethboots=1}] ~~~ replaceitem entity @s slot.armor.feet 0 netherite_boots 1 0
 execute @s[scores={nfmtoggle=1,feeten=1,diaboots=1}] ~~~ replaceitem entity @s slot.armor.feet 0 diamond_boots 1 0
 execute @s[scores={nfmtoggle=1,feeten=1,ironboots=1}] ~~~ replaceitem entity @s slot.armor.feet 0 iron_boots 1 0

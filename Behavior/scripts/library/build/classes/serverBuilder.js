@@ -27,6 +27,10 @@ export class ServerBuilder extends EventEmitter {
         return this.runCommand(`tellraw ${player ? `"${player}"` : '@a'} {"rawtext":[{"text":${JSON.stringify(text)}}]}`);
     }
     ;
+    broadcastStaff(text, player) {
+        return this.runCommand(`tellraw ${player ? `"${player}"` : '@a[tag=staffstatus]'} {"rawtext":[{"text":${JSON.stringify(text)}}]}`);
+    }
+    ;
     /**
      * Run a command in game
      * @param command The command you want to run

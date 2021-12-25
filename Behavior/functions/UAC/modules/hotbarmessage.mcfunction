@@ -13,27 +13,14 @@ execute @a[scores={hmmtoggle=0,fzplr=0,hometp=420}] ~~~ titleraw @s actionbar {"
 #Frozen Player
 execute @s[scores={fzplr=1}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§bYOU HAVE BEEN §cFROZEN §bBY AN OPERATOR \n §¶§bLEAVING MAY RESULT IN A BAN"}]}
 
-#creative with score
-execute @a[tag=staffstatus,m=c,scores={hmmtoggle=1,OPAM=0,opamtoggle=0,hometp=3}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` §7| §7[§2v2.4§7]§b\n §bEntity Count §7: "},{"score":{"name":"entitydummy","objective":"entitycount"}},{"text":" §bPlayer Count §7: "},{"score":{"name":"playerdummy","objective":"playercount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@s","objective":"Worldx"}},{"text":" Z = "},{"score":{"name":"@s","objective":"Worldz"}}]}
-#creative without score
-execute @a[tag=staffstatus,m=c,scores={hmmtoggle=1,OPAM=0,opamtoggle=0,hometp=3}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §d` /Function UAC/help ` §7| §7[§2v2.4§7]§b\n §bEntity Count §7: "},{"score":{"name":"entitydummy","objective":"entitycount"}},{"text":" §bPlayer Count §7: "},{"score":{"name":"playerdummy","objective":"playercount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@s","objective":"Worldx"}},{"text":" Z = "},{"score":{"name":"@s","objective":"Worldz"}}]}
-
-#Op abuse with score message
-execute @s[tag=staffstatus,m=c,scores={hmmtoggle=1,OPAM=1,opamtoggle=1,hometp=3}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §¶§cPVP DISABLED §7| §d` /Function UAC/help ` \n §bEntity Count §7: "},{"score":{"name":"entitydummy","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@s","objective":"Worldx"}},{"text":" Z = "},{"score":{"name":"@s","objective":"Worldz"}}]}
-#Op abuse without score message
-execute @s[tag=staffstatus,m=c,scores={hmmtoggle=2,OPAM=1,opamtoggle=1,hometp=3}] ~~~ titleraw @s actionbar {"rawtext":[{"text":"§¶§aCREATIVE ENABLED §7| §¶§cPVP DISABLED §7| §d` /Function UAC/help ` \n §bEntity Count §7: "},{"score":{"name":"entitydummy","objective":"entitycount"}},{"text":" §bCurrent WorldSpawn§7: X = "},{"score":{"name":"@s","objective":"Worldx"}},{"text":" Z = "},{"score":{"name":"@s","objective":"Worldz"}}]}
+#Creative messages
+execute @s[tag=staffstatus,m=c] ~~~ function UAC/asset/hotbar_creative
 
 #unban timer progress bar
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=500..540}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §c❚❚❚❚❚❚❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=440..500}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚§c❚❚❚❚❚❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=400..440}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚§c❚❚❚❚❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=340..400}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚§c❚❚❚❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=300..340}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚❚§c❚❚❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=240..300}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚❚❚§c❚❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=200..240}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚❚❚❚§c❚❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=140..200}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚❚❚❚❚§c❚❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=70..140}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚❚❚❚❚❚§c❚
-execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=45..70}] ~~~ title @s actionbar §¶§dUNBAN WINDOW CLOSING§7: §2❚❚❚❚❚❚❚❚❚
+execute @s[scores={hmmtoggle=1,hometp=5,unbantimer=1..}] ~~~ function UAC/asset/hotbar_unbantimer
+
+#suicide progress bar
+execute @s[scores={hmmtoggle=1,hometp=7,suicide=1..}] ~~~ function UAC/asset/hotbar_suicidetimer
 
 
 #This hides this from the in-game function command directory

@@ -5,26 +5,24 @@
 		"scenes":
 		[
 			{
-				"scene_tag": "uac_fine_tune_cbe",
+				"scene_tag": "uac_fine_tune_bbm",
         "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.4§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5Fine Tuning for Anti-CBE\n\n§¶§l§dBuckets ► §dPatches the bucket method \n§¶§l§dTiles ► §dClears CBE related tiles placed by players" } ] },
+				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5Fine Tuning for Anti-CBE\n\n§¶§l§dToggle Y ► §dSelect on/off for whether or not you have Caves and Cliffs Enabled. (On By default)" } ] },
 				"buttons": [
 					{
-						"name": { "rawtext": [ { "text": "§l§2Buckets" } ] },
+						"name": { "rawtext": [ { "text": "§l§2Toggle Y" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ function UAC/finetune/cbe_bucket",
+							"/execute @s[tag=staffstatus] ~~~ function UAC/finetune/bbm_tune",
                             "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_fine_tune_cbe",
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_fine_tune_bbm",
 							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2Tiles" } ] },
+						"name": { "rawtext": [ { "text": "§l§cEMPTY" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ function UAC/finetune/cbe_tiles",
-                            "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~",
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_fine_tune_cbe",
-							"/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
+							"/function dialogue_messages/close_message",
+                            "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},
 					{

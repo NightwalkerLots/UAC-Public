@@ -13,14 +13,14 @@
 						"name": { "rawtext": [ { "text": "§l§5IRON" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function KIT/iron_kit",
-              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_iron"
 						]
 					},
 					{
 						"name": { "rawtext": [ { "text": "§l§5DIAMOND" } ] },
 						"commands": [
 							"/execute @s[tag=staffstatus] ~~~ function KIT/diamond_kit",
-              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_commands"
+              				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_kit_diamond"
 						]
 					},
 					{
