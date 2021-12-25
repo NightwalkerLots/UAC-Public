@@ -31,7 +31,7 @@ function UAC/modules/lagtimer
 # =Message Display=
 # This displays a custom message above all players hotbar. By default this says "32k are banned. No enchants above 10"
 # Enabled by default
-function UAC/modules/hotbarmessage
+//function UAC/modules/hotbarmessage
 #
 # =Mining Detection=
 function UAC/modules/mining_detection
@@ -63,3 +63,8 @@ function UAC/modules/opabuse
 # Disables echests for nonstaff
 function UAC/modules/noechest
 #
+
+
+#This hides this from the in-game function command directory
+execute @f ~~~ hide
+tag @f[tag=""] add hide

@@ -16,6 +16,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
         Server.runCommand( `${ComString}` );
         Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
+        Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bchecked their last death location`);
     }
     }else {
         return Server.broadcast(`§cError Fatal : Command Failed`, chatmsg.sender.nameTag);

@@ -1,8 +1,6 @@
 #Test for needed experimental features
 scoreboard objectives add has_xx dummy
 scoreboard players set @s has_xx 0
-scoreboard objectives add has_gt dummy
-scoreboard players set @s has_gt 0
 
 #Default values for armor checks
 scoreboard objectives add leathboots dummy leathboots
@@ -198,6 +196,7 @@ scoreboard objectives add welcomed dummy welcomed
 scoreboard objectives add entitycount dummy entitycount
 scoreboard objectives add playercount dummy
 scoreboard objectives add tpa dummy
+scoreboard objectives add suicide dummy
 
 
 #module scoreboards

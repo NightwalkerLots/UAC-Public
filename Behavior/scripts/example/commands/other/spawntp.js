@@ -21,6 +21,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             let command = `tp "${chatmsg.sender.nameTag}" ${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`
             Server.runCommand( command );
             Server.broadcast(`§¶§cUAC ► §l§d${chatmsg.sender.nameTag} §bHas warped to World Spawn at §6${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`, chatmsg.sender.nameTag);
+            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
         }
     }
     else {

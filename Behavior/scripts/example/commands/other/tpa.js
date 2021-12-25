@@ -30,6 +30,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     Server.runCommand( `scoreboard players random "${chatmsg.sender.nameTag}" tpa 0 11` );
                     Server.runCommand( `tag "${chatmsg.sender.nameTag}" add has_tpa` );
                     Server.broadcast(`§¶§cUAC ► §bTPA Channel "${Server.player.getScore('tpa', chatmsg.sender.nameTag)}" was created`, chatmsg.sender.nameTag);
+                    Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bopened a tpa channel`);
                 }
             }
             else if(tpsclose.includes(args[0])) {
@@ -41,14 +42,15 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     Server.broadcast(`§¶§cUAC ► §bTPA Channel "${Server.player.getScore('tpa', chatmsg.sender.nameTag)}" was closed`, chatmsg.sender.nameTag);
                     Server.runCommand( `scoreboard players reset "${chatmsg.sender.nameTag}" tpa` );
                     Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove has_tpa` );
+                    Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bclosed their tpa channel manually`);
                 }
             }
             else if(tpaIntString.includes(args[0])) {
-                //Server.broadcast(`tp "${chatmsg.sender.nameTag}" @p[scores={tpa=${args[0]}}]`, chatmsg.sender.nameTag);
                 Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                 Server.runCommand( `tellraw "${chatmsg.sender.nameTag}" {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}` );
                 Server.runCommand( `tp "${chatmsg.sender.nameTag}" @p[scores={tpa=${args[0]}}]` );
                 Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ tag @s remove has_tpa` );
+                Server.runCommand( `tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d${chatmsg.sender.nameTag} §bteleported to §d"},{"selector":"@p[scores={tpa=${args[0]}}]"},{"text":" §bvia §eTPA"}]}` );
                 Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §5${chatmsg.sender.nameTag} §bhas §bSuccessfully teleported! Your TPA Channel is now closed."}]}` );
                 Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ scoreboard players reset @s tpa` );
             }else {
