@@ -1,3 +1,4 @@
+execute @e[type=command_block_minecart] ~~~ execute @a[r=10,scores={acmtoggle=1}] ~~~ function UAC/asset/cbeitemwarn
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=command_block_minecart]
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[name="minecart"]
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=npc]

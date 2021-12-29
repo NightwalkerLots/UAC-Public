@@ -75,6 +75,7 @@ tag "ninjabals360" add PermBan
 tag "Bluefire5975" add PermBan
 tag "SlappsKing" add PermBan
 tag "Destroyer C00L" add PermBan
+tag "Anderycarim" add PermBan
 
 #execute @s[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 

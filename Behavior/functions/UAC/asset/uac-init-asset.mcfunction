@@ -190,7 +190,7 @@ scoreboard objectives add cleararealarge dummy cleararealargelarge
 scoreboard objectives add cbespawn dummy cbespawn
 scoreboard objectives add flycount dummy flycount
 scoreboard objectives add flyreset dummy flyreset
-scoreboard objectives add phasecount dummy phasecount
+scoreboard objectives add phasecount 
 scoreboard objectives add hometp dummy hometp
 scoreboard objectives add welcomed dummy welcomed
 scoreboard objectives add entitycount dummy entitycount
@@ -352,6 +352,8 @@ scoreboard players set @s welcomed 1
 scoreboard objectives add gmc_flag dummy
 scoreboard objectives add totemaut dummy
 scoreboard objectives add totemtog dummy
+scoreboard objectives add armtoggle dummy
+
 
 
 #WB init default value

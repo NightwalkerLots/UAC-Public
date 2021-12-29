@@ -56,7 +56,7 @@ scoreboard players operation @a WBM = wbmtoggledummy WBM
 scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle
 scoreboard players operation @a osmtoggle = osmtoggledummy osmtoggle
 scoreboard players operation @a OSM = osmtoggledummy OSM
-
+scoreboard players operation @a armtoggle = armtoggledummy armtoggle
 
 #Ore Alert toggles
 scoreboard players operation @a diamondmd = mdmtoggledummy diamondmd
