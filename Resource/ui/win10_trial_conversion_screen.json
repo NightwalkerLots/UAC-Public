@@ -1,10 +1,1 @@
-//made by Unity_Deicide, Dakonblackrose, NightwalkerLots, ShatteredMatrix
-//All rights reserved - UECMT Modding Team
-
-{"namespace":"win10_trial_conversion",
-    "win10_trial_conversion_panel@tabbed_upsell.tabbed_upseel_screen_panel":
-    {
-
-    }
-}
-
+{"namespace":"win10_trial_conversion","win10_trial_conversion_panel@start.uipp_main":{}}
