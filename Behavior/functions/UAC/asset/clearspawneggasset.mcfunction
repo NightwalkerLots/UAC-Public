@@ -1,5 +1,5 @@
 #Spawn EGGS
-clear @a[tag=!staffstatus][tag=!staffstatus] spawn_egg
+clear @a[tag=!staffstatus] spawn_egg
 clear @a[tag=!staffstatus] bat_spawn_egg
 clear @a[tag=!staffstatus] bee_spawn_egg
 clear @a[tag=!staffstatus] blaze_spawn_egg

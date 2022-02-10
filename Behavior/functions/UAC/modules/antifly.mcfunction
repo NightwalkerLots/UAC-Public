@@ -1,11 +1,12 @@
-execute @s[tag=!Is_Gliding,tag=!Effect:Levitation,tag=!Is_Jumping,tag=!Is_On_Ground,scores={afmtoggle=1}] ~~~ execute @s ~~~ detect ~-1 ~-1 ~-1 air -1 execute @s ~~~ detect ~ ~-1 ~-1 air -1 execute @s ~~~ detect ~1 ~-1 ~-1 air -1 execute @s ~~~ detect ~-1 ~-1 ~ air -1 execute @s ~~~ detect ~ ~-1 ~ air -1 execute @s ~~~ detect ~1 ~-1 ~ air -1 execute @s ~~~ detect ~-1 ~-1 ~1 air -1 execute @s ~~~ detect ~ ~-1 ~1 air -1 execute @s ~~~ detect ~1 ~-1 ~1 air -1 execute @s ~~~ detect ~-1 ~ ~-1 air -1 execute @s ~~~ detect ~ ~ ~-1 air -1 execute @s ~~~ detect ~1 ~ ~-1 air -1 execute @s ~~~ detect ~-1 ~ ~ air -1 execute @s ~~~ detect ~ ~ ~ air -1 execute @s ~~~ detect ~1 ~ ~ air -1 execute @s ~~~ detect ~-1 ~ ~1 air -1 execute @s ~~~ detect ~ ~ ~1 air -1 execute @s ~~~ detect ~1 ~ ~1 air -1 execute @s ~~~ detect ~-1 ~1 ~-1 air -1 execute @s ~~~ detect ~ ~1 ~-1 air -1 execute @s ~~~ detect ~1 ~1 ~-1 air -1 execute @s ~~~ detect ~-1 ~1 ~ air -1 execute @s ~~~ detect ~ ~1 ~ air -1 execute @s ~~~ detect ~1 ~1 ~ air -1 execute @s ~~~ detect ~-1 ~1 ~1 air -1 execute @s ~~~ detect ~ ~1 ~1 air -1 execute @s ~~~ detect ~1 ~1 ~1 air -1 scoreboard players add @s flycount 1
+execute @s[tag=!Is_Gliding,tag=!Effect:Levitation,tag=!Is_Jumping,tag=!Is_On_Ground,scores={afmtoggle=1,is_sleeping=0,welcomed=1}] ~~~ execute @s ~~~ detect ~-1 ~-1 ~-1 air -1 execute @s ~~~ detect ~ ~-1 ~-1 air -1 execute @s ~~~ detect ~1 ~-1 ~-1 air -1 execute @s ~~~ detect ~-1 ~-1 ~ air -1 execute @s ~~~ detect ~ ~-1 ~ air -1 execute @s ~~~ detect ~1 ~-1 ~ air -1 execute @s ~~~ detect ~-1 ~-1 ~1 air -1 execute @s ~~~ detect ~ ~-1 ~1 air -1 execute @s ~~~ detect ~1 ~-1 ~1 air -1 execute @s ~~~ detect ~-1 ~ ~-1 air -1 execute @s ~~~ detect ~ ~ ~-1 air -1 execute @s ~~~ detect ~1 ~ ~-1 air -1 execute @s ~~~ detect ~-1 ~ ~ air -1 execute @s ~~~ detect ~ ~ ~ air -1 execute @s ~~~ detect ~1 ~ ~ air -1 execute @s ~~~ detect ~-1 ~ ~1 air -1 execute @s ~~~ detect ~ ~ ~1 air -1 execute @s ~~~ detect ~1 ~ ~1 air -1 execute @s ~~~ detect ~-1 ~1 ~-1 air -1 execute @s ~~~ detect ~ ~1 ~-1 air -1 execute @s ~~~ detect ~1 ~1 ~-1 air -1 execute @s ~~~ detect ~-1 ~1 ~ air -1 execute @s ~~~ detect ~ ~1 ~ air -1 execute @s ~~~ detect ~1 ~1 ~ air -1 execute @s ~~~ detect ~-1 ~1 ~1 air -1 execute @s ~~~ detect ~ ~1 ~1 air -1 execute @s ~~~ detect ~1 ~1 ~1 air -1 scoreboard players add @s flycount 1
 
 #counter reset
-execute @s[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0}] flyreset 1
-execute @s[scores={afmtoggle=1,2KK001=0}] ~~~ tag @s[scores={flycount=150..9999},tag=!staffstatus] add BanFly
-execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flycount 0
-execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=150..9999}] flyreset 0
-#execute @s[scores={afmtoggle=1}] ~~~ clear @s[scores={2KK001=0}] elytra
+execute @s[tag=!staffstatus] ~~~ tag @s[scores={afmtoggle=1,2KK001=0,flycount=175..}] add BanFly
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players add @s[scores={2KK001=0,flycount=1..}] flyreset 1
+scoreboard players set @s[scores={flycount=1..},tag=Is_On_Ground] flycount 0
+scoreboard players set @s[scores={flycount=1..},tag=Is_On_Ground] flyreset 0
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=177..}] flycount 0
+execute @s[scores={afmtoggle=1}] ~~~ scoreboard players set @s[scores={flyreset=177..}] flyreset 0
 
 
 #This hides this from the in-game function command directory

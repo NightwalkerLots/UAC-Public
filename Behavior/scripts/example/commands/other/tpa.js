@@ -1,9 +1,10 @@
 import { Server } from '../../../library/Minecraft.js';
+import { World } from 'mojang-minecraft';
 const registerInformation = {
     cancelMessage: true,
     name: 'tpa',
     description: 'Open/Close Teleport Requests',
-    usage: '[ open | close | number ]',
+    usage: '[ <open | create> | close | number ]',
     example: [
         'tpa open',
         'tpa close',
@@ -14,6 +15,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let tpaIntString = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
     let tpsopen = ['open', 'create'];
     let tpsclose = ['close', 'cancel'];
+    
 
     if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
         return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
@@ -46,10 +48,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
             }
             else if(tpaIntString.includes(args[0])) {
+                Server.broadcast(`${channel_match}`, chatmsg.sender.nameTag);
                 Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
                 Server.runCommand( `tellraw "${chatmsg.sender.nameTag}" {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}` );
                 Server.runCommand( `tp "${chatmsg.sender.nameTag}" @p[scores={tpa=${args[0]}}]` );
                 Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ tag @s remove has_tpa` );
+                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/nether_poof` );
+                Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 1 2` );
+                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2` );
                 Server.runCommand( `tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d${chatmsg.sender.nameTag} §bteleported to §d"},{"selector":"@p[scores={tpa=${args[0]}}]"},{"text":" §bvia §eTPA"}]}` );
                 Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §5${chatmsg.sender.nameTag} §bhas §bSuccessfully teleported! Your TPA Channel is now closed."}]}` );
                 Server.runCommand( `execute @p[scores={tpa=${args[0]}}] ~~~ scoreboard players reset @s tpa` );

@@ -17,6 +17,8 @@ execute @s[scores={warncbe=7}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC �
 execute @s[scores={warncbe=8}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §6Anti CBE §btemp kicked §d"},{"selector":"@s"},{"text":" §¶§bfor attempting CBE §7[§c8§7/§29§7]"}]}
 execute @s[scores={warncbe=9}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §6Anti CBE §btemp kicked §d"},{"selector":"@s"},{"text":" §¶§bfor attempting CBE §7[§c9§7/§29§7]"}]}
 
+playsound note.bass @a ~ ~ ~
+
 #base warns after attempts divisable by 3
 execute @s[scores={warncbe=3}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §bYou have §7[§c1§7/§23§7] §b UAC warnings"}]}
 execute @s[scores={warncbe=6}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §bYou have been UAC Warned. Your next warning will result in a Season Ban. §7[§c2§7/§23§7]"}]}

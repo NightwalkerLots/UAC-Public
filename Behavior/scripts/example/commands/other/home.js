@@ -59,7 +59,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             if (!data.statusMessage.match(homeRegex))
                 return Server.broadcast("§¶§cUAC ► §cYou don't have a home with that name!", chatmsg.sender.nameTag);
             Server.runCommand(`execute "${chatmsg.sender.nameTag}" ~~~ tp @s ${findXYZ[0]} ${findXYZ[1]} ${findXYZ[2]}`);
-            Server.runCommand( `playsound note.pling "${chatmsg.sender.nameTag}" ~ ~ ~` );
+            Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/nether_poof` );
             Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to their §e${homeName} §blocation`);
             return Server.broadcast(`§¶§cUAC ► §bYou have been teleported to §a${args[1]} §bat §a${findXYZ[0]}§r, §a${findXYZ[1]}§r, §a${findXYZ[2]}`, chatmsg.sender.nameTag);
         }

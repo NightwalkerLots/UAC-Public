@@ -1,6 +1,10 @@
 #Test for needed experimental features
 scoreboard objectives add has_xx dummy
+scoreboard objectives add in_nether dummy
+scoreboard objectives add in_end dummy
 scoreboard players set @s has_xx 0
+scoreboard players set @s in_nether 0
+scoreboard players set @s in_end 0
 
 #Default values for armor checks
 scoreboard objectives add leathboots dummy leathboots
@@ -27,6 +31,8 @@ scoreboard objectives add goldhelm dummy goldhelm
 scoreboard objectives add ironhelm dummy ironhelm
 scoreboard objectives add diahelm dummy diahelm
 scoreboard objectives add nethhelm dummy nethhelm
+scoreboard objectives add elytra dummy
+scoreboard objectives add turthelm dummy
 
 scoreboard players set @s leathboots 0
 scoreboard players set @s chainboots 0
@@ -52,6 +58,8 @@ scoreboard players set @s goldhelm 0
 scoreboard players set @s ironhelm 0
 scoreboard players set @s diahelm 0
 scoreboard players set @s nethhelm 0
+scoreboard players set @s elytra 0
+scoreboard players set @s turthelm 0
 
 #Ban Checks
 scoreboard objectives add PermBan dummy PermBan
@@ -91,6 +99,11 @@ scoreboard objectives add XNEZ dummy Ban3
 scoreboard players set @s XNEZ 0
 scoreboard objectives add XNEF dummy Ban4
 scoreboard players set @s XNEF 0
+#Player afk detection
+scoreboard objectives add afkm dummy
+scoreboard objectives set @s afkm 0
+scoreboard objectives add afktimer dummy
+
 
 #unban window timer
 scoreboard objectives add unbantimer dummy unbantimer
@@ -153,6 +166,8 @@ scoreboard players set @s fzplr 0
 #WB initial_state
 scoreboard objectives add Border_Coord_X dummy Border_Coord_X
 scoreboard objectives add Border_Coord_Z dummy Border_Coord_Z
+scoreboard objectives add worldcustom dummy
+scoreboard players set @s worldcustom 0
 
 #Adds scores for the armor sensor
 scoreboard objectives add headen dummy headen
@@ -170,6 +185,7 @@ scoreboard players set @s feeten 0
 scoreboard objectives add warn dummy warn
 scoreboard objectives add warnillegal dummy warnillegal
 scoreboard objectives add warncbe dummy
+scoreboard objectives add cbetime dummy
 scoreboard objectives add staff dummy §¶§bStaff
 scoreboard objectives setdisplay belowname staff
 scoreboard objectives add lagtimer dummy lagtimer
@@ -225,6 +241,8 @@ scoreboard objectives add DAM dummy DAM
 scoreboard objectives add MDM dummy MDM
 scoreboard objectives add OSM dummy
 
+scoreboard objectives add vipt dummy
+
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
 scoreboard objectives add afmtoggle dummy afmtoggle
@@ -250,6 +268,7 @@ scoreboard objectives add ibmtoggle dummy ibmtoggle
 scoreboard objectives add damtoggle dummy damtoggle
 scoreboard objectives add mdmtoggle dummy mdmtoggle
 scoreboard objectives add osmtoggle dummy
+scoreboard objectives add clmtoggle dummy
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -304,6 +323,7 @@ scoreboard players set @s ibmtoggle 0
 scoreboard players set @s damtoggle 0
 scoreboard players set @s mdmtoggle 0
 scoreboard players set @s osmtoggle 0
+scoreboard players set @s clmtoggle 0
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -345,7 +365,6 @@ gamerule sendcommandfeedback false
 scoreboard objectives add 2KK001 dummy 2KK001
 scoreboard players set @s 2KK001 0
 gamerule functioncommandlimit 10000
-gamerule commandblocksenabled true
 scoreboard players set @s hometp 3
 scoreboard players set @s opabusemodule 2
 scoreboard players set @s welcomed 1
@@ -353,6 +372,16 @@ scoreboard objectives add gmc_flag dummy
 scoreboard objectives add totemaut dummy
 scoreboard objectives add totemtog dummy
 scoreboard objectives add armtoggle dummy
+scoreboard objectives add in_combat dummy
+scoreboard objectives add combat_timer dummy
+scoreboard objectives add online dummy
+scoreboard objectives add is_sleeping dummy
+scoreboard players set @s is_sleeping 0
+
+function UAC/asset/createdby
+function UAC/asset/discord
+function UAC/asset/version
+function UAC/modules/permban
 
 
 
@@ -364,6 +393,9 @@ execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coor
 scoreboard objectives add pvp dummy pvp
 scoreboard players set @s pvp 0
 scoreboard players operation @s pvp = pvpdummy pvp
+scoreboard players set @s in_combat 0
+scoreboard players set @s combat_timer 0
+scoreboard players set @s online 0
 
 
 #Coordinates System Tracker
@@ -393,6 +425,11 @@ scoreboard objectives add testin dummy testin
 #This sets up all objectives for the fine-tuning settings
 function UAC/settings/ft_setup_init
 function UAC/settings/ft_settings
+function UAC/asset/toggle_sync
+
+execute @a[scores={welcomed=1,XNEZ=!3892}] ~~~ tag @s add theif
+execute @a[scores={welcomed=1,XNEF=!3342}] ~~~ tag @s add theif
+tag @s add can_oneshot
 
 #If experimental features are on, set to true
 event entity @a uac:test_experimental

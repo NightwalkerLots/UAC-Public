@@ -74,8 +74,50 @@ tag "Aleximont" add PermBan
 tag "ninjabals360" add PermBan
 tag "Bluefire5975" add PermBan
 tag "SlappsKing" add PermBan
-tag "Destroyer C00L" add PermBan
+tag "Adgods" add PermBam
+tag "R2Rappy123" add PermBan
+tag "R2Rappy" add PermBan
+tag "Tarouc" add PermBan
+tag "GingerHarp41307" add PermBan
+tag "Iceecoal" add PermBan
 tag "Anderycarim" add PermBan
+tag RestiveHawk2905 add PermBan
+tag "Destroyer C00L" add PermBan
+tag "Panda PlayZ3093" add PermBan
+tag "mum GAE LUL" add PermBan
+tag "XxWxsyxX" add PermBan
+tag "PacketClientOP" add PermBan
+tag "ninjabals360" add PermBan
+tag "Japan60I6" add PermBan
+tag "Greed13376174" add PermBan
+tag "ThrownNickel417" add PermBan
+tag "The Supreme Dub" add PermBan
+tag "capnes" add PermBan
+tag "Justin TP2007" add PermBan
+tag "grimleans" add PermBan
+tag "RedRobotboom" add PermBan
+tag "ttv ncps bn" add PermBan
+tag "RedUplif" add PermBan
+tag "FlipperGraph703" add PermBan
+tag "CausableGem385" add PermBan
+tag "ImNotHacking476" add PermBan
+tag "woffelz179" add PermBan
+tag "potatoes3348" add PermBan
+tag "mirbrahin" add PermBan
+tag "Hy4per2" add PermBan
+tag "helloagain7522" add PermBan
+tag "SevenCactus132" add PermBan
+tag "JumboCanvas9718" add PermBan
+tag "A35435" add PermBan
+tag "ArisenKitten455" add PermBan
+tag "RubenThePig3818" add PermBan
+tag "DARKELEMENT3998" add PermBan
+tag "Paralusive" add PermBan
+tag "NRG BK" add PermBan
+tag "Daqiv" add PermBan
+tag "WarLord42487" add PermBan
+tag "Nic The Punk" add PermBan
+tag "Toez6658" add PermBan
 
 #execute @s[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
 

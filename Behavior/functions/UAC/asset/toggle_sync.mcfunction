@@ -57,6 +57,8 @@ scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle
 scoreboard players operation @a osmtoggle = osmtoggledummy osmtoggle
 scoreboard players operation @a OSM = osmtoggledummy OSM
 scoreboard players operation @a armtoggle = armtoggledummy armtoggle
+scoreboard players operation @a afkm = afkdummy afkm
+scoreboard players operation @a clmtoggle = clmdummy clmtoggle
 
 #Ore Alert toggles
 scoreboard players operation @a diamondmd = mdmtoggledummy diamondmd
@@ -82,6 +84,10 @@ scoreboard players operation @s BNTN = BNAdummy BNTN
 scoreboard players operation @s BNTD = BNAdummy BNTD
 
 scoreboard players operation @a pvp = pvpdummy pvp
+scoreboard players set @s in_nether 0
+scoreboard players set @s in_end 0
+
+
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

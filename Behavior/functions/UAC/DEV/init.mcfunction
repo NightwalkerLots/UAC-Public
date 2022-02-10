@@ -13,6 +13,7 @@ event entity @a[tag=staffstatus] uac:test_experimental
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §¶§b► The §2Developer Debug Init §bhas been used by §d"},{"selector":"@s"}]}
 tellraw @s[scores={has_xx=0},tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §cNot Enabled §7|| §cSome features may not work"}]}
 execute @s[scores={has_xx=1},tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §2ENABLED"}]}
+tag @a remove theif
 
 
 #Deny NonDeveloper

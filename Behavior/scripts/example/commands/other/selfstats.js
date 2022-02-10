@@ -3,7 +3,7 @@ const registerInformation = {
     cancelMessage: true,
     name: 'stats',
     description: 'Shows player stats',
-    usage: '[player | get]',
+    usage: '<player | get> [player name]',
     example: [
         'stats',
         'stats get {player name}',

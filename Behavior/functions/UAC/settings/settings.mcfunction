@@ -6,22 +6,22 @@
 #####################################################################################################
 #
 #=Unban Timer=
-function UAC/modules/unbantimer
+execute @s[tag=staffstatus,scores={unban=1}] ~~~ function UAC/modules/unbantimer
 #
 # =AntiCbe=
 # Protection against the command block exploit
 # Enabled by default
-function UAC/modules/anticbe
+execute @s[scores={acmtoggle=1}] ~~~ function UAC/modules/anticbe
 #
 # =AntiFly=
 # Protection against fly hacks
 # Enabled by default
-function UAC/modules/antifly
+execute @s[scores={afmtoggle=1}] ~~~ function UAC/modules/antifly
 #
 #
 # =No Unobtainable Items=
 # Clears players of Unobtainable items
-function UAC/modules/unobtainableitems
+execute @s[scores={uoimtoggle=1}] ~~~ function UAC/modules/unobtainableitems
 #
 # =AUTOMATED CLEAR LAG=
 # This will automatically clear dropped items and hostile entities every 6 minutes
@@ -34,39 +34,38 @@ function UAC/modules/lagtimer
 #function UAC/modules/hotbarmessage
 #
 # =Mining Detection=
-function UAC/modules/mining_detection
+execute @s[scores={mdmtoggle=1}] ~~~ function UAC/modules/mining_detection
 #
 # =Testing Features=
 # This displays the rules in chat every 10 minues
 # Disable by default, people can see rules in the UAC UI from their inventory
-function UAC/modules/testing
+execute @s[scores={testin=1}] ~~~ function UAC/modules/testing
 #
 # =ANTI FROSTWALKER=
 # This will disable people from using frostwalker by autoreplaceing their feet slot with netherite boots
 # Enabled by default
-function UAC/modules/nofrostwalker
+execute @s[scores={nfmtoggle=1}] ~~~ function UAC/modules/nofrostwalker
 #
-# =UNBAN TIMER=
-# This allows you to have the ability to run a command which unbans the next players to join within 2 minutes
-# Enabled be default
-function UAC/packages/unbantimer
 #
 # =Staffstatus=
 # DO NOT DISABLE THIS, THIS IS ESSENTIAL FOR STAFF BYPASSES TO WORK
-function UAC/modules/staffstatus
+execute @s[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
 #
 # =Prevent OP abuse =
 # Can't do damange when in creative mode
-function UAC/modules/opabuse
+execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
 #
 # =No Echests=
 # Disables echests for nonstaff
-function UAC/modules/noechest
+execute @s[tag=!staffstatus,scores={nemtoggle=1}] ~ ~ ~ function UAC/modules/noechest
 #
 # =Anit Reach=
 # Experimental, prevents players from hitting eachother from more than 5 blocks away
-function UAC/modules/antireach
+execute @s[scores={armtoggle=1}] ~~~ function UAC/modules/antireach
 #
+
+
+execute @s[tag=staffstatus,scores={opamtoggle=0}] ~~~ replaceitem entity @s[scores={totemaut=329},tag=totemaut] slot.weapon.offhand 0 totem_of_undying 1 0 {"minecraft:keep_on_death":{}}
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
