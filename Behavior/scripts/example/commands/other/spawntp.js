@@ -18,10 +18,20 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             Server.broadcast(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`, chatmsg.sender.nameTag);
         }
         else {
-            let command = `tp "${chatmsg.sender.nameTag}" ${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`
-            Server.runCommand( command );
-            Server.broadcast(`§¶§cUAC ► §l§d${chatmsg.sender.nameTag} §bHas warped to World Spawn at §6${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`, chatmsg.sender.nameTag);
-            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
+            if ( Server.player.getScore('worldcustom', chatmsg.sender.nameTag) === 1 ) {
+                let command = `tp "${chatmsg.sender.nameTag}" ${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`
+                Server.runCommand( command );
+                Server.broadcast(`§¶§cUAC ► §l§d${chatmsg.sender.nameTag} §bHas warped to World Spawn at §6${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`, chatmsg.sender.nameTag);
+                Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
+                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/nether_poof` );
+            }
+            else {
+                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ tp @s 0 100 0` );
+                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ effect @s slow_falling 20 1 ` );
+                Server.broadcast(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
+                Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
+                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/nether_poof` );
+            } 
         }
     }
     else {

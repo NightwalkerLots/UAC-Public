@@ -6,6 +6,7 @@ execute @s[scores={damtoggle=1,headen=1,ironhelm=1}] ~~~ replaceitem entity @s s
 execute @s[scores={damtoggle=1,headen=1,goldhelm=1}] ~~~ replaceitem entity @s slot.armor.head 0 golden_helmet 1 0
 execute @s[scores={damtoggle=1,headen=1,chainhelm=1}] ~~~ replaceitem entity @s slot.armor.head 0 chainmail_helmet 1 0
 execute @s[scores={damtoggle=1,headen=1,leathhelm=1}] ~~~ replaceitem entity @s slot.armor.head 0 leather_helmet 1 0
+execute @s[scores={damtoggle=1,headen=1,turthelm=1}] ~~~ replaceitem entity @s slot.armor.head 0 turtle_helmet 1 0
 execute @s[scores={damtoggle=1}] ~~~ execute @s[scores={headen=1}] ~~~ scoreboard players set @s headen 0
 execute @s[scores={damtoggle=1,chesten=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC §b► §6No Enchanted Armor §bremoved chestplate enchants from §d"},{"selector":"@s"}]}
 execute @s[scores={damtoggle=1,chesten=1,nethchest=1}] ~~~ replaceitem entity @s slot.armor.chest 0 netherite_chestplate 1 0
@@ -14,6 +15,7 @@ execute @s[scores={damtoggle=1,chesten=1,ironchest=1}] ~~~ replaceitem entity @s
 execute @s[scores={damtoggle=1,chesten=1,goldchest=1}] ~~~ replaceitem entity @s slot.armor.chest 0 golden_chestplate 1 0
 execute @s[scores={damtoggle=1,chesten=1,chainchest=1}] ~~~ replaceitem entity @s slot.armor.chest 0 chainmail_chestplate 1 0
 execute @s[scores={damtoggle=1,chesten=1,leathchest=1}] ~~~ replaceitem entity @s slot.armor.chest 0 leather_chestplate 1 0
+execute @s[scores={damtoggle=1,chesten=1,elytra=1}] ~~~ replaceitem entity @s slot.armor.chest 0 elytra 1 0
 execute @s[scores={damtoggle=1}] ~~~ execute @s[scores={chesten=1}] ~~~ scoreboard players set @s chesten 0
 execute @s[scores={damtoggle=1}] ~~~ execute @s[scores={legen=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC §b► §6No Enchanted Armor §bremoved legging enchants from §d"},{"selector":"@s"}]}
 execute @s[scores={damtoggle=1,legen=1,nethlegs=1}] ~~~ replaceitem entity @s slot.armor.legs 0 netherite_leggings 1 0

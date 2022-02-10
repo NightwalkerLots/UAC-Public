@@ -8,9 +8,11 @@ execute @s[tag=!staffstatus] ~~~ scoreboard players add @s fzplr 1
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ gamerule sendcommandfeedback false
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ effect @s slowness 99999999 255
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ effect @s strength 99999999 255
-execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ fill ~ ~2 ~ ~ ~2 ~ barrier
-execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ fill ~ ~-1 ~ ~ ~-1 ~ barrier
+execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ tp @s ~ ~1 ~
+execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ fill ~ ~2 ~ ~ ~-2 ~ deny
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ summon armor_stand fzplr
+execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ fill ~1~2~1 ~-1~-2~-1 structure_void 0 replace air
+execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ fill ~~~ ~~1~ air
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ gamemode a
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ effect @e[name=fzplr,type=armor_stand] invisibility 99999999 2 true
 execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bhas been §6frozen §bby a operator."}]}
@@ -18,8 +20,8 @@ execute @s[tag=!staffstatus,scores={fzplr=1}] ~~~ tellraw @a {"rawtext":[{"text"
 #If frozen then init unfreeze
 execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ effect @s clear
 execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ gamemode s
-execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ fill ~ ~2 ~ ~ ~2 ~ air
-execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ fill ~ ~-1 ~ ~ ~-1 ~ air
+execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ fill ~2 ~3 ~2 ~-2 ~-3 ~-2 air 0 replace structure_void
+execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ fill ~2 ~3 ~2 ~-2 ~-3 ~-2 air 0 replace deny
 execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ kill @e[r=3,name=fzplr]
 execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ gamerule sendcommandfeedback true
 execute @s[tag=!staffstatus,scores={fzplr=2}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bhas been §6unfrozen §bby a operator."}]}

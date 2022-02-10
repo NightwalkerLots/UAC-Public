@@ -12,8 +12,6 @@ scoreboard players reset @a cleararea
 scoreboard players reset @a cleararealarge
 gamerule doentitydrops true
 difficulty hard
-execute @a[scores={noechestmodule=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
-difficulty hard
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

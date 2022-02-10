@@ -1,6 +1,4 @@
 import './information/help.js';
-import './moderation/ban.js';
-import './moderation/unban.js';
 import './other/home.js';
 import './other/lastdeath.js';
 import './other/selfstats.js';
@@ -11,3 +9,4 @@ import './other/setworldspawn.js';
 import './other/inventoryview.js';
 import './other/spawntp.js';
 import './other/suicide.js';
+import './other/vipm.js';

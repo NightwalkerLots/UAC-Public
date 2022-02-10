@@ -23,6 +23,7 @@ if(Server.player.hasTag('staffstatus', chatmsg.sender.nameTag)) {
         Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" Worldy ${Server.player.getScore('Y_Coordinate', chatmsg.sender.nameTag)}` );
         Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" Worldz ${Server.player.getScore('Z_Coordinate', chatmsg.sender.nameTag)}` );
         Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ setworldspawn  ~~~` );
+        Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/explode` );
         Server.runCommand( `scoreboard players set worlddum worldcustom 1` );
         Server.broadcast(`§¶§cUAC ► §b§lWorld Spawn configured to §e${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}§b! Players will be sent here after passing World Border`, chatmsg.sender.nameTag);
     }

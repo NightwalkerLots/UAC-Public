@@ -1,16 +1,21 @@
-execute @s ~~~ scoreboard players reset @s lagtimer
+#this function is ran on a random player every 5 seconds ( helps for TPS control )
 
-execute @s[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
+scoreboard players reset @s lagtimer
+execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @s[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
-execute @s[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
-execute @s[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
-execute @s[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestdisable
+execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
+execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
+execute @s[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestwipe
 function UAC/modules/enchanted_armor
 function UAC/packages/bans
 function UAC/modules/permban
 function UAC/modules/ownerstatus
 function UAC/asset/toggle_sync
 function UAC/modules/hotbarmessage
+
+execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
+
+execute @a[tag=UAC_vip,tag=!is_moving,scores={VIPM=2293}]  ~~~ function particle/nether_poof_small
 
 #player counter
 scoreboard players reset playerdummy playercount
@@ -24,8 +29,14 @@ kill @s[scores={suicide=11}]
 scoreboard players set @s[scores={suicide=11}] hometp 3
 scoreboard players reset @s[scores={suicide=11}] suicide
 
+#This makes sure everyone doesn't get flagged for c-logging when the module is first turned on
+#As the only other thing that resets their in_combat is the timer c-log timer
+scoreboard players set @a[scores={clmtoggle=0}] in_combat 0
 
-#Syncs toggle for mining detection module
+#This runs a function on players rejoining
+execute @a[scores={online=0,has_gt=0}] ~~~ function UAC/packages/playerjoined
+scoreboard players set * online 0
+scoreboard players set @a online 1
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

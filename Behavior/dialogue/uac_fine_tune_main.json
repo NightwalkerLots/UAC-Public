@@ -10,9 +10,9 @@
 				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lFine Tuning MENU" } ] },
 				"buttons": [
 					{
-						"name": { "rawtext": [ { "text": "§l§5Anti-CBE" } ] },
+						"name": { "rawtext": [ { "text": "§l§EMPTY" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_fine_tune_cbe",
+							"/execute @s[tag=staffstatus] ~~~ function UAC/test",
                             "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},

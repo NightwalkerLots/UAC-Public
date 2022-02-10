@@ -10,9 +10,9 @@
 				"text": { "rawtext": [ { "text": "§l§cUAC ► §5GUI §2DEVELOPER DEBUG §5MENU" } ] },
 				"buttons": [
 					{
-						"name": { "rawtext": [ { "text": "§l§2KILL SWITCH" } ] },
+						"name": { "rawtext": [ { "text": "§l§2Test Features" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/toggle-all-off",
+							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/enable-test-features",
               				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
 						]
 					},
@@ -24,16 +24,16 @@
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2ANARCHY INIT" } ] },
+						"name": { "rawtext": [ { "text": "§l§2Debug INIT" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/unity-anarchy-init",
+							"/execute @s[tag=staffstatus] ~~~ function UAC/DEV/init",
               				"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_dev_gui_debug"
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2DEBUG INIT" } ] },
+						"name": { "rawtext": [ { "text": "§l§cEMPTY" } ] },
 						"commands": [
-							"/execute @s[name=nightwalkerlots] ~~~ function UAC/DEV/debug-init"
+							"/execute @s[name=nightwalkerlots] ~~~ function UAC/test"
 						]
 					},
 					{

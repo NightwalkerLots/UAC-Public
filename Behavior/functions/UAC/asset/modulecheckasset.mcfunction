@@ -3,10 +3,18 @@ execute @s[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c========= Module Status ========="}]}
 
 execute @s[tag=staffstatus,scores={HMM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus,scores={HMM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§2ENABLED Mode 2§7]"}]}
 execute @s[tag=staffstatus,scores={HMM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bHotbar Message §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus,scores={ICM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bPlayer Commands §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={ICM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bPlayer Commands §7[ §¶§cDISABLED §7]"}]}
+
+execute @s[tag=staffstatus,scores={afkm=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAfk Kick §7[ §¶§2ENABLED §7]"}]}
+execute @s[tag=staffstatus,scores={afkm=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAfk Kick §7[ §¶§cDISABLED §7]"}]}
+
+execute @s[tag=staffstatus,scores={clmtoggle=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-C Logging §7[ §¶§2KILL MODE §7]"}]}
+execute @s[tag=staffstatus,scores={clmtoggle=2}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-C Logging §7[ §¶§2CLEAR MODE §7]"}]}
+execute @s[tag=staffstatus,scores={clmtoggle=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAnti-C Logging §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus,scores={LTM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAuto Lagclear §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={LTM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bAuto Lagclear §7[ §¶§cDISABLED §7]"}]}
@@ -33,7 +41,7 @@ execute @s[tag=staffstatus,scores={BBM=1}] ~~~ tellraw @s {"rawtext":[{"text":"�
 execute @s[tag=staffstatus,scores={BBM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bBottom Bedrock Replace §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus,scores={WBM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bWorld Border §7[ §¶§2ENABLED §7]"}]}
-execute @s[tag=staffstatus,scores={WBM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bWord Border §7[ §¶§cDISABLED §7]"}]}
+execute @s[tag=staffstatus,scores={WBM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bWorld Border §7[ §¶§cDISABLED §7]"}]}
 
 execute @s[tag=staffstatus,scores={RSM=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bRandom Spawn §7[ §¶§2ENABLED §7]"}]}
 execute @s[tag=staffstatus,scores={RSM=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b►§¶§bRandom Spawn §7[ §¶§cDISABLED §7]"}]}

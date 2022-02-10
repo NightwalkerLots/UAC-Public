@@ -18,13 +18,21 @@ execute @s[scores={IIB=1..}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► 
 execute @s[scores={BanFly=1..}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b §¶§cwas banned due to Fly Hacks"}]}
 execute @s[scores={BanPhase=1..}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":"§b §¶§cwas banned due to Phase Hacks"}]}
 
-#Remove player from realm
+execute @s[tag=!staffstatus,tag=PermBan] ~~~ function UAC/asset/ban_gameplay
+execute @s[tag=!staffstatus,tag=BanCBE] ~~~ function UAC/asset/ban_gameplay
+execute @s[tag=!staffstatus,tag=Ban] ~~~ function UAC/asset/ban_gameplay
+execute @s[tag=!staffstatus,tag=illegalitemban] ~~~ function UAC/asset/ban_gameplay
+execute @s[tag=!staffstatus,tag=BanFly] ~~~ function UAC/asset/ban_gameplay
+execute @s[tag=!staffstatus,tag=BanPhase] ~~~ function UAC/asset/ban_gameplay
+execute @s[tag=!staffstatus,scores={warn=3..}] ~~~ function UAC/asset/ban_gameplay
+
 event entity @s[tag=!staffstatus,scores={BanPhase=1..}] uac:ban_soft
 event entity @s[tag=!staffstatus,scores={BanFly=1..}] uac:ban_soft
 event entity @s[tag=!staffstatus,scores={IIB=1..}] uac:ban_soft
 event entity @s[tag=!staffstatus,scores={PermBan=1..}] uac:ban_soft
 event entity @s[tag=!staffstatus,scores={BanWarn=1..}] uac:ban_soft
 event entity @s[tag=!staffstatus,scores={BanCBE=1..}] uac:ban_soft
+event entity @s[tag=!staffstatus,scores={warn=3..}] uac:ban_soft
 
 #Prevents overflow from ban checks
 execute @s[scores={PermBan=4}] ~~~ scoreboard players set @s PermBan 3

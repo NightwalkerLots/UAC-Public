@@ -12,7 +12,9 @@
 					],
 					"on_entry": [
 						"/function UAC/modules/timeplayedticker",
-						"/function UAC/settings/settings"
+						"/function UAC/settings/settings",
+						"/gamerule functioncommandlimit 3000",
+						"/kill @e[type=moving_block]"
 					]
 				},
 				"timer": {
@@ -23,7 +25,8 @@
 					],
 					"on_entry": [
 						"/function UAC/modules/timeplayedticker",
-						"/function UAC/settings/settings"
+						"/function UAC/settings/settings",
+						"/gamerule functioncommandlimit 1000"
 					]
 				}
 			}
@@ -205,7 +208,7 @@
 						}
 					],
 					"on_entry": [
-						"/tag @s remove Is_Jumping"
+						"/tag @s remove is_jumping"
 					]
 				},
 				"is_jumping": {
@@ -215,7 +218,7 @@
 						}
 					],
 					"on_entry": [
-						"/tag @s add Is_Jumping"
+						"/tag @s add is_jumping"
 					]
 				}
 			}

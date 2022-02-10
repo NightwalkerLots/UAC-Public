@@ -18,7 +18,7 @@
             }
           ],
           "on_entry": [
-            "/function UAC/asset/worldborder_message"
+            "/execute @s[scores={wbmtoggle=1}] ~~~ function UAC/asset/worldborder_message"
           ]
         }
       }
@@ -40,7 +40,7 @@
             }
           ],
           "on_entry": [
-            "/function UAC/asset/worldborder_message"
+            "/execute @s[scores={wbmtoggle=1}] ~~~ function UAC/asset/worldborder_message"
           ]
         }
       }
