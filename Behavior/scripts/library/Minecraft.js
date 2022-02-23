@@ -4,7 +4,7 @@ import { compressNumber, formatNumber, MS, rainbowText } from "./utils/formatter
 export { compressNumber, formatNumber, MS, rainbowText };
 import Database from "./build/classes/databaseBuilder.js";
 export { Database };
-import { World, Commands } from 'mojang-minecraft';
+import { world} from 'mojang-minecraft';
 import { Entity } from "./build/classes/entityBuilder.js";
 import { Player } from "./build/classes/playerBuilder.js";
 import { Command } from "./build/classes/commandBuilder.js";
@@ -22,7 +22,7 @@ class ServerBuild extends ServerBuilder {
      * @private
      */
     _buildEvent() {
-        World.events.beforeChat.subscribe(data => {
+        world.events.beforeChat.subscribe(data => {
             const date = new Date();
             /**
              * Emit to 'beforeMessage' event listener
@@ -70,37 +70,37 @@ class ServerBuild extends ServerBuilder {
         /**
          * Emit to 'beforeExplosion' event listener
          */
-        World.events.beforeExplosion.subscribe(data => this.emit('beforeExplosion', data));
+        world.events.beforeExplosion.subscribe(data => this.emit('beforeExplosion', data));
         /**
          * Emit to 'beforePistonActivate' event listener
          */
-        World.events.beforePistonActivate.subscribe(data => this.emit('beforePistonActivate', data));
+        world.events.beforePistonActivate.subscribe(data => this.emit('beforePistonActivate', data));
         /**
          * Emit to 'blockExplode' event listener
          */
-        World.events.blockExplode.subscribe(data => this.emit('blockExplode', data));
+        world.events.blockExplode.subscribe(data => this.emit('blockExplode', data));
         /**
          * Emit to 'beforeExplosion' event listener
          */
-        World.events.explosion.subscribe(data => this.emit('explosion', data));
+        world.events.explosion.subscribe(data => this.emit('explosion', data));
         /**
          * Emit to 'beforeExplosion' event listener
          */
-        World.events.pistonActivate.subscribe(data => this.emit('pistonActivate', data));
+        world.events.pistonActivate.subscribe(data => this.emit('pistonActivate', data));
         /**
          * Emit to 'messageCreate' event listener
          */
-        World.events.chat.subscribe(data => this.emit('messageCreate', data));
+        world.events.chat.subscribe(data => this.emit('messageCreate', data));
         /**
          * Emit to 'entityEffected' event listener
          */
-        World.events.effectAdd.subscribe(data => this.emit('entityEffected', data));
+        world.events.effectAdd.subscribe(data => this.emit('entityEffected', data));
         /**
          * Emit to 'weatherChange' event listener
          */
-        World.events.weatherChange.subscribe(data => this.emit('weatherChange', data));
+        world.events.weatherChange.subscribe(data => this.emit('weatherChange', data));
         let oldPlayer = [];
-        World.events.entityCreate.subscribe(data => {
+        world.events.entityCreate.subscribe(data => {
             /**
              * Emit to 'entityCreate' event listener
              */
@@ -115,7 +115,7 @@ class ServerBuild extends ServerBuilder {
                 this.emit('playerJoin', data.entity);
         });
         let worldLoaded = false, tickCount = 0;
-        World.events.tick.subscribe((data) => {
+        world.events.tick.subscribe((data) => {
             /**
              * Emit to 'tick' event listener
              */

@@ -9,11 +9,13 @@ const registerInformation = {
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
+    const { sender } = chatmsg;
+    const name = sender.getName();
     if(args[0])
     {
         Server.broadcastStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
     }
     else {
-        Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function UAC/asset/uac_vip` );
+        Server.runCommand( `execute "${name}" ~~~ function UAC/asset/uac_vip` );
     }
 });

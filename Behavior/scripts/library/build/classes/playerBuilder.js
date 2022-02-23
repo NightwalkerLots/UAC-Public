@@ -1,5 +1,6 @@
 import * as Minecraft from 'mojang-minecraft';
 import { Server } from './serverBuilder.js';
+
 export class PlayerBuilder {
     /**
      * Look if player is in the game
@@ -12,22 +13,8 @@ export class PlayerBuilder {
         return players.includes(player);
     }
     ;
-    /**
-     * Look for a tag on player(s)
-     * @param {string} tag Tag you are seraching for (WARNING: Color Coding with § is ignored)
-     * @param {string} [player] Requirements for the entity
-     * @returns {boolean}
-     * @example PlayerBuilder.hasTag("Owner", 'notbeer');
-     */
-    hasTag(tag, player) {
-        const allTags = this.getTags(player);
-        if (!allTags)
-            return false;
-        for (const Tag of allTags)
-            if (Tag.replace(/§./g, '').match(new RegExp(`^${tag.replace(/§./g, '')}$`)))
-                return true;
-        return false;
-    }
+
+
     ;
     /**
      * Get players(s) at a position
@@ -40,7 +27,7 @@ export class PlayerBuilder {
      */
     getAtPos([x, y, z], { dimension } = {}) {
         try {
-            const entity = Minecraft.World.getDimension(dimension ? dimension : 'overworld').getEntitiesAtBlockLocation(new Minecraft.BlockLocation(x, y, z));
+            const entity = Minecraft.world.getDimension(dimension ? dimension : 'overworld').getEntitiesAtBlockLocation(new Minecraft.BlockLocation(x, y, z));
             for (let i = 0; i < entity.length; i++)
                 if (entity[i].id !== 'minecraft:player')
                     entity.splice(i, 1);
@@ -53,28 +40,13 @@ export class PlayerBuilder {
     }
     ;
     /**
-     * Get tags player(s) has
-     * @param {string} [player] Requirements for the entity
-     * @returns {Array<string>}
-     * @example PlayerBuilder.getTags('notbeer');
-     */
-    getTags(player) {
-        const data = Server.runCommand(`tag "${player}" list`);
-        if (data.error)
-            return;
-        let tags = data.statusMessage.match(/(?<=: ).*$/);
-        if (tags)
-            return tags[0].split('§r, §a');
-    }
-    ;
-    /**
      * Get list of players in game
      * @returns {Array<string>}
      * @example PlayerBuilder.list();
      */
     list() {
         let data = [];
-        data = Server.runCommand(`list`).players.split(', ');
+        data = [...Minecraft.world.getPlayers()].map(player => player.getName())
         return data;
     }
     ;

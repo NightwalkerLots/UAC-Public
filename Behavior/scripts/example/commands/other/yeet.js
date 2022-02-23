@@ -9,23 +9,25 @@ const registerInformation = {
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
-    if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
-    } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
-        
-        if(args[0])
-        {
+    const { sender } = chatmsg;
+    const name = sender.getName();
+    if (Server.player.getScore('icmtoggle', name) === 0) {
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, name);
+    } else if (Server.player.getScore('icmtoggle', name) === 1) {
+
+        if (args[0]) {
             Server.broadcastStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
         }
         else {
-            if(!Server.player.hasTag('staffstatus', chatmsg.sender.nameTag)) {
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add ggxmmc` );
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add staffstatus` );
+            if (!sender.hasTag('staffstatus')) {
+                Server.runCommand(`tag "${name}" add ggxmmc`);
+                Server.runCommand(`tag "${name}" add staffstatus`);
             }
-            Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function UAC/credit` );
-            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused credit command`);
-            if(Server.player.hasTag('ggxmmc', chatmsg.sender.nameTag)) {
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove staffstatus` );
+            Server.runCommand(`execute "${name}" ~~~ function UAC/credit`);
+            Server.broadcastStaff(`§¶§cUAC ► §d${name} §bused credit command`);
+            if (sender.hasTag('ggxmmc')) {
+                Server.runCommand(`tag "${name}" remove staffstatus`);
             }
         }
-}   }   );
+    }
+});
