@@ -9,32 +9,33 @@ const registerInformation = {
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
-    if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
-    } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
-        
-        if(args[0])
-        {
-            Server.broadcast(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`, chatmsg.sender.nameTag);
+    const { sender } = chatmsg;
+    const name = sender.getName();
+    if (Server.player.getScore('icmtoggle', name) === 0) {
+        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, name);
+    } else if (Server.player.getScore('icmtoggle', name) === 1) {
+
+        if (args[0]) {
+            Server.broadcast(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`, name);
         }
         else {
-            if ( Server.player.getScore('worldcustom', chatmsg.sender.nameTag) === 1 ) {
-                let command = `tp "${chatmsg.sender.nameTag}" ${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`
-                Server.runCommand( command );
-                Server.broadcast(`§¶§cUAC ► §l§d${chatmsg.sender.nameTag} §bHas warped to World Spawn at §6${Server.player.getScore('Worldx', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldy', chatmsg.sender.nameTag)} ${Server.player.getScore('Worldz', chatmsg.sender.nameTag)}`, chatmsg.sender.nameTag);
-                Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
-                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/nether_poof` );
+            if (Server.player.getScore('worldcustom', name) === 1) {
+                let command = `tp "${name}" ${Server.player.getScore('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz', name)}`;
+                Server.runCommand(command);
+                Server.broadcast(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${Server.player.getScore('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz', name)}`, name);
+                Server.broadcastStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                Server.runCommand(`execute "${name}" ~~~ function particle/nether_poof`);
             }
             else {
-                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ tp @s 0 100 0` );
-                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ effect @s slow_falling 20 1 ` );
-                Server.broadcast(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
-                Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bwarped to worldspawn`);
-                Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function particle/nether_poof` );
-            } 
+                Server.runCommand(`execute "${name}" ~~~ tp @s 0 100 0`);
+                Server.runCommand(`execute "${name}" ~~~ effect @s slow_falling 20 1 `);
+                Server.broadcast(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                Server.broadcastStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                Server.runCommand(`execute "${name}" ~~~ function particle/nether_poof`);
+            }
         }
     }
     else {
-        return Server.broadcast(`§¶§cUAC ► §cERROR 2! §6Command Failed`, chatmsg.sender.nameTag);
+        return Server.broadcast(`§¶§cUAC ► §cERROR 2! §6Command Failed`, name);
     }
 });
