@@ -1,4 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'worldspawn',
@@ -18,32 +19,32 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
     if (Server.player.hasTag('staffstatus', name)) {
         if (worldset.includes(args[0])) {
-            Server.runCommand(`scoreboard players operation worlddum Worldx = "${name}" X_Coordinate`);
-            Server.runCommand(`scoreboard players operation worlddum Worldy = "${name}" Y_Coordinate`);
-            Server.runCommand(`scoreboard players operation worlddum Worldz = "${name}" Z_Coordinate`);
-            Server.runCommand(`scoreboard players set "${name}" Worldx ${Server.player.getScore('X_Coordinate', name)}`);
-            Server.runCommand(`scoreboard players set "${name}" Worldy ${Server.player.getScore('Y_Coordinate', name)}`);
-            Server.runCommand(`scoreboard players set "${name}" Worldz ${Server.player.getScore('Z_Coordinate', name)}`);
-            Server.runCommand(`execute "${name}" ~~~ setworldspawn  ~~~`);
-            Server.runCommand(`execute "${name}" ~~~ function particle/explode`);
-            Server.runCommand(`scoreboard players set worlddum worldcustom 1`);
-            Server.broadcast(`§¶§cUAC ► §b§lWorld Spawn configured to §e${Server.player.getScore('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz', name)}§b! Players will be sent here after passing World Border`, name);
+            sender.runCommand(`scoreboard players operation worlddum Worldx = @s X_Coordinate`);
+            sender.runCommand(`scoreboard players operation worlddum Worldy = @s Y_Coordinate`);
+            sender.runCommand(`scoreboard players operation worlddum Worldz = @s Z_Coordinate`);
+            sender.runCommand(`scoreboard players set @s Worldx ${sender.scoreTest('X_Coordinate')}`);
+            sender.runCommand(`scoreboard players set @s Worldy ${sender.scoreTest('Y_Coordinate')}`);
+            sender.runCommand(`scoreboard players set @s Worldz ${sender.scoreTest('Z_Coordinate')}`);
+            sender.runCommand(`setworldspawn  ~~~`);
+            sender.runCommand(`function particle/explode`);
+            sender.runCommand(`scoreboard players set worlddum worldcustom 1`);
+            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${sender.scoreTest('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz')}§b! Players will be sent here after passing World Border`);
         }
         else if (worldremove.includes(args[0])) {
-            Server.runCommand(`scoreboard players set worlddum worldcustom 0`);
-            Server.runCommand(`scoreboard players set worlddum Worldx 0`);
-            Server.runCommand(`scoreboard players set worlddum Worldz 0`);
-            Server.runCommand(`scoreboard players set worlddum Worldy 0`);
-            Server.runCommand(`scoreboard players operation "${name}" Worldx = worlddum Worldx`);
-            Server.runCommand(`scoreboard players operation "${name}" Worldy = worlddum Worldy`);
-            Server.runCommand(`scoreboard players operation "${name}" Worldz = worlddum Worldz`);
-            Server.broadcast(`§¶§cUAC ► §b§lCustom World Spawn has been set back to default`, name);
+            sender.runCommand(`scoreboard players set worlddum worldcustom 0`);
+            sender.runCommand(`scoreboard players set worlddum Worldx 0`);
+            sender.runCommand(`scoreboard players set worlddum Worldz 0`);
+            sender.runCommand(`scoreboard players set worlddum Worldy 0`);
+            sender.runCommand(`scoreboard players operation @s Worldx = worlddum Worldx`);
+            sender.runCommand(`scoreboard players operation @s Worldy = worlddum Worldy`);
+            sender.runCommand(`scoreboard players operation @s Worldz = worlddum Worldz`);
+            sender.tellraw(`§¶§cUAC ► §b§lCustom World Spawn has been set back to default`);
         }
         else {
-            Server.broadcast(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]`, name);
+            sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]`);
         }
     }
     else {
-        Server.broadcast(`§¶§cUAC ► §c§lError 4: Only Staff can configure world spawn`, name);
+        sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can configure world spawn`);
     }
 });
