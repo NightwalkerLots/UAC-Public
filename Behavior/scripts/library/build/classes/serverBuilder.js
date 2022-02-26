@@ -1,6 +1,6 @@
 import { world } from 'mojang-minecraft';
 import { EventEmitter } from './eventEmitter.js';
-const overworld = world.getDimension('overworld')
+const overworld = world.getDimension('overworld');
 export class ServerBuilder extends EventEmitter {
     /**
      * Force shuts down the server
@@ -25,7 +25,7 @@ export class ServerBuilder extends EventEmitter {
      * @example ServerBuilder.broadcast('Hello World!');
      */
     broadcast(text, player) {
-        return this.runCommand(`tellraw ${player ? `"${player}"` : '@a'} {"rawtext":[{"text":${JSON.stringify(text)}}]}`);
+        return this.runCommand(`tellraw ${(player) ? `"${player}"` : '@a'} {"rawtext":[{"text":"${(typeof text === 'object') ? JSON.stringify(text) : text}"}]}`);
     }
     ;
     broadcastStaff(text, player) {
@@ -71,7 +71,7 @@ export class ServerBuilder extends EventEmitter {
         return { error: error };
     }
     ;
-    getAllPlayers() { return World.getPlayers(); };
+    getAllPlayers() { return world.getPlayers(); };
     tellraw(info) {
         try {
             if (!Player.find({
@@ -85,7 +85,7 @@ export class ServerBuilder extends EventEmitter {
                 })}`
             });
         } catch (e) {
-            Commands.run(`say ${e} \n\n ${e.stack}`, World.getDimension('overWorld'));
+            Commands.run(`say ${e} \n\n ${e.stack}`, world.getDimension('overWorld'));
         }
     };
 }

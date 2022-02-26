@@ -1,4 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'inventory',
@@ -18,8 +19,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let playername = args.join(' ');
 
     if (sender.hasTag('staffstatus')) {
-        if (!args[0]) return Server.broadcast(`§¶§cUAC ► §c§lPlease specify the name of the player of whom you would like to see their inventory`, name);
-        else if (!playerfound) return Server.broadcast(`§¶§cUAC ► §c§l${playername} is offline or does not exist`, name);
+        if (!args[0]) return sender.tellraw(`§¶§cUAC ► §c§lPlease specify the name of the player of whom you would like to see their inventory`);
+        else if (!playerfound) return sender.tellraw(`§¶§cUAC ► §c§l${playername} is offline or does not exist`);
         else {
             // The framework for grabbing inventory was created by balloon from mcpe realm hub: https://discord.gg/P9Zd6wu97V
             let items = Server.player.getInventory({ name: playername });
@@ -32,9 +33,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 itemsString += `${slot} ${id} ${amount} ${data}\n`;
             });
             let message = `${itemsString}`;
-            Server.broadcast(`${message}`, name);
+            sender.tellraw(`${message}`);
         }
     } else {
-        Server.broadcast(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`, name);
+        sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`);
     }
 });

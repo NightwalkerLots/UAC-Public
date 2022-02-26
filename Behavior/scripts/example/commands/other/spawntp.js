@@ -1,4 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
+import { world, Location } from 'mojang-minecraft';
+const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
     name: 'spawntp',
@@ -9,33 +12,37 @@ const registerInformation = {
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
-    const { sender } = chatmsg;
-    const name = sender.getName();
-    if (Server.player.getScore('icmtoggle', name) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, name);
-    } else if (Server.player.getScore('icmtoggle', name) === 1) {
+    try {
 
-        if (args[0]) {
-            Server.broadcast(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`, name);
-        }
-        else {
-            if (Server.player.getScore('worldcustom', name) === 1) {
-                let command = `tp "${name}" ${Server.player.getScore('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz', name)}`;
-                Server.runCommand(command);
-                Server.broadcast(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${Server.player.getScore('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz', name)}`, name);
-                Server.broadcastStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
-                Server.runCommand(`execute "${name}" ~~~ function particle/nether_poof`);
+
+        const { sender } = chatmsg;
+        const name = sender.getName();
+        console.warn(sender.queryTopSolid());
+        if (sender.scoreTest('icmtoggle') === 0) {
+            return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+        } else if (sender.scoreTest('icmtoggle') === 1) {
+
+            if (args[0]) {
+                sender.tellraw(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
             }
             else {
-                Server.runCommand(`execute "${name}" ~~~ tp @s 0 100 0`);
-                Server.runCommand(`execute "${name}" ~~~ effect @s slow_falling 20 1 `);
-                Server.broadcast(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
-                Server.broadcastStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
-                Server.runCommand(`execute "${name}" ~~~ function particle/nether_poof`);
+                if (sender.scoreTest('worldcustom') === 1) {
+                    sender.teleport(new Location(sender.scoreTest('Worldx'), sender.scoreTest('Worldy'), sender.scoreTest('Worldz')), overworld, ...sender.rotation(true));
+                    sender.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${sender.scoreTest('Worldx')} ${sender.scoreTest('Worldy')} ${sender.scoreTest('Worldz')}`);
+                    tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                    sender.runCommand(`function particle/nether_poof`);
+                }
+                else {
+                    sender.teleport(new Location(0, sender.queryTopSolid() + 1, 0), overworld, ...sender.rotation(true));
+                    // sender.runCommand(`effect @s slow_falling 20 1 `);
+                    tellrawServer(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                    sender.runCommand(`function particle/nether_poof`);
+                }
             }
+        } else {
+            return sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Command Failed`);
         }
-    }
-    else {
-        return Server.broadcast(`§¶§cUAC ► §cERROR 2! §6Command Failed`, name);
+    } catch (error) {
+        console.warn(error, error.stack);
     }
 });
