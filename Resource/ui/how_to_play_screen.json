@@ -270,10 +270,12 @@
             { "padding_2@how_to_play_common.padding": { } },
             { "paragraph_0@how_to_play_common.paragraph": {
               "$text": "uac.itemcommands.text12" } },
+            { "paragraph_0@how_to_play_common.paragraph": {
+              "$text": "uac.itemcommands.text13" } },
             { "header_0@how_to_play_common.header": {
-              "$text": "uac.itemcommands.header.title1" } },
-            { "image_0@how_to_play_common.image": {
-              "texture": "textures/command" } }
+              "$text": "uac.itemcommands.header.title1" } }
+            //{ "image_0@how_to_play_common.image": {
+            //  "texture": "textures/command" } }
      ]
    },
 //uac Faq section

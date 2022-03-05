@@ -13,20 +13,20 @@ uac.home.header.title2=§l§bCreated by §2NightwalkerLots §b& §2UnknownCatast
 
 
 
-howtoplay.uac_player=§l§¶§cUAC ► §l§9Player Instructions
+howtoplay.uac_player=§l§¶§cUAC ► §l§9Player Instructions / Tips
 
-howtoplay.uac_player.title=§l§¶§cUAC ► §l§9Player Instructions
+howtoplay.uac_player.title=§l§¶§cUAC ► §l§9Player Instructions / Tips
 
 
-uac.player.header.title0=§l§¶§cUAC ► §l§bPlayer Instructions
-uac.player.text0=§¶§b► Right click on a player to see their stats!
-uac.player.text1=§¶§b► Lay down in a bed to set spawn coords in UAC, or use a §2setspawn §bitem command
-uac.player.text2=§¶§b► The §2home §bitem command is ment to be used in the OverWorld
-uac.player.text3=§¶§b► You'll find that Rotten Flesh doesn't drop anymore!
-uac.player.text4=§¶§b► If §6HotbarMessages §bare off, you can still check your stats with a §2Item Command§b.
-uac.player.text5=§¶§b► If you're being teleported in the air, you are soft banned. Reach out to the Realm Owner.
-uac.player.text6=§¶§b► If §6Anti-Fly §bis enabled, be careful with Riptide Tridents in the rain!
-uac.player.text7=§¶§b► If you're playing legitly then you have nothing to worry about.
+uac.player.header.title0=§l§¶§cUAC ► §l§bPlayer Instructions / Tips
+uac.player.text0=§¶§b► Rotten Flesh won't drop from zombies
+uac.player.text1=§¶§b► XP orbs are auto collected. No need to hunt them down.
+uac.player.text2=§¶§b► Ask the realm owner what the world border is set to before going adventuring.
+uac.player.text3=§¶§b► Before bee farming, ask the owner if Anti-CBE is enabled. Beehives/Nests and buckets won't be okay to use.
+uac.player.text4=§¶§b► If you're being teleported in the air, you are soft banned. Reach out to the Realm Owner.
+uac.player.text5=§¶§b► If §6Anti-Fly §bis enabled, Riptide Tridents may be unsafe in the rain!
+uac.player.text6=§¶§b► If you're playing legitly then you have nothing to worry about.
+uac.player.text7=§¶§b 
 uac.player.text8=§¶§b► This resource pack can be used locally! Join or discord to download.
 uac.player.text9=§l§¶§cUAC ► §b§lDiscord.gg/UQ56g9a
 uac.player.header.title1=§l§¶§cUAC ► §l§bPlayer Instructions
@@ -66,24 +66,25 @@ uac.staff.text26=§¶§b► Get alerted when players are mining certain ores wit
 uac.staff.text27=§¶§b► Enabled hidden features such as §6Abient Torch Lighting §b by using §2/function UAC/DEV/enable-test-features
 uac.staff.header.title3=§l§¶§cUAC ► §l§bStaff Instructions
 
-howtoplay.uac_itemcommands=§¶§c§lUAC ► §l§9Item Commands
-howtoplay.uac_itemcommands.title=§¶§c§lUAC ► §l§9Item Commands
+howtoplay.uac_itemcommands=§¶§c§lUAC ► §l§9Player Commands
+howtoplay.uac_itemcommands.title=§¶§c§lUAC ► §l§9Player Commands
 
-uac.itemcommands.header.title0=§¶§c§lUAC ► §l§bItem Commands
-uac.itemcommands.text0=§¶§b► Step 1: Name any item one of the following words with a anvil
-uac.itemcommands.text1=§¶§b (Make sure the word is all lowercase and spelled correctly)
-uac.itemcommands.text2=§¶§b► §2home
+uac.itemcommands.header.title0=§¶§c§lUAC ► §l§bPlayer Commands
+uac.itemcommands.text0=§¶§b► §2UAC.display §d[ self | server | off ]
+uac.itemcommands.text1=§¶§b► toggle hotbar message between self or server stats
+uac.itemcommands.text2=§¶§b► §2UAC.home §d<list | set | remove | warp> [home name]
 uac.itemcommands.text3=§¶§b► The above command will take you directly to your current spawn point
-uac.itemcommands.text4=§¶§b► §2spawn
-uac.itemcommands.text5=§¶§b► The above command teleport you close to world spawn.
-uac.itemcommands.text6=§¶§b► §2setspawn
-uac.itemcommands.text7=§¶§b► The above command will set your spawn at your current position.
-uac.itemcommands.text8=§¶§b► §2stats
-uac.itemcommands.text9=§¶§b► The above command will show you your K/D and UAC warns
-uac.itemcommands.text10=§¶§b► §2lastdeath
+uac.itemcommands.text4=§¶§b► §2UAC.spawntp
+uac.itemcommands.text5=§¶§b► Teleport back to worldspawn
+uac.itemcommands.text6=§¶§b► §2UAC.suicide §d[ cancel ]
+uac.itemcommands.text7=§¶§b► Execute twice to get out of a rough spot. The second use gives the option to cancel.
+uac.itemcommands.text8=§¶§b► §2UAC.stats §d<player | get> [player name]
+uac.itemcommands.text9=§¶§b► Show the stats of yourself or another player. Example §7: §d UAC.stats get NightwalkerLots
+uac.itemcommands.text10=§¶§b► §2UAC.lastdeath
 uac.itemcommands.text11=§¶§b► The above command will show you the coords to your last death
-uac.itemcommands.text12=§¶§b► Step 2: Once you have named the item, dropping the item will trigger the command.
-uac.itemcommands.header.title1=§¶§c§lUAC ► §l§bItem Commands
+uac.itemcommands.text12=§¶§b► §2UAC.tpa §d[ <open | create> | close | number ]
+uac.itemcommands.text13=§¶§b► Open a channel then give your channel number to someone. If your channel number is 6 then §7: §dUAC.tpa 6
+uac.itemcommands.header.title1=§¶§c§lUAC ► §l§bPlayer Commands
 
 
 howtoplay.uac_faq=§¶§c§lUAC ► §l§9FAQ
