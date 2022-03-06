@@ -1,5 +1,6 @@
-import { Commands, World } from 'mojang-minecraft';
+import { world } from 'mojang-minecraft';
 import { EventEmitter } from './eventEmitter.js';
+const overworld = world.getDimension('overworld');
 export class ServerBuilder extends EventEmitter {
     /**
      * Force shuts down the server
@@ -24,7 +25,7 @@ export class ServerBuilder extends EventEmitter {
      * @example ServerBuilder.broadcast('Hello World!');
      */
     broadcast(text, player) {
-        return this.runCommand(`tellraw ${player ? `"${player}"` : '@a'} {"rawtext":[{"text":${JSON.stringify(text)}}]}`);
+        return this.runCommand(`tellraw ${(player) ? `"${player}"` : '@a'} {"rawtext":[{"text":"${(typeof text === 'object') ? JSON.stringify(text) : text}"}]}`);
     }
     ;
     broadcastStaff(text, player) {
@@ -37,9 +38,9 @@ export class ServerBuilder extends EventEmitter {
      * @returns {runCommandReturn}
      * @example ServerBuilder.runCommand('say Hello World!');
      */
-    runCommand(command, dimension) {
+    runCommand(command, dimension = overworld) {
         try {
-            return { error: false, ...Commands.run(command, World.getDimension(dimension ?? 'overworld')) };
+            return { error: false, ...dimension.run(command) };
         }
         catch (error) {
             return { error: true };
@@ -70,23 +71,23 @@ export class ServerBuilder extends EventEmitter {
         return { error: error };
     }
     ;
-    getAllPlayers() { return World.getPlayers(); };
+    getAllPlayers() { return world.getPlayers(); };
     tellraw(info) {
-		try {
-			if (!Player.find({
-					name: info.name
-				})) return
-			this.runCommand({
-				command: `tellraw "${info.name}" ${JSON.stringify({
-		      rawtext:[{
-		        text: info.message
-		      }]
-		    })}`
-			})
-		} catch (e) {
-			Commands.run(`say ${e} \n\n ${e.stack}`, World.getDimension('overWorld'))
-		}
-	};
+        try {
+            if (!Player.find({
+                name: info.name
+            })) return;
+            this.runCommand({
+                command: `tellraw "${info.name}" ${JSON.stringify({
+                    rawtext: [{
+                        text: info.message
+                    }]
+                })}`
+            });
+        } catch (e) {
+            Commands.run(`say ${e} \n\n ${e.stack}`, world.getDimension('overWorld'));
+        }
+    };
 }
 ;
 export const Server = new ServerBuilder();

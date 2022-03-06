@@ -1,4 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'suicide',
@@ -11,26 +12,28 @@ const registerInformation = {
 };
 
 Server.command.register(registerInformation, (chatmsg, args) => {
-    if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
-    } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
+    const { sender } = chatmsg;
+    const name = sender.getName();
+    if (sender.scoreTest('icmtoggle') === 0) {
+        return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    } else if (sender.scoreTest('icmtoggle') === 1) {
         const cancel = `cancel`;
-        if( cancel.includes(args[0]) )
-        {
-            Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove suicide1` );
-            Server.broadcast(`§¶§cUAC ► §b§lSuicide was canceled`, chatmsg.sender.nameTag);
+        if (cancel.includes(args[0])) {
+            sender.addTag('suicide1');
+            sender.tellraw(`§¶§cUAC ► §b§lSuicide was canceled`);
         }
         else {
-            if(!Server.player.hasTag('suicide1', chatmsg.sender.nameTag)) {
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add suicide1` );
-                return Server.broadcast(`§¶§cUAC ► §c§lAre you sure? Execute again for suicide. Or use §7[ §bUAC.suicide cancel §7] §cto cancel.`, chatmsg.sender.nameTag);
+            if (!sender.hasTag('suicide1')) {
+                sender.addTag('suicide1');
+                return sender.tellraw(`§¶§cUAC ► §c§lAre you sure? Execute again for suicide. Or use §7[ §bUAC.suicide cancel §7] §cto cancel.`);
             }
-            if(Server.player.hasTag('suicide1', chatmsg.sender.nameTag)) {
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove suicide1` );
-                Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" suicide 1` );
-                Server.runCommand( `scoreboard players set "${chatmsg.sender.nameTag}" hometp 7` );
-                Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused suicide command`);
-                return Server.broadcast(`§¶§cUAC ► §b§lTo prevent combat logging, suicide will happen in 10 seconds`, chatmsg.sender.nameTag);
+            if (sender.hasTag('suicide1')) {
+                sender.removeTag('suicide1');
+                sender.runCommand(`scoreboard players set @s suicide 1`);
+                sender.runCommand(`scoreboard players set @s hometp 7`);
+                tellrawStaff(`§¶§cUAC ► §d${name} §bused suicide command`);
+                return sender.tellraw(`§¶§cUAC ► §b§lTo prevent combat logging, suicide will happen in 10 seconds`);
             }
         }
-}   }   );
+    }
+});
