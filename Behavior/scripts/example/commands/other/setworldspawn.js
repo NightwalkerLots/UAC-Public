@@ -17,7 +17,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let worldset = ['set'];
     let worldremove = ['remove'];
 
-    if (Server.player.hasTag('staffstatus', name)) {
+    if (sender.hasTag('staffstatus')) {
         if (worldset.includes(args[0])) {
             sender.runCommand(`scoreboard players operation worlddum Worldx = @s X_Coordinate`);
             sender.runCommand(`scoreboard players operation worlddum Worldy = @s Y_Coordinate`);
@@ -28,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommand(`setworldspawn  ~~~`);
             sender.runCommand(`function particle/explode`);
             sender.runCommand(`scoreboard players set worlddum worldcustom 1`);
-            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${sender.scoreTest('Worldx', name)} ${Server.player.getScore('Worldy', name)} ${Server.player.getScore('Worldz')}§b! Players will be sent here after passing World Border`);
+            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${sender.scoreTest('Worldx')} ${sender.scoreTest('Worldy')} ${sender.scoreTest('Worldz')}§b! Players will be sent here after passing World Border`);
         }
         else if (worldremove.includes(args[0])) {
             sender.runCommand(`scoreboard players set worlddum worldcustom 0`);
@@ -43,8 +43,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         else {
             sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]`);
         }
-    }
-    else {
+    } else {
         sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can configure world spawn`);
     }
 });

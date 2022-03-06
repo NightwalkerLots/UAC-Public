@@ -1,7 +1,16 @@
 import { world, World, Player, BlockLocation, EntityQueryOptions } from 'mojang-minecraft';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
+export const content = {
+    warn: function (message) {
+        if (typeof message === 'object' || Array.isArray(message)) {
+            console.warn(JSON.stringify(message));
+        } else {
+            console.warn(message);
+        }
 
+    }
+};
 const betaPlayerFunctions = {
     getName: function () {
         if (/"|\\/.test(this.nameTag)) {
@@ -39,6 +48,24 @@ const betaPlayerFunctions = {
         const locations = new BlockLocation(floor(x), 320, floor(z))
             .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();
         for (const location of locations) if (!dimension.getBlock(location).isEmpty) return location.y;
+    },
+    getInventory: function (array) {
+        let inventory = this.getComponent('minecraft:inventory').container;
+        if (array) {
+            let itemArray = [];
+            for (let i = 0; i < inventory.size; i++) {
+                let item = inventory.getItem(i);
+                if (item) {
+                    const { id, amount, data } = item;
+                    itemArray.push({ slot: i, id, amount, data });
+                }
+            } console.warn(JSON.stringify(itemArray));
+            return itemArray;
+
+        } else {
+            return inventory;
+        }
+
     }
 };
 export function tellrawStaff(message) {
