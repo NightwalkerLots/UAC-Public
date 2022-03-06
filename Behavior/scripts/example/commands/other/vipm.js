@@ -1,4 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'vip',
@@ -9,11 +10,13 @@ const registerInformation = {
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
+    const { sender } = chatmsg;
+    const name = sender.getName();
     if(args[0])
     {
-        Server.broadcastStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
+        tellrawStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
     }
     else {
-        Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function UAC/asset/uac_vip` );
+        sender.runCommand( `function UAC/asset/uac_vip` );
     }
 });

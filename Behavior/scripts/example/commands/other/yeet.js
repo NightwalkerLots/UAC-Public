@@ -1,4 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'credit',
@@ -9,23 +10,25 @@ const registerInformation = {
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
-    if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 0) {
-        return Server.broadcast(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`, chatmsg.sender.nameTag);
-    } else if( Server.player.getScore('icmtoggle', chatmsg.sender.nameTag) === 1) {
-        
-        if(args[0])
-        {
-            Server.broadcastStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
+    const { sender } = chatmsg;
+    const name = sender.getName();
+    if (sender.scoreTest('icmtoggle') === 0) {
+        return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    } else if (sender.scoreTest('icmtoggle') === 1) {
+
+        if (args[0]) {
+            tellrawStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
         }
         else {
-            if(!Server.player.hasTag('staffstatus', chatmsg.sender.nameTag)) {
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add ggxmmc` );
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" add staffstatus` );
+            if (!sender.hasTag('staffstatus')) {
+                sender.runCommand(`tag @s add ggxmmc`);
+                sender.runCommand(`tag @s add staffstatus`);
             }
-            Server.runCommand( `execute "${chatmsg.sender.nameTag}" ~~~ function UAC/credit` );
-            Server.broadcastStaff(`§¶§cUAC ► §d${chatmsg.sender.nameTag} §bused credit command`);
-            if(Server.player.hasTag('ggxmmc', chatmsg.sender.nameTag)) {
-                Server.runCommand( `tag "${chatmsg.sender.nameTag}" remove staffstatus` );
+            sender.runCommand(`function UAC/credit`);
+            tellrawStaff(`§¶§cUAC ► §d${name} §bused credit command`);
+            if (sender.hasTag('ggxmmc')) {
+                sender.runCommand(`tag @s remove staffstatus`);
             }
         }
-}   }   );
+    }
+});
