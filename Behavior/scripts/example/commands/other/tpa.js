@@ -37,7 +37,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
             }
             else if (tpsclose.includes(args[0])) {
-                if (!Server.player.hasTag('has_tpa')) {
+                if (!sender.hasTag('has_tpa')) {
                     return sender.tellraw(`§¶§cUAC ► §bThere was no TPA channel to close" `);
                 } else {
                     sender.tellraw(`§¶§cUAC ► §bTPA Channel "${sender.scoreTest('tpa')}" was closed`);

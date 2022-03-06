@@ -33,14 +33,14 @@ class ServerBuild extends ServerBuilder {
                 /**
                  * Emit to 'beforeMessage' event listener
                  */
-                const sender = data.sender
+                const sender = data.sender;
                 this.emit('beforeMessage', data);
                 /**
                  * This is for the command builder and a emitter
                  */
                 if (!data.message.startsWith(this.command.prefix))
                     return;
-                const args = data.message.slice(this.command.prefix.length).trim().split(/\s+/);
+                const args = data.message.substring(this.command.prefix.length).trim().replace(/ {2,}/g, ' ').match(/".*?"|[\S]+/g).map(value => value.replace(/[@"]/g, ''));
                 const command = args.shift().toLowerCase();
                 const getCommand = Command.getAllRegistation().some(element => element.name === command || element.aliases && element.aliases.includes(command));
                 if (!getCommand) {
