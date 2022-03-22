@@ -213,6 +213,7 @@ scoreboard objectives add entitycount dummy entitycount
 scoreboard objectives add playercount dummy
 scoreboard objectives add tpa dummy
 scoreboard objectives add suicide dummy
+scoreboard objectives add hmmcache dummy
 
 
 #module scoreboards
@@ -377,6 +378,8 @@ scoreboard objectives add combat_timer dummy
 scoreboard objectives add online dummy
 scoreboard objectives add is_sleeping dummy
 scoreboard players set @s is_sleeping 0
+scoreboard players set @s suicide 0
+scoreboard players set @s kills 0
 
 function UAC/asset/createdby
 function UAC/asset/discord

@@ -1,4 +1,5 @@
 #Prints the current player's time played score
+tellraw @a[tag=staffstatus,scores={tpmtoggle=0}] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"text":"§7{§bTimePlayed Tracker §cDISABLED§7}"}]}
 execute @s[scores={timealive=0..59999}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"§b has died over a hour ago"}]}
 execute @s[scores={timealive=60000..120000}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"§b has died over a hour ago"}]}
 execute @s[scores={timealive=144000..216000}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"§b has died 2+ hours ago"}]}

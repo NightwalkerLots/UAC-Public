@@ -41,7 +41,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.tellraw(`§¶§cUAC ► §b§lCustom World Spawn has been set back to default`);
         }
         else {
-            sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]`);
+            sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]\n§¶§cINFO ► §bThis tells UAC where worldspawn is. Where you're standing will also be where default spawn is now. People will teleport here when crossing world border, or when using the "Spawntp" chat command.`);
         }
     } else {
         sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can configure world spawn`);

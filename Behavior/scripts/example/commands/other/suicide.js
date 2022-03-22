@@ -16,6 +16,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     const name = sender.getName();
     if (sender.scoreTest('icmtoggle') === 0) {
         return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    } else if (sender.scoreTest('in_combat') === 1) {
+        return sender.tellraw(`§¶§cUAC ► §6Suicide §cunavailable §bwhile in combat`);
     } else if (sender.scoreTest('icmtoggle') === 1) {
         const cancel = `cancel`;
         if (cancel.includes(args[0])) {
@@ -30,7 +32,6 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             if (sender.hasTag('suicide1')) {
                 sender.removeTag('suicide1');
                 sender.runCommand(`scoreboard players set @s suicide 1`);
-                sender.runCommand(`scoreboard players set @s hometp 7`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bused suicide command`);
                 return sender.tellraw(`§¶§cUAC ► §b§lTo prevent combat logging, suicide will happen in 10 seconds`);
             }

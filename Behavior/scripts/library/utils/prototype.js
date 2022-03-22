@@ -74,6 +74,17 @@ export function tellrawStaff(message) {
 export function tellrawServer(message) {
     try { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
 }
+
+export function FindPlayer(input) {
+    let players = world.getPlayers();
+    for (let player of players) {
+        const name = player.getName();
+        if(name.match(input)) {
+            return true;
+        } else { return false; }
+    }
+}
+
 export function queryTopSolid({ location: { x, y, z }, dimension = overworld }) {
     const locations = new BlockLocation(floor(x), 320, floor(z))
         .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();

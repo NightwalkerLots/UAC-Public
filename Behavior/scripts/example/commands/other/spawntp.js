@@ -20,6 +20,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         console.warn(sender.queryTopSolid());
         if (sender.scoreTest('icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+        } else if (sender.scoreTest('in_combat') === 1) {
+            return sender.tellraw(`§¶§cUAC ► §6SpawnTP §cunavailable §bwhile in combat`);
         } else if (sender.scoreTest('icmtoggle') === 1) {
 
             if (args[0]) {

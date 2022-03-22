@@ -1,6 +1,6 @@
 import { world, EntityQueryOptions } from 'mojang-minecraft';
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, content } from '../../../library/utils/prototype.js';
+import { tellrawStaff, content, FindPlayer } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'inventory',
@@ -19,33 +19,40 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     try {
         const { sender } = chatmsg;
         content.warn(sender.getInventory(true));
-        
-        const playerfound = [...world.getPlayers()].find(player => player.getName() === args[0]);
+        let input = args.join(' ').replace('@', '').replace(/"/g, '');
+        const playerfound = [...world.getPlayers()].find(player => player.getName() === input);
+        const playername = playerfound.getName();
+        const self = sender.getName();
         if (sender.hasTag('staffstatus')) {
             if (!args[0]) {
-                let items = sender.getInventory(true);
+                let items = self.getInventory(true);
                 content.warn({ items });
                 sender.tellraw(`§¶§d§lYour §binventory:\n${items
                     .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
                     .join('\n')}`);
-            } else if (!playerfound) {
-                sender.tellraw(`§¶§cUAC ► §c§l${playername} is offline or does not exist`);
-            } else {
+            } else if(args[0]) {
+                //sender.tellraw(`§¶§cUAC ► §c§lplayerfound : ${playerfound.getName()}`);
 
-                const playername = playerfound.getName();
+                // dump armor
+                tellrawStaff(`§d${playername}'s§b inventory checked by §d${sender.name}`);
+                sender.runCommand(`execute "${playername}" ~~~ function UAC/asset/enchanted_armor_check`);
+
                 // The framework for grabbing inventory was created by balloon from mcpe realm hub: https://discord.gg/P9Zd6wu97V
                 let items = playerfound.getInventory(true);
                 console.warn(JSON.stringify(items))
-                sender.tellraw(
+                tellrawStaff(
                     `§¶§d§l${playername} §binventory:\n${items
                         .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
                         .join('\n')}`);
+            } else {
+                sender.tellraw(`§¶§cUAC ► §c§lError 7: command failure`);
             }
         } else {
             sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`);
         }
 
     } catch (error) {
+        sender.tellraw(`§¶§cUAC ► §c§lError 8: command failure`);
         console.warn(error, error.stack);
     }
 });

@@ -75,6 +75,5 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     }
 });
 
-// Run when a player loads and joins
 // All This was contributed by MrPatches123
 

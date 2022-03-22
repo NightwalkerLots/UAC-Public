@@ -27,14 +27,14 @@ execute @s ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
 scoreboard players add @s[scores={suicide=1..}] suicide 1
 kill @s[scores={suicide=11}]
 scoreboard players set @s[scores={suicide=11}] hometp 3
-scoreboard players reset @s[scores={suicide=11}] suicide
+scoreboard players set @s[scores={suicide=11}] suicide 0
 
 #This makes sure everyone doesn't get flagged for c-logging when the module is first turned on
 #As the only other thing that resets their in_combat is the timer c-log timer
 scoreboard players set @a[scores={clmtoggle=0}] in_combat 0
 
 #This runs a function on players rejoining
-execute @a[scores={online=0,has_gt=0}] ~~~ function UAC/packages/playerjoined
+execute @a[scores={online=0}] ~~~ function UAC/packages/playerjoined
 scoreboard players set * online 0
 scoreboard players set @a online 1
 
