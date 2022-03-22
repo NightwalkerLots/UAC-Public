@@ -23,9 +23,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
     if (sender.scoreTest('icmtoggle') === 0) {
         return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    } else if (sender.scoreTest('in_combat') === 1) {
+        return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile in combat`);
     } else if (sender.scoreTest('icmtoggle') === 1) {
-
-        if (registerInformation.name.match(chatmsg)) {
+         if (registerInformation.name.match(chatmsg)) {
             if (tpsopen.includes(args[0])) {
                 if (sender.hasTag('has_tpa')) {
                     return sender.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${sender.scoreTest('tpa')}" `);
@@ -46,10 +47,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     tellrawStaff(`§¶§cUAC ► §d${name} §bclosed their tpa channel manually`);
                 }
             }
-            else if (tpaIntString.includes(args[0])) {
-                sender.tellraw(`${channel_match}`);
+            else if (tpaIntString.includes(args[0])) { 
                 sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-                sender.runCommand(`tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}`);
+                sender.runCommand(`tellraw "${sender.name}" {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}`);
                 sender.runCommand(`tp @s @p[scores={tpa=${args[0]}}]`);
                 sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ tag @s remove has_tpa`);
                 sender.runCommand(`function particle/nether_poof`);

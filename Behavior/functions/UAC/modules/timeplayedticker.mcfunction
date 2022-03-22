@@ -12,5 +12,6 @@ scoreboard players add @s timeplayedsec 0
 scoreboard players add @s timeplayedmin 0
 scoreboard players add @s timeplayedhr 0
 scoreboard players add @s timeplayedday 0
+scoreboard players add @s tpmtoggle 0
 
 ###This is now controlled by the animation_controllers file ('animation.controller.walk')

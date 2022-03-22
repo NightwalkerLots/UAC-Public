@@ -1,5 +1,6 @@
 # This executes on THE PLAYER when every time they join ( Good for setting up combat logging and such )
 # If gametest isn't enabled it will use the online player objective from autolagclear package
+# This is no longer called from gametest - 3/8/22
 
 execute @s[scores={in_combat=1,clmtoggle=1}] ~~~ function UAC/asset/clog_punish
 

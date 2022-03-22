@@ -34,11 +34,13 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let warpOptions = ['warp', 'tp'];
         if (sender.scoreTest('icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+        } else if (sender.scoreTest('in_combat') === 1) {
+            return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile in combat`);
         } else if (sender.scoreTest('icmtoggle') === 1) {
 
             if (!args.length || listOptions.includes(args[0])) {
                 const allHomes = data.match(findHomeNames);
-                return sender.tellraw(`${allHomes ? `§l§¶§cUAC ► §6Homes §7: §b§l${allHomes.length}\n§¶§cUAC ► §6Home Names §7: §b§l${allHomes.join('§b§l, §b§l')}` : '§¶§cUAC ► §c§lNo Homes Set'}`);
+                return sender.tellraw(`${allHomes ? `§l§¶§cUAC ► §6Homes §7: §b§l${allHomes.length}\n§¶§cUAC ► §6Home Names §7: §b§l${allHomes.join('§b§l, §b§l')}\n§¶§cUsage ► §bUAC.home §7[§bset §7: §bremove §7: §bwarp] §7{§6home name§7}` : '§¶§cUAC ► §c§lNo Homes Set\n§¶§cUsage ► §bUAC.home §7[§bset §7: §bremove §7: §bwarp] §7{§6home name§7}'}`);
             }
             else if (setOptions.includes(args[0])) {
                 if (!args[1])
