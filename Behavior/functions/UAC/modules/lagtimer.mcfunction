@@ -6,6 +6,7 @@ execute @s[scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
 execute @s[scores={in_combat=1,clmtoggle=1..2}] ~~~ function UAC/packages/combatlogger
 kill @e[type=moving_block]
 scoreboard players remove @s[scores={cbetime=1..}] cbetime 1
+scoreboard players remove @s[scores={tp_cooldown=1..}] tp_cooldown 1
 
 scoreboard players set @a[tag=!UAC_vip] VIPM 0
 tag @a[scores={VIPM=!2293}] remove UAC_vip

@@ -36,6 +36,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
         } else if (sender.scoreTest('in_combat') === 1) {
             return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile in combat`);
+        } else if (sender.scoreTest('tp_cooldown') != 0) {
+            return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
         } else if (sender.scoreTest('icmtoggle') === 1) {
 
             if (!args.length || listOptions.includes(args[0])) {
@@ -62,8 +64,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 else {
                     sender.removeTag(`$(Home{Home-Name: ${homeName}, X: ${findXYZ[0]}, Y: ${findXYZ[1]}, Z: ${findXYZ[2]}})`);
                     return sender.tellraw(`§¶§cUAC ► §bSuccessfully removed home with the name §a${homeName} §bat §a${findXYZ[0]}§r, §a${findXYZ[1]}§r, §a${findXYZ[2]}`);
-                }
-                ;
+                };
             }
             else if (warpOptions.includes(args[0])) {
                 if (!args[1])
@@ -71,6 +72,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 if (!data.match(homeRegex))
                     return sender.tellraw("§¶§cUAC ► §cYou don't have a home with that name!");
                 sender.runCommand(`tp @s ${findXYZ[0]} ${findXYZ[1]} ${findXYZ[2]}`);
+                sender.runCommand(`scoreboard players set @s tp_cooldown 900`);
                 sender.runCommand(`function particle/nether_poof`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to their §e${homeName} §blocation`);
                 return sender.tellraw(`§¶§cUAC ► §bYou have been teleported to §a${args[1]} §bat §a${findXYZ[0]}§r, §a${findXYZ[1]}§r, §a${findXYZ[2]}`);

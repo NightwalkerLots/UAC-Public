@@ -14,6 +14,7 @@ function UAC/asset/toggle_sync
 function UAC/modules/hotbarmessage
 
 execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
+gamerule randomtickspeed 1
 
 execute @a[tag=UAC_vip,tag=!is_moving,scores={VIPM=2293}]  ~~~ function particle/nether_poof_small
 

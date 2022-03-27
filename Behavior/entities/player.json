@@ -196,7 +196,7 @@
 				]
 			  },
 			  "event":"uac:ban_main"
-      },
+        },
       //sleeping test
       {
         "filters": [
@@ -985,6 +985,24 @@
 				]
 			  },
 			  "event": "uac:torchlight"
+			},
+			{
+				"filters": {
+					"test": "has_equipment",
+					"domain": "any",
+					"operator": "==",
+					"value": "minecraft:trident"
+				},
+				"event": "uac:trident_true"
+			},
+			{
+				"filters": {
+					"test": "has_equipment",
+					"domain": "any",
+					"operator": "!=",
+					"value": "minecraft:trident"
+				},
+				"event": "uac:trident_false"
 			},
 			{
 			  "filters": {
@@ -2171,7 +2189,7 @@
 			"command": [
 			  "scoreboard players set @s is_sleeping 0"
 			]
-		  }
+		}
     },
     "minecraft:player_sleep":{
 		  "run_command": {
@@ -2179,8 +2197,24 @@
 			"command": [
 			  "scoreboard players set @s is_sleeping 1"
 			]
-		  }
-		},
+		}
+	},
+	"uac:trident_true":{
+		"run_command": {
+		  "target": "self",
+		  "command": [
+			"tag @s add has_trident"
+		  ]
+	  	}
+	},
+	  "uac:trident_false":{
+		"run_command": {
+		  "target": "self",
+		  "command": [
+			"tag @s remove has_trident"
+		  ]
+	  	}
+  	},
 		"uac:torchlight": {
 		  "run_command": {
 			"target": "self",
@@ -2246,7 +2280,7 @@
 			  "function UAC/testing"
 			]
 		  }
-		}, /*
+		}, 
 		"uac:ban_main": {
 		  "run_command": {
 			"target": "self",
@@ -2259,7 +2293,7 @@
 			  "uac:ban"
 			]
 		  }
-		}, */
+		}, 
 		"uac:ban_soft": {
 		  "run_command": {
 			"target": "self",

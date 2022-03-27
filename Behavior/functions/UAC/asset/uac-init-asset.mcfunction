@@ -377,6 +377,8 @@ scoreboard objectives add in_combat dummy
 scoreboard objectives add combat_timer dummy
 scoreboard objectives add online dummy
 scoreboard objectives add is_sleeping dummy
+scoreboard objectives add invcheck dummy
+scoreboard objectives add tp_cooldown dummy
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
@@ -405,6 +407,9 @@ scoreboard players set @s online 0
 scoreboard objectives add X_Coordinate dummy X_Coordinate
 scoreboard objectives add Y_Coordinate dummy Y_Coordinate
 scoreboard objectives add Z_Coordinate dummy Z_Coordinate
+scoreboard players set @s X_Coordinate 0
+scoreboard players set @s Y_Coordinate 0
+scoreboard players set @s Z_Coordinate 0
 
 #Coordinates System Store
 scoreboard objectives add X_Coord_S dummy X_Coordinate
@@ -412,6 +417,7 @@ scoreboard objectives add Y_Coord_S dummy Y_Coordinate
 scoreboard objectives add Z_Coord_S dummy Z_Coordinate
 scoreboard players set @s X_Coord_S 0
 scoreboard players set @s Z_Coord_S 0
+scoreboard players set @s Y_Coord_S 0
 
 #Teleporting Home Trigger -> this will allow animation controllers to determine if its been activated or not
 scoreboard objectives add teleporting_home dummy teleporting_home
