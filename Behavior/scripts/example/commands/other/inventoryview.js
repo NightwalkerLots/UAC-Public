@@ -23,6 +23,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const playerfound = [...world.getPlayers()].find(player => player.getName() === input);
         const playername = playerfound.getName();
         const self = sender.getName();
+        
         if (sender.hasTag('staffstatus')) {
             if (!args[0]) {
                 let items = self.getInventory(true);
@@ -50,9 +51,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         } else {
             sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`);
         }
-
+        
     } catch (error) {
         sender.tellraw(`§¶§cUAC ► §c§lError 8: command failure`);
         console.warn(error, error.stack);
-    }
+    } 
 });

@@ -25,6 +25,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
     } else if (sender.scoreTest('in_combat') === 1) {
         return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile in combat`);
+    } else if (sender.scoreTest('tp_cooldown') != 0) {
+        return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
     } else if (sender.scoreTest('icmtoggle') === 1) {
          if (registerInformation.name.match(chatmsg)) {
             if (tpsopen.includes(args[0])) {
@@ -53,6 +55,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommand(`tp @s @p[scores={tpa=${args[0]}}]`);
                 sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ tag @s remove has_tpa`);
                 sender.runCommand(`function particle/nether_poof`);
+                sender.runCommand(`scoreboard players set @s tp_cooldown 900`);
                 sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 1 2`);
                 sender.runCommand(`playsound mob.shulker.teleport @s ~~~ 2 2 2`);
                 sender.runCommand(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d${name} §bteleported to §d"},{"selector":"@p[scores={tpa=${args[0]}}]"},{"text":" §bvia §eTPA"}]}`);

@@ -58,16 +58,20 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 const item = playerInventory.getItem(i);
                 if (!item) { continue; }
                 // console.warn(item.id);
-                if (bannedItems.includes(item.id)) {
-                    if (acmbool) {
-                        itemArray.unshift(item.id);
-                        playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.air, 0, 0)); //removes item
+                if(player.hasTag('staffstatus')) { return } else {
+                    if (bannedItems.includes(item.id)) {
+                        if (acmbool) {
+                            itemArray.unshift(item.id);
+                            playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.air, 0, 0)); //removes item
+                        }
                     }
                 }
             }
-            if (acmbool && itemArray.length && player.hasTag('staffstatus')) {
-                overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemArray}"}]}`);
-                player.runCommand('function UAC/asset/cbeitem_gt_warn');
+            if(player.hasTag('staffstatus')) { return } else {
+                if (acmbool && itemArray.length) {
+                    overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemArray}"}]}`);
+                    player.runCommand('function UAC/asset/cbeitem_gt_warn');
+                }
             }
         }
     } catch (error) {
