@@ -1975,174 +1975,177 @@
 		  ]
 		},
 		"minecraft:scaffolding_climber": {},
-		"minecraft:damage_sensor": {
-		  "triggers": [
-			{
-			  "on_damage": {
-          "filters": [
-            {
-            "test": "has_tag",
-            "operator": "==",
-            "subject": "self",
-            "value": "godmode"
-            }
-          ],
-				  "cause": "all"
-			  },
-			  "deals_damage": false
-      },
-      //oneshot framework given to UAC by balloon
-			//Damage Sensor Channel in this discord -> discord.gg/BDeDTefE47
-			{
-        "on_damage": {
-          "event": "uac:oneshot_flag_sharp",
-          "target": "other",
-          "filters": {
-            "all_of": [
-              {
-                "test": "has_tag",
-                "value": "can_oneshot"
-              },
-              {
-                "test": "is_family",
-                "operator": "==",
-                "subject": "other",
-                "value": "player"
-              },
-              {
-                "test": "has_damage",
-                "value": "fatal"
-              }
-            ]
-          }
-        },
-        "deals_damage": false,
-        "cause": "entity_attack"
-      },
-		{
-        "on_damage": {
-          "event": "uac:oneshot_flag_thorns",
-          "target": "self",
-          "filters": {
-            "all_of": [
-              {
-                "test": "has_tag",
-                "value": "can_oneshot"
-              },
-              {
-                "test": "is_family",
-                "operator": "==",
-                "subject": "other",
-                "value": "player"
-              },
-              {
-                "test": "has_damage",
-                "value": "fatal"
-              }
-            ]
-          }
-        },
-        "deals_damage": false,
-        "cause": "thorns"
-      },
-			{
-			  "on_damage": {
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_damage",
-					  "operator": "==",
-					  "value": "attack"
-					},
-					{
-					  "test": "is_family",
-					  "operator": "==",
-					  "subject": "other",
-					  "value": "player"
-					},
-					{
-					  "test": "has_damage",
-					  "operator": "==",
-					  "subject": "self",
-					  "value": "fatal"
-					}
-				  ]
-				},
-				"event": "uac:on_death_by_player"
-			  }
-			},
-			{
-			  "on_damage": {
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_damage",
-					  "operator": "==",
-					  "value": "projectile"
-					},
-					{
-					  "test": "is_family",
-					  "operator": "==",
-					  "subject": "other",
-					  "value": "player"
-					},
-					{
-					  "test": "has_damage",
-					  "operator": "==",
-					  "subject": "self",
-					  "value": "fatal"
-					}
-				  ]
-				},
-				"event": "uac:on_death_by_player"
-			  }
-            },
-			{
-			  "on_damage": {
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_damage",
-					  "operator": "==",
-					  "value": "magic"
-					},
-					{
-					  "test": "is_family",
-					  "operator": "==",
-					  "subject": "other",
-					  "value": "player"
-					},
-					{
-					  "test": "has_damage",
-					  "operator": "==",
-					  "subject": "self",
-					  "value": "fatal"
-					}
-				  ]
-				},
-				"event": "uac:on_death_by_player"
-			  }
-			},
-			// Potentially used for combat logging - credit to Herobrine64 for the idea
-		{
-        "on_damage": {
-          "filters": {
-            "all_of": [
-              {
-                "test": "is_family",
-                "operator": "==",
-                "subject": "other",
-                "value": "player"
-              }
-            ]
-          },
-          "event": "uac:incombat",
-          "target": "self"
+		"minecraft:on_death": {
+			"event": "uac:true_death"
 		  },
-		  "cause": "entity_attack"
-        }
-		  ]
-		},
+			  "minecraft:damage_sensor": {
+				"triggers": [
+				  {
+					"on_damage": {
+				"filters": [
+				  {
+				  "test": "has_tag",
+				  "operator": "==",
+				  "subject": "self",
+				  "value": "godmode"
+				  }
+				],
+						"cause": "all"
+					},
+					"deals_damage": false
+			},
+			//oneshot framework given to UAC by balloon
+				  //Damage Sensor Channel in this discord -> discord.gg/BDeDTefE47
+				  {
+			  "on_damage": {
+				"event": "uac:oneshot_flag_sharp",
+				"target": "other",
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "has_tag",
+					  "value": "can_oneshot"
+					},
+					{
+					  "test": "is_family",
+					  "operator": "==",
+					  "subject": "other",
+					  "value": "player"
+					},
+					{
+					  "test": "has_damage",
+					  "value": "fatal"
+					}
+				  ]
+				}
+			  },
+			  "deals_damage": false,
+			  "cause": "entity_attack"
+			},
+			  {
+			  "on_damage": {
+				"event": "uac:oneshot_flag_thorns",
+				"target": "self",
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "has_tag",
+					  "value": "can_oneshot"
+					},
+					{
+					  "test": "is_family",
+					  "operator": "==",
+					  "subject": "other",
+					  "value": "player"
+					},
+					{
+					  "test": "has_damage",
+					  "value": "fatal"
+					}
+				  ]
+				}
+			  },
+			  "deals_damage": false,
+			  "cause": "thorns"
+			},
+				  {
+					"on_damage": {
+					  "filters": {
+						"all_of": [
+						  {
+							"test": "has_damage",
+							"operator": "==",
+							"value": "attack"
+						  },
+						  {
+							"test": "is_family",
+							"operator": "==",
+							"subject": "other",
+							"value": "player"
+						  },
+						  {
+							"test": "has_damage",
+							"operator": "==",
+							"subject": "self",
+							"value": "fatal"
+						  }
+						]
+					  },
+					  "event": "uac:fatal_damage"
+					}
+				  },
+				  {
+					"on_damage": {
+					  "filters": {
+						"all_of": [
+						  {
+							"test": "has_damage",
+							"operator": "==",
+							"value": "projectile"
+						  },
+						  {
+							"test": "is_family",
+							"operator": "==",
+							"subject": "other",
+							"value": "player"
+						  },
+						  {
+							"test": "has_damage",
+							"operator": "==",
+							"subject": "self",
+							"value": "fatal"
+						  }
+						]
+					  },
+					  "event": "uac:fatal_damage"
+					}
+				  },
+				  {
+					"on_damage": {
+					  "filters": {
+						"all_of": [
+						  {
+							"test": "has_damage",
+							"operator": "==",
+							"value": "magic"
+						  },
+						  {
+							"test": "is_family",
+							"operator": "==",
+							"subject": "other",
+							"value": "player"
+						  },
+						  {
+							"test": "has_damage",
+							"operator": "==",
+							"subject": "self",
+							"value": "fatal"
+						  }
+						]
+					  },
+					  "event": "uac:fatal_damage"
+					}
+				  },
+				  // Potentially used for combat logging - credit to Herobrine64 for the idea
+			  {
+			  "on_damage": {
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "is_family",
+					  "operator": "==",
+					  "subject": "other",
+					  "value": "player"
+					}
+				  ]
+				},
+				"event": "uac:incombat",
+				"target": "self"
+				},
+				"cause": "entity_attack"
+			  }
+				]
+			  },
 		  "minecraft:npc": {//This will allow the player to have the npc components to have dialogue
 		}
 	  },
@@ -2167,14 +2170,28 @@
 		  }
 		},
 		"uac:incombat":{
-		  "run_command": {
-			"target": "self",
-			"command": [
-			  "scoreboard players set @s in_combat 1",
-			  "scoreboard players set @s combat_timer 600"
+			"sequence": [
+				{
+					"run_command": {
+						"target": "self",
+						"command": [
+						  "scoreboard players set @s in_combat 1",
+						  "scoreboard players set @s combat_timer 600"
+						]
+						}
+				},
+				{
+					"run_command": {
+						"target": "other",
+						"command": [
+							"scoreboard players set @s in_combat 1",
+							"scoreboard players set @s combat_timer 600",
+							"tag @s remove killer"
+						]
+					}
+				}
 			]
-		  }
-		},
+		  },
 		"uac:in_end":{
 		  "run_command": {
 			"target": "self",
@@ -2328,16 +2345,24 @@
 			]
 		  }
 		},
-		"uac:on_death_by_player": {
-		  "run_command": {
-			"target": "other",
-			"command": [
-			  "scoreboard players add @s kills 1",
-			  "scoreboard players add @s killstreak 1",
-			  "execute @s[scores={killstreak=10..}] ~~~ function UAC/asset/killstreak-msg"
-			]
-		  }
-		},
+		"uac:fatal_damage": {
+			"run_command": {
+			  "target": "other",
+				"command": [
+				  "tag @s add killer"
+			  ]
+			}
+		  },
+		  "uac:true_death": {
+			"run_command": {
+				"command": [
+				  "scoreboard players add @p[tag=killer] kills 1",
+				  "scoreboard players add @p[tag=killer] killstreak 1",
+				  "execute @s[tag=killer,scores={killstreak=10..}] ~~~ function UAC/asset/killstreak-msg",
+				  "tag @p remove killer"
+			  ]
+			}
+		  },
 		"minecraft:spectate": {
 		  "add": {
 			"component_groups": [
