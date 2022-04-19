@@ -17,7 +17,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
         let cmdUsage = ['get', 'player'];
-        const ComStringStats = `function API/asset/playerstats`;
+        const ComStringStats = `function UAC/itemcommand/playerstats`;
         const PlayerArgString = {
             one: Server.player.find(`${args[1]}`),
             two: Server.player.find(`${args[1]} ${args[2]}`),
@@ -25,19 +25,19 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             four: Server.player.find(`${args[1]} ${args[2]} ${args[3]} ${args[4]}`),
         };
         const PlayerStringStats = {
-            one: `execute "${args[1]}" ~~~ function API/asset/playerstats`,
-            two: `execute "${args[1]} ${args[2]}" ~~~ function API/asset/playerstats`,
-            three: `execute "${args[1]} ${args[2]} ${args[3]}" ~~~ function API/asset/playerstats`,
-            four: `execute "${args[1]} ${args[2]} ${args[3]} ${args[4]}" ~~~ function API/asset/playerstats`
+            one: `execute "${args[1]}" ~~~ function UAC/itemcommand/playerstats`,
+            two: `execute "${args[1]} ${args[2]}" ~~~ function UAC/itemcommand/playerstats`,
+            three: `execute "${args[1]} ${args[2]} ${args[3]}" ~~~ function UAC/itemcommand/playerstats`,
+            four: `execute "${args[1]} ${args[2]} ${args[3]} ${args[4]}" ~~~ function UAC/itemcommand/playerstats`
         };
         if (sender.scoreTest('icmtoggle') === 0) {
-            return sender.tellraw(`§¶§cUNITY API §b► §c§lThe Realm Owner currently has Player Commands Disabled`);
+            return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
         } else if (sender.scoreTest('icmtoggle') === 1) {
             sender.addTag('stats_temp');  //gives tag
             if (cmdUsage.includes(args[0])) {
                 if (!args[1]) {
                     sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-                    sender.tellraw(`§¶§cUNITY API §b► §c§lPlease Provide Player Name`);
+                    sender.tellraw(`§¶§cUAC ► §c§lPlease Provide Player Name`);
                     sender.removeTag('stats_temp');
                 }
                 else if (args[1] && !args[2]) {
@@ -45,10 +45,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         sender.runCommand(`playsound note.pling @s ~ ~ ~`);
                         sender.runCommand(`${PlayerStringStats.one}`);
                         sender.removeTag('stats_temp');
-                        return tellrawStaff(`§¶§cUNITY API §b► §d${name} §bused stats §d${args.join(' ')}`);
+                        return tellrawStaff(`§¶§cUAC ► §d${name} §bused stats §d${args.join(' ')}`);
                     }
                     else {
-                        sender.tellraw(`§¶§cUNITY API §b► §c§lNo player by that name`);
+                        sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`);
                     }
                 }
                 else if (args[1] && args[2] && !args[3]) {
@@ -56,10 +56,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         sender.runCommand(`playsound note.pling @s ~ ~ ~`);
                         sender.runCommand(`${PlayerStringStats.two}`);
                         sender.removeTag('stats_temp');
-                        return tellrawStaff(`§¶§cUNITY API §b► §d${name} §bused stats §d${args.join(' ')}`);
+                        return tellrawStaff(`§¶§cUAC ► §d${name} §bused stats §d${args.join(' ')}`);
                     }
                     else {
-                        return sender.tellraw(`§¶§cUNITY API §b► §c§lNo player by that name`);
+                        return sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`);
                     }
                 }
                 else if (args[1] && args[2] && args[3] && !args[4]) {
@@ -67,10 +67,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         sender.runCommand(`playsound note.pling @s ~ ~ ~`);
                         sender.runCommand(`${PlayerStringStats.three}`);
                         sender.removeTag('stats_temp');
-                        return tellrawStaff(`§¶§cUNITY API §b► §d${name} §bused stats §d${args.join(' ')}`);
+                        return tellrawStaff(`§¶§cUAC ► §d${name} §bused stats §d${args.join(' ')}`);
                     }
                     else {
-                        sender.tellraw(`§¶§cUNITY API §b► §c§lNo player by that name`);
+                        sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`);
                     }
                 }
                 else if (args[1] && args[2] && args[3] && args[4]) {
@@ -78,14 +78,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         sender.runCommand(`playsound note.pling @s ~ ~ ~`);
                         sender.runCommand(`${PlayerStringStats.four}`);
                         sender.removeTag('stats_temp');
-                        return tellrawStaff(`§¶§cUNITY API §b► §d${name} §bused stats §d${args.join(' ')}`);
+                        return tellrawStaff(`§¶§cUAC ► §d${name} §bused stats §d${args.join(' ')}`);
                     }
                     else {
-                        sender.tellraw(`§¶§cUNITY API §b► §c§lNo player by that name`);
+                        sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`);
                     }
                 }
                 else {
-                    sender.tellraw(`§¶§cUNITY API §b► §c§lError : Did not Understand Player Name`);
+                    sender.tellraw(`§¶§cUAC ► §c§lError : Did not Understand Player Name`);
                     sender.runCommand(`tag @s remove stats_temp`);
                 }
             }
@@ -93,9 +93,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommand(`${ComStringStats}`);
                 sender.removeTag('stats_temp');
                 sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-                return tellrawStaff(`§¶§cUNITY API §b► §d${name} §bchecked their stats`);
+                return tellrawStaff(`§¶§cUAC ► §d${name} §bchecked their stats`);
             } else {
-                return sender.tellraw(`§¶§cUNITY API §b► §c§lError : Command Failed`);
+                return sender.tellraw(`§¶§cUAC ► §c§lError : Command Failed`);
             }
         }
     } catch (error) {

@@ -14,9 +14,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     const name = sender.getName();
     if(args[0])
     {
-        tellrawStaff(`§¶§cUNITY API §b► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
+        tellrawStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
     }
     else {
-        sender.runCommand( `function API/asset/uac_vip` );
+        sender.runCommand( `function UAC/asset/uac_vip` );
     }
 });
