@@ -297,15 +297,15 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             switch (args[0]) {
                 case 'on':
                 case 'enable': {
-                    sender.tellraw(`§¶§bIllegal enchantment detection has been §aENABLED`)
-                    tellrawStaff(`§¶§bIllegal enchantment detection has been §aENABLED§b by §d${sender.name}`)
+                    sender.tellraw(`§¶§cIllegal§b enchantment detection has been §aENABLED`)
+                    tellrawStaff(`§¶§cIllegal§b enchantment detection has been §aENABLED§b by §d${sender.name}`)
                     sbtoggle.set('value', toggle = 1)
                 }; break
 
                 case 'off':
                 case 'disable': {
-                    sender.tellraw(`§¶§bIllegal enchantment detection has been §cDISABLED`)
-                    tellrawStaff(`§¶§bIllegal enchantment detection has been §cDISABLED§b by §d${sender.name}`)
+                    sender.tellraw(`§¶§cIllegal§b enchantment detection has been §cDISABLED`)
+                    tellrawStaff(`§¶§cIllegal§b enchantment detection has been §cDISABLED§b by §d${sender.name}`)
                     sbtoggle.set('value', toggle = 0)
                 }; break
 

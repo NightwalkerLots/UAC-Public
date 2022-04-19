@@ -11,3 +11,4 @@ import './other/spawntp.js';
 import './other/suicide.js';
 import './other/vipm.js';
 import './other/illench.js';
+import './other/cpsdetect.js';
