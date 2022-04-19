@@ -279,9 +279,9 @@ world.events.tick.subscribe(() => {
             let enchlist = enchantmentDefs[enchantment.slot]
             for ( let ench of allEnchantments ) {
                 let enchLvl = enchantment.hasEnchantment(ench),
-                    maxLvl = enchlist[ench] ?? 0
+                    maxLvl = enchlist[ench.id] ?? 0
                 if ( enchLvl > maxLvl ) {
-                    tellrawStaff(`§¶§cUNITY API §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected in their inventory: §c${ench.id} §b(§c${enchLvl}§b/§c${maxLvl}§b)`)
+                    tellrawStaff(`§¶§cUNITY API §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected in their inventory: §c${ench.id} §b(§e${enchLvl}§b/§e${maxLvl}§b)`)
                     c.setItem(i, air)
                 }
             }
