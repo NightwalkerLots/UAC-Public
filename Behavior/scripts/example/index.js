@@ -70,7 +70,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             if(player.hasTag('staffstatus')) { return } else {
                 if (acmbool && itemArray.length) {
                     overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemArray}"}]}`);
-                    player.runCommand('function UAC/asset/cbeitem_gt_warn');
+                    player.runCommand('function API/asset/cbeitem_gt_warn');
                 }
             }
         }

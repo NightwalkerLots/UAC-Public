@@ -1,3 +1,3 @@
 export const configuration = {
-    prefix: 'UAC.' //Default custom command prefix
+    prefix: '!' //Default custom command prefix
 };

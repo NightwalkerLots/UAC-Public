@@ -32,11 +32,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
                     .join('\n')}`);
             } else if(args[0]) {
-                //sender.tellraw(`§¶§cUAC ► §c§lplayerfound : ${playerfound.getName()}`);
+                //sender.tellraw(`§¶§cUNITY API §b► §c§lplayerfound : ${playerfound.getName()}`);
 
                 // dump armor
                 tellrawStaff(`§d${playername}'s§b inventory checked by §d${sender.name}`);
-                sender.runCommand(`execute "${playername}" ~~~ function UAC/asset/enchanted_armor_check`);
+                sender.runCommand(`execute "${playername}" ~~~ function API/asset/enchanted_armor_check`);
 
                 // The framework for grabbing inventory was created by balloon from mcpe realm hub: https://discord.gg/P9Zd6wu97V
                 let items = playerfound.getInventory(true);
@@ -46,14 +46,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
                         .join('\n')}`);
             } else {
-                sender.tellraw(`§¶§cUAC ► §c§lError 7: command failure`);
+                sender.tellraw(`§¶§cUNITY API §b► §c§lError 7: command failure`);
             }
         } else {
-            sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`);
+            sender.tellraw(`§¶§cUNITY API §b► §c§lError 4: Only Staff can use this command`);
         }
         
     } catch (error) {
-        sender.tellraw(`§¶§cUAC ► §c§lError 8: command failure`);
+        sender.tellraw(`§¶§cUNITY API §b► §c§lError 8: command failure`);
         console.warn(error, error.stack);
     } 
 });
