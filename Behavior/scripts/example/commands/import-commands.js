@@ -10,3 +10,4 @@ import './other/inventoryview.js';
 import './other/spawntp.js';
 import './other/suicide.js';
 import './other/vipm.js';
+import './other/illench.js';
