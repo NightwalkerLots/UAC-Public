@@ -22,51 +22,51 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
 
     if (sender.scoreTest('icmtoggle') === 0) {
-        return sender.tellraw(`§¶§cUNITY API §b► §c§lThe Realm Owner currently has Player Commands Disabled`);
+        return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
     } else if (sender.scoreTest('in_combat') === 1) {
-        return sender.tellraw(`§¶§cUNITY API §b► §6TPA §cunavailable §bwhile in combat`);
+        return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile in combat`);
     } else if (sender.scoreTest('tp_cooldown') != 0) {
-        return sender.tellraw(`§¶§cUNITY API §b► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
+        return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
     } else if (sender.scoreTest('icmtoggle') === 1) {
          if (registerInformation.name.match(chatmsg)) {
             if (tpsopen.includes(args[0])) {
                 if (sender.hasTag('has_tpa')) {
-                    return sender.tellraw(`§¶§cUNITY API §b► §bTPA Channel already created! Your Channel §7:§c "${sender.scoreTest('tpa')}" `);
+                    return sender.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${sender.scoreTest('tpa')}" `);
                 } else {
                     sender.runCommand(`scoreboard players random @s tpa 0 11`);
                     sender.runCommand(`tag @s add has_tpa`);
-                    sender.tellraw(`§¶§cUNITY API §b► §bTPA Channel "${sender.scoreTest('tpa')}" was created`);
-                    tellrawStaff(`§¶§cUNITY API §b► §d${name} §bopened a tpa channel`);
+                    sender.tellraw(`§¶§cUAC ► §bTPA Channel "${sender.scoreTest('tpa')}" was created`);
+                    tellrawStaff(`§¶§cUAC ► §d${name} §bopened a tpa channel`);
                 }
             }
             else if (tpsclose.includes(args[0])) {
                 if (!sender.hasTag('has_tpa')) {
-                    return sender.tellraw(`§¶§cUNITY API §b► §bThere was no TPA channel to close" `);
+                    return sender.tellraw(`§¶§cUAC ► §bThere was no TPA channel to close" `);
                 } else {
-                    sender.tellraw(`§¶§cUNITY API §b► §bTPA Channel "${sender.scoreTest('tpa')}" was closed`);
+                    sender.tellraw(`§¶§cUAC ► §bTPA Channel "${sender.scoreTest('tpa')}" was closed`);
                     sender.runCommand(`scoreboard players reset @s tpa`);
                     sender.runCommand(`tag @s remove has_tpa`);
-                    tellrawStaff(`§¶§cUNITY API §b► §d${name} §bclosed their tpa channel manually`);
+                    tellrawStaff(`§¶§cUAC ► §d${name} §bclosed their tpa channel manually`);
                 }
             }
             else if (tpaIntString.includes(args[0])) { 
                 sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-                sender.runCommand(`tellraw "${sender.name}" {"rawtext":[{"text":"§¶§cUNITY API §b► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}`);
+                sender.runCommand(`tellraw "${sender.name}" {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §bSuccessfully teleported to §6"},{"selector":"@p[scores={tpa=${args[0]}}]"}]}`);
                 sender.runCommand(`tp @s @p[scores={tpa=${args[0]}}]`);
                 sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ tag @s remove has_tpa`);
                 sender.runCommand(`function particle/nether_poof`);
                 sender.runCommand(`scoreboard players set @s tp_cooldown 900`);
                 sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 1 2`);
                 sender.runCommand(`playsound mob.shulker.teleport @s ~~~ 2 2 2`);
-                sender.runCommand(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUNITY API §b► §d${name} §bteleported to §d"},{"selector":"@p[scores={tpa=${args[0]}}]"},{"text":" §bvia §eTPA"}]}`);
-                sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUNITY API §b► §6TPA §7: §5${name} §bhas §bSuccessfully teleported! Your TPA Channel is now closed."}]}`);
+                sender.runCommand(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d${name} §bteleported to §d"},{"selector":"@p[scores={tpa=${args[0]}}]"},{"text":" §bvia §eTPA"}]}`);
+                sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §6TPA §7: §5${name} §bhas §bSuccessfully teleported! Your TPA Channel is now closed."}]}`);
                 sender.runCommand(`execute @p[scores={tpa=${args[0]}}] ~~~ scoreboard players reset @s tpa`);
             } else {
-                return sender.tellraw(`§¶§cUNITY API §b► §cERROR! §6Usage Example §7:§b§l UAC.tpa [ open | close | number ]`);
+                return sender.tellraw(`§¶§cUAC ► §cERROR! §6Usage Example §7:§b§l UAC.tpa [ open | close | number ]`);
             }
         }
         else {
-            return sender.tellraw(`§¶§cUNITY API §b► §cERROR 2! §6Usage Example §7:§b§l UAC.tpa [ open | close | number ]`);
+            return sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.tpa [ open | close | number ]`);
         }
     }
 });

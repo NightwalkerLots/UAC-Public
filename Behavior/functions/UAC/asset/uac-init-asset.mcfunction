@@ -379,6 +379,8 @@ scoreboard objectives add online dummy
 scoreboard objectives add is_sleeping dummy
 scoreboard objectives add invcheck dummy
 scoreboard objectives add tp_cooldown dummy
+scoreboard players set @s tp_cooldown 0 
+scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
