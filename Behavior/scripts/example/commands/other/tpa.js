@@ -4,6 +4,7 @@ import { World } from 'mojang-minecraft';
 const registerInformation = {
     cancelMessage: true,
     name: 'tpa',
+    staff: 'false',
     description: 'Open/Close Teleport Requests',
     usage: '[ <open | create> | close | number ]',
     example: [

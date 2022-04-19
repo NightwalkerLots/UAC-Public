@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'vip',
+    staff: 'false',
     description: 'Enables/Disables vip effects for the player',
     usage: '[ vip ]',
     example: [

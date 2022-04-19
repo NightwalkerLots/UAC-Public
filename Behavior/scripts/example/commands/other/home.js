@@ -3,6 +3,7 @@ import { tellrawStaff, content } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'home',
+    staff: 'false',
     description: 'Use this command to list/set/remove/warp to home',
     usage: '<list | set | remove | warp> [home name]',
     example: [

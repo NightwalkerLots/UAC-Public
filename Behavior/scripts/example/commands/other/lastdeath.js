@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'lastdeath',
+    staff: 'false',
     description: 'Show Coords to Last Death',
     usage: 'lastdeath',
     example: [
