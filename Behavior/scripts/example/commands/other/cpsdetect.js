@@ -26,7 +26,7 @@ const prevHitTime = new Map,
     cleanup = new Map
 
 world.events.entityHit.subscribe(({hitEntity, entity}) => {
-    if (!toggle || !hitEntity /*|| entity.hasTag('staffstatus')*/) return
+    if (!toggle || !hitEntity || entity.hasTag('staffstatus')) return
 
     const curTime = Date.now()
 
