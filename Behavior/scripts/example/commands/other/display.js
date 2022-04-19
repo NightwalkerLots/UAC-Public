@@ -18,29 +18,29 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let realm = ['server', 'realm'];
     let off = ['off', 'disable'];
     if (!sender.scoreTest('icmtoggle')) {
-        return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+        return sender.tellraw(`§¶§cUNITY API §b► §c§lThe Realm Owner currently has Player Commands Disabled`);
     } else if (sender.scoreTest('hmmtoggle') === 1 || sender.scoreTest('hmmtoggle') === 2) {
-        return sender.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
+        return sender.tellraw(`§¶§cUNITY API §b► §c§lRealm owner has set a global hotbar message `);
     } else if (registerInformation.name.match('display')) {
         if (personal.includes(args[0])) {
             sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-            sender.tellraw(`§l§¶§cUAC ► §b§lNow showing display for self stats `);
+            sender.tellraw(`§l§¶§cUNITY API §b► §b§lNow showing display for self stats `);
             sender.runCommand(`scoreboard players set @s hometp 1337`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bset their hotbar display to §epersonal`);
+            tellrawStaff(`§¶§cUNITY API §b► §d${name} §bset their hotbar display to §epersonal`);
         } else if (realm.includes(args[0])) {
             sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-            sender.tellraw(`§l§¶§cUAC ► §b§lNow showing display for server stats `);
+            sender.tellraw(`§l§¶§cUNITY API §b► §b§lNow showing display for server stats `);
             sender.runCommand(`scoreboard players set @s hometp 420`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bset their hotbar display to §eserver`);
+            tellrawStaff(`§¶§cUNITY API §b► §d${name} §bset their hotbar display to §eserver`);
         } else if (off.includes(args[0])) {
             sender.runCommand(`playsound note.pling @s ~ ~ ~`);
-            sender.tellraw(`§l§¶§cUAC ► §b§lStats Display has been §cDISABLED `);
+            sender.tellraw(`§l§¶§cUNITY API §b► §b§lStats Display has been §cDISABLED `);
             sender.runCommand(`scoreboard players set @s hometp 3`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bset their hotbar display to §eoff`);
+            tellrawStaff(`§¶§cUNITY API §b► §d${name} §bset their hotbar display to §eoff`);
         } else {
-            return sender.tellraw(`§¶§cUAC ► §cERROR! §6Usage Example §7:§b§l UAC.display [ self | server | off ]`);
+            return sender.tellraw(`§¶§cUNITY API §b► §cERROR! §6Usage Example §7:§b§l UAC.display [ self | server | off ]`);
         }
     } else {
-        return sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.display [ self | server | off ]`);
+        return sender.tellraw(`§¶§cUNITY API §b► §cERROR 2! §6Usage Example §7:§b§l UAC.display [ self | server | off ]`);
     }
 });

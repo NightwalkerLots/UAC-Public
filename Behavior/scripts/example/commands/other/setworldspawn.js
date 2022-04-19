@@ -28,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommand(`setworldspawn  ~~~`);
             sender.runCommand(`function particle/explode`);
             sender.runCommand(`scoreboard players set worlddum worldcustom 1`);
-            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${sender.scoreTest('Worldx')} ${sender.scoreTest('Worldy')} ${sender.scoreTest('Worldz')}§b! Players will be sent here after passing World Border`);
+            sender.tellraw(`§¶§cUNITY API §b► §b§lWorld Spawn configured to §e${sender.scoreTest('Worldx')} ${sender.scoreTest('Worldy')} ${sender.scoreTest('Worldz')}§b! Players will be sent here after passing World Border`);
         }
         else if (worldremove.includes(args[0])) {
             sender.runCommand(`scoreboard players set worlddum worldcustom 0`);
@@ -38,12 +38,12 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommand(`scoreboard players operation @s Worldx = worlddum Worldx`);
             sender.runCommand(`scoreboard players operation @s Worldy = worlddum Worldy`);
             sender.runCommand(`scoreboard players operation @s Worldz = worlddum Worldz`);
-            sender.tellraw(`§¶§cUAC ► §b§lCustom World Spawn has been set back to default`);
+            sender.tellraw(`§¶§cUNITY API §b► §b§lCustom World Spawn has been set back to default`);
         }
         else {
-            sender.tellraw(`§¶§cUAC ► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]\n§¶§cINFO ► §bThis tells UAC where worldspawn is. Where you're standing will also be where default spawn is now. People will teleport here when crossing world border, or when using the "Spawntp" chat command.`);
+            sender.tellraw(`§¶§cUNITY API §b► §cERROR 2! §6Usage Example §7:§b§l UAC.worldspawn [ set | remove ]\n§¶§cINFO ► §bThis tells UAC where worldspawn is. Where you're standing will also be where default spawn is now. People will teleport here when crossing world border, or when using the "Spawntp" chat command.`);
         }
     } else {
-        sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can configure world spawn`);
+        sender.tellraw(`§¶§cUNITY API §b► §c§lError 4: Only Staff can configure world spawn`);
     }
 });
