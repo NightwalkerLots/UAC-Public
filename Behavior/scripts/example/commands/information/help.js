@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'help',
+    staff: 'false',
     description: 'Get list of all the commands available or input an argument to get information about that specific command',
     usage: 'help [command name]',
     example: [
@@ -16,10 +17,21 @@ Server.command.register(registerInformation, (data, args) => {
         const sender = data.sender;
         const name = sender.getName();
         const cmdList = Server.command.getAll();
+        const cmdstaff = Server.command.getAllStaff();
+
+        const plrcmd = cmdList.join(', ');
+        const stfcmd = cmdstaff.join(', ');
+
+
         console.warn(cmdList);
         //sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bCustom Command List: §l§c${cmdList.join(', ')}`);
-        if (!args[0])
-            return sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bCustom Command List: §l§c${cmdList.join(', ')}`);
+        if (!args[0]) {
+            if (sender.hasTag('staffstatus')) { 
+                return sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd} §r\n§bStaff Command List §l§c${stfcmd}`);
+            } else {
+                return sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd}`);
+            }
+        }
         const cmdInfo = Server.command.getRegistration(args[0]);
         if (!cmdInfo)
             return sender.tellraw("§cI couldn't find the command...");

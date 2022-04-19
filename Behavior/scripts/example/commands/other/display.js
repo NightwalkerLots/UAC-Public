@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'display',
+    staff: 'false',
     description: 'Heads up display for server or self stats',
     usage: '[ self | server | off ]',
     example: [

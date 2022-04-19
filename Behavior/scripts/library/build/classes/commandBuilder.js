@@ -19,6 +19,7 @@ export class CommandBuilder {
             private: register.private ? true : false,
             cancelMessage: register.cancelMessage ? true : false,
             name: register.name.toLowerCase(),
+            staff: register.staff,
             aliases: register.aliases ? register.aliases.map(v => v.toLowerCase()) : null,
             description: register.description,
             usage: register.usage,
@@ -36,6 +37,20 @@ export class CommandBuilder {
         const commands = [];
         this._registrationInformation.forEach(element => {
             if (element.private)
+                return;
+            if (element.staff === 'true')
+                return;
+            commands.push(element.name);
+        });
+        return commands;
+    }
+    ;
+    getAllStaff() {
+        const commands = [];
+        this._registrationInformation.forEach(element => {
+            if (element.private)
+                return;
+            if (element.staff === 'false')
                 return;
             commands.push(element.name);
         });

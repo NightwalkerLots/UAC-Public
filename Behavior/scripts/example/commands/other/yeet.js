@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'credit',
+    staff: 'false',
     description: 'Shows Credit for UAC',
     usage: '[ credit ]',
     example: [

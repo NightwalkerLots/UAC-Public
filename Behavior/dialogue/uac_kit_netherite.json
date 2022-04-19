@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_kit_netherite",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.4§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.5§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI Netherite Kits" } ] },
 				"buttons": [
 					{

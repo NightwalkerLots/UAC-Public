@@ -5,6 +5,7 @@ const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
     name: 'spawntp',
+    staff: 'false',
     description: 'Warps the player to where staff have set world spawn',
     usage: '[ spawntp ]',
     example: [

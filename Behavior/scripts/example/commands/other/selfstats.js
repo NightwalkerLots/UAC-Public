@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'stats',
+    staff: 'false',
     description: 'Shows player stats',
     usage: '<player | get> [player name]',
     example: [

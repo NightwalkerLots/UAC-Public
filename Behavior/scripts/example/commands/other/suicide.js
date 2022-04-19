@@ -3,6 +3,7 @@ import { tellrawStaff } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'suicide',
+    staff: 'false',
     description: 'Configure the World Spawn in UAC',
     usage: '[ cancel ]',
     example: [
