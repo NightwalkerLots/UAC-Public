@@ -8,8 +8,10 @@ import './other/yeet.js';
 import './other/spawntp.js';
 import './other/suicide.js';
 import './other/vipm.js';
+import './staff/gui.js';
 
 import './staff/setworldspawn.js';
 import './staff/inventoryview.js';
 import './staff/dev.js';
 import './staff/punish.js';
+import './staff/eval.js';
