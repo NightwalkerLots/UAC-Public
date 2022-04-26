@@ -1,3 +1,4 @@
+//@ts-check
 import { Player, world } from 'mojang-minecraft'
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from "mojang-minecraft-ui"
@@ -224,7 +225,9 @@ const guiScheme = {
     pcmd: {
         stats: (plr, target) => {
             const v = new ActionFormData()
-                .title(`${target.name.replace(/\u00a7./g, '')}'s stats`)
+                .title(`${target.name.replace(/§./g, '')}'s stats`)
+
+            let text = []
 
             // detections
             /** @type {[id: string, name: string, max: number][]} */
@@ -234,9 +237,10 @@ const guiScheme = {
                 ['warnillegal' , 'Illegal item warns' , 9],
                 ['warncbe'     , 'CBE warns'          , 9],
             ]
-            v.button('\u00a7l\u00a7eDetections')
-            for (let [id, name, max] of detections) v.button(`${name}:  ${obj(id).players.get(target) ?? 0} / ${max}`)
+            text.push('§l§eDetections')
+            for (let [id, name, max] of detections) text.push(`${name}:  ${obj(id).players.get(target) ?? 0} / ${max}`)
 
+            v.body(text.join('\n§r'))
             v.button('Back')
 
             v.show(plr).then(evd => guiScheme.pcmd.exec(plr, target))
@@ -256,7 +260,7 @@ const guiScheme = {
             ]
 
             const v = new ActionFormData()
-                .title(`Player Command - ${target.name.replace(/\u00a7./g, '')}`)
+                .title(`Player Command - ${target.name.replace(/§./g, '')}`)
 
             for (let [name, f] of actionList) v.button(name)
 
@@ -267,20 +271,27 @@ const guiScheme = {
         },
     
         new: (() => { // Player command UI
+            const pl = [...world.getPlayers()]
+
             const v = new ModalFormData()
                 .title('Player Command')
                 .textField('Type in the player name. Leave blank to cancel', 'Player name')
+                .dropdown('Or select a player:', ['§8None§r', ...pl.map(v => v.name)])
 
             const vn = new ModalFormData()
                 .title('Player Command')
-                .textField('\u00a7cPlayer not found.\n\u00a7rType in the player name. Leave blank to cancel', 'Player name')
-            
+                .textField('§cPlayer not found.\n§rType in the player name. Leave blank to cancel', 'Player name')
+                .dropdown('Or select a player:', ['§8None§r', ...pl.map(v => v.name)])
+
             return (plr, notFound = false) => void (notFound ? vn : v).show(plr).then(v => {
                 /** @type {string} */
-                const input = v.formValues[0]
-                if (!input || v.isCanceled) return guiScheme.main(plr)
-                const inputUnformatted = input.replace(/\u00a7./g, '')
-                const target = [...world.getPlayers()].find(v => v.name == input || v.name.replace(/\u00a7./g, '') == inputUnformatted)
+                const input = v.formValues[0],
+                    selection = v.formValues[1]
+                if ((!input && !selection) || v.isCanceled) return guiScheme.main(plr)
+                const inputUnformatted = input.replace(/§./g, '')
+                const target =
+                    ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
+                    || ( !selection ? null : pl[selection - 1] )
                 if (!target) return guiScheme.pcmd.new(plr, true)
                 guiScheme.pcmd.exec(plr, target)
             })
@@ -489,7 +500,8 @@ const waitMove = new Map()
 
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg, {location: {x, y, z}} = sender
-    //if (!sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
+    if (!sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
+    sender.tellraw(`§aMove to show the UI.`)
     waitMove.set(chatmsg.sender, [x, y, z])
 })
 
