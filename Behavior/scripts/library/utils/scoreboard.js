@@ -54,6 +54,7 @@ class players {
             execCmd(`scoreboard players add @s ${obj.executableId} ${score}`, plr);
             return this;
         };
+        /** @returns {number} */
         this.get = (plr) => {
             let o;
             if (useCache)
@@ -115,6 +116,7 @@ class dummies {
             execCmd(`scoreboard players add ${nameToExecutable(dummy)} ${score}`);
             return this;
         };
+        /** @returns {number} */
         this.get = (dummy) => {
             let o;
             if (useCache)

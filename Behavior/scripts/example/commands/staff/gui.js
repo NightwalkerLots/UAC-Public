@@ -198,6 +198,7 @@ const particleDefs = [
 ]
 
 const guiScheme = {
+    /** @type { (plr: Player) => void } */
     main: (() => { // main UI
         /** @type { [name: string, fn: (plr: Player) => void][] } */
         const actionList = [
@@ -223,6 +224,7 @@ const guiScheme = {
     })(),
 
     pcmd: {
+        /** @type { (plr: Player, target: Player) => void } */
         stats: (plr, target) => {
             const v = new ActionFormData()
                 .title(`${target.name.replace(/§./g, '')}'s stats`)
@@ -246,6 +248,7 @@ const guiScheme = {
             v.show(plr).then(evd => guiScheme.pcmd.exec(plr, target))
         },
 
+        /** @type { (plr: Player, target: Player) => void } */
         exec: (plr, target) => { // Player command UI (exec)
             /** @type { [name: string, fn: () => void][] } */
             const actionList = [
@@ -269,21 +272,24 @@ const guiScheme = {
                 actionList[v.selection][1]()
             })
         },
-    
-        new: (() => { // Player command UI
+
+        /** @type { (plr: Player, _a?: number) => void } */
+        new: (plr, _a = 0) => { // Player command UI
             const pl = [...world.getPlayers()]
 
             const v = new ModalFormData()
                 .title('Player Command')
-                .textField('Type in the player name. Leave blank to cancel', 'Player name')
+                .textField(
+                    (
+                        _a == 1 ? '§cPlayer not found.\n§r'
+                        : _a == 2 ? '§cCannot target yourself.\n§r'
+                        : ''
+                    ) + 'Type in the player name. Leave blank to cancel',
+                    'Player name'
+                )
                 .dropdown('Or select a player:', ['§8None§r', ...pl.map(v => v.name)])
 
-            const vn = new ModalFormData()
-                .title('Player Command')
-                .textField('§cPlayer not found.\n§rType in the player name. Leave blank to cancel', 'Player name')
-                .dropdown('Or select a player:', ['§8None§r', ...pl.map(v => v.name)])
-
-            return (plr, notFound = false) => void (notFound ? vn : v).show(plr).then(v => {
+            v.show(plr).then(v => {
                 /** @type {string} */
                 const input = v.formValues[0],
                     selection = v.formValues[1]
@@ -292,12 +298,14 @@ const guiScheme = {
                 const target =
                     ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
                     || ( !selection ? null : pl[selection - 1] )
-                if (!target) return guiScheme.pcmd.new(plr, true)
+                if (!target) return guiScheme.pcmd.new(plr, 1)
+                if (target == plr) return guiScheme.pcmd.new(plr, 2)
                 guiScheme.pcmd.exec(plr, target)
             })
-        })(),
+        }
     },
 
+    /** @type { (plr: Player) => void } */
     more: (() => { // more UI
         /** @type { [name: string, fn: (plr: Player) => void][] } */
         const actionList = [
@@ -323,6 +331,7 @@ const guiScheme = {
         })
     })(),
 
+    /** @type { (plr: Player) => void } */
     toggle: (plr) => { // module toggle UI
         const v = new ActionFormData()
             .title('Modules')
@@ -348,6 +357,7 @@ const guiScheme = {
         })
     },
 
+    /** @type { (plr: Player) => void } */
     itemban: (plr) => { // itemban UI
         const status = obj('IBM').dummies.get('ibmtoggledummy')
         const v = new ActionFormData()
@@ -368,6 +378,7 @@ const guiScheme = {
         })
     },
 
+    /** @type { (plr: Player) => void } */
     oreban: (plr) => { // orealert UI
         const status = obj('MDM').dummies.get('mdmtoggledummy')
         const v = new ActionFormData()
@@ -388,6 +399,7 @@ const guiScheme = {
         })
     },
 
+    /** @type { (plr: Player) => void } */
     particles: (() => { // particles
         const v = new ActionFormData()
             .title('Particles')
@@ -405,6 +417,7 @@ const guiScheme = {
         }
     })(),
 
+    /** @type { (plr: Player) => void } */
     kits: (() => { // kits UI
         const v = new ActionFormData()
             .title('Kits')
@@ -422,6 +435,7 @@ const guiScheme = {
         }
     })(),
 
+    /** @type { (plr: Player) => void } */
     wbchange: (() => { // worldborder change UI
         const v = new ModalFormData()
             .title('World Border')
@@ -440,6 +454,7 @@ const guiScheme = {
         })
     })(),
 
+    /** @type { (plr: Player) => void } */
     worldborder: (plr) => { // worldborder UI
         const status = obj('WBM').dummies.get('wbmtoggledummy'),
             currentX = obj('Border_Coord_X').dummies.get('BDXdummy'),
