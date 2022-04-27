@@ -198,10 +198,10 @@ const particleDefs = [
     { mname: 'Totem Poof', fn: 'totem_poof' },
 ]
 
-/** @type { (plr: Player, module: typeof moduleDefs[number]) => void } */
-const toggleModule = (plr, module) => {
+/** @type { (plr: Player, module: typeof moduleDefs[number], newValue?: number) => void } */
+const setModule = (plr, module, newValue) => {
     const objdata = obj(module.obj[0]).dummies
-    const newValue = ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
+    newValue ??= ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
     objdata.set(module.name, newValue)
     tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
 }
@@ -407,66 +407,90 @@ const guiScheme = {
 
     /** @type { (plr: Player) => void } */
     toggle: (plr) => { // module toggle UI
-        const v = new ActionFormData()
+        const v = new ModalFormData()
             .title('Modules')
 
+        /** @type { number[] } */
+        const values = []
+
         const exps = Object.fromEntries( moduleRequires.map(v => [ v, obj(v).players.get(plr) ]) )
-        for (let module of moduleDefs) v.button(`${module.mname}: ${module.toggle[obj(module.obj[0]).dummies.get(module.name) ?? 0]} ${ module.require ? ( exps[module.require] ? '§a' : '§c' ) : '§8' }[EXP]`)
-        v.button('Back')
+        for (let module of moduleDefs) {
+            const vl = obj(module.obj[0]).dummies.get(module.name)
+            values.push(vl)
+            module.toggle.length == 2
+                ? v.toggle(`${module.mname} ${ module.require ? ( exps[module.require] ? '§a' : '§c' ) : '§8' }[EXP]`, !!vl)
+                : v.dropdown(`${module.mname} ${ module.require ? ( exps[module.require] ? '§a' : '§c' ) : '§8' }[EXP]`, module.toggle, vl)
+        }
 
         v.show(plr).then(v => {
-            if (v.isCanceled || v.selection == moduleDefs.length) return guiScheme.main(plr)
-
-            const module = moduleDefs[v.selection]
-            toggleModule(plr, module)
-
-            guiScheme.toggle(plr)
+            if (v.isCanceled) return guiScheme.main(plr)
+            const newValues = v.formValues.map(v => Number(v))
+            for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
+                if (a != b) setModule(plr, moduleDefs[i], b)
+            }
+            guiScheme.main(plr)
         })
     },
 
     /** @type { (plr: Player) => void } */
     itemban: (plr) => { // itemban UI
-        const status = obj('IBM').dummies.get('ibmtoggledummy')
-        const v = new ActionFormData()
+        const v = new ModalFormData()
             .title('Item Bans')
-            .body(`Status: ${status ? '§aENABLED' : '§cDISABLED'}`)
+
+        /** @type { number[] } */
+        const values = []
         
-        for (let itemban of itembanDefs) v.button(`${itemban.mname}: ${obj(itemban.obj).dummies.get(itemban.name) ? '§cBAN' : '§aALLOW' }`)
-        v.button('Back')
+        for (let itemban of itembanDefs) {
+            const vl = obj(itemban.obj).dummies.get(itemban.name)
+            values.push(vl)
+            v.toggle(itemban.mname, !!vl)
+        }
 
         v.show(plr).then(v => {
-            if (v.isCanceled || v.selection == itembanDefs.length) return guiScheme.main(plr)
+            if (v.isCanceled) return guiScheme.main(plr)
 
-            const itemban = itembanDefs[v.selection]
-            let objdata = obj(itemban.obj).dummies
-            let newValue = ( ( objdata.get(itemban.name) ?? 0 ) + 1) % 2
-            objdata.set(itemban.name, newValue)
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${newValue ? '§aenabled' : '§cdisabled'}§r §eItemBan/${itemban.mname}§r`)
+            const newValues = v.formValues.map(v => Number(v))
+            for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
+                if (a != b) {
+                    const itemban = itembanDefs[i]
+                    let objdata = obj(itemban.obj).dummies
+                    objdata.set(itemban.name, b)
+                    tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${b ? '§aenabled' : '§cdisabled'}§r §eItemBan/${itemban.mname}§r`)
+                }
+            }
 
-            guiScheme.itemban(plr)
+            guiScheme.main(plr)
         })
     },
 
     /** @type { (plr: Player) => void } */
     oreban: (plr) => { // orealert UI
-        const status = obj('MDM').dummies.get('mdmtoggledummy')
-        const v = new ActionFormData()
+        const v = new ModalFormData()
             .title('Ore Alerts')
-            .body(`Status: ${status ? '§aENABLED' : '§cDISABLED'}`)
     
-        for (let oreban of oreBanDefs) v.button(`${oreban.mname}: ${obj(oreban.obj).dummies.get(oreban.name) ? '§cBAN' : '§aALLOW' }`)
-        v.button('Back')
+        /** @type { number[] } */
+        const values = []
+        
+        for (let oreban of oreBanDefs) {
+            const vl = obj(oreban.obj).dummies.get(oreban.name)
+            values.push(vl)
+            v.toggle(oreban.mname, !!vl)
+        }
 
         v.show(plr).then(v => {
-            if (v.isCanceled || v.selection == oreBanDefs.length) return guiScheme.main(plr)
+            if (v.isCanceled) return guiScheme.main(plr)
 
-            const oreban = oreBanDefs[v.selection]
-            let objdata = obj(oreban.obj).dummies
-            let newValue = ( ( objdata.get(oreban.name) ?? 0 ) + 1) % 2
-            objdata.set(oreban.name, newValue)
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${newValue ? '§cbanned' : '§aallowed'}§r §eOreAlert/${oreban.mname}§r`)
+            const newValues = v.formValues.map(v => Number(v))
+            for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
+                if (a != b) {
+                    const oreban = oreBanDefs[i]
+                    let objdata = obj(oreban.obj).dummies
+                    objdata.set(oreban.name, b)
+                    tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${b ? '§aenabled' : '§cdisabled'}§r §eOreAlert/${oreban.mname}§r`)
+                }
+            }
 
-            guiScheme.oreban(plr)
+            guiScheme.main(plr)
         })
     },
 
@@ -556,7 +580,7 @@ const guiScheme = {
                         toggle: ['§cOFF', '§aON'],
                         require: 'has_xx'
                     }
-                    toggleModule(plr, module)
+                    setModule(plr, module)
 
                     return guiScheme.worldborder(plr)
                 }
