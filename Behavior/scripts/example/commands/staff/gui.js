@@ -287,7 +287,7 @@ const guiScheme = {
             text.push('§l§ePermissions')
             const isStaff = target.hasTag('staffstatus')
             const isOwner = target.hasTag('ownerstatus')
-            const mayFly = obj('2KK001').players.get(plr) == 725
+            const mayFly = obj('2KK001').players.get(target) == 725
             const isGodmode = target.hasTag('tgmGodMode')
             const gamemode = getGamemode(target)
 
@@ -316,6 +316,26 @@ const guiScheme = {
             text.push('§l§eDetections')
             for (let [id, name, max] of detections) text.push(`${name}:  §e${obj(id).players.get(target) ?? 0}§r / §e${max}§r`)
 
+            text.push('') // newline
+
+            // other
+            text.push('§l§eOther')
+            // pvp
+            const kills = obj('kills').players.get(target),
+                deaths = obj('deaths').players.get(target),
+                killstreak = obj('killstreak').players.get(target)
+            text.push(`Kills: §a${kills}`)
+            text.push(`Deaths: §a${kills}`)
+            text.push(`Killstreak: §a${kills}`)
+            // time played
+            const tpl = [
+                obj('timeplayedsec').players.get(target),
+                obj('timeplayedmin').players.get(target),
+                obj('timeplayedhr').players.get(target),
+                obj('timeplayedday').players.get(target)
+            ]
+            text.push(`Time played: §a${tpl[0]}d${tpl[1]}h${tpl[2]}m${tpl[3]}s`)
+
             v.body(text.join('\n§r'))
             v.button('Back')
 
@@ -327,7 +347,7 @@ const guiScheme = {
             /** @type { [name: string, fn: () => void][] } */
             const actionList = [
                 [ 'Stats'        , () => guiScheme.pcmd.stats(plr, target) ],
-                [ 'Teleport'     , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" @s`) ],
+                [ 'Teleport'     , () => target.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" @s`) ],
                 [ 'Punish'       , () => target.runCommand('function UAC/punish') ],
                 [ 'Freeze'       , () => target.runCommand('function UAC/freeze_player') ],
                 [ 'Warn'         , () => target.runCommand('function UAC/warn') ],
@@ -350,7 +370,7 @@ const guiScheme = {
 
         /** @type { (plr: Player, _a?: number) => void } */
         new: (plr, _a = 0) => { // Player command UI
-            const pl = [...world.getPlayers()].filter(v => v !== plr)
+            const pl = [...world.getPlayers()]//.filter(v => v !== plr)
 
             const v = new ModalFormData()
                 .title('Player Command')
@@ -374,7 +394,7 @@ const guiScheme = {
                     ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
                     || ( !selection ? null : pl[selection - 1] )
                 if (!target) return guiScheme.pcmd.new(plr, 1)
-                if (target == plr) return guiScheme.pcmd.new(plr, 2)
+                //if (target == plr) return guiScheme.pcmd.new(plr, 2)
                 guiScheme.pcmd.exec(plr, target)
             })
         }
