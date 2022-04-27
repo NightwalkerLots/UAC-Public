@@ -206,6 +206,14 @@ const toggleModule = (plr, module) => {
     tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
 }
 
+/** @type { (plr: Player) => 's' | 'c' | 'a' | 'sp' | 'hc' } */
+const getGamemode = (plr) => {
+    try { plr.runCommand('testfor @s[m=c]'); return 'c' } catch {}
+    try { plr.runCommand('testfor @s[m=s]'); return 's' } catch {}
+    try { plr.runCommand('testfor @s[m=a]'); return 'a' } catch {}
+    return null
+}
+
 const guiScheme = {
     /** @type { (plr: Player) => void } */
     main: (() => { // main UI
@@ -239,6 +247,62 @@ const guiScheme = {
                 .title(`${target.name.replace(/§./g, '')}'s stats`)
 
             let text = []
+            
+            // location
+            text.push('§l§eLocation')
+            const plrFacing = obj('Player_Facing').players.get(target) // down up north south west east
+            const plrCoord = [ 'X_Coordinate', 'Y_Coordinate','Z_Coordinate' ].map(v => obj(v).players.get(target) )
+            const spawnCoord = [ 'X_Coord_S', 'Y_Coord_S', 'Z_Coord_S' ].map(v => obj(v).players.get(target) )
+            const deathCoord = [ 'X_Coord_D', 'Y_Coord_D', 'Z_Coord_D' ].map(v => obj(v).players.get(target) )
+            const playerDim = (() => {
+                const in_nether = obj('in_nether').players.get(target)
+                const in_end = obj('in_end').players.get(target)
+                return in_nether ? 1 // 1: in nether
+                    : in_end ? 2 // 2: in end
+                    : 0 // overworld / unknoown
+            })()
+
+            text.push(`Location: ${plrCoord.map(v => `§a${v}§r`).join(', ')}`)
+            text.push(`SpawnLoc: ${spawnCoord.map(v => `§a${v}§r`).join(', ')}`)
+            text.push(`DeathLoc: ${deathCoord.map(v => `§a${v}§r`).join(', ')}`)
+            text.push(`Facing: §b${
+                plrFacing == 0 ? 'DOWN'
+                : plrFacing == 1 ? 'UP'
+                : plrFacing == 2 ? 'NORTH'
+                : plrFacing == 3 ? 'SOUTH'
+                : plrFacing == 4 ? 'WEST'
+                : plrFacing == 5 ? 'EAST'
+                : 'UNKNOWN'
+            }`)
+            text.push(`Dimension: §b${
+                playerDim == 0 ? 'OVERWORLD'
+                : playerDim == 1 ? 'NETHER'
+                : playerDim == 2 ? 'END'
+                : 'UNKNOWN'
+            }`)
+            text.push('') // newline
+
+            // permissions
+            text.push('§l§ePermissions')
+            const isStaff = target.hasTag('staffstatus')
+            const isOwner = target.hasTag('staffstatus')
+            const mayFly = obj('2KK001').players.get(plr) == 725
+            const isGodmode = target.hasTag('tgmGodMode')
+            const gamemode = getGamemode(target)
+
+            text.push(`Staff: ${isStaff ? '§aYes' : '§eNo'}`)
+            text.push(`Owner: ${isOwner ? '§aYes' : '§eNo'}`)
+            text.push(`Mayfly: ${mayFly ? '§aYes' : '§eNo'}`)
+            text.push(`Godmode: ${isGodmode ? '§aYes' : '§eNo'}`)
+            text.push(`Gamemode: §b${
+                gamemode == 's' ? 'Survival'
+                : gamemode == 'c' ? 'Creative'
+                : gamemode == 'a' ? 'Adventure'
+                : gamemode == 'sp' ? 'Spectator'
+                : gamemode == 'hc' ? 'Hardcore'
+                : 'Unknown'
+            }`)
+            text.push('') // newline
 
             // detections
             /** @type {[id: string, name: string, max: number][]} */
@@ -249,7 +313,7 @@ const guiScheme = {
                 ['warncbe'     , 'CBE warns'          , 9],
             ]
             text.push('§l§eDetections')
-            for (let [id, name, max] of detections) text.push(`${name}:  ${obj(id).players.get(target) ?? 0} / ${max}`)
+            for (let [id, name, max] of detections) text.push(`${name}:  §e${obj(id).players.get(target) ?? 0}§r / §e${max}§r`)
 
             v.body(text.join('\n§r'))
             v.button('Back')
@@ -262,6 +326,7 @@ const guiScheme = {
             /** @type { [name: string, fn: () => void][] } */
             const actionList = [
                 [ 'Stats'        , () => guiScheme.pcmd.stats(plr, target) ],
+                [ 'Teleport'     , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" @s`) ],
                 [ 'Punish'       , () => target.runCommand('function UAC/punish') ],
                 [ 'Freeze'       , () => target.runCommand('function UAC/freeze_player') ],
                 [ 'Warn'         , () => target.runCommand('function UAC/warn') ],
@@ -284,7 +349,7 @@ const guiScheme = {
 
         /** @type { (plr: Player, _a?: number) => void } */
         new: (plr, _a = 0) => { // Player command UI
-            const pl = [...world.getPlayers()].filter(v => v !== plr)
+            const pl = [...world.getPlayers()]//.filter(v => v !== plr)
 
             const v = new ModalFormData()
                 .title('Player Command')
@@ -308,7 +373,7 @@ const guiScheme = {
                     ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
                     || ( !selection ? null : pl[selection - 1] )
                 if (!target) return guiScheme.pcmd.new(plr, 1)
-                if (target == plr) return guiScheme.pcmd.new(plr, 2)
+                //if (target == plr) return guiScheme.pcmd.new(plr, 2)
                 guiScheme.pcmd.exec(plr, target)
             })
         }
