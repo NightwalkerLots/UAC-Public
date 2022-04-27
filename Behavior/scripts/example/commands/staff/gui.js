@@ -285,7 +285,7 @@ const guiScheme = {
             // permissions
             text.push('§l§ePermissions')
             const isStaff = target.hasTag('staffstatus')
-            const isOwner = target.hasTag('staffstatus')
+            const isOwner = target.hasTag('ownerstatus')
             const mayFly = obj('2KK001').players.get(plr) == 725
             const isGodmode = target.hasTag('tgmGodMode')
             const gamemode = getGamemode(target)
