@@ -103,7 +103,7 @@ const moduleDefs = [
         mname: 'Hotbar Message',
         obj: ['HMM', 'hmmtoggle'],
         name: 'hmmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
+        toggle: ['§cOFF', '§aWith Score', '§aWithout Score'],
         require: ''
     },
     {
@@ -494,7 +494,6 @@ const guiScheme = {
         })
     },
 
-    /** @type { (plr: Player) => void } */
     particles: (() => { // particles
         const v = new ActionFormData()
             .title('Particles')
@@ -502,6 +501,7 @@ const guiScheme = {
         for (let particle of particleDefs) v.button(particle.mname)
         v.button('Back')
 
+        /** @type { (plr: Player) => void } */
         return (plr) => {
             v.show(plr).then(v => {
                 if (v.isCanceled || v.selection == particleDefs.length) return guiScheme.main(plr)
@@ -512,7 +512,6 @@ const guiScheme = {
         }
     })(),
 
-    /** @type { (plr: Player) => void } */
     kits: (() => { // kits UI
         const v = new ActionFormData()
             .title('Kits')
@@ -520,6 +519,7 @@ const guiScheme = {
         for (let kit of kitDefs) v.button(kit.mname)
         v.button('Back')
         
+        /** @type { (plr: Player) => void } */
         return (plr) => {
             v.show(plr).then(v => {
                 if (v.isCanceled || v.selection == kitDefs.length) return guiScheme.main(plr)
@@ -531,12 +531,12 @@ const guiScheme = {
         }
     })(),
 
-    /** @type { (plr: Player) => void } */
     wbchange: (() => { // worldborder change UI
         const v = new ModalFormData()
             .title('World Border')
             .textField('Enter a new world border distance. Leave blank to cancel', 'World border distance (number)')
         
+        /** @type { (plr: Player) => void } */
         return (plr) => void v.show(plr).then(v => {
             if (v.isCanceled || !v.formValues[0]) return guiScheme.worldborder(plr)
 
