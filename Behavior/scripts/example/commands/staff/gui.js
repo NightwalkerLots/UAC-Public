@@ -203,6 +203,7 @@ const setModule = (plr, module, newValue) => {
     const objdata = obj(module.obj[0]).dummies
     newValue ??= ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
     objdata.set(module.name, newValue)
+    obj(module.obj[1]).dummies.set(module.name, newValue)
     tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
 }
 
