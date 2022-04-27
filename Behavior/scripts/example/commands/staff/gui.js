@@ -349,7 +349,7 @@ const guiScheme = {
 
         /** @type { (plr: Player, _a?: number) => void } */
         new: (plr, _a = 0) => { // Player command UI
-            const pl = [...world.getPlayers()]//.filter(v => v !== plr)
+            const pl = [...world.getPlayers()].filter(v => v !== plr)
 
             const v = new ModalFormData()
                 .title('Player Command')
@@ -373,7 +373,7 @@ const guiScheme = {
                     ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
                     || ( !selection ? null : pl[selection - 1] )
                 if (!target) return guiScheme.pcmd.new(plr, 1)
-                //if (target == plr) return guiScheme.pcmd.new(plr, 2)
+                if (target == plr) return guiScheme.pcmd.new(plr, 2)
                 guiScheme.pcmd.exec(plr, target)
             })
         }
