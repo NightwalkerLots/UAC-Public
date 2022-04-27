@@ -3,6 +3,7 @@ import { Player, world } from 'mojang-minecraft'
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from "mojang-minecraft-ui"
 import scoreboard from "../../../library/utils/scoreboard.js"
+import { tellrawStaff } from '../../../library/utils/prototype.js';
 const { for: obj } = scoreboard.objective
 
 const moduleRequires = ['has_xx', 'has_gt']
@@ -197,6 +198,14 @@ const particleDefs = [
     { mname: 'Totem Poof', fn: 'totem_poof' },
 ]
 
+/** @type { (plr: Player, module: typeof moduleDefs[number]) => void } */
+const toggleModule = (plr, module) => {
+    const objdata = obj(module.obj[0]).dummies
+    const newValue = ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
+    objdata.set(module.name, newValue)
+    tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
+}
+
 const guiScheme = {
     /** @type { (plr: Player) => void } */
     main: (() => { // main UI
@@ -275,7 +284,7 @@ const guiScheme = {
 
         /** @type { (plr: Player, _a?: number) => void } */
         new: (plr, _a = 0) => { // Player command UI
-            const pl = [...world.getPlayers()]
+            const pl = [...world.getPlayers()].filter(v => v !== plr)
 
             const v = new ModalFormData()
                 .title('Player Command')
@@ -344,14 +353,7 @@ const guiScheme = {
             if (v.isCanceled || v.selection == moduleDefs.length) return guiScheme.main(plr)
 
             const module = moduleDefs[v.selection]
-            for (let i = 0, tv, xobj; (xobj = module.obj[i], i < module.obj.length); i++) {
-                let objdata = obj(xobj).dummies
-                if (i == 0) {
-                    objdata.set(module.name, tv = ( ( (objdata.get(module.name) ?? 0) + 1) % module.toggle.length ))
-                    continue
-                }
-                objdata.set(module.name, tv)
-            }
+            toggleModule(plr, module)
 
             guiScheme.toggle(plr)
         })
@@ -372,7 +374,9 @@ const guiScheme = {
 
             const itemban = itembanDefs[v.selection]
             let objdata = obj(itemban.obj).dummies
-            objdata.set(itemban.name, ((objdata.get(itemban.name) ?? 0) + 1) % 2)
+            let newValue = ( ( objdata.get(itemban.name) ?? 0 ) + 1) % 2
+            objdata.set(itemban.name, newValue)
+            tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${newValue ? '§aenabled' : '§cdisabled'}§r §eItemBan/${itemban.mname}§r`)
 
             guiScheme.itemban(plr)
         })
@@ -393,7 +397,9 @@ const guiScheme = {
 
             const oreban = oreBanDefs[v.selection]
             let objdata = obj(oreban.obj).dummies
-            objdata.set(oreban.name, ((objdata.get(oreban.name) ?? 0) + 1) % 2)
+            let newValue = ( ( objdata.get(oreban.name) ?? 0 ) + 1) % 2
+            objdata.set(oreban.name, newValue)
+            tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${newValue ? '§cbanned' : '§aallowed'}§r §eOreAlert/${oreban.mname}§r`)
 
             guiScheme.oreban(plr)
         })
@@ -431,6 +437,7 @@ const guiScheme = {
 
                 const kit = kitDefs[v.selection]
                 plr.runCommand(`structure load "${kit.structure}" ~~~`)
+                tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has spawned a kit §e${kit.mname}§r`)
             })
         }
     })(),
@@ -449,6 +456,7 @@ const guiScheme = {
 
             obj('Border_Coord_X').dummies.set('BDXdummy', newValue)
             obj('Border_Coord_Z').dummies.set('BDXdummy', newValue)
+            tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the world border size to §a${newValue}§b/§a${newValue}§r`)
 
             guiScheme.worldborder(plr)
         })
@@ -475,6 +483,7 @@ const guiScheme = {
             switch (v.selection) {
                 case 0: return guiScheme.wbchange(plr)
                 case 1: {
+                    /** @type { typeof moduleDefs[number] } */
                     const module = {
                         mname: 'World Border',
                         obj: ['WBM', 'wbmtoggle'],
@@ -482,14 +491,7 @@ const guiScheme = {
                         toggle: ['§cOFF', '§aON'],
                         require: 'has_xx'
                     }
-                    for (let i = 0, tv, xobj; (xobj = module.obj[i], i < module.obj.length); i++) {
-                        let objdata = obj(xobj).dummies
-                        if (i == 0) {
-                            objdata.set(module.name, tv = ( ( (objdata.get(module.name) ?? 0) + 1) % module.toggle.length ))
-                            continue
-                        }
-                        objdata.set(module.name, tv)
-                    }
+                    toggleModule(plr, module)
 
                     return guiScheme.worldborder(plr)
                 }
