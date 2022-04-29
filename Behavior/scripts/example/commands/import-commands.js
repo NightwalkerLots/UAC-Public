@@ -13,4 +13,5 @@ import './staff/setworldspawn.js';
 //import './staff/inventoryview.js';
 import './staff/dev.js';
 import './staff/punish.js';
+import './staff/eval.js';
 import './staff/inv.js';
