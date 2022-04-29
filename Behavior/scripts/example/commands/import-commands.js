@@ -1,4 +1,6 @@
 import './information/help.js';
+import './information/tpsi.js'
+
 import './other/home.js';
 import './other/lastdeath.js';
 import './other/selfstats.js';
