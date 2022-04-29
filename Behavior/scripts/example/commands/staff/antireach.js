@@ -73,7 +73,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     }
 });
 
-const playerCollisionSize = [0.6, 1.2, 0.6]
+const playerCollisionSize = [0.3, 1.8, 0.3]
 
 World.events.entityHit.subscribe(({entity: plr, hitEntity: target}) => {
     if (!( toggle && plr instanceof Player && target && target instanceof Player && plr.hasTag('staffstatus') )) return
