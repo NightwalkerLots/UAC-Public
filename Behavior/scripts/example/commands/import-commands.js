@@ -17,3 +17,4 @@ import './staff/dev.js';
 import './staff/punish.js';
 import './staff/eval.js';
 import './staff/inv.js';
+import './staff/antireach.js';
