@@ -45,13 +45,13 @@ class players {
         this.set = (plr, score) => {
             if (useCache)
                 cacheData.set(plr, score);
-            execCmd(`scoreboard players set @s ${obj.executableId} ${score}`, plr);
+            execCmd(`scoreboard players set @s ${obj.executableId} ${~~score}`, plr);
             return this;
         };
         this.add = (plr, score) => {
             if (useCache)
                 cacheData.set(plr, (cacheData.get(plr) ?? 0) + score);
-            execCmd(`scoreboard players add @s ${obj.executableId} ${score}`, plr);
+            execCmd(`scoreboard players add @s ${obj.executableId} ${~~score}`, plr);
             return this;
         };
         /** @returns {number} */
@@ -107,13 +107,13 @@ class dummies {
         this.set = (dummy, score) => {
             if (useCache)
                 cacheData[dummy] = score;
-            execCmd(`scoreboard players set ${nameToExecutable(dummy)} ${score}`);
+            execCmd(`scoreboard players set ${nameToExecutable(dummy)} ${~~score}`);
             return this;
         };
         this.add = (dummy, score) => {
             if (useCache)
                 cacheData[dummy] = cacheData[dummy] ?? 0 + score;
-            execCmd(`scoreboard players add ${nameToExecutable(dummy)} ${score}`);
+            execCmd(`scoreboard players add ${nameToExecutable(dummy)} ${~~score}`);
             return this;
         };
         /** @returns {number} */
