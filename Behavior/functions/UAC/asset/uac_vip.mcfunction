@@ -5,6 +5,8 @@ tag @s[name="JayyGhost290"] add UAC_vip
 tag @s[name="PlazmaticSoul"] add UAC_vip
 tag @s[name="Zombieclinic"] add UAC_vip
 tag @s[name="WinFan3672"] add UAC_vip
+tag @s[name="Tingz091"] add UAC_vip
+tag @s[name="Dreaxzy6761"] add UAC_vip
 
 scoreboard players set @s[tag=UAC_vip,scores={vipt=1}] VIPM 2293
 scoreboard players set @s[tag=!UAC_vip,scores={vipt=1}] VIPM 0
@@ -22,4 +24,4 @@ tag @s[scores={vipt=2}] remove UAC_vip
 scoreboard players reset @s[scores={vipt=2}] vipt
 
 
-tag @f["" ] ~~`
+hide

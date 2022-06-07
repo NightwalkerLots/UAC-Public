@@ -1,5 +1,6 @@
 import * as Minecraft from 'mojang-minecraft';
 import { Server } from './serverBuilder.js';
+import { ItemStack, MinecraftItemTypes, EntityQueryOptions, Player, PlayerInventoryComponentContainer, world } from 'mojang-minecraft';
 
 export class PlayerBuilder {
     /**
@@ -43,12 +44,12 @@ export class PlayerBuilder {
      * Get list of players in game
      * @returns {Array<string>}
      * @example PlayerBuilder.list();
-     */
+     
     list() {
         let data = [];
-        data = [...Minecraft.world.getPlayers()].map(player => player.getName())
+        data = [...world.getPlayers()].map(player => player.getName())
         return data;
-    }
+    }*/
     ;
     /**
      * Get the amount on a specific items player(s) has

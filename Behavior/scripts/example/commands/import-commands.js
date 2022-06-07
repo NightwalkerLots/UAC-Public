@@ -13,3 +13,20 @@ import './staff/setworldspawn.js';
 import './staff/inventoryview.js';
 import './staff/dev.js';
 import './staff/punish.js';
+import './staff/lagclear.js';
+import './staff/freeze.js';
+import './staff/gui.js';
+import './staff/mayfly.js';
+import './staff/hasitem.js';
+import './staff/echestwipe.js';
+import './staff/warnreset.js';
+import './staff/warn.js';
+import './staff/ranks.js';
+import './staff/chatspam.js';
+import './staff/mute.js';
+
+//made by frost
+import './staff/illench.js';
+import './staff/antireach.js';
+import './staff/fixedcontainer.js';
+import './staff/eval.js';

@@ -5,7 +5,7 @@ const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
     name: 'punish',
-    staff: 'true',
+    staff: 'management',
     description: 'Warns the player while clearing their inventory and ender chest',
     usage: '[ @player ]',
     example: [

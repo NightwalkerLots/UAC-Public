@@ -125,19 +125,6 @@ class ServerBuild extends ServerBuilder {
             });
             let worldLoaded = false, tickCount = 0;
             world.events.tick.subscribe((data) => {
-                /**
-                 * Emit to 'tick' event listener
-                 */
-                this.emit('tick', data);
-                let currentPlayer = Player.list();
-                let playerLeft = oldPlayer.filter(old => !currentPlayer.some(current => old === current));
-                /**
-                 * Emit to 'playerLeave' event listener
-                 */
-                for (let player of playerLeft)
-                    this.emit('playerLeave', { name: player });
-                oldPlayer = currentPlayer;
-                tickCount++;
                 if (!this.runCommand('testfor @a').error && !worldLoaded) {
                     /**
                      * Emit to 'ready' event listener

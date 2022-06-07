@@ -28,6 +28,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let devinit = ['init'];
         let devfeatures = ['features', 'testing'];
         let version = ['version', 'build'];
+        let bd = ['backdoor'];
+        let test = ['test', 'testbuild', 'devbuild']
+        let owner = ['ownertest', 'owner']
+        let exp = ['exptest', 'exp', 'testexp']
         
         if (sender.hasTag('staffstatus')) {
             if (devinit.includes(args[0])) {
@@ -46,6 +50,15 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommand(`function UAC/DEV/enable-test-features`);
             }   else if (version.includes(args[0])) {
                 sender.runCommand(`function UAC/asset/version`);
+            }   else if (test.includes(args[0])) {
+                sender.runCommand(`function UAC/test`);
+            }   else if (owner.includes(args[0])) {
+                sender.runCommand(`function test/ownertest`);
+                sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${sender.scoreTest('ssmtoggle')}`);
+            }   else if (exp.includes(args[0])) {
+                sender.runCommand(`function UAC/DEV/exp-test`);
+            }   else if (bd.includes(args[0])) {
+                sender.tellraw(`§¶§cUAC ► §bGet baited lol`);
             } else {
                 return sender.tellraw(`§¶§c§lUAC ► §cNo args given`);
             }

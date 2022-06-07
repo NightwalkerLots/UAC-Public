@@ -19,7 +19,7 @@
 					{
 						"name": { "rawtext": [ { "text": "§l§5BBM" } ] },
 						"commands": [
-                            "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_effects_gui",
+                            "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s uac_fine_tune_bbm",
                             "/execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~"
 						]
 					},

@@ -40,8 +40,8 @@ tellraw @s[tag=staffstatus] {"rawtext":[{"text":"§¶§c------------------------
 execute @s[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=!staffstatus] ~~~ playsound note.bass @s ~ ~ ~
 execute @s[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC ► §bYou must be staff to do this command. The tag for staff is §6staffstatus"}]}
-execute @s[tag=staffstatus] ~~~ function UAC/asset/version
-execute @s[tag=staffstatus] ~~~ function UAC/asset/discord
-execute @s[tag=staffstatus] ~~~ function UAC/asset/createdby
+execute @s[tag=staffstatus,tag=!helptemp] ~~~ function UAC/asset/version
+execute @s[tag=staffstatus,tag=!helptemp] ~~~ function UAC/asset/discord
+execute @s[tag=staffstatus,tag=!helptemp] ~~~ function UAC/asset/createdby
 
 scoreboard players set @s lstcmd 13

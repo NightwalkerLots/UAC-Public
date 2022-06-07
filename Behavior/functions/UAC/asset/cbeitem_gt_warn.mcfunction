@@ -6,7 +6,7 @@ playsound random.break @s ~ ~ ~
 execute @s[scores={warncbe=3}] ~~~ scoreboard players add @s warn 1
 execute @s[scores={warncbe=6}] ~~~ scoreboard players add @s warn 1
 execute @a[scores={warncbe=9..}] ~~~ tag @s add BanCBE
-clear
+clear @s
 function UAC/echestwipe
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bCBE item warns§7: §7["},{"score":{"name":"@s","objective":"warncbe"}},{"text":"§b/9§7]"}]}
 playsound note.bass @a ~ ~ ~

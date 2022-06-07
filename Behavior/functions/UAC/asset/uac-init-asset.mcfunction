@@ -2,9 +2,11 @@
 scoreboard objectives add has_xx dummy
 scoreboard objectives add in_nether dummy
 scoreboard objectives add in_end dummy
+scoreboard objectives add riding dummy
 scoreboard players set @s has_xx 0
 scoreboard players set @s in_nether 0
 scoreboard players set @s in_end 0
+scoreboard players set @s riding 0
 
 #Default values for armor checks
 scoreboard objectives add leathboots dummy leathboots
@@ -101,7 +103,7 @@ scoreboard objectives add XNEF dummy Ban4
 scoreboard players set @s XNEF 0
 #Player afk detection
 scoreboard objectives add afkm dummy
-scoreboard objectives set @s afkm 0
+scoreboard players set @s afkm 0
 scoreboard objectives add afktimer dummy
 
 
@@ -214,6 +216,8 @@ scoreboard objectives add playercount dummy
 scoreboard objectives add tpa dummy
 scoreboard objectives add suicide dummy
 scoreboard objectives add hmmcache dummy
+scoreboard objectives add entityclear dummy
+scoreboard objectives add chatspam dummy
 
 
 #module scoreboards
@@ -241,6 +245,7 @@ scoreboard objectives add IBM dummy IBM
 scoreboard objectives add DAM dummy DAM
 scoreboard objectives add MDM dummy MDM
 scoreboard objectives add OSM dummy
+scoreboard objectives add illench dummy
 
 scoreboard objectives add vipt dummy
 
@@ -270,6 +275,8 @@ scoreboard objectives add damtoggle dummy damtoggle
 scoreboard objectives add mdmtoggle dummy mdmtoggle
 scoreboard objectives add osmtoggle dummy
 scoreboard objectives add clmtoggle dummy
+scoreboard objectives add chatrank dummy
+scoreboard objectives add acstoggle dummy 
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -325,6 +332,10 @@ scoreboard players set @s damtoggle 0
 scoreboard players set @s mdmtoggle 0
 scoreboard players set @s osmtoggle 0
 scoreboard players set @s clmtoggle 0
+scoreboard players set @s illench 0
+scoreboard players set @s chatrank 0
+scoreboard players set @s armtoggle 0
+
 
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
@@ -384,6 +395,8 @@ scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
+tag @s add "rank:Member"
+tag @s add "color:b"
 
 function UAC/asset/createdby
 function UAC/asset/discord
@@ -444,8 +457,8 @@ tag @s add can_oneshot
 
 #If experimental features are on, set to true
 event entity @a uac:test_experimental
-tellraw @s[scores={has_xx=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §cNot Enabled §7|| §cSome features may not work"}]}
-tellraw @s[scores={has_xx=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Experimental Features §7: §2ENABLED"}]}
+tellraw @s[scores={has_xx=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Holiday Features §7: §cNot Enabled §7|| §cSome features may not work"}]}
+tellraw @s[scores={has_xx=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Holiday Features §7: §2ENABLED"}]}
 tellraw @s[scores={has_gt=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §2ENABLED"}]}
 tellraw @s[scores={has_gt=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §cNot Enabled §7|| §cPlayer Chat commands will not work"}]}
 #This hides this from the in-game function command directory
