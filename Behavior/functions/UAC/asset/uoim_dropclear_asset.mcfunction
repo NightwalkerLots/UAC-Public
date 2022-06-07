@@ -30,6 +30,7 @@ kill @e[type=item,name="fire"]
 kill @e[type=item,name="soul fire"]
 kill @e[type=item,name="item.glow_stick.black.name"]
 kill @e[type=item,name="tile.movingblock.name"]
+kill @e[type=item,name="tile.moving_block.name"]
 
 
 

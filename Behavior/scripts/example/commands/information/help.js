@@ -18,22 +18,28 @@ Server.command.register(registerInformation, (data, args) => {
         const name = sender.getName();
         const cmdList = Server.command.getAll();
         const cmdstaff = Server.command.getAllStaff();
+        const sftforplayer = Server.command.getAllStaffMng();
 
         const plrcmd = cmdList.join(', ');
         const stfcmd = cmdstaff.join(', ');
+        const sftmng = sftforplayer.join(', ');
+        
 
 
         console.warn(cmdList);
         //sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bCustom Command List: §l§c${cmdList.join(', ')}`);
         if (!args[0]) {
             if (sender.hasTag('staffstatus')) { 
-                return sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd} §r\n§bStaff Command List §l§c${stfcmd}`);
+                sender.runCommand(`tag @s add helptemp`);
+                sender.runCommand(`function UAC/help/all-commands`);
+                sender.tellraw(`§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd} §r\n§bStaff Command List: §l§c${stfcmd}§r\n§bStaff Commands for Player Management: §l§c${sftmng}`);
+                sender.runCommand(`tag @s remove helptemp`);
             } else {
-                return sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd}`);
+                return sender.tellraw(`§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd}`);
             }
         }
         const cmdInfo = Server.command.getRegistration(args[0]);
-        if (!cmdInfo)
+        if (!cmdInfo && args[0])
             return sender.tellraw("§cI couldn't find the command...");
         let string = `\n§eCommand§f: §a${Server.command.prefix}§l§c${cmdInfo.name}§r\n`;
         if (cmdInfo.aliases)

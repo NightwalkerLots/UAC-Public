@@ -82,7 +82,7 @@
               "gamerule commandblocksenabled false",
               "scoreboard players set @a cbetime 40",
               "kill @e[type=moving_block]",
-              "tellraw @a {\"rawtext\":[{\"text\":\"§¶§cUAC ► §6Anti-CBE §bdetected §d\"},{\"selector\":\"@a[r=15]\"},{\"text\":\"§b near a CBE attempt §7: §c§lMinecraft§7:§cmoving_block\"}]}",
+              "tellraw @a {\"rawtext\":[{\"text\":\"§¶§cUAC ► §6Anti-CBE §bdetected §d\"},{\"selector\":\"@a[r=15]\"},{\"text\":\"§b near a CBE attempt §7: §l§cmoving_block\"}]}",
               "kill @s",
               "kill @e[name=\"minecart\"]"
             ]

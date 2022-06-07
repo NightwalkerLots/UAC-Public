@@ -4,8 +4,8 @@ execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶�
 execute @a[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~
 execute @s[tag=!staffstatus] ~~~ playsound note.bass @s ~ ~ ~
 
-execute @a[tag=staffstatus] ~~~ function particle/explode
-execute @a[tag=staffstatus] ~~~ playsound random.enderchestopen @s ~~~ 2 1 3
+execute @s[tag=staffstatus] ~~~ function particle/explode
+execute @s[tag=staffstatus] ~~~ playsound random.enderchestopen @s ~~~ 2 1 3
 
 replaceitem entity @s[tag=staffstatus] slot.armor.head 0 diamond_helmet 1 0 {"minecraft:keep_on_death":{}}
 replaceitem entity @s[tag=staffstatus] slot.armor.chest 0 diamond_chestplate 1 0 {"minecraft:keep_on_death":{}}
@@ -28,3 +28,5 @@ give @s[tag=staffstatus] elytra 1 0 {"minecraft:keep_on_death":{}}
 effect @s[tag=staffstatus] strength 150 1 true
 effect @s[tag=staffstatus] resistance 150 1 true
 scoreboard players set @s lstcmd 108
+
+hide

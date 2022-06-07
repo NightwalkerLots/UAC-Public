@@ -1,4 +1,4 @@
-import { world, World, Player, BlockLocation, EntityQueryOptions } from 'mojang-minecraft';
+import { world, Player, BlockLocation, EntityQueryOptions } from 'mojang-minecraft';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
 export const content = {
@@ -25,6 +25,29 @@ const betaPlayerFunctions = {
             return score;
         } catch {
             return;
+        }
+    },
+    scoreTestOther: function (target, objective) {
+        try {
+            const score = parseInt(runCommand(`scoreboard players test "${target}" ${objective} *`).statusMessage.match(/-?\d+/));
+            return score;
+        } catch {
+            return;
+        }
+    },
+    /*
+        if(sender.hasitem('iron_ingot', 32)) {
+                sender.tellraw(`you have it`);
+            }
+    */
+    hasitem: function (item, amount) {
+        try {
+            let id = item.toString();
+            const target = this.runCommand(`testfor @s[hasitem={item=${id},quantity=${amount ? amount : 1}..}]`);
+            let result = target.toString();
+            return result;
+        } catch {
+            return false;
         }
     },
     tellraw: function (message) {
@@ -90,4 +113,4 @@ export function queryTopSolid({ location: { x, y, z }, dimension = overworld }) 
         .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();
     for (const location of locations) if (!dimension.getBlock(location).isEmpty) return location.y;
 }
-Object.assign(Player.prototype, betaPlayerFunctions);
+//Object.assign(Player.prototype, betaPlayerFunctions);

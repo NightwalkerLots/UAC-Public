@@ -59,6 +59,8 @@ scoreboard players operation @a OSM = osmtoggledummy OSM
 scoreboard players operation @a armtoggle = armtoggledummy armtoggle
 scoreboard players operation @a afkm = afkdummy afkm
 scoreboard players operation @a clmtoggle = clmdummy clmtoggle
+scoreboard players operation @a illench = illenchdummy illench
+scoreboard players operation @a chatrank = crdummy chatrank
 
 #Ore Alert toggles
 scoreboard players operation @a diamondmd = mdmtoggledummy diamondmd
@@ -86,6 +88,7 @@ scoreboard players operation @s BNTD = BNAdummy BNTD
 scoreboard players operation @a pvp = pvpdummy pvp
 scoreboard players set @s in_nether 0
 scoreboard players set @s in_end 0
+scoreboard players set @s riding 0
 
 
 #This hides this from the in-game function command directory

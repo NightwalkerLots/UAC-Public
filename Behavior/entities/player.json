@@ -227,6 +227,14 @@
 			  "event":"uac:in_end"
 			},
 			{
+				"filters": {
+				  "test": "is_riding",
+				  "subject": "self",
+				  "operator": "equals"
+				},
+				"event":"uac:is_riding"
+			  },
+			{
 			  "filters": {
 				"any_of": [
 				  {
@@ -1297,6 +1305,12 @@
 					"test": "has_equipment",
 					"domain": "any",
 					"operator": "==",
+					"value": "minecraft:moving_block"
+				  },
+				  {
+					"test": "has_equipment",
+					"domain": "any",
+					"operator": "==",
 					"value": "minecraft:bubble_column"
 				  },
 				  {
@@ -1982,18 +1996,18 @@
 				"triggers": [
 				  {
 					"on_damage": {
-				"filters": [
-				  {
-				  "test": "has_tag",
-				  "operator": "==",
-				  "subject": "self",
-				  "value": "godmode"
-				  }
-				],
+						"filters": [
+						{
+							"test": "has_tag",
+							"operator": "==",
+							"subject": "self",
+							"value": "godmode"
+						}
+					],
 						"cause": "all"
 					},
 					"deals_damage": false
-			},
+				},
 			//oneshot framework given to UAC by balloon
 				  //Damage Sensor Channel in this discord -> discord.gg/BDeDTefE47
 				  {
@@ -2193,13 +2207,21 @@
 			]
 		  },
 		"uac:in_end":{
-		  "run_command": {
-			"target": "self",
-			"command": [
-			  "scoreboard players set @s in_end 1"
-			]
-		  }
-    },
+			"run_command": {
+				"target": "self",
+				"command": [
+				"scoreboard players set @s in_end 1"
+				]
+			}
+		},
+		"uac:is_riding":{
+			"run_command": {
+				"target": "self",
+				"command": [
+				"scoreboard players set @s riding 1"
+				]
+			}
+		},
     "minecraft:player_awake":{
 		  "run_command": {
 			"target": "self",

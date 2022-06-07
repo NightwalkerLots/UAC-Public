@@ -1,6 +1,8 @@
 #this function is ran on a random player every 5 seconds ( helps for TPS control )
 
 scoreboard players reset @s lagtimer
+execute @a[tag=entityclear] ~~~ tag @a[tag=!entityclear] add nullclear
+execute @r[tag=!nullclear] ~~~ function UAC/packages/entitycount
 execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @s[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
 execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
@@ -15,6 +17,7 @@ function UAC/modules/hotbarmessage
 
 execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
 gamerule randomtickspeed 1
+execute @a[scores={chatspam=0}] ~~~ tag @s remove muted
 
 execute @a[tag=UAC_vip,tag=!is_moving,scores={VIPM=2293}]  ~~~ function particle/nether_poof_small
 

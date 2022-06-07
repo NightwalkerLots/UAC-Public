@@ -23,13 +23,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommand(`scoreboard players operation worlddum Worldx = @s X_Coordinate`);
             sender.runCommand(`scoreboard players operation worlddum Worldy = @s Y_Coordinate`);
             sender.runCommand(`scoreboard players operation worlddum Worldz = @s Z_Coordinate`);
+            sender.runCommand(`function UAC/asset/toggle_sync `);
             sender.runCommand(`scoreboard players set @s Worldx ${sender.scoreTest('X_Coordinate')}`);
             sender.runCommand(`scoreboard players set @s Worldy ${sender.scoreTest('Y_Coordinate')}`);
             sender.runCommand(`scoreboard players set @s Worldz ${sender.scoreTest('Z_Coordinate')}`);
             sender.runCommand(`setworldspawn  ~~~`);
             sender.runCommand(`function particle/explode`);
             sender.runCommand(`scoreboard players set worlddum worldcustom 1`);
-            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${sender.scoreTest('Worldx')} ${sender.scoreTest('Worldy')} ${sender.scoreTest('Worldz')}§b! Players will be sent here after passing World Border`);
+            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${sender.scoreTest('X_Coordinate')} ${sender.scoreTest('Y_Coordinate')} ${sender.scoreTest('Z_Coordinate')}§b! Players will be sent here after passing World Border`);
         }
         else if (worldremove.includes(args[0])) {
             sender.runCommand(`scoreboard players set worlddum worldcustom 0`);

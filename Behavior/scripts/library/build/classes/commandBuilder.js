@@ -40,6 +40,8 @@ export class CommandBuilder {
                 return;
             if (element.staff === 'true')
                 return;
+            if (element.staff === 'management')
+                return;
             commands.push(element.name);
         });
         return commands;
@@ -51,6 +53,22 @@ export class CommandBuilder {
             if (element.private)
                 return;
             if (element.staff === 'false')
+                return;
+            if (element.staff === 'management')
+                return;
+            commands.push(element.name);
+        });
+        return commands;
+    }
+    ;
+    getAllStaffMng() {
+        const commands = [];
+        this._registrationInformation.forEach(element => {
+            if (element.private)
+                return;
+            if (element.staff === 'false')
+                return;
+            if (element.staff === 'true')
                 return;
             commands.push(element.name);
         });
