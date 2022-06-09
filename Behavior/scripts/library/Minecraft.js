@@ -60,7 +60,8 @@ class ServerBuild extends ServerBuilder {
                         element.callback(data, args);
                     }
                     catch (error) {
-                        this.broadcast(`§c${error}`, data.sender.nameTag);
+                        this.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC JS Error ► §c${error}"}]}`);
+                        
                     }
                     ;
                     /**

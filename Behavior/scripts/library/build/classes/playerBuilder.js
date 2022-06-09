@@ -44,12 +44,12 @@ export class PlayerBuilder {
      * Get list of players in game
      * @returns {Array<string>}
      * @example PlayerBuilder.list();
-     
+     */
     list() {
         let data = [];
         data = [...world.getPlayers()].map(player => player.getName())
         return data;
-    }*/
+    }
     ;
     /**
      * Get the amount on a specific items player(s) has

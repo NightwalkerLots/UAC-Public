@@ -15,7 +15,7 @@ const registerInformation = {
 Server.command.register(registerInformation, (data, args) => {
     try {
         const sender = data.sender;
-        const name = sender.getName();
+        //const name = sender.getName();
         const cmdList = Server.command.getAll();
         const cmdstaff = Server.command.getAllStaff();
         const sftforplayer = Server.command.getAllStaffMng();
@@ -30,7 +30,7 @@ Server.command.register(registerInformation, (data, args) => {
         //sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bCustom Command List: §l§c${cmdList.join(', ')}`);
         if (!args[0]) {
             if (sender.hasTag('staffstatus')) { 
-                sender.runCommand(`tag @s add helptemp`);
+                if(!sender.hasTag('helptemp')) {} else {sender.runCommand(`tag @s add helptemp`);}
                 sender.runCommand(`function UAC/help/all-commands`);
                 sender.tellraw(`§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd} §r\n§bStaff Command List: §l§c${stfcmd}§r\n§bStaff Commands for Player Management: §l§c${sftmng}`);
                 sender.runCommand(`tag @s remove helptemp`);
