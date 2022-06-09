@@ -59,13 +59,6 @@ const betaPlayerFunctions = {
     tellrawJSON: function (json) {
         return this.runCommand(`tellraw @s {"rawtext":[${json}]}`);
     },
-    rotation: function (isArray) {
-        if (isArray) {
-            return [Math.asin(-this.viewVector.y) * 180 / Math.PI, -Math.atan2(this.viewVector.x, this.viewVector.z) * 180 / Math.PI];
-        } else {
-            return { x: Math.asin(-this.viewVector.y) * 180 / Math.PI, y: -Math.atan2(this.viewVector.x, this.viewVector.z) * 180 / Math.PI };
-        }
-    },
     queryTopSolid: function (dimension = overworld) {
         const { location: { x, z } } = this;
         const locations = new BlockLocation(floor(x), 320, floor(z))
@@ -113,4 +106,4 @@ export function queryTopSolid({ location: { x, y, z }, dimension = overworld }) 
         .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();
     for (const location of locations) if (!dimension.getBlock(location).isEmpty) return location.y;
 }
-//Object.assign(Player.prototype, betaPlayerFunctions);
+Object.assign(Player.prototype, betaPlayerFunctions);

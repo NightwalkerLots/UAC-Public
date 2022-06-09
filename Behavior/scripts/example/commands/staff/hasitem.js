@@ -19,7 +19,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         //let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
         //let playername = playerfound.getName();
         const { sender } = chatmsg;
-        const name = sender.getName();
+        
 
         if(sender.hasitem('iron_ingot')) {
             sender.tellraw(`you have it`);
