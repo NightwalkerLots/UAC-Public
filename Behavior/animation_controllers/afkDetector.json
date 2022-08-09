@@ -24,8 +24,8 @@
 						}
 					],
 					"on_entry": [
-						"/scoreboard players set @s afktimer 0",
-						"/tag @s add is_moving"
+						"/scoreboard players set @s afktimer 0"
+						//"/tag @s add is_moving"
 					]
                 },
 				"notMoving": {
@@ -35,13 +35,14 @@
 						}
 					],
 					"on_entry": [
-						"/execute @s[scores={afkm=1}] ~~~ scoreboard players add @s[tag=!staffstatus] afktimer 1", 
+						"/scoreboard players set @s[tag=is_moving] afktimer 0",
+						"/execute @s[scores={afkm=1},tag=!is_moving] ~~~ scoreboard players add @s[tag=!staffstatus] afktimer 1", 
 						"/execute @s[scores={afktimer=2350}] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§¶§cUAC §6AFK Kick §b► §d\"},{\"selector\":\"@s\"},{\"text\":\" §¶§bRemoved for inactivity in §7: §c4\"}]}",
 						"/execute @s[scores={afktimer=2380}] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§¶§cUAC §6AFK Kick §b► §d\"},{\"selector\":\"@s\"},{\"text\":\" §¶§bRemoved for inactivity in §7: §c3\"}]}",
 						"/execute @s[scores={afktimer=2420}] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§¶§cUAC §6AFK Kick §b► §d\"},{\"selector\":\"@s\"},{\"text\":\" §¶§bRemoved for inactivity in §7: §c2\"}]}",
 						"/execute @s[scores={afktimer=2460}] ~~~ tellraw @s {\"rawtext\":[{\"text\":\"§¶§cUAC §6AFK Kick §b► §d\"},{\"selector\":\"@s\"},{\"text\":\" §¶§bRemoved for inactivity in §7: §c1\"}]}",
-						"/execute @s[scores={afktimer=2500..}] ~~~ function UAC/asset/afk_kick",
-						"/tag @s remove is_moving"
+						"/execute @s[scores={afktimer=2500..}] ~~~ function UAC/asset/afk_kick"
+						//"/tag @s remove is_moving"
 					]
                 }
 			}

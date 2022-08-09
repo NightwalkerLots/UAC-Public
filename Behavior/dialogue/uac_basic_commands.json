@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_basic_commands",
-				"npc_name": { "rawtext": [ { "text": "§l§bUnity AntiCheat §7[§2v2.5§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§l§bUnity AntiCheat §7[§2v2.5.3§7]" } ] },
 				"text": { "rawtext": [ { "text": "§l§cUAC ► §5GUI BASIC COMMANDS MENU" } ] },
 				"buttons": [
 					{

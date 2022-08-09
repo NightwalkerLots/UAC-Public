@@ -73,6 +73,7 @@ const enchantmentDefs = {
         projectileProtection: 4,
         thorns: 3,
         unbreaking: 3,
+        swiftSneak: 3,
         mending: 1,
         binding: 1,
         vanishing: 1
@@ -226,6 +227,7 @@ const enchantmentDefs = {
     },
     '-1': {
         protection: 4,
+        swiftSneak: 3,
         fireProtection: 4,
         featherFalling: 4,
         blastProtection: 4,

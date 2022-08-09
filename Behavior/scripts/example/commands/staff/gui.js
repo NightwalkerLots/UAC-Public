@@ -57,13 +57,6 @@ const moduleDefs = [
         require: 'has_xx'
     },
     {
-        mname: 'Anti-OneShot',
-        obj: ['OSM', 'osmtoggle'],
-        name: 'osmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_xx'
-    },
-    {
         mname: 'Anti-OP Abuse',
         obj: ['OPAM', 'opamtoggle'],
         name: 'opamtoggledummy',
@@ -95,13 +88,6 @@ const moduleDefs = [
         mname: 'Death Toggle',
         obj: ['dethtoggle', 'Deathef'],
         name: 'dethtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_xx'
-    },
-    {
-        mname: 'Enchanted Armor Disable',
-        obj: ['DAM', 'damtoggle'],
-        name: 'damtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: 'has_xx'
     },
@@ -173,7 +159,7 @@ const moduleDefs = [
         obj: ['WBM', 'wbmtoggle'],
         name: 'wbmtoggledummy',
         toggle: ['§cOFF', '§aON'],
-        require: 'has_xx'
+        require: 'has_gt'
     }
 ]
 const itembanDefs = [

@@ -10,12 +10,6 @@ scoreboard players operation @a Worldy = worlddum Worldy
 scoreboard players operation @a Worldz = worlddum Worldz
 scoreboard players operation @a worldcustom = worlddum worldcustom
 
-#fine tuning value sync
-scoreboard players operation @a CBEBU = ftDummy CBEBU
-scoreboard players operation @a CBECO = ftDummy CBECO
-
-#fix tag-sync for oneshot
-execute @a[scores={osmtoggle=0}] ~~~ tag @s remove can_oneshot
 
 #module toggles
 scoreboard players operation @a acmtoggle = acmtoggledummy acmtoggle
@@ -26,8 +20,6 @@ scoreboard players operation @a bbmtoggle = bbmtoggledummy bbmtoggle
 scoreboard players operation @a BBM = bbmtoggledummy BBM
 scoreboard players operation @a dethtoggle = dethtoggledummy dethtoggle
 scoreboard players operation @a Deathef = BDXdummy Deathef
-scoreboard players operation @a DAM = damtoggledummy DAM
-scoreboard players operation @a damtoggle = damtoggledummy damtoggle
 scoreboard players operation @a SSM = ssmtoggledummy SSM
 scoreboard players operation @a ssmtoggle = ssmtoggledummy ssmtoggle
 scoreboard players operation @a HMM = hmmtoggledummy HMM
@@ -54,13 +46,16 @@ scoreboard players operation @a UOIM = uoimtoggledummy UOIM
 scoreboard players operation @a uoimtoggle = uoimtoggledummy uoimtoggle
 scoreboard players operation @a WBM = wbmtoggledummy WBM
 scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle
-scoreboard players operation @a osmtoggle = osmtoggledummy osmtoggle
-scoreboard players operation @a OSM = osmtoggledummy OSM
 scoreboard players operation @a armtoggle = armtoggledummy armtoggle
 scoreboard players operation @a afkm = afkdummy afkm
 scoreboard players operation @a clmtoggle = clmdummy clmtoggle
 scoreboard players operation @a illench = illenchdummy illench
 scoreboard players operation @a chatrank = crdummy chatrank
+scoreboard players operation @a arm_gt_toggle = armdummy arm_gt_toggle
+scoreboard players operation @a acstoggle = acsdummy acstoggle
+
+#Syncs the method used for Anti-Reach
+scoreboard players set @a[scores={arm_gt_toggle=1}] armtoggle 0
 
 #Ore Alert toggles
 scoreboard players operation @a diamondmd = mdmtoggledummy diamondmd
@@ -73,17 +68,16 @@ scoreboard players operation @a ironmd = mdmtoggledummy ironmd
 
 scoreboard players operation @a Deathef = BDXdummy Deathef
 scoreboard players operation @a dethtoggle = dethtoggledummy dethtoggle
-scoreboard players operation @a osmtoggle = osmtoggledummy osmtoggle
 scoreboard players operation @a mdmtoggle = mdmtoggledummy mdmtoggle
 
 #precache all itemban toggled items
-scoreboard players operation @s BNA = BNAdummy BNA
-scoreboard players operation @s BNM = BNAdummy BNM
-scoreboard players operation @s BNCB = BNAdummy BNCB
-scoreboard players operation @s BNSB = BNAdummy BNSB
-scoreboard players operation @s BNBQ = BNAdummy BNBQ
-scoreboard players operation @s BNTN = BNAdummy BNTN
-scoreboard players operation @s BNTD = BNAdummy BNTD
+scoreboard players operation @a BNA = BNAdummy BNA
+scoreboard players operation @a BNM = BNMdummy BNM
+scoreboard players operation @a BNCB = BNcbdummy BNCB
+scoreboard players operation @a BNSB = BNsbdummy BNSB
+scoreboard players operation @a BNBQ = BNBQdummy BNBQ
+scoreboard players operation @a BNTN = BNTNummy BNTN
+scoreboard players operation @a BNTD = BNTDdummy BNTD
 
 scoreboard players operation @a pvp = pvpdummy pvp
 scoreboard players set @s in_nether 0

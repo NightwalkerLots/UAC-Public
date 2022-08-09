@@ -3,13 +3,16 @@ execute @s[tag=!staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c========= 1 = Enabled | 0 = Disabled ========="}]}
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c========= Protection Modules ========="}]}
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-Frostwalker §7[§c "},{"score":{"name":"@s","objective":"NFM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bAnti-32k §7[§c "},{"score":{"name":"@s","objective":"illench"}},{"text": " §7]"}]}
-execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bOneShot Detection §7[§c "},{"score":{"name":"@s","objective":"OSM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bAnti-Fly §7[§c "},{"score":{"name":"@s","objective":"AFM"}},{"text": " §7]"}]}
+execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-Fly §7[§c "},{"score":{"name":"@s","objective":"AFM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bCustom Item Ban §7[§c "},{"score":{"name":"@s","objective":"IBM"}},{"text": " §7]"}]}
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-CBE §7[§c "},{"score":{"name":"@s","objective":"ACM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bNo Unobtainable Items §7[§c "},{"score":{"name":"@s","objective":"UOIM"}},{"text": " §7]"}]}
-execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bCustom Item Ban §7[§c "},{"score":{"name":"@s","objective":"IBM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bNo Enchanted Armor §7[§c "},{"score":{"name":"@s","objective":"DAM"}},{"text": " §7]"}]}
-execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bMining Detection §7[§c "},{"score":{"name":"@s","objective":"MDM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bAnti-Reach §7[§c "},{"score":{"name":"@s","objective":"armtoggle"}},{"text": " §7]"}]}
+execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bMining Detection §7[§c "},{"score":{"name":"@s","objective":"MDM"}},{"text": " §7]"}]}
 execute @s[tag=staffstatus,scores={clmtoggle=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-C Logging §7[ §¶§2KILL MODE §7]"}]}
 execute @s[tag=staffstatus,scores={clmtoggle=2}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-C Logging §7[ §¶§2CLEAR MODE §7]"}]}
 execute @s[tag=staffstatus,scores={clmtoggle=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-C Logging §7[ §¶§cDISABLED §7]"}]}
+execute @s[tag=staffstatus,scores={armtoggle=0,arm_gt_toggle=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-Reach §7[ §¶§cDISABLED §7]"}]}
+execute @s[tag=staffstatus,scores={armtoggle=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-Reach §7[ §¶§2Function Method §7]"}]}
+execute @s[tag=staffstatus,scores={arm_gt_toggle=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-Reach §7[ §¶§2Gametest Method §7]"}]}
+
 
 
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c========= Utility Modules ========="}]}

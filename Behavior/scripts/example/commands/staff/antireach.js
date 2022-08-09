@@ -38,9 +38,16 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         case 'on': {
             obj.set('toggle', 1)
             toggle = 1
+            
             sender.tellraw(`§eAnti-Reach§f has been §aENABLED§r.`);
             tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §aENABLED§r.`);
-        }
+            if(sender.scoreTest('armtoggle') == 1) {
+                sender.runCommand(`scoreboard players set @s armtoggle 0`);
+                sender.runCommand(`scoreboard players set armtoggledummy armtoggle 0`);
+                tellrawStaff(`§¶§cUAC ► §6Anti-Reach §bThe module's function method was disabled, sense the gametest method is now in use.`)
+            }
+            return sender.runCommand(`scoreboard players set @s arm_gt_toggle 1`); 
+        } 
 
         case 'disable':
         case 'off': {
@@ -48,7 +55,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             toggle = 0
             sender.tellraw(`§eAnti-Reach§f has been §cDISABLED§r.`);
             tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §cDISABLED§r.`);
-        }
+            return sender.runCommand(`scoreboard players set @s arm_gt_toggle 0`); 
+        } break 
 
         case 'max':
         case 'maxdist':

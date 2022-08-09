@@ -45,6 +45,7 @@
 					],
 					"on_entry": [
 						"/scoreboard players set @s[scores={teleporting=!1..}] teleporting_home 0",
+						"/scoreboard players set @s[scores={teleporting_home=1..}] teleporting_home 0",
 						"/gamerule sendcommandfeedback false"
 					]
 				},
@@ -55,7 +56,7 @@
 						}
 					],
 					"on_entry": [
-						"/scoreboard players set @s[scores={teleporting=1..}] teleporting -1",
+						"/scoreboard players set @s[scores={teleporting=1..}] teleporting 0",
 						"/gamerule sendcommandfeedback false"
 					]
 				},
@@ -111,8 +112,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~1 ~ ~",
-						"/scoreboard players set @s teleporting 3",
-						"/scoreboard players reset @s teleport_home "
+						"/scoreboard players set @s teleporting 0",
+						"/scoreboard players set @s teleport_home 0"
 					]
 				},
 				"home_5_x": {
@@ -232,8 +233,7 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~1 ~",
-						"/scoreboard players set @s teleporting 3",
-						"/scoreboard players reset @s teleport_home "
+						"/scoreboard players set @s teleporting 0"
 					]
 				},
 				"home_5_y": {
@@ -353,8 +353,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~ ~1",
-						"/scoreboard players set @s teleporting 3",
-						"/scoreboard players reset @s teleport_home "
+						"/scoreboard players set @s teleporting 0",
+						"/scoreboard players set @s teleporting_home 0"
 					]
 				},
 				"home_5_z": {
@@ -474,8 +474,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~-1 ~ ~",
-						"/scoreboard players set @s teleporting 3",
-						"/scoreboard players reset @s teleport_home "
+						"/scoreboard players set @s teleporting 0",
+						"/scoreboard players set @s teleporting_home 0"
 					]
 				},
 				"home_5_x": {
@@ -595,8 +595,7 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~-1 ~",
-						"/scoreboard players set @s teleporting 3",
-						"/scoreboard players reset @s teleport_home "
+						"/scoreboard players set @s teleporting 0"
 					]
 				},
 				"home_5_y": {
@@ -716,8 +715,8 @@
 					],
 					"on_entry": [
 						"/tp @s ~ ~ ~-1",
-						"/scoreboard players set @s teleporting 3",
-						"/scoreboard players reset @s teleport_home "
+						"/scoreboard players set @s teleporting 0",
+						"/scoreboard players set @s teleporting_home 0"
 					]
 				},
 				"home_5_z": {

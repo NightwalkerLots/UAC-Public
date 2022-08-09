@@ -12,7 +12,6 @@
 			"testing",
 			"death_effect",
 			"on_death",
-			"oneshot",
 			"home_x_negative",
 			"home_y_negative",
 			"home_z_negative",
@@ -36,7 +35,7 @@
 			"is_gliding",
 			"timer",
 			"player_facing",
-      "afkDetector"
+      		"afkDetector"
 		  ]
 		},
 		"animations": {
@@ -44,7 +43,6 @@
 		  "afkDetector" : "controller.animation.afkDetector",
 		  "death_effect": "controller.animation.death_effect",
 		  "on_death": "controller.animation.on_death",
-		  "oneshot": "controller.animation.player.oneshot",
 		  "home_x_negative": "controller.animation.home_x_negative",
 		  "home_y_negative": "controller.animation.home_y_negative",
 		  "home_z_negative": "controller.animation.home_z_negative",
@@ -67,106 +65,105 @@
 		  "is_on_ground": "controller.animation.is_on_ground",
 		  "is_gliding": "controller.animation.is_gliding",
 		  "timer": "controller.animation.timer",
-      "player_facing": "controller.animation.player_facing"
+      		"player_facing": "controller.animation.player_facing"
 		}
 	  },
 	  "component_groups": {
-		"uac:ban": {
-		  "minecraft:instant_despawn": {}
-		},
-		"minecraft:spectate": {
-		  "minecraft:scale": {
-			"value": 0
-		  }
-		},
-		"minecraft:no_spectate": {
-		  "minecraft:scale": {
-			"value": 1
-		  }
-		},
-		"minecraft:add_bad_omen": {
-		  "minecraft:spell_effects": {
-			"add_effects": [
-			  {
-				"effect": "bad_omen",
-				"duration": 6000,
-				"display_on_screen_animation": true
-			  }
-			]
-		  },
-		  "minecraft:timer": {
-			"time": [ 0.0, 0.0 ],
-			"looping": false,
-			"time_down_event": {
-			  "event": "minecraft:clear_add_bad_omen",
-			  "target": "self"
-			}
-		  }
-		},
-		"minecraft:clear_bad_omen_spell_effect": {
-		  "minecraft:spell_effects": {
-		  }
-		},
-		"minecraft:raid_trigger": {
-		  "minecraft:raid_trigger": {
-			"triggered_event": {
-			  "event": "minecraft:remove_raid_trigger",
-			  "target": "self"
-			}
-		  },
-		  "minecraft:spell_effects": {
-			"remove_effects": "bad_omen"
-		  }
-		}
-	  },
-	  "components": {
-		"minecraft:interact": {
-		  "interactions": [
-			{
-			  "on_interact": {
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_tag",
-					  "subject": "other",
-					  "value": "staffstatus"
-					},
-					{
-					  "test": "is_sneaking",
-					  "subject": "other",
-					  "operator": "!=",
-					  "value": true
-					},
-					{
-					  "test": "has_equipment",
-					  "domain": "hand",
-					  "subject": "other",
-					  "value": "minecraft:wooden_axe"
-					}
-				  ]
-				},
-				"event": "uac:display_main_stats"
-			  },
-			  "use_item": false,
-			  "interact_text": "See Stats"
+			"uac:ban": {
+			"minecraft:instant_despawn": {}
 			},
-			{
-			  "on_interact": {
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_tag",
-					  "operator": "!=",
-					  "value": "yeetus320"
-					}
-				  ]
-				},
-				"event": "uac:display_all_stats"
-			  },
-			  "use_item": false,
-			  "interact_text": "Player Interact"
+			"minecraft:spectate": {
+			"minecraft:scale": {
+				"value": 0
 			}
-		  ]
+			},
+			"minecraft:no_spectate": {
+			"minecraft:scale": {
+				"value": 1
+			}
+			},
+			"minecraft:add_bad_omen": {
+			"minecraft:spell_effects": {
+				"add_effects": [
+				{
+					"effect": "bad_omen",
+					"duration": 6000,
+					"display_on_screen_animation": true
+				}
+				]
+			},
+			"minecraft:timer": {
+				"time": [ 0.0, 0.0 ],
+				"looping": false,
+				"time_down_event": {
+				"event": "minecraft:clear_add_bad_omen",
+				"target": "self"
+				}
+			}
+			},
+			"minecraft:clear_bad_omen_spell_effect": {
+			"minecraft:spell_effects": {
+			}
+			},
+			"minecraft:raid_trigger": {
+			"minecraft:raid_trigger": {
+				"triggered_event": {
+				"event": "minecraft:remove_raid_trigger",
+				"target": "self"
+				}
+			},
+			"minecraft:spell_effects": {
+				"remove_effects": "bad_omen"
+			}
+			}
+	    },
+	  	"components": {
+		"minecraft:interact": {
+		  	"interactions": [
+				{
+				"on_interact": {
+						"filters": {
+							"all_of": [
+								{
+								"test": "has_tag",
+								"subject": "other",
+								"value": "staffstatus"
+								},
+								{
+								"test": "is_sneaking",
+								"subject": "other",
+								"operator": "!=",
+								"value": true
+								},
+								{
+								"test": "has_equipment",
+								"domain": "hand",
+								"subject": "other",
+								"value": "minecraft:wooden_axe"
+								}
+							]
+						},
+						"event": "uac:display_main_stats"
+					},
+					"use_item": false
+				},
+				{
+				"on_interact": {
+					"filters": {
+					"all_of": [
+						{
+						"test": "has_tag",
+						"operator": "!=",
+						"value": "yeetus320"
+						}
+					]
+					},
+					"event": "uac:display_all_stats"
+				},
+				"use_item": false,
+				"interact_text": "Player Interact"
+				}
+		 	]
 		},
 		"minecraft:environment_sensor": {
 		  "triggers": [
@@ -233,7 +230,7 @@
 				  "operator": "equals"
 				},
 				"event":"uac:is_riding"
-			  },
+			},
 			{
 			  "filters": {
 				"any_of": [
@@ -963,6 +960,19 @@
 			  "event": "minecraft:has_levitation"
 			},
 			{
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "has_mob_effect",
+					  "operator": "==",
+					  "subject": "self",
+					  "value": "slow_falling"
+					}
+				  ]
+				},
+				"event": "minecraft:has_slowfall"
+			  },
+			{
 			  "filters": {
 				"all_of": [
 				  {
@@ -975,6 +985,19 @@
 			  },
 			  "event": "minecraft:no_levitation"
 			},
+			{
+				"filters": {
+				  "all_of": [
+					{
+					  "test": "has_mob_effect",
+					  "operator": "!=",
+					  "subject": "self",
+					  "value": "slow_falling"
+					}
+				  ]
+				},
+				"event": "minecraft:no_slowfall"
+			  },
 			{
 			  "filters": {
 				"any_of": [
@@ -1040,42 +1063,6 @@
 				  }
 				],
 				"any_of": [
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:pufferfish_bucket"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:salmon_bucket"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:tropical_fish_bucket"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:cod_bucket"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:powder_snow_bucket"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:axolotl_bucket"
-				  },
 				  {
 					"test": "has_equipment",
 					"domain": "any",
@@ -1994,7 +1981,7 @@
 		  },
 			  "minecraft:damage_sensor": {
 				"triggers": [
-				  {
+				{
 					"on_damage": {
 						"filters": [
 						{
@@ -2008,140 +1995,86 @@
 					},
 					"deals_damage": false
 				},
-			//oneshot framework given to UAC by balloon
-				  //Damage Sensor Channel in this discord -> discord.gg/BDeDTefE47
-				  {
-			  "on_damage": {
-				"event": "uac:oneshot_flag_sharp",
-				"target": "other",
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_tag",
-					  "value": "can_oneshot"
-					},
-					{
-					  "test": "is_family",
-					  "operator": "==",
-					  "subject": "other",
-					  "value": "player"
-					},
-					{
-					  "test": "has_damage",
-					  "value": "fatal"
-					}
-				  ]
+				{
+					"on_damage": {
+						"filters": {
+							"all_of": [
+								{
+								"test": "has_damage",
+								"operator": "==",
+								"value": "attack"
+								},
+								{
+								"test": "is_family",
+								"operator": "==",
+								"subject": "other",
+								"value": "player"
+								},
+								{
+								"test": "has_damage",
+								"operator": "==",
+								"subject": "self",
+								"value": "fatal"
+								}
+							]
+						},
+					"event": "uac:fatal_damage"
 				}
-			  },
-			  "deals_damage": false,
-			  "cause": "entity_attack"
-			},
-			  {
-			  "on_damage": {
-				"event": "uac:oneshot_flag_thorns",
-				"target": "self",
-				"filters": {
-				  "all_of": [
-					{
-					  "test": "has_tag",
-					  "value": "can_oneshot"
-					},
-					{
-					  "test": "is_family",
-					  "operator": "==",
-					  "subject": "other",
-					  "value": "player"
-					},
-					{
-					  "test": "has_damage",
-					  "value": "fatal"
-					}
-				  ]
-				}
-			  },
-			  "deals_damage": false,
-			  "cause": "thorns"
-			},
-				  {
+				},
+				{
 					"on_damage": {
-					  "filters": {
-						"all_of": [
-						  {
-							"test": "has_damage",
-							"operator": "==",
-							"value": "attack"
-						  },
-						  {
-							"test": "is_family",
-							"operator": "==",
-							"subject": "other",
-							"value": "player"
-						  },
-						  {
-							"test": "has_damage",
-							"operator": "==",
-							"subject": "self",
-							"value": "fatal"
-						  }
-						]
-					  },
-					  "event": "uac:fatal_damage"
+						"filters": {
+							"all_of": [
+								{
+								"test": "has_damage",
+								"operator": "==",
+								"value": "projectile"
+								},
+								{
+								"test": "is_family",
+								"operator": "==",
+								"subject": "other",
+								"value": "player"
+								},
+								{
+								"test": "has_damage",
+								"operator": "==",
+								"subject": "self",
+								"value": "fatal"
+								}
+							]
+						},
+						"event": "uac:fatal_damage"
 					}
-				  },
-				  {
+				},
+				{
 					"on_damage": {
-					  "filters": {
-						"all_of": [
-						  {
-							"test": "has_damage",
-							"operator": "==",
-							"value": "projectile"
-						  },
-						  {
-							"test": "is_family",
-							"operator": "==",
-							"subject": "other",
-							"value": "player"
-						  },
-						  {
-							"test": "has_damage",
-							"operator": "==",
-							"subject": "self",
-							"value": "fatal"
-						  }
-						]
-					  },
-					  "event": "uac:fatal_damage"
+						"filters": {
+							"all_of": [
+								{
+								"test": "has_damage",
+								"operator": "==",
+								"value": "magic"
+								},
+								{
+								"test": "is_family",
+								"operator": "==",
+								"subject": "other",
+								"value": "player"
+								},
+								{
+								"test": "has_damage",
+								"operator": "==",
+								"subject": "self",
+								"value": "fatal"
+								}
+							]
+						},
+						"event": "uac:fatal_damage"
 					}
-				  },
-				  {
-					"on_damage": {
-					  "filters": {
-						"all_of": [
-						  {
-							"test": "has_damage",
-							"operator": "==",
-							"value": "magic"
-						  },
-						  {
-							"test": "is_family",
-							"operator": "==",
-							"subject": "other",
-							"value": "player"
-						  },
-						  {
-							"test": "has_damage",
-							"operator": "==",
-							"subject": "self",
-							"value": "fatal"
-						  }
-						]
-					  },
-					  "event": "uac:fatal_damage"
-					}
-				  },
-				  // Potentially used for combat logging - credit to Herobrine64 for the idea
-			  {
+				},
+				// Potentially used for combat logging - credit to Herobrine64 for the idea
+			   {
 			  "on_damage": {
 				"filters": {
 				  "all_of": [
@@ -2288,22 +2221,6 @@
 			]
 		  }
 		},
-		"uac:oneshot_flag_sharp": {
-		  "run_command": {
-			"target": "self",
-			"command": [
-			  "execute @s[scores=osmtoggle=1] ~~~ function UAC/asset/oneshot_sharp_asset"
-			]
-		  }
-		},
-		"uac:oneshot_flag_thorns": {
-		  "run_command": {
-			"target": "self",
-			"command": [
-			  "execute @s[scores=osmtoggle=1] ~~~ function UAC/asset/oneshot_thorns_asset"
-			]
-		  }
-		},
 		"uac:display_main_stats": {
 		  "run_command": {
 			"target": "self",
@@ -2347,12 +2264,6 @@
 		  }
     },
     "uac:ban_soft_remove": {
-		  "run_command": {
-			"target": "self",
-			"command": [
-			  " "
-			]
-		  },
 		  "remove": {
 			"component_groups": [
 			  "uac:ban"
@@ -2831,6 +2742,22 @@
 			]
 		  }
 		},
+		"minecraft:has_slowfall": {
+			"run_command": {
+			  "target": "self",
+			  "command": [
+				"tag @s add Effect:Slowfall"
+			  ]
+			}
+		  },
+		  "minecraft:no_slowfall": {
+			"run_command": {
+			  "target": "self",
+			  "command": [
+				"tag @s remove Effect:Slowfall"
+			  ]
+			}
+		  },
 		"minecraft:gain_bad_omen": {
 		  "add": {
 			"component_groups": [

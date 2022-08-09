@@ -6,13 +6,6 @@
 #####################################################################################################
 #
 #
-################ CBE Fine-Tuning ################
-#
-#Ban Fish Buckets - (On by Default)
-scoreboard players set @s CBEBU 1
-#
-#Clear placed tiles around player / Command Blocks, Beehvies ect.. 
-scoreboard players set @s CBECO 0
 #
 ################ Bottom Bedrock Fine-Tuning ################
 #

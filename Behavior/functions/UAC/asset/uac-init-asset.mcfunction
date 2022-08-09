@@ -242,9 +242,7 @@ scoreboard objectives add VIPM dummy VIPM
 scoreboard objectives add WBM dummy WBM
 scoreboard objectives add UOIM dummy UOIM
 scoreboard objectives add IBM dummy IBM
-scoreboard objectives add DAM dummy DAM
 scoreboard objectives add MDM dummy MDM
-scoreboard objectives add OSM dummy
 scoreboard objectives add illench dummy
 
 scoreboard objectives add vipt dummy
@@ -271,9 +269,7 @@ scoreboard objectives add vipmtoggle dummy vipmtoggle
 scoreboard objectives add wbmtoggle dummy wbmtoggle
 scoreboard objectives add uoimtoggle dummy uoimtoggle
 scoreboard objectives add ibmtoggle dummy ibmtoggle
-scoreboard objectives add damtoggle dummy damtoggle
 scoreboard objectives add mdmtoggle dummy mdmtoggle
-scoreboard objectives add osmtoggle dummy
 scoreboard objectives add clmtoggle dummy
 scoreboard objectives add chatrank dummy
 scoreboard objectives add acstoggle dummy 
@@ -328,13 +324,13 @@ scoreboard players set @s vipmtoggle 0
 scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
 scoreboard players set @s ibmtoggle 0
-scoreboard players set @s damtoggle 0
 scoreboard players set @s mdmtoggle 0
-scoreboard players set @s osmtoggle 0
 scoreboard players set @s clmtoggle 0
 scoreboard players set @s illench 0
 scoreboard players set @s chatrank 0
 scoreboard players set @s armtoggle 0
+scoreboard players set @s acstoggle 0
+scoreboard players set @s arm_gt_toggle 0
 
 
 #Give everyone default module scoreboard scores
@@ -359,9 +355,7 @@ scoreboard players set @s VIPM 0
 scoreboard players set @s WBM 0
 scoreboard players set @s UOIM 0
 scoreboard players set @s IBM 0
-scoreboard players set @s DAM 0
 scoreboard players set @s MDM 0
-scoreboard players set @s OSM 0
 
 #Staff Protection
 scoreboard players set @s[tag=!staffstatus] 2DI3N 0
@@ -384,12 +378,15 @@ scoreboard objectives add gmc_flag dummy
 scoreboard objectives add totemaut dummy
 scoreboard objectives add totemtog dummy
 scoreboard objectives add armtoggle dummy
+scoreboard objectives add arm_gt_toggle dummy
 scoreboard objectives add in_combat dummy
 scoreboard objectives add combat_timer dummy
 scoreboard objectives add online dummy
 scoreboard objectives add is_sleeping dummy
 scoreboard objectives add invcheck dummy
 scoreboard objectives add tp_cooldown dummy
+scoreboard objectives add ontick dummy
+scoreboard objectives add notmovingflag dummy
 scoreboard players set @s tp_cooldown 0 
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_sleeping 0
@@ -398,7 +395,6 @@ scoreboard players set @s kills 0
 tag @s add "rank:Member"
 tag @s add "color:b"
 
-function UAC/asset/createdby
 function UAC/asset/discord
 function UAC/asset/version
 function UAC/modules/permban
@@ -406,8 +402,8 @@ function UAC/modules/permban
 
 
 #WB init default value
-execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_X 70000
-execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set BDXdummy Border_Coord_Z 70000
+execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set @s Border_Coord_X 70000
+execute @s[scores={wbmtoggle=0}] ~~~ scoreboard players set @s Border_Coord_Z 70000
 
 #pvp gui toggle
 scoreboard objectives add pvp dummy pvp
@@ -422,6 +418,8 @@ scoreboard players set @s online 0
 scoreboard objectives add X_Coordinate dummy X_Coordinate
 scoreboard objectives add Y_Coordinate dummy Y_Coordinate
 scoreboard objectives add Z_Coordinate dummy Z_Coordinate
+scoreboard objectives add lastpos_x dummy
+scoreboard objectives add lastpos_z dummy
 scoreboard players set @s X_Coordinate 0
 scoreboard players set @s Y_Coordinate 0
 scoreboard players set @s Z_Coordinate 0
@@ -453,7 +451,6 @@ function UAC/asset/toggle_sync
 
 execute @a[scores={welcomed=1,XNEZ=!3892}] ~~~ tag @s add theif
 execute @a[scores={welcomed=1,XNEF=!3342}] ~~~ tag @s add theif
-tag @s add can_oneshot
 
 #If experimental features are on, set to true
 event entity @a uac:test_experimental

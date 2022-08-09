@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_kit_iron",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.5§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.5.3§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI Iron Kits" } ] },
 				"buttons": [
 					{

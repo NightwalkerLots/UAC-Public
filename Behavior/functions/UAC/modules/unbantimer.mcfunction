@@ -1,12 +1,16 @@
 hide
 #unban window system
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ scoreboard players remove @s unbantimer 1 
+execute @s[tag=staffstatus,scores={unban=1}] ~~~ scoreboard players set @a lagtimer 0
+execute @s[tag=staffstatus,scores={unban=1}] ~~~ function UAC/modules/hotbarmessage
 
-execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=PermBan] ~~~ function UAC/asset/ban_asset_remove
+execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanCreative] ~~~ function UAC/asset/ban_asset_remove
+execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanWarn] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanCBE] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=Ban] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=illegalitemban] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanFly] ~~~ function UAC/asset/ban_asset_remove
+execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={BanFly=1..}] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanPhase] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={warn=3..}] ~~~ function UAC/asset/ban_asset_remove
 

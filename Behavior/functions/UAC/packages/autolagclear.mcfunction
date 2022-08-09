@@ -19,7 +19,7 @@ execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
 gamerule randomtickspeed 1
 execute @a[scores={chatspam=0}] ~~~ tag @s remove muted
 
-execute @a[tag=UAC_vip,tag=!is_moving,scores={VIPM=2293}]  ~~~ function particle/nether_poof_small
+execute @a[tag=UAC_vip,tag=!is_moving,scores={VIPM=2393}]  ~~~ function particle/nether_poof_small
 
 #player counter
 scoreboard players reset playerdummy playercount

@@ -6,8 +6,8 @@
 		[
 			{
 				"scene_tag": "toggle_module_pag1",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 1\n\n§¶§l§dACM ► Anti-CBE \n§¶§l§dAFM ► Anti-Fly \n§¶§l§dBBM ► Bottom Bedrock \n§¶§l§dDAM ► Disable Enchanted Armor \n§¶§l§dSSM ► Fake Staff Protection" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5.3§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 1\n\n§¶§l§dACM ► Anti-CBE \n§¶§l§dAFM ► Anti-Fly \n§¶§l§dBBM ► Bottom Bedrock \n§¶§l§dSSM ► Fake Staff Protection" } ] },
 				"buttons": [
 					{
 						"name": { "rawtext": [ { "text": "§l§2ACM" } ] },
@@ -31,10 +31,9 @@
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2DAM" } ] },
+						"name": { "rawtext": [ { "text": "§l§cEMPTY" } ] },
 						"commands": [
-							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s toggle_module_pag1",
-							"/execute @s[tag=staffstatus] ~~~ function toggle/enchanted_armor_disable"
+							"/execute @s[tag=staffstatus] ~~~ dialogue open @s @s toggle_module_pag1"
 						]
 					},
 					{

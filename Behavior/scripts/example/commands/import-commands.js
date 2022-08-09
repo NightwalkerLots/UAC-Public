@@ -24,6 +24,7 @@ import './staff/warn.js';
 import './staff/ranks.js';
 import './staff/chatspam.js';
 import './staff/mute.js';
+import './staff/vanish.js';
 
 //made by frost
 import './staff/illench.js';
