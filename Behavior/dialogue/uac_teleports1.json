@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_teleports1",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5§7]" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5.3§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI TELEPORT MENU" } ] },
 				"buttons": [
 					{
@@ -61,8 +61,8 @@
 			},
 			{
 				"scene_tag": "welcome_screen",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5.3§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5.3§7]" } ] },
 				"buttons": [
 					{
 						"name": { "rawtext": [ { "text": "§5§lClose" } ] },

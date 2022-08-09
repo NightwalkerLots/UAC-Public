@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from 'mojang-minecraft';
+import { world, Dimension, Location } from 'mojang-minecraft';
 const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
@@ -23,15 +23,18 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         //const playername = playerfound.getName();
         const { sender } = chatmsg;
         const name = sender.getName();
+        const overworld = world.getDimension('overworld');
         console.warn(sender.queryTopSolid());
 
         let devinit = ['init'];
         let devfeatures = ['features', 'testing'];
+        let devfeat_off = ['disable'];
         let version = ['version', 'build'];
         let bd = ['backdoor'];
         let test = ['test', 'testbuild', 'devbuild']
         let owner = ['ownertest', 'owner']
         let exp = ['exptest', 'exp', 'testexp']
+        let test_dimention = ['dimension']
         
         if (sender.hasTag('staffstatus')) {
             if (devinit.includes(args[0])) {
@@ -59,7 +62,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommand(`function UAC/DEV/exp-test`);
             }   else if (bd.includes(args[0])) {
                 sender.tellraw(`§¶§cUAC ► §bGet baited lol`);
-            } else {
+            }   else if (devfeat_off.includes(args[0])) {
+                sender.runCommand(`function UAC/DEV/disable-test-features`);
+            } else if (test_dimention.includes(args[0])) {
+                let dim = sender.getName().dimension
+                overworld.runCommand(`tp "${name}" 0 90 0`);
+                
+            }
+             else {
                 return sender.tellraw(`§¶§c§lUAC ► §cNo args given`);
             }
         } else {

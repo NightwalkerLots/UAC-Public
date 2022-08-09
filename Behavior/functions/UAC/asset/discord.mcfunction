@@ -1,6 +1,7 @@
-tellraw @a {"rawtext":[{"text":"§¶§cUAC DISCORD ► §b7Us7ER8WUw"}]}
+tellraw @a {"rawtext":[{"text":"§¶§cUAC DISCORD ► §d7Us7ER8WUw §r§¶|| §bCreated by §2NightwalkerLots §b& §2UnknownCatastrophe"}]}
 scoreboard players set @s XNEF 3342
 
-#This hides this from the in-game function command directory
-execute @f ~~~ hide
-tag @f[tag=""] add hide
+#tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §bCreated by §2NightwalkerLots §b& §2UnknownCatastrophe"}]}
+
+
+hide

@@ -21,8 +21,7 @@
             }
           ],
           "on_entry": [
-            "/scoreboard players set @s headen 1",
-            "/execute @s[scores={damtoggle=1}] ~~~ function UAC/asset/enchanted_armor_message_asset"
+            "/scoreboard players set @s headen 1"
           ]
         },
         "helmet_off": {
@@ -56,8 +55,7 @@
             }
           ],
           "on_entry": [
-            "/scoreboard players set @s chesten 1",
-            "/execute @s[scores={damtoggle=1}] ~~~ function UAC/asset/enchanted_armor_message_asset"
+            "/scoreboard players set @s chesten 1"
           ]
         },
         "chestplate_off": {
@@ -91,8 +89,7 @@
             }
           ],
           "on_entry": [
-            "/scoreboard players set @s legen 1",
-            "/execute @s[scores={damtoggle=1}] ~~~ function UAC/asset/enchanted_armor_message_asset"
+            "/scoreboard players set @s legen 1"
           ]
         },
         "leggings_off": {
@@ -127,8 +124,7 @@
             }
           ],
           "on_entry": [
-            "/scoreboard players set @s feeten 1",
-            "/execute @s[scores={damtoggle=1}] ~~~ function UAC/asset/enchanted_armor_message_asset"
+            "/scoreboard players set @s feeten 1"
           ]
         },
         "boots_off": {

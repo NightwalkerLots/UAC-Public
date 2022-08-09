@@ -5,7 +5,7 @@ const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
     name: 'ranks',
-    staff: 'true',
+    staff: 'management',
     description: 'Manges chat ranks',
     usage: '[on | off | add | remove | color | give]',
     example: [
@@ -54,11 +54,13 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     if(!playerfound) { return sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`); }
                     if(!args[2]) { return sender.tellraw(`§¶§cUAC ► §c§lNo rank was specified`); }
 
-                    sender.runCommand(`tag "${playerfound.getName()}" remove "${ranktag}"`);
-                    sender.runCommand(`tag "${playerfound.getName()}" add "rank:${args[2]}"`);
+                    sender.runCommand(`tag "${playerfound.getName()}" add "temprank:${args[2]}"`);
                     tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${args[2]} §brank was given to §d${playerfound.getName()} §bby §d${self}`);
 
-                } catch(error) { console.warn(error, error.stack); }
+                } catch(error) { 
+                    console.warn(error, error.stack); 
+                    sender.tellraw(`${console.warn(error, error.stack)}`);
+                }
             }
             // add rank self
             if(usage[2].includes(args[0])) {
@@ -70,7 +72,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
                 } catch(error) { console.warn(error, error.stack); }
             }
-            // remove rank self
+            // remove rank other
             if(usage[3].includes(args[0])) {
                 try {
                     if(args[1]) {
@@ -79,8 +81,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         if(!playerfound) { return sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`); }
 
                         tellrawStaff(`§¶§cUAC ► §6Chat Ranks §d${playerfound.getName()} §bhad their rank cleared by §d${self}`);
-                        sender.runCommand(`tag "${playerfound.getName()}" remove "${ranktag}"`);
-                        sender.runCommand(`tag "${playerfound.getName()}" add "rank:Member"`);
+                        sender.runCommand(`tag "${playerfound.getName()}" add rankremove`);
                     } else {
                         tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${ranktag} §brank was cleared from §d${self}`);
                         sender.runCommand(`tag @s remove "${ranktag}"`);
@@ -129,8 +130,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                                     .replace('yellow', '6')
                                     .replace('pink', 'd')
                             }`;
-                            sender.runCommand(`tag "${playerfound.getName()}" remove "${colortag}"`);
-                            sender.runCommand(`tag "${playerfound.getName()}" add "color:${rankcolorother}"`);
+                            sender.runCommand(`tag "${playerfound.getName()}" add "tempcolor:${rankcolorother}"`);
                             tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${args[3]} §bcolor was given to §d${playerfound.getName()} §bby §d${self}`);
     
     

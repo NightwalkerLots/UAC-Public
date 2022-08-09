@@ -34,7 +34,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             toggle = 1
             sender.tellraw(`§eFixedContainer§f has been §aENABLED§r.`);
             tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eFixedContainer§f module to §aENABLED§r.`);
-        }
+        } break
 
         case 'disable':
         case 'off': {
@@ -42,7 +42,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             toggle = 0
             sender.tellraw(`§eFixedContainer§f has been §cDISABLED§r.`);
             tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eFixedContainer§f module to §cDISABLED§r.`);
-        }
+        } break
 
         default:
             return sender.tellraw(`§¶§cUAC ► §c§lError 7: command failure`);

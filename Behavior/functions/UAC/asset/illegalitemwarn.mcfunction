@@ -6,7 +6,7 @@ execute @s[scores={warnillegal=3}] ~~~ scoreboard players add @s warn 1
 execute @s[scores={warnillegal=6}] ~~~ scoreboard players add @s warn 1
 execute @a[scores={warnillegal=9..}] ~~~ tag @s add illegalitemban
 
-#cbewarn alerts
+#unobtainable item alerts
 execute @s[scores={warnillegal=1}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §6Unobtainable Items §bflagged §d"},{"selector":"@s"},{"text":" §¶§bfor spawning items  §7[§c1§7/§29§7]"}]}
 execute @s[scores={warnillegal=2}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §6Unobtainable Items §bflagged §d"},{"selector":"@s"},{"text":" §¶§bfor spawning items  §7[§c2§7/§29§7]"}]}
 execute @s[scores={warnillegal=3}] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §6Unobtainable Items §bflagged §d"},{"selector":"@s"},{"text":" §¶§bfor spawning items  §7[§c3§7/§29§7]"}]}

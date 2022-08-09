@@ -1,5 +1,3 @@
-#This actually keeps people from doing dmg in creative. using game bug.
-#Yes I know weakness in theory  will nerf your damage. However, with strength, your hits won't even register on any mob.
 execute @s[m=c,scores={opamtoggle=1}] ~~~ effect @s weakness 30 255 true
 execute @s[m=c,scores={opamtoggle=1}] ~~~ kill @e[type=splash_potion,r=5]
 execute @s[m=c,scores={opamtoggle=1}] ~~~ kill @e[type=arrow,r=5]
