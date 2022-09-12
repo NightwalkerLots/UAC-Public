@@ -64,7 +64,7 @@ const fixes = {
     'minecraft:dropper': 0,
     'minecraft:hopper': 0,
     'minecraft:chest': 0,
-    'minecraft:trapped_chest': 0,
+    'minecraft:trapped_chest': 0
 };
 world.events.blockPlace.subscribe(({ block, player: plr, dimension: dim }) => {
     if (!(toggle && !plr.hasTag('staffstatus') && block.id in fixes)) return;

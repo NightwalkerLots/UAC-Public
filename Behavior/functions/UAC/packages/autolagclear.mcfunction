@@ -2,24 +2,32 @@
 
 scoreboard players reset @s lagtimer
 execute @a[tag=entityclear] ~~~ tag @a[tag=!entityclear] add nullclear
-execute @r[tag=!nullclear] ~~~ function UAC/packages/entitycount
+function UAC/packages/entitycount
 execute @a[scores={bbmtoggle=1}] ~~~ function UAC/modules/bottombedrock
 #execute @s[scores={wbmtoggle=1}] ~~~ function UAC/modules/worldborder
 execute @a[scores={ibmtoggle=1}] ~~~ function UAC/modules/itemban
 execute @a[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
 execute @s[scores={nemtoggle=1},tag=!staffstatus] ~~~ function UAC/asset/echestwipe
-function UAC/modules/enchanted_armor
-function UAC/packages/bans
+execute @a[scores={has_gt=0}] ~~~ function UAC/packages/bans
 function UAC/modules/permban
 function UAC/modules/ownerstatus
 function UAC/asset/toggle_sync
 function UAC/modules/hotbarmessage
+function UAC/modules/randomspawn
 
 execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
 gamerule randomtickspeed 1
 execute @a[scores={chatspam=0}] ~~~ tag @s remove muted
 
+scoreboard players set @a[tag=!UAC_vip] VIPM 0
+tag @a[scores={VIPM=!2393}] remove UAC_vip
 execute @a[tag=UAC_vip,tag=!is_moving,scores={VIPM=2393}]  ~~~ function particle/nether_poof_small
+
+#fix player armor values every few seconds
+execute @a[scores={headen=1}] ~~~ scoreboard players set @s headen 0
+execute @a[scores={chesten=1}] ~~~ scoreboard players set @s chesten 0
+execute @a[scores={legen=1}] ~~~ scoreboard players set @s legen 0
+execute @a[scores={feeten=1}] ~~~ scoreboard players set @s feeten 0
 
 #player counter
 scoreboard players reset playerdummy playercount
@@ -38,9 +46,9 @@ scoreboard players set @s[scores={suicide=11}] suicide 0
 scoreboard players set @a[scores={clmtoggle=0}] in_combat 0
 
 #This runs a function on players rejoining
-execute @a[scores={online=0}] ~~~ function UAC/packages/playerjoined
-scoreboard players set * online 0
-scoreboard players set @a online 1
+execute @a[scores={online=0,has_gt=0}] ~~~ function UAC/packages/playerjoined
+execute @s[scores={has_gt=0}] ~~~ scoreboard players set * online 0
+execute @s[scores={has_gt=0}] ~~~ scoreboard players set @a online 1
 
 #This hides this from the in-game function command directory
 execute @f ~~~ hide

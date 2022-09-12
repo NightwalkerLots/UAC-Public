@@ -14,11 +14,16 @@ execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=npc]
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=falling_block]
 execute @s[scores={acmtoggle=1,has_gt=0},tag=!staffstatus] ~~~ clear @s beehive
 execute @s[scores={acmtoggle=1,has_gt=0},tag=!staffstatus] ~~~ clear @s bee_nest
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s tadpole_bucket
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s cod_bucket
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s salmon_bucket
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s tropical_fish_bucket
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s pufferfish_bucket
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s axolotl_bucket
+execute @s[scores={acmtoggle=1},tag=!staffstatus] ~~~ clear @s dispenser
 
 
 #Remove placed Stuff
-execute @s[tag=!staffstatus,scores={acmtoggle=1,has_gt=0}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace beehive
-execute @s[tag=!staffstatus,scores={acmtoggle=1,has_gt=0}] ~ ~ ~ fill ~8 ~5 ~8 ~-8 ~-5 ~-8 air 0 replace bee_nest
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=item,name="bee nest"]
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=item,name="beehive"]
 execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=item,name="tile.movingblock.name"]

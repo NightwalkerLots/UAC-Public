@@ -3,7 +3,7 @@ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"se
 execute @s[scores={in_nether=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bDimension§7: §cNether"}]}
 execute @s[scores={in_end=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bDimension§7: §5End"}]}
 execute @s[scores={in_end=!1,in_nether=!1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bDimension§7: §2Overworld"}]}
-execute @s ~~~ function UAC/asset/coordinates_check
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► "},{"text":"§¶§b Coordinates§f: §g"},{"score":{"name":"@s","objective":"X_Coordinate"}},{"text":"/"},{"score":{"name":"@s","objective":"Y_Coordinate"}},{"text":"/"},{"score":{"name":"@s","objective":"Z_Coordinate"}},{"text":"§¶§b Spawn Coords: §g"},{"score":{"name":"@s","objective":"X_Coord_S"}},{"text":"/"},{"score":{"name":"@s","objective":"Y_Coord_S"}},{"text":"/"},{"score":{"name":"@s","objective":"Z_Coord_S"}},{"text":"§¶§b Death Coords: §g"},{"score":{"name":"@s","objective":"X_Coord_D"}},{"text":"/"},{"score":{"name":"@s","objective":"Y_Coord_D"}},{"text":"/"},{"score":{"name":"@s","objective":"Z_Coord_D"}}]}
 ##Player Facing messages
 execute @s[scores={Player_Facing=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §eFacing§f: [§bDown§f]"}]}
 execute @s[scores={Player_Facing=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §eFacing§f: [§bUp§f]"}]}
@@ -11,14 +11,14 @@ execute @s[scores={Player_Facing=2}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":
 execute @s[scores={Player_Facing=3}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §eFacing§f: [§bSouth§f]"}]}
 execute @s[scores={Player_Facing=4}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §eFacing§f: [§bWest§f]"}]}
 execute @s[scores={Player_Facing=5}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §eFacing§f: [§bEast§f]"}]}
-execute @s[tag=staffstatus] ~~~ function UAC/asset/last_command_check_asset
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bMoney§7: "},{"score":{"name":"@s","objective":"money"}}]}
+#execute @s[tag=staffstatus] ~~~ function UAC/asset/last_command_check_asset
 
 execute @s ~~~ function UAC/asset/enchanted_armor_check
 
 ##Play Times
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"selector":"@s"},{"text":"'s §6Play Times §b======="}]}
-execute @s ~~~ function UAC/asset/timealive
-execute @s[scores={tpmtoggle=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"text":"§7{§bTimePlayed Tracker §cDISABLED§7}"}]}
+execute @s[scores={tpmtoggle=1}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"selector":"@s"},{"text":"'s §6Play Times §b======="}]}
+execute @s[scores={tpmtoggle=1}] ~~~ function UAC/asset/timealive
 execute @s[scores={tpmtoggle=1}] ~~~ execute @s ~~~ function UAC/asset/timeplayed
 
 
@@ -35,22 +35,15 @@ execute @s ~~~ function UAC/asset/gmcheck
 
 ##Detections
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"selector":"@s"},{"text":"'s §6Detections §b======="}]}
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bwarns§7: §7["},{"score":{"name":"@s","objective":"warn"}},{"text":"§b/3§7]"}]}
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bcreative flags§7: §7["},{"score":{"name":"@s","objective":"gmc_flag"}},{"text":"§b/4§7]"}]}
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §billegal item warns§7: §7["},{"score":{"name":"@s","objective":"warnillegal"}},{"text":"§b/9§7]"}]}
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bCBE item warns§7: §7["},{"score":{"name":"@s","objective":"warncbe"}},{"text":"§b/9§7]"}]}
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bwarns§7: §7["},{"score":{"name":"@s","objective":"warn"}},{"text":"§b/3§7]"},{"text":" §bcreative flags§7: §7["},{"score":{"name":"@s","objective":"gmc_flag"}},{"text":"§b/4§7]"},{"text":" §billegal item warns§7: §7["},{"score":{"name":"@s","objective":"warnillegal"}},{"text":"§b/9§7]"},{"text":" §bCBE item warns§7: §7["},{"score":{"name":"@s","objective":"warncbe"}},{"text":"§b/9§7]"}]}
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bDiamonds§7: §c"},{"score":{"name":"@s","objective":"diamond_ore"}},{"text":" §bEmeralds§7: §c"},{"score":{"name":"@s","objective":"emerald_ore"}},{"text":" §bGold§7: §c"},{"score":{"name":"@s","objective":"gold_ore"}},{"text":" §bIron§7: §c"},{"score":{"name":"@s","objective":"iron_ore"}},{"text":"§b Lapis§7: §c"},{"score":{"name":"@s","objective":"lapis_ore"}},{"text":"§b Netherite§7: §c"},{"score":{"name":"@s","objective":"ancient_debris"}}]}
+
 execute @s ~~~ function UAC/asset/ban_check_asset
 
 
 ##Kills and such
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"selector":"@s"},{"text":"'s §6PVP Stats §b======="}]}
+#tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"selector":"@s"},{"text":"'s §6PVP Stats §b======="}]}
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bDeaths§7: "},{"score":{"name":"@s","objective":"deaths"}},{"text":" §bKills§7: "},{"score":{"name":"@s","objective":"kills"}},{"text":" §bCurrent Killstreak§7: "},{"score":{"name":"@s","objective":"killstreak"}}]}
-#tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bKills§7: "},{"score":{"name":"@s","objective":"kills"}}]}
-#tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":"'s §bCurrent Killstreak§7: "},{"score":{"name":"@s","objective":"killstreak"}}]}
-
-
-
-
 
 
 #This hides this from the in-game function command directory

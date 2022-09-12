@@ -6,8 +6,8 @@
 		[
 			{
 				"scene_tag": "toggle_module_pag3",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.5.3§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 3\n\n§¶§l§dNEM ► Disable EnderChests \n§¶§l§dNFM ► Anti-Frostwalker \n§¶§l§dOPAM ► Anti OP Abuse \n§¶§l§dRSM ► Random World Spawn \n§¶§l§dTPM ► Time Played Tracker" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.6§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI TOGGLE MENU PAGE 3\n\n§¶§l§dNEM ► Disable EnderChests\n§¶§l§dOPAM ► Anti OP Abuse \n§¶§l§dRSM ► Random World Spawn \n§¶§l§dTPM ► Time Played Tracker" } ] },
 				"buttons": [
 					{
 						"name": { "rawtext": [ { "text": "§l§2NEM" } ] },
@@ -17,10 +17,8 @@
 						]
 					},
 					{
-						"name": { "rawtext": [ { "text": "§l§2NFM" } ] },
+						"name": { "rawtext": [ { "text": "§l§cEMPTY" } ] },
 						"commands": [
-              "/execute @s[tag=staffstatus] ~~~ dialogue open @s @s toggle_module_pag3",
-              "/execute @s[tag=staffstatus] ~~~ function toggle/nofrostwalker"
 						]
 					},
 					{

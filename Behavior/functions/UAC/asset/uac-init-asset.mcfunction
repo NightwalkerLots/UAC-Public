@@ -126,7 +126,21 @@ scoreboard objectives add scrapfnd dummy scrapfnd
 scoreboard objectives add emeraldfnd dummy emeraldfnd
 scoreboard objectives add ironfnd dummy ironfnd
 
+scoreboard objectives add diamond_ore dummy 
+scoreboard objectives add gold_ore dummy 
+scoreboard objectives add lapis_ore dummy 
+scoreboard objectives add ancient_debris dummy 
+scoreboard objectives add emerald_ore dummy 
+scoreboard objectives add iron_ore dummy 
+
 #Mining Detection init values
+scoreboard players set @s diamond_ore 0
+scoreboard players set @s gold_ore 0
+scoreboard players set @s lapis_ore 0
+scoreboard players set @s ancient_debris 0
+scoreboard players set @s emerald_ore 0
+scoreboard players set @s iron_ore 0
+
 scoreboard players set @s diamondmd 0
 scoreboard players set @s goldmd 0
 scoreboard players set @s lapizmd 0
@@ -218,6 +232,7 @@ scoreboard objectives add suicide dummy
 scoreboard objectives add hmmcache dummy
 scoreboard objectives add entityclear dummy
 scoreboard objectives add chatspam dummy
+scoreboard objectives add money dummy
 
 
 #module scoreboards
@@ -232,7 +247,6 @@ scoreboard objectives add ICM dummy ICM
 scoreboard objectives add KPVPM dummy KPVPM
 scoreboard objectives add LTM dummy LTM
 scoreboard objectives add NEM dummy NEM
-scoreboard objectives add NFM dummy NFM
 scoreboard objectives add OPAM dummy OPAM
 scoreboard objectives add RSM dummy RSM
 scoreboard objectives add RTM dummy RTM
@@ -259,7 +273,6 @@ scoreboard objectives add icmtoggle dummy icmtoggle
 scoreboard objectives add kpvpmtoggle dummy kpvpmtoggle
 scoreboard objectives add ltmtoggle dummy ltmtoggle
 scoreboard objectives add nemtoggle dummy nemtoggle
-scoreboard objectives add nfmtoggle dummy nfmtoggle
 scoreboard objectives add opamtoggle dummy opamtoggle
 scoreboard objectives add rsmtoggle dummy rsmtoggle
 scoreboard objectives add rtmtoggle dummy rtmtoggle
@@ -314,7 +327,6 @@ scoreboard players set @s icmtoggle 0
 scoreboard players set @s kpvpmtoggle 0
 scoreboard players set @s ltmtoggle 0
 scoreboard players set @s nemtoggle 0
-scoreboard players set @s nfmtoggle 0
 scoreboard players set @s opamtoggle 0
 scoreboard players set @s rsmtoggle 0
 scoreboard players set @s rtmtoggle 0
@@ -331,6 +343,7 @@ scoreboard players set @s chatrank 0
 scoreboard players set @s armtoggle 0
 scoreboard players set @s acstoggle 0
 scoreboard players set @s arm_gt_toggle 0
+scoreboard players set @s money 0
 
 
 #Give everyone default module scoreboard scores
@@ -345,7 +358,6 @@ scoreboard players set @s ICM 0
 scoreboard players set @s KPVPM 0
 scoreboard players set @s LTM 0
 scoreboard players set @s NEM 0
-scoreboard players set @s NFM 0
 scoreboard players set @s OPAM 0
 scoreboard players set @s RSM 0
 scoreboard players set @s RTM 0
@@ -387,13 +399,15 @@ scoreboard objectives add invcheck dummy
 scoreboard objectives add tp_cooldown dummy
 scoreboard objectives add ontick dummy
 scoreboard objectives add notmovingflag dummy
+scoreboard objectives add cbe_location dummy
 scoreboard players set @s tp_cooldown 0 
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
+scoreboard players set entitydummy entityclear 0
 tag @s add "rank:Member"
-tag @s add "color:b"
+tag @s add "color:b"`
 
 function UAC/asset/discord
 function UAC/asset/version
@@ -412,6 +426,13 @@ scoreboard players operation @s pvp = pvpdummy pvp
 scoreboard players set @s in_combat 0
 scoreboard players set @s combat_timer 0
 scoreboard players set @s online 0
+
+#This adds the correct functions for all players
+scoreboard players add @s timeplayedsec 0
+scoreboard players add @s timeplayedmin 0
+scoreboard players add @s timeplayedhr 0
+scoreboard players add @s timeplayedday 0
+scoreboard players add @s tpmtoggle 0
 
 
 #Coordinates System Tracker

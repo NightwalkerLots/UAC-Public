@@ -21,7 +21,7 @@ execute @s[scores={afmtoggle=1}] ~~~ function UAC/modules/antifly
 #
 # =No Unobtainable Items=
 # Clears players of Unobtainable items
-execute @s[scores={uoimtoggle=1}] ~~~ function UAC/modules/unobtainableitems
+execute @s[scores={uoimtoggle=1,has_gt=0}] ~~~ function UAC/modules/unobtainableitems
 #
 # =AUTOMATED CLEAR LAG=
 # This will automatically clear dropped items and hostile entities every 6 minutes
@@ -34,18 +34,12 @@ function UAC/modules/lagtimer
 #function UAC/modules/hotbarmessage
 #
 # =Mining Detection=
-execute @s[scores={mdmtoggle=1}] ~~~ function UAC/modules/mining_detection
+execute @s[scores={mdmtoggle=1,has_gt=0}] ~~~ function UAC/modules/mining_detection
 #
 # =Testing Features=
 # This displays the rules in chat every 10 minues
 # Disable by default, people can see rules in the UAC UI from their inventory
 execute @s[scores={testin=1}] ~~~ function UAC/modules/testing
-#
-# =ANTI FROSTWALKER=
-# This will disable people from using frostwalker by autoreplaceing their feet slot with netherite boots
-# Enabled by default
-execute @s[scores={nfmtoggle=1}] ~~~ function UAC/modules/nofrostwalker
-#
 #
 # =Staffstatus=
 # DO NOT DISABLE THIS, THIS IS ESSENTIAL FOR STAFF BYPASSES TO WORK
@@ -61,7 +55,7 @@ execute @s[tag=!staffstatus,scores={nemtoggle=1}] ~ ~ ~ function UAC/modules/noe
 #
 # =Anit Reach=
 # Experimental, prevents players from hitting eachother from more than 5 blocks away
-execute @s[scores={armtoggle=1}] ~~~ function UAC/modules/antireach
+execute @s[scores={armtoggle=1,has_gt=0}] ~~~ function UAC/modules/antireach
 #
 
 

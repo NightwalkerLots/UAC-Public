@@ -3,6 +3,7 @@ import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from 'mojang-minecraft-ui'
 import scoreboard from "../../../library/scoreboard.js"
 import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { Tags } from 'mojang-gametest';
 const { for: obj } = scoreboard.objective
 
 const moduleRequires = ['has_xx', 'has_gt']
@@ -46,13 +47,6 @@ const moduleDefs = [
         mname: 'Anti-Fly',
         obj: ['AFM', 'afmtoggle'],
         name: 'afmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_xx'
-    },
-    {
-        mname: 'Anti-FrostWalker',
-        obj: ['NFM', 'nfmtoggle'],
-        name: 'nfmtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: 'has_xx'
     },
@@ -102,7 +96,7 @@ const moduleDefs = [
         mname: 'Hotbar Message',
         obj: ['HMM', 'hmmtoggle'],
         name: 'hmmtoggledummy',
-        toggle: ['§cOFF', '§aWith Score', '§aWithout Score'],
+        toggle: ['§cOFF', '§aWith Score', '§aWithout Score', '§aResourcePack Mode'],
         require: ''
     },
     {
@@ -177,7 +171,7 @@ const oreBanDefs = [
     { mname:'Gold', obj: 'goldmd', name: 'mdmtoggledummy' },
     { mname:'Iron', obj: 'ironmd', name: 'mdmtoggledummy' },
     { mname:'Lapis', obj: 'lapizmd', name: 'mdmtoggledummy' },
-    { mname:'Netherite', obj: 'scrapmd', name: 'mdmtoggledummy '}
+    { mname:'Netherite', obj: 'scrapmd', name: 'mdmtoggledummy'}
 ]
 const kitDefs = [
     { mname: 'Netherite', structure: 'AdminNether' },
@@ -318,6 +312,87 @@ const guiScheme = {
             text.push('§l§eDetections')
             for (let [id, name, max] of detections) text.push(`${name}:  §e${obj(id).players.get(target) ?? 0}§r / §e${max}§r`)
 
+            text.push('') // newline
+
+            const ores_mined = [
+                ['diamond_ore'    , 'Diamonds'      ],
+                ['gold_ore'       , 'Gold'          ],
+                ['lapis_ore'      , 'Lapis'         ],
+                ['ancient_debris' , 'Netherite'     ],
+                ['emerald_ore'    , 'Emeralds'      ],
+                ['iron_ore'       , 'Iron'          ],
+            ]
+            text.push('§l§eOres Mined')
+            for (let [id, name] of ores_mined) text.push(`${name}:  §e${obj(id).players.get(target) ?? 0}§r`)
+
+            v.body(text.join('\n§r'))
+            v.button('Back')
+
+            v.show(plr).then(evd => guiScheme.pcmd.exec(plr, target))
+        },
+        inv: (plr, target) => {
+            const v = new ActionFormData()
+                .title(`${target.name.replace(/§./g, '')}'s Items`)
+
+            let text = []
+            let head_type = undefined;
+            let chest_type = undefined;
+            let leg_type = undefined;
+            let boot_type = undefined;
+            let head_enchanted = target.scoreTest('headen');
+            let chest_enchanted = target.scoreTest('chesten');
+            let leg_enchanted = target.scoreTest('legen');
+            let boot_enchanted = target.scoreTest('feeten');
+
+            if(target.scoreTest('nethhelm')) { head_type = 'Netherite' }
+            if(target.scoreTest('diahelm')) { head_type = 'Diamond' }
+            if(target.scoreTest('ironhelm')) { head_type = 'Iron' }
+            if(target.scoreTest('goldhelm')) { head_type = 'Gold' }
+            if(target.scoreTest('chainhelm')) { head_type = 'Chainmail' }
+            if(target.scoreTest('leathhelm')) { head_type = 'Leather' }
+            if(target.scoreTest('turthelm')) { head_type = 'Turtle' }
+            if(head_type == undefined) { head_type = 'None'}
+
+            if(target.scoreTest('nethchest')) { chest_type = 'Netherite' }
+            if(target.scoreTest('diachest')) { chest_type = 'Diamond' }
+            if(target.scoreTest('goldchest')) { chest_type = 'Gold' }
+            if(target.scoreTest('ironchest')) { chest_type = 'Iron' }
+            if(target.scoreTest('chainchest')) { chest_type = 'Chain' }
+            if(target.scoreTest('leathchest')) { chest_type = 'Leather' }
+            if(target.scoreTest('elytra')) { chest_type = 'Elytra' }
+            if(chest_type == undefined) { chest_type = 'None'}
+
+            if(target.scoreTest('nethlegs')) { leg_type = 'Netherite' }
+            if(target.scoreTest('dialegs')) { leg_type = 'Diamond' }
+            if(target.scoreTest('ironlegs')) { leg_type = 'Iron' }
+            if(target.scoreTest('goldlegs')) { leg_type = 'Gold' }
+            if(target.scoreTest('chainlegs')) { leg_type = 'Chain' }
+            if(target.scoreTest('leathlegs')) { leg_type = 'Leather' }
+            if(leg_type == undefined) { leg_type = 'None'}
+
+            if(target.scoreTest('nethboots')) { boot_type = 'Netherite' }
+            if(target.scoreTest('diaboots')) { boot_type = 'Diamond' }
+            if(target.scoreTest('ironboots')) { boot_type = 'Iron' }
+            if(target.scoreTest('goldboots')) { boot_type = 'Gold' }
+            if(target.scoreTest('chainboots')) { boot_type = 'Chain' }
+            if(target.scoreTest('leathboots')) { boot_type = 'Leather' }
+            if(boot_type == undefined) { boot_type = 'None'}
+            
+
+            // Armor
+            text.push(`§d§l${target.getName()}'s §bArmor §7:`);
+            text.push(`§b§lHelmet §7: §c${head_type} §bEnchant §7: ${head_enchanted ? '§2TRUE' : '§cFALSE'}`);
+            text.push(`§b§lChest §7: §c${chest_type} §bEnchant §7: ${chest_enchanted ? '§2TRUE' : '§cFALSE'}`);
+            text.push(`§b§lLegs §7: §c${leg_type} §bEnchant §7: ${leg_enchanted ? '§2TRUE' : '§cFALSE'}`);
+            text.push(`§b§lBoots §7: §c${boot_type} §bEnchant §7: ${boot_enchanted ? '§2TRUE' : '§cFALSE'}`);
+
+            text.push(` `) // new line
+            let items = target.getInventory(true);
+            text.push(
+                `§¶§d§l${target.getName()} §binventory:\n${items
+                    .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id.replace('minecraft:', '')} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
+                    .join('\n')}`);
+
             v.body(text.join('\n§r'))
             v.button('Back')
 
@@ -329,7 +404,9 @@ const guiScheme = {
             /** @type { [name: string, fn: () => void][] } */
             const actionList = [
                 [ 'Stats'        , () => guiScheme.pcmd.stats(plr, target) ],
-                [ 'Teleport'     , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" @s`) ],
+                [ 'Inventory'    , () => guiScheme.pcmd.inv(plr, target) ],
+                [ 'TP to Me'     , () => plr.runCommand(`tp "${target.name.replace(/\\|"/g, '\\$&')}" @s`) ],
+                [ 'TP to Them'     , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" "${target.name.replace(/\\|"/g, '\\$&')}"`) ],
                 [ 'Punish'       , () => target.runCommand('function UAC/punish') ],
                 [ 'Freeze'       , () => target.runCommand('function UAC/freeze_player') ],
                 [ 'Warn'         , () => target.runCommand('function UAC/warn') ],
