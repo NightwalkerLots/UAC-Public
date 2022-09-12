@@ -6,7 +6,7 @@ const registerInformation = {
     name: 'tpa',
     staff: 'false',
     description: 'Request/Accept Teleport Requests',
-    usage: '[ <request | accept | decline | cancel ]',
+    usage: '[ request | accept | decline | cancel ] <player>',
     example: [
         'tpa request @player',
         'tpa cancel',

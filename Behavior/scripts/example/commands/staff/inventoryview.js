@@ -25,12 +25,12 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
         const air = new ItemStack(MinecraftItemTypes.air, 0)
 
-        /** @type { Map<Player, {inv:ItemStack[],ss:number}> } */
+        //** @type { Map<Player, {inv:ItemStack[],ss:number}> } */
         let invData = new Map()
 
         if (!sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
 
-        /** @type {PlayerInventoryComponentContainer} */
+        //** @type {PlayerInventoryComponentContainer} */
         const c = sender.getComponent('inventory').container
 
         switch (args[0]) {
@@ -49,9 +49,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 try { 
                     const { inv, ss } = invData.get(sender) ?? {}
                     if (!inv) sender.tellraw(`§¶§cUAC ► §c§lError: You don't have your inventory saved.`);
-    
-                    for (let i = 0, m = c.size; i < m; i++) c.setItem(i, inv[i])
-                        sender.selectedSlot = ss
+                    for (let i = 0, m = c.size; i < m; i++) {
+                        c.setItem(i, inv[i])
+                        sender.selectedSlot = ss  
+                    }
     
                     return sender.tellraw(`§bInventory loaded.`);
                 } catch (error) {

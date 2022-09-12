@@ -70,7 +70,7 @@
 	  },
 	  "component_groups": {
 			"uac:ban": {
-			"minecraft:instant_despawn": {}
+				"minecraft:instant_despawn": {}
 			},
 			"minecraft:spectate": {
 			"minecraft:scale": {
@@ -1467,12 +1467,6 @@
 					"domain": "any",
 					"operator": "==",
 					"value": "minecraft:info_update2"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:"
 				  },
 				  {
 					"test": "has_equipment",

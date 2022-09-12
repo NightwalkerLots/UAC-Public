@@ -21,7 +21,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         
 
-        if(sender.hasitem('iron_ingot')) {
+        if(sender.hasitem('iron_ingot', '10')) {
             sender.tellraw(`you have it`);
         } else {
             sender.tellraw(`Don't have`);

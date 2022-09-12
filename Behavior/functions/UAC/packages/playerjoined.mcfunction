@@ -3,7 +3,10 @@
 # This is no longer called from gametest - 3/8/22
 
 execute @s[scores={in_combat=1,clmtoggle=1}] ~~~ function UAC/asset/clog_punish
+execute @s[scores={in_combat=1,clmtoggle=2}] ~~~ function UAC/asset/clog_punish
 scoreboard players set @s afktimer 0
+
+function UAC/modules/permban
 
 #Remove player from realm
 execute @s[tag=!staffstatus,tag=PermBan] ~~~ execute @s ~~~ function UAC/asset/ban_disconnect_message
