@@ -1,7 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 
 import * as mc from 'mojang-minecraft'
-import * as gt from 'mojang-gametest'
 import * as mcui from 'mojang-minecraft-ui'
 
 import * as mclib from '../../../library/Minecraft.js';
@@ -28,7 +27,6 @@ const globalBind = new Proxy({
     modules: (() => {
         const x = {
             mc,
-            gt,
             mcui
         }
         return new Proxy(Object.create(null), {
