@@ -70,7 +70,14 @@
 	  },
 	  "component_groups": {
 			"uac:ban": {
-				"minecraft:instant_despawn": {}
+				//"minecraft:instant_despawn": {}
+				"minecraft:explode": {
+                    "fuse_length": 0,
+                    "fuse_lit": true,
+                    "power": 0,
+                    "causes_fire": false,
+                    "breaks_blocks": false
+                }
 			},
 			"minecraft:spectate": {
 			"minecraft:scale": {
