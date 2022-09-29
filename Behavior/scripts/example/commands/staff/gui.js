@@ -3,7 +3,6 @@ import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from 'mojang-minecraft-ui'
 import scoreboard from "../../../library/scoreboard.js"
 import { tellrawStaff } from '../../../library/utils/prototype.js';
-import { Tags } from 'mojang-gametest';
 const { for: obj } = scoreboard.objective
 
 const moduleRequires = ['has_xx', 'has_gt']
