@@ -593,7 +593,7 @@ world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, p
 
 world.events.playerLeave.subscribe((data) => delete log[data.playerName]);
 
-world.events.beforeWatchdogTerminate.subscribe((beforeWatchdogTerminate) => {
+system.events.beforeWatchdogTerminate.subscribe((beforeWatchdogTerminate) => {
     // We try to stop any watchdog crashes incase malicous users try to make the scripts lag
     // and causing the server to crash
     tellrawStaff(`§¶§c§lUAC ► §6SYSTEM §c§lPrevented WatchDog Termination`);
