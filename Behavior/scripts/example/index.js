@@ -7,6 +7,10 @@ import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
 import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from 'mojang-minecraft';
 const overworld = world.getDimension('overworld');
 //This runs a test to see if gametest is even on. Curtain modules will switch methods if gametest fails
+world.events.tick.subscribe(({ deltaTime, currentTick }) => {
+    overworld.runCommand(`scoreboard players set @a has_gt 1`);
+})
+
 function scoreTest(name, objective) {
     try {
         const score = parseInt(overworld.runCommand(`scoreboard players test ${name} ${objective} *`).statusMessage.match(/-?\d+/));
@@ -158,8 +162,6 @@ const spawneggs = [
     'minecraft:zombie_spawn_egg'
 ];
 const unobtainables = {
-    'minecraft:pumpkin_stem': 0,
-    'minecraft:melon_stem': 0,
     'minecraft:flowing_lava': 0,
     'minecraft:lava': 0,
     'minecraft:flowing_water': 0,
@@ -171,8 +173,6 @@ const unobtainables = {
     'minecraft:powered_comparator': 0,
     'minecraft:fire': 0,
     'minecraft:lit_furnace': 0,
-    'minecraft:standing_sign': 0,
-    'minecraft:wall_sign': 0,
     'minecraft:lit_redstone_ore': 0,
     'minecraft:unlit_redstone_torch': 0,
     'minecraft:portal': 0,
@@ -185,7 +185,6 @@ const unobtainables = {
     'minecraft:chalkboard': 0,
     'minecraft:bubble_column': 0,
     'minecraft:lit_smoker': 0,
-    'minecraft:sweet_berry_bush': 0,
     'minecraft:lava_cauldron': 0,
     'minecraft:jigsaw': 0,
     'minecraft:lit_blast_furnace': 0,
@@ -216,6 +215,7 @@ let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
 
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     try {
+        
         const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         const WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
         const on_tick = scoreTest('tpsdummy', 'ontick');
@@ -224,6 +224,8 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
 
         overworld.runCommand(`scoreboard players add tpsdummy ontick 1`);
+        
+        
         
         if(on_tick >= 20) {
             if(entitycount >= 340) {
@@ -265,8 +267,6 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 }
                 //console.warn(`Everything appears normal`);
             }
-
-            player.runCommand(`scoreboard players set @s has_gt 1`);
 
             
             if(player.scoreTest('fzplr') == 1) {
