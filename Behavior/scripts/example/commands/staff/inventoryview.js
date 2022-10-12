@@ -92,7 +92,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 console.warn(JSON.stringify(items))
                 return tellrawStaff(
                     `§¶§d§l${playerfound.getName()} §binventory:\n${items
-                        .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
+                        .map(({ slot, id, amount, data }) => `§¶§6§lslot: §¶§c${slot} §¶§6§lid: §¶§c${id.replace('minecraft:', '')} §¶§6§lamount: §¶§c${amount} §¶§6§ldata: §¶§c${data}`)
                         .join('\n')}`);
             }
 

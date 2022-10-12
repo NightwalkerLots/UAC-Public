@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_dev_gui_debug",
-				"npc_name": { "rawtext": [ { "text": "§l§bUnity AntiCheat §7[§2v2.6§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§l§bUnity AntiCheat §7[§2v2.6.1§7]" } ] },
 				"text": { "rawtext": [ { "text": "§l§cUAC ► §5GUI §2DEVELOPER DEBUG §5MENU" } ] },
 				"buttons": [
 					{

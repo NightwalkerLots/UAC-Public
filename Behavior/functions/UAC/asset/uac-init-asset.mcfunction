@@ -1,5 +1,6 @@
 #Test for needed experimental features
 scoreboard objectives add has_xx dummy
+
 scoreboard objectives add in_nether dummy
 scoreboard objectives add in_end dummy
 scoreboard objectives add riding dummy
@@ -7,6 +8,7 @@ scoreboard players set @s has_xx 0
 scoreboard players set @s in_nether 0
 scoreboard players set @s in_end 0
 scoreboard players set @s riding 0
+
 
 #Default values for armor checks
 scoreboard objectives add leathboots dummy leathboots
@@ -478,7 +480,7 @@ event entity @a uac:test_experimental
 tellraw @s[scores={has_xx=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Holiday Features §7: §cNot Enabled §7|| §cSome features may not work"}]}
 tellraw @s[scores={has_xx=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Holiday Features §7: §2ENABLED"}]}
 tellraw @s[scores={has_gt=1}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §2ENABLED"}]}
-tellraw @s[scores={has_gt=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §cNot Enabled §7|| §cPlayer Chat commands will not work"}]}
+tellraw @s[scores={has_gt=0}] {"rawtext":[{"text":"§¶§cUAC ► §6Gametest Features §7: §cNot Enabled §7|| §cSome advanced features may not work"}]}
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide

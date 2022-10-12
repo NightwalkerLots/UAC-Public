@@ -7,8 +7,7 @@ tag @a[tag=staffstatus] remove BanCBE
 tag @a[tag=staffstatus] remove BanBypass
 tag @a[tag=staffstatus] remove Ban
 
-#Autoban Creative/CBE
-execute @a[m=c,tag=!staffstatus] ~~~ function UAC/asset/creative_flag_asset
+
 
 
 # The 1.17 ban messages are in UAC/asset/ban_asset

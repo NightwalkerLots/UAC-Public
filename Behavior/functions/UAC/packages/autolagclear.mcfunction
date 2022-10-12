@@ -50,6 +50,9 @@ execute @a[scores={online=0,has_gt=0}] ~~~ function UAC/packages/playerjoined
 execute @s[scores={has_gt=0}] ~~~ scoreboard players set * online 0
 execute @s[scores={has_gt=0}] ~~~ scoreboard players set @a online 1
 
+#Autoban Creative/CBE
+execute @a[m=c,tag=!staffstatus] ~~~ function UAC/asset/creative_flag_asset
+
 #This hides this from the in-game function command directory
 execute @f ~~~ hide
 tag @f[tag=""] add hide
