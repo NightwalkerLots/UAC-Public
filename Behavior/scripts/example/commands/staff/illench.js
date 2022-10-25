@@ -20,7 +20,7 @@ sbtoggle.useCache(false)
 /** @type {number} */
 let toggle = sbtoggle.get('value') ?? ( sbtoggle.set('value', 1), 1 )
 
-import { ItemStack, MinecraftEnchantmentTypes, MinecraftItemTypes, world } from 'mojang-minecraft';
+import { ItemStack, MinecraftEnchantmentTypes, MinecraftItemTypes, world } from '@minecraft/server';
 
 const overworld = world.getDimension('overworld')
 
