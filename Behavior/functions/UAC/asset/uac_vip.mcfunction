@@ -20,8 +20,8 @@ scoreboard players reset @s[tag=!UAC_vip] vipt
 
 tellraw @s[tag=!UAC_vip,scores={VIPM=!2393}] {"rawtext":[{"text":"§¶§cUAC §6VIP §c§lACCESS DENIED §r§d"},{"selector":"@s"},{"text":" §¶§bis not a VIP donor Access."}]}
 tellraw @s[tag=!UAC_vip,scores={VIPM=!2393}] {"rawtext":[{"text":"§¶§cUAC §6VIP §c§lDONATE IN THE DISCORD FOR ACCESS §r§7: §dDiscord.gg/7Us7ER8WUw"}]}
-tellraw @s[tag=UAC_vip,scores={VIPM=2393,vipt=1}] {"rawtext":[{"text":"§¶§cUAC ► §6VIP §bfeatures §2ENABLED §bfor §r§d"},{"selector":"@s"},{"text":", §¶§b"}]}
-tellraw @s[tag=UAC_vip,scores={VIPM=2393,vipt=2}] {"rawtext":[{"text":"§¶§cUAC ► §6VIP §bfeatures §cDISABLED §bfor §r§d"},{"selector":"@s"},{"text":", §¶§b"}]}
+tellraw @s[tag=UAC_vip,scores={VIPM=2393,vipt=1}] {"rawtext":[{"text":"§¶§cUAC ► §6VIP §bfeatures §2ENABLED §bfor §r§d"},{"selector":"@s"}]}
+tellraw @s[tag=UAC_vip,scores={VIPM=2393,vipt=2}] {"rawtext":[{"text":"§¶§cUAC ► §6VIP §bfeatures §cDISABLED §bfor §r§d"},{"selector":"@s"}]}
 playsound note.pling @s[tag=UAC_vip] ~ ~ ~
 playsound note.bass @s[tag=!UAC_vip] ~ ~ ~
 

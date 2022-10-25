@@ -236,7 +236,71 @@ const guiScheme = {
         })
     })(),
 
+    NonStaff: (() => { // UI for non-staff players
+        /** @type { [name: string, fn: (plr: Player) => void][] } */
+        const cmdlist = [
+            [ 'Your Stats'          , plr => guiScheme.pcmd.playerstats(plr) ],
+            [ 'Change Display'      , plr => guiScheme.pcmd.display(plr) ],
+            [ 'TP to Spawn'         , plr => guiScheme.pcmd.spawntp(plr) ],
+            [ 'Last Death Coords'   , plr => guiScheme.pcmd.lastdeath(plr) ],
+            [ 'Close'               , plr => {} ],
+        ]
+        const v = new ActionFormData()
+            .title('Player Command GUI')
+
+        for (let [name, f] of cmdlist) v.button(name)
+        
+        return (plr) => void v.show(plr).then(v => {
+            if (v.isCanceled) return
+            cmdlist[v.selection][1](plr)
+        })
+    })(),
+
     pcmd: {
+        display: (plr) => {
+            if (plr.scoreTest('hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
+            
+            const actionList = [
+                [ 'Personal Stats'  , () => plr.runCommand('scoreboard players set @s hometp 1337') ],
+                [ 'Server Stats'    , () => plr.runCommand('scoreboard players set @s hometp 420') ],
+                [ 'Off'             , () => plr.runCommand('scoreboard players set @s hometp 3') ],
+                [ 'back'            , () => guiScheme.NonStaff(plr) ]
+            ]
+
+            const v = new ActionFormData()
+            .title(`Change Display Message`)
+
+            for (let [name, f] of actionList) v.button(name)
+
+
+            v.show(plr).then(v => {
+                if (v.isCanceled) return
+                actionList[v.selection][1]()
+            })
+        },
+
+        lastdeath: (plr) => {
+            plr.runCommand('function UAC/asset/deathcoords_asset')
+        },
+        spawntp: (plr) => {
+            let name = plr.getName();
+            if (plr.scoreTest('worldcustom') === 1) {
+                plr.runCommand(`tp @s ${plr.scoreTest('Worldx')} ${plr.scoreTest('Worldy')} ${plr.scoreTest('Worldz')}`);
+                plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${plr.scoreTest('Worldx')} ${plr.scoreTest('Worldy')} ${plr.scoreTest('Worldz')}`);
+                tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                plr.runCommand(`function particle/nether_poof`);
+                plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
+            }
+            else {
+                plr.runCommand(`tp @s 0 100 0`)
+                plr.runCommand(`effect @s slow_falling 35 1 `);
+                tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                plr.runCommand(`function particle/nether_poof`);
+                plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
+            }
+        },
+
+
         /** @type { (plr: Player, target: Player) => void } */
         stats: (plr, target) => {
             const v = new ActionFormData()
@@ -398,6 +462,47 @@ const guiScheme = {
             v.show(plr).then(evd => guiScheme.pcmd.exec(plr, target))
         },
 
+        playerstats: (plr, target) => { // Non-staff stats UI
+            const v = new ActionFormData()
+            .title(`${plr.name.replace(/§./g, '')}'s Stats`)
+
+            let text = [];
+            let tp_day = plr.scoreTest('timeplayedday');
+            let tp_hour = plr.scoreTest('timeplayedhr');
+            let tp_min = plr.scoreTest('timeplayedmin');
+            let tp_sec = plr.scoreTest('timeplayedsec');
+
+            let deaths = plr.scoreTest('deaths');
+            let kills = plr.scoreTest('kills');
+            let killstreak = plr.scoreTest('killstreak');
+            let money = plr.scoreTest('money');
+
+            let diamonds = plr.scoreTest('diamond_ore');
+            let emeralds = plr.scoreTest('emerald_ore');
+            let gold = plr.scoreTest('gold_ore');
+            let iron = plr.scoreTest('iron_ore');
+            let lapis = plr.scoreTest('lapis_ore');
+            let netherite = plr.scoreTest('ancient_debris');
+
+            text.push(`§d§lTime Played:`);
+            text.push(`§bD/§7:§c${tp_day} §bH/§7:§c${tp_hour} §bM/§7:§c${tp_min} §bS/§7:§c${tp_sec}`);
+            text.push(` `) // new line
+            text.push(`§d§lCombat:`);
+            text.push(`§bKills §7:§c${kills} §bDeaths §7:§c${deaths} §bKillstreak §7:§c${killstreak}`);
+            text.push(` `) // new line
+            text.push(`§d§lBlocks Mined:`);
+            text.push(`§bDimaonds §7:§c${diamonds} §bEmeralds §7:§c${emeralds} §bGold §7:§c${gold}`);
+            text.push(`§bIron §7:§c${iron} §bLapis §7:§c${lapis} §bNetherite §7:§c${netherite}`);
+            text.push(` `) // new line
+            text.push(`§bCurrent Ballance §7: §c${money}`) 
+
+            v.body(text.join('\n§r'))
+            v.button('Back')
+
+            v.show(plr).then(evd => guiScheme.NonStaff(plr, target))
+
+        },
+
         /** @type { (plr: Player, target: Player) => void } */
         exec: (plr, target) => { // Player command UI (exec)
             /** @type { [name: string, fn: () => void][] } */
@@ -405,7 +510,7 @@ const guiScheme = {
                 [ 'Stats'        , () => guiScheme.pcmd.stats(plr, target) ],
                 [ 'Inventory'    , () => guiScheme.pcmd.inv(plr, target) ],
                 [ 'TP to Me'     , () => plr.runCommand(`tp "${target.name.replace(/\\|"/g, '\\$&')}" @s`) ],
-                [ 'TP to Them'     , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" "${target.name.replace(/\\|"/g, '\\$&')}"`) ],
+                [ 'TP to Them'   , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" "${target.name.replace(/\\|"/g, '\\$&')}"`) ],
                 [ 'Punish'       , () => target.runCommand('function UAC/punish') ],
                 [ 'Freeze'       , () => target.runCommand('function UAC/freeze_player') ],
                 [ 'Warn'         , () => target.runCommand('function UAC/warn') ],
@@ -672,8 +777,8 @@ const guiScheme = {
 const registerInformation = {
     cancelMessage: true,
     name: 'gui',
-    staff: 'true',
-    description: 'GUI command',
+    staff: 'false',
+    description: 'Open Interactable GUI for ease of use',
     usage: '[ gui ]',
     example: [
         'gui'
@@ -685,7 +790,8 @@ const waitMove = new Map()
 
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg, {location: {x, y, z}} = sender
-    if (!sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
+    if(sender.scoreTest('icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    //if (!sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
     sender.tellraw(`§aMove to show the UI.`)
     waitMove.set(chatmsg.sender, [x, y, z])
 })
@@ -695,8 +801,13 @@ world.events.tick.subscribe(() => {
         try {
             let { x: xc, y: yc, z: zc } = plr.location
             if (x != xc || y != yc || z != zc) {
-                waitMove.delete(plr)
-                guiScheme.main(plr)
+                if(plr.hasTag('staffstatus')) {
+                    guiScheme.main(plr)
+                    waitMove.delete(plr)
+                } else {
+                    guiScheme.NonStaff(plr)
+                    waitMove.delete(plr)
+                }
             }
         } catch {
             waitMove.delete(plr)
