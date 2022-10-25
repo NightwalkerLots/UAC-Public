@@ -1,4 +1,4 @@
-import { world as World } from 'mojang-minecraft';
+import { world as World } from '@minecraft/server';
 export { World };
 class CommandError extends Error {
     code;

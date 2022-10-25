@@ -1,4 +1,4 @@
-import { world, Player, BlockLocation, EntityQueryOptions } from 'mojang-minecraft';
+import { world, Player, BlockLocation, EntityQueryOptions } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
 export const content = {

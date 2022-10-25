@@ -1,7 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 
-import * as mc from 'mojang-minecraft'
-import * as mcui from 'mojang-minecraft-ui'
+import * as mc from '@minecraft/server'
+import * as mcui from '@minecraft/server-ui'
 
 import * as mclib from '../../../library/Minecraft.js';
 import { Command as commandBuilder } from '../../../library/build/classes/commandBuilder.js';

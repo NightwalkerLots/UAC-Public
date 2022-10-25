@@ -1,6 +1,6 @@
-import { Player, world } from 'mojang-minecraft';
+import { Player, world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
-import { ActionFormData, ModalFormData } from 'mojang-minecraft-ui'
+import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
 import scoreboard from "../../../library/scoreboard.js"
 import { tellrawStaff } from '../../../library/utils/prototype.js';
 const { for: obj } = scoreboard.objective
