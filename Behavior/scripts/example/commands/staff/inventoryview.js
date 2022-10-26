@@ -23,7 +23,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
 
 
-        const air = new ItemStack(MinecraftItemTypes.air, 0)
+        const air = new ItemStack(MinecraftItemTypes.acaciaBoat, 0)
 
         //** @type { Map<Player, {inv:ItemStack[],ss:number}> } */
         let invData = new Map()

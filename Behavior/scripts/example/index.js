@@ -328,7 +328,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                         if(item.id in unobtainables) { flagtype = 1; }
                         if(spawneggs.includes(item.id)) { flagtype = 1; }
                         itemArray.unshift(item.id);
-                        playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.air, 0, 0)); //removes item
+                        playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
                     }
                 }
                 if (itemArray.length) {
