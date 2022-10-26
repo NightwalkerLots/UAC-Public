@@ -1,7 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
 import { world, Location } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
     name: 'vanish',
@@ -19,7 +18,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
         
-        console.warn(sender.queryTopSolid());
+        //
         if (sender.hasTag('staffstatus')) {
             sender.runCommand(`function UAC/vanish`);  
             

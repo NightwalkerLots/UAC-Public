@@ -361,7 +361,7 @@ const blockBans = {
     'minecraft:moving_block': 0,
     'minecraft:beehive': 0,
     'minecraft:bee_nest': 0,
-};
+};  
 World.events.blockPlace.subscribe(({ block, player }) => {
     // made originally by frost, and perfected by nightwalkerlots
     const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');

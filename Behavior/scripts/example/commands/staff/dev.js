@@ -1,7 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
 import { world, Dimension, Location } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+
 const registerInformation = {
     cancelMessage: true,
     name: 'dev',
@@ -24,7 +24,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
         const overworld = world.getDimension('overworld');
-        console.warn(sender.queryTopSolid());
+        //
 
         let devinit = ['init'];
         let devfeatures = ['features', 'testing'];

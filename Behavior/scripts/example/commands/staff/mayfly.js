@@ -25,7 +25,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const add = ['add'];
         const remove =['remove'];
         
-        console.warn(sender.queryTopSolid());
+        
         if (sender.hasTag('staffstatus')) {
             if (args[0]) {
                 if(!playerfound) {

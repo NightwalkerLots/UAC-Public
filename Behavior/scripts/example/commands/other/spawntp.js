@@ -1,7 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
 import { world, Location } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+
 const registerInformation = {
     cancelMessage: true,
     name: 'spawntp',
@@ -18,7 +18,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
         const { sender } = chatmsg;
         const name = sender.getName();
-        console.warn(sender.queryTopSolid());
+        
         if (sender.scoreTest('icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
         } else if (sender.scoreTest('in_combat') === 1) {
