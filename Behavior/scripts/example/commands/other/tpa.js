@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
-import { world } from '@minecraft/server';
+import { world } from 'mojang-minecraft';
 const registerInformation = {
     cancelMessage: true,
     name: 'tpa',

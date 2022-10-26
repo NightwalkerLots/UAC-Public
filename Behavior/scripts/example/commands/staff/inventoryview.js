@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, content, FindPlayer } from '../../../library/utils/prototype.js';
-import { ItemStack, MinecraftItemTypes, EntityQueryOptions, Player, PlayerInventoryComponentContainer, world } from '@minecraft/server';
+import { ItemStack, MinecraftItemTypes, EntityQueryOptions, Player, PlayerInventoryComponentContainer, world } from 'mojang-minecraft';
 const registerInformation = {
     cancelMessage: true,
     name: 'inv',

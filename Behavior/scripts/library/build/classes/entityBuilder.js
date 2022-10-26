@@ -1,4 +1,4 @@
-import * as Minecraft from '@minecraft/server';
+import * as Minecraft from 'mojang-minecraft';
 import { Server } from './serverBuilder.js';
 export class EntityBuilder {
     /**

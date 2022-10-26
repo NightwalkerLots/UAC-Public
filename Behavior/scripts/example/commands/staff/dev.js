@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Dimension, Location } from '@minecraft/server';
+import { world, Dimension, Location } from 'mojang-minecraft';
 const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,

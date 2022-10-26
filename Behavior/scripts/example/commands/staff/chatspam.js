@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
+import { world, Location } from 'mojang-minecraft';
 const registerInformation = {
     cancelMessage: true,
     name: 'chatspam',

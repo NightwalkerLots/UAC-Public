@@ -1,4 +1,4 @@
-import { Player, world as World } from '@minecraft/server';
+import { Player, world as World } from 'mojang-minecraft';
 import { Server } from '../../../library/Minecraft.js';
 import area from '../../../library/utils/area.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';

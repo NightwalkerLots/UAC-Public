@@ -1,4 +1,4 @@
-import { world } from '@minecraft/server';
+import { world } from 'mojang-minecraft';
 import { EventEmitter } from './eventEmitter.js';
 const overworld = world.getDimension('overworld');
 export class ServerBuilder extends EventEmitter {
