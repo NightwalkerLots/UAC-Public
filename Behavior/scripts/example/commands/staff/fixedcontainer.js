@@ -1,4 +1,4 @@
-import { BlockLocation, Dimension, Location, world} from '@minecraft/server';
+import { BlockLocation, Dimension, Location, world} from 'mojang-minecraft';
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
 import scoreboard from '../../../library/scoreboard.js';

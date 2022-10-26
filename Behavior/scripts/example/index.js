@@ -1,10 +1,10 @@
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
-import { world as World, MinecraftBlockTypes, EntityEventOptions } from "@minecraft/server";
+import { world as World, MinecraftBlockTypes, EntityEventOptions } from "mojang-minecraft";
 import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
 
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes, Gamemode } from '@minecraft/server';
+import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from 'mojang-minecraft';
 const overworld = world.getDimension('overworld');
 //This runs a test to see if gametest is even on. Curtain modules will switch methods if gametest fails
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {

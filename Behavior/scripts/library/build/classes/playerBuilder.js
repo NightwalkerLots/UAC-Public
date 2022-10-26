@@ -1,6 +1,6 @@
-import * as Minecraft from '@minecraft/server';
+import * as Minecraft from 'mojang-minecraft';
 import { Server } from './serverBuilder.js';
-import { ItemStack, MinecraftItemTypes, EntityQueryOptions, Player, PlayerInventoryComponentContainer, world } from '@minecraft/server';
+import { ItemStack, MinecraftItemTypes, EntityQueryOptions, Player, PlayerInventoryComponentContainer, world } from 'mojang-minecraft';
 
 export class PlayerBuilder {
     /**
