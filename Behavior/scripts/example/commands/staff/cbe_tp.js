@@ -1,7 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
 import { world, Location } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+
 const registerInformation = {
     cancelMessage: true,
     name: 'cbetp',
@@ -35,7 +35,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let y = scoreTest('cbe_y', 'cbe_location');
         let z = scoreTest('cbe_z', 'cbe_location');
         
-        //console.warn(sender.queryTopSolid());
+        //
         if (sender.hasTag('staffstatus')) {
             sender.runCommand(`tp @s ${x} ${y} ${z}`);  
             tellrawStaff(`§¶§c§lUAC ► §d${name} §bTP'd to the last CBE Placement Attempt at §c${x} ${y} ${z}`);

@@ -21,7 +21,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
         
-        console.warn(sender.queryTopSolid());
+        //
         if (sender.hasTag('staffstatus')) {
             if (args[0]) {
                 if(!playerfound) {
