@@ -1,4 +1,4 @@
-import { world } from 'mojang-minecraft';
+import { world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 
 const registerInformation = {

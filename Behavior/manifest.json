@@ -40,20 +40,12 @@
 	],
 	"dependencies": [
 		{
-			"module_name": "mojang-minecraft",
-			"version": [
-				0,
-				1,
-				0
-			]
+			"uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
+			"version": "1.0.0-beta"
 		},
 		{
-			"module_name": "mojang-minecraft-ui",
-			"version": [
-				0,
-				1,
-				0
-			]
+			"uuid": "2bd50a27-ab5f-4f40-a596-3641627c635e",
+			"version": "1.0.0-beta"
 		}
 	]
 }
