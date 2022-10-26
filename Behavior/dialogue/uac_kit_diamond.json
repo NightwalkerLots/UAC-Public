@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_kit_diamond",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.6.1§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§5v2.7§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§c§lUAC ► §5GUI Diamond Kits" } ] },
 				"buttons": [
 					{

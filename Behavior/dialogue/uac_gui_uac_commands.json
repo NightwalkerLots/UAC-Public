@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_gui_uac_commands",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.6.1§7]" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.7§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lGUI MAIN MENU" } ] },
 				"buttons": [
 					{
@@ -57,8 +57,8 @@
 			},
 			{
 				"scene_tag": "welcome_screen",
-				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.6.1§7]" } ] },
-				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.6.1§7]" } ] },
+				"npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.7§7]" } ] },
+				"text": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.7§7]" } ] },
 				"buttons": [
 					{
 						"name": { "rawtext": [ { "text": "§5§lClose" } ] },
