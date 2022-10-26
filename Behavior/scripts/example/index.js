@@ -1,10 +1,11 @@
+import './wrap.js';
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
-import { world as World, MinecraftBlockTypes, EntityEventOptions } from "@minecraft/server";
+import { world as World, MinecraftBlockTypes, EntityEventOptions, system } from "@minecraft/server";
 import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
 
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes, Gamemode } from '@minecraft/server';
+import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 //This runs a test to see if gametest is even on. Curtain modules will switch methods if gametest fails
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {
@@ -327,7 +328,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                         if(item.id in unobtainables) { flagtype = 1; }
                         if(spawneggs.includes(item.id)) { flagtype = 1; }
                         itemArray.unshift(item.id);
-                        playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.air, 0, 0)); //removes item
+                        playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
                     }
                 }
                 if (itemArray.length) {

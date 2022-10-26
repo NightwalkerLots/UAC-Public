@@ -1,4 +1,4 @@
-import { Commands, World, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from 'mojang-minecraft';
+import { Commands, World, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 
 
 // Run when a player loads and joins

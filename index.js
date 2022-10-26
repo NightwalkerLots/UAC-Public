@@ -1,7 +1,7 @@
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
-import { world, MinecraftBlockTypes, EntityEventOptions, system, world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from "mojang-minecraft";
+import { world, MinecraftBlockTypes, EntityEventOptions, system, world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from "@minecraft/server";
 import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
 
 const overworld = world.getDimension('overworld');
