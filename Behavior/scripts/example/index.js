@@ -2,7 +2,7 @@ import './wrap.js';
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
-import { world as World, MinecraftBlockTypes, EntityEventOptions } from "@minecraft/server";
+import { world as World, MinecraftBlockTypes, EntityEventOptions, system } from "@minecraft/server";
 import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
 
 import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
