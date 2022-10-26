@@ -268,7 +268,7 @@ const enchantmentDefs = {
 }
 
 const allEnchantments = Object.values(MinecraftEnchantmentTypes)
-const air = new ItemStack(MinecraftItemTypes.air, 0, 0)
+const air = new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)
 
 world.events.tick.subscribe(() => {
     if (!toggle) return

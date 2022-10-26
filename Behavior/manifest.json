@@ -1,14 +1,10 @@
 {
 	"format_version": 1,
 	"header": {
-		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§27§7.§20§7] §6DEV §7⋱",
+		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§27§7] §5VIP §7⋱",
 		"description": "§6§lExperimental Features §7: §cREQUIRED \n§bMade By §2NightwalkerLots ",
-		"uuid": "fc69c36e-ceb4-4c8c-a99e-17b51eac97a1",
-		"version": [
-			1,
-			0,
-			10
-		],
+		"uuid": "b77a1dc3-7a77-4dd0-a36c-cdee36334308",
+		"version": [2, 7, 0],
 		"min_engine_version": [
 			1,
 			8,
@@ -18,7 +14,7 @@
 	"modules": [
 		{
 			"type": "data",
-			"uuid": "8c139b91-af80-4ddb-a234-e67bf4b60a52",
+			"uuid": "4c37083f-ff85-5631-bf36-ee5361c338f8",
 			"version": [
 				1,
 				1,
@@ -40,20 +36,16 @@
 	],
 	"dependencies": [
 		{
-			"module_name": "@minecraft/server",
-			"version": [
-				0,
-				1,
-				0
-			]
+			"uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
+			"version": "1.0.0-beta"
 		},
 		{
-			"module_name": "@minecraft/server-ui",
-			"version": [
-				0,
-				1,
-				0
-			]
+			"uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",
+			"version": "1.0.0-beta"
+		},
+		{
+			"uuid": "2bd50a27-ab5f-4f40-a596-3641627c635e",
+			"version": "1.0.0-beta"
 		}
 	]
 }

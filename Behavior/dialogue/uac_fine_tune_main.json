@@ -6,7 +6,7 @@
 		[
 			{
 				"scene_tag": "uac_fine_tune_main",
-        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.7.0§7]" } ] },
+        "npc_name": { "rawtext": [ { "text": "§¶§bUnity AntiCheat §7[§2v2.7§7]" } ] },
 				"text": { "rawtext": [ { "text": "§¶§cUAC ► §5§lFine Tuning MENU" } ] },
 				"buttons": [
 					{
