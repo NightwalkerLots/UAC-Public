@@ -55,9 +55,12 @@ function playerbans(player) {
             try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCreative Mode Ban`); }
             catch{ player.runCommand(`event entity @s uac:ban_main`); }  
         }
-        if(player.hasTag('Ban')) {
+        if(player.hasTag('Ban') || player.scoreTest('Ban') >= 1) {
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cBanned By Operator`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lBanned by an Operator`); }
+            try{  
+                player.runCommand(`scoreboard players set "${player.nameTag} Ban 1`); 
+                player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lBanned by an Operator`);
+            }
             catch{ player.runCommand(`event entity @s uac:ban_main`); }  
         }
         if(player.hasTag('illegalitemban')) {
@@ -384,8 +387,8 @@ World.events.blockPlace.subscribe(({ block, player }) => {
     if (block.id in unobtainables && uoimbool) {
         tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §bBlock Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z}`);
         let type = block.id.replace('minecraft:', '');
-        block.setType(MinecraftBlockTypes.air);
         if(player.hasTag(`staffstatus`)) { return };
+        block.setType(MinecraftBlockTypes.air);
         player.runCommand(`function UAC/asset/illegalitemwarn`);
         overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
         player.runCommand(`clear @s`);

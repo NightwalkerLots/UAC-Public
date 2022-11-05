@@ -241,6 +241,7 @@ const guiScheme = {
         const cmdlist = [
             [ 'Your Stats'          , plr => guiScheme.pcmd.playerstats(plr) ],
             [ 'Change Display'      , plr => guiScheme.pcmd.display(plr) ],
+            [ 'TPA to Player'      , plr => guiScheme.pcmd.tpa_select(plr) ],
             [ 'TP to Spawn'         , plr => guiScheme.pcmd.spawntp(plr) ],
             [ 'Last Death Coords'   , plr => guiScheme.pcmd.lastdeath(plr) ],
             [ 'Close'               , plr => {} ],
@@ -298,6 +299,99 @@ const guiScheme = {
                 plr.runCommand(`function particle/nether_poof`);
                 plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
             }
+        },
+
+        tpa_select: (plr, _a = 0) => {
+            //let name = plr.getName();
+            const pl = [...world.getPlayers()].filter(v => v !== plr)
+            const v = new ModalFormData()
+                .title('Player TPA')
+                .textField(
+                    (
+                        _a == 1 ? '§cPlayer not found.\n§r'
+                        : _a == 2 ? '§cCannot target yourself.\n§r'
+                        : ''
+                    ) + 'Type in the player name. Leave blank to cancel',
+                    'Player name'
+                )
+                .dropdown('Or select a player:', ['§8None§r', ...pl.map(v => v.name)])
+
+
+            v.show(plr).then(v => {
+                const input = v.formValues[0],
+                    selection = v.formValues[1]
+                    if ((!input && !selection) || v.isCanceled) return guiScheme.NonStaff(plr)
+                const inputUnformatted = input.replace(/§./g, '')
+
+                const target =
+                    ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
+                    || ( !selection ? null : pl[selection - 1] )
+                if (!target) return guiScheme.pcmd.tpa_select(plr, 1)
+                if (target == plr) return guiScheme.pcmd.tpa_select(plr, 2)
+                guiScheme.pcmd.tpa_request(plr, target)
+
+            })
+        },
+
+        tpa_request: (plr, target) => {
+            const v = new ActionFormData()
+                .title(`${target.name.replace(/§./g, '')}'s TPA options`)
+
+            let text = []
+            text.push(`§l§bSend a TPA to §d${target.name.replace(/§./g, '')}§b?`)
+            v.body(text.join('\n§r'))
+            const cmdlist = [
+                [ 'Send Request'             , () => guiScheme.pcmd.tpa_send(plr, target) ],
+                [ 'Cancel/Deny Request(s)'   , () => guiScheme.pcmd.tpa_cancel(plr, target) ],
+                [ 'Accept Request(s)'        , () => guiScheme.pcmd.tpa_accept(plr, target) ]
+            ]
+
+            for (let [name, f] of cmdlist) v.button(name)
+
+            v.show(plr).then(v => {
+                if (v.isCanceled) return
+                cmdlist[v.selection][1]()
+            })
+            
+        },
+        tpa_send: (plr, target) => {
+            let name = plr.getName();
+            if (plr.scoreTest('tpa') >= 1) 
+                return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${plr.scoreTest('tpa')}" \n§bCancel to create a new request.`);
+            
+
+            plr.runCommand(`scoreboard players random @s tpa 1 999999`);
+            plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
+            plr.runCommand('tag @s add tpatemp');
+            plr.runCommand(`scoreboard players operation "${target.getName()}" tpa = "${name}" tpa`);
+            target.tellraw(`§¶§cUAC ► §d${name} §bhas sent you a TPA Request. Use §6UAC.tpa accept §bto accept the request`);
+            plr.tellraw(`§¶§cUAC ► §d${target.getName()} §bwas sent a TPA Request`);
+            tellrawStaff(`§¶§cUAC ► §d${name} §bsent a TPA Request to §d${target.getName()}`);
+            
+        },
+        tpa_cancel: (plr, target) => {
+            plr.runCommand(`execute @a[tag=tpatemp,scores={tpa=${plr.scoreTest('tpa')}}] ~~~ tag @s remove tpatemp`);
+            plr.runCommand(`scoreboard players set @a[scores={tpa=${plr.scoreTest('tpa')}}] tpa 0`);
+            plr.tellraw(` §¶§cUAC ► §bThe TPA request was closed`);
+            tellrawStaff(` §¶§cUAC ► §d${plr.getName()} §bclosed a TPA request `);
+        },
+        tpa_accept: (plr, target) => {
+            let name = plr.getName();
+            if (plr.scoreTest('tpa') === 0) return plr.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);
+            if (plr.hasTag('tpatemp')) return plr.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);
+
+            plr.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
+            tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
+            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ tp @s "${name}"`);
+            plr.runCommand(`scoreboard players set @s tp_cooldown 900`); 
+            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
+
+            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
+            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ function particle/nether_poof`);
+            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
+
+            plr.runCommand(`scoreboard players set @a[scores={tpa=${plr.scoreTest('tpa')}}] tpa 0`);
+            plr.runCommand(`execute @a[tag=tpatemp,scores={tpa=${plr.scoreTest('tpa')}}] ~~~ tag @s remove tpatemp`);
         },
 
 
