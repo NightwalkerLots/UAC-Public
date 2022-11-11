@@ -12,6 +12,53 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     overworld.runCommand(`scoreboard players set @a has_gt 1`);
 })
 
+world.events.tick.subscribe(() => {
+    const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
+    const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
+    let players = world.getPlayers();
+    for (let player of players) {   
+        const name = player.getName();
+        //cbe stuff
+        if(acmbool || uoimbool) {
+            let playerInventory = player.getComponent("minecraft:inventory").container;
+            let itemArray = [];
+            let itemname = undefined;
+            let flagtype = undefined;
+            for (let i = 0; i < playerInventory.size; i++) {
+                const item = playerInventory.getItem(i);
+                if (!item) { continue; }
+                if(player.hasTag(`staffstatus`)) { return }
+                // console.warn(item.id);
+                if (bannedItems.includes(item.id) || item.id in unobtainables || spawneggs.includes(item.id)) {
+                    itemname = item.id.replace('minecraft:', '');
+                    if(bannedItems.includes(item.id)) { flagtype = 0; }
+                    if(item.id in unobtainables) { flagtype = 1; }
+                    if(spawneggs.includes(item.id)) { flagtype = 1; }
+                    itemArray.unshift(item.id);
+                    playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+                }
+            }
+            if (itemArray.length) {
+                if(acmbool && flagtype == 0) {
+                    player.runCommand('function UAC/asset/cbeitem_gt_warn');
+                    overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
+                    player.runCommand(`clear @s`);
+                    player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
+                    flagtype = undefined;
+                    //player.runCommand(`event entity @s uac:ban_main`);
+                }
+                if(uoimbool&& flagtype == 1) {
+                    player.runCommand('function UAC/asset/illegalitemwarn');
+                    overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
+                    player.runCommand(`clear @s`);
+                    player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
+                    flagtype = undefined;
+                }
+            }
+        }
+    }
+})
+
 function scoreTest(name, objective) {
     try {
         const score = parseInt(overworld.runCommand(`scoreboard players test ${name} ${objective} *`).statusMessage.match(/-?\d+/));
@@ -220,16 +267,12 @@ let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     try {
         
-        const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         const WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
         const on_tick = scoreTest('tpsdummy', 'ontick');
         const entitycount = scoreTest('entitydummy', 'entitycount');
         const entitycountdown = scoreTest('entitydummy', 'entityclear');
-        const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
 
         overworld.runCommand(`scoreboard players add tpsdummy ontick 1`);
-        
-        
         
         if(on_tick >= 20) {
             if(entitycount >= 340) {
@@ -309,46 +352,6 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                     if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
                         player.runCommand(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`);
                         overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
-                    }
-                }
-            }
-            
-
-            //cbe stuff
-            if(acmbool || uoimbool) {
-                let playerInventory = player.getComponent("minecraft:inventory").container;
-                let itemArray = [];
-                let itemname = undefined;
-                let flagtype = undefined;
-                for (let i = 0; i < playerInventory.size; i++) {
-                    const item = playerInventory.getItem(i);
-                    if (!item) { continue; }
-                    if(player.hasTag(`staffstatus`)) { return }
-                    // console.warn(item.id);
-                    if (bannedItems.includes(item.id) || item.id in unobtainables || spawneggs.includes(item.id)) {
-                        itemname = item.id.replace('minecraft:', '');
-                        if(bannedItems.includes(item.id)) { flagtype = 0; }
-                        if(item.id in unobtainables) { flagtype = 1; }
-                        if(spawneggs.includes(item.id)) { flagtype = 1; }
-                        itemArray.unshift(item.id);
-                        playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
-                    }
-                }
-                if (itemArray.length) {
-                    if(acmbool && flagtype == 0) {
-                        player.runCommand('function UAC/asset/cbeitem_gt_warn');
-                        overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-                        player.runCommand(`clear @s`);
-                        player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
-                        flagtype = undefined;
-                        //player.runCommand(`event entity @s uac:ban_main`);
-                    }
-                    if(uoimbool&& flagtype == 1) {
-                        player.runCommand('function UAC/asset/illegalitemwarn');
-                        overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-                        player.runCommand(`clear @s`);
-                        player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
-                        flagtype = undefined;
                     }
                 }
             }

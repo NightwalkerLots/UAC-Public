@@ -15,7 +15,7 @@
 						{"z": {"type": "image","texture": "textures/ui/title","size": [128,128]}},
 						{"y": {"type": "panel","size": [6,6]}},
 						{"x": {"type": "label","font_scale_factor": 1.5,"text": ""}},
-						{"w": {"type": "label","font_scale_factor": 1.2,"text": "§l§bUnity Anti-Cheat §7[§2 2§7.§24 §7]"}}
+						{"w": {"type": "label","font_scale_factor": 1.2,"text": "§l§bUnity Anti-Cheat §7[§2 2§7.§26 §7]"}}
 					]
 				}
 			},
@@ -33,14 +33,14 @@
 		]
 	},
 	"uipp_scroll@common.scrolling_panel":{"$show_background": false,"$scrolling_content": "start.uipp_panel"},
-	"uipp_main@common_dialogs.main_panel_no_buttons":{"size":["80%","80%"],"$text_name":" §d§lWelcome to §l§bUnity Anti-Cheat §7[§2 2§7.§24 §7]§r","$child_control":"start.uipp_scroll"},
+	"uipp_main@common_dialogs.main_panel_no_buttons":{"size":["80%","80%"],"$text_name":" §d§lWelcome to §l§bUnity Anti-Cheat §7[§2 2§7.§26 §7]§r","$child_control":"start.uipp_scroll"},
 
 	"uipp_start": {
 		"type": "stack_panel",
 		"orientation": "horizontal",
 		"controls": [
 			{"ico": {"type": "image","texture": "textures/ui_icon/icon_uac_home","size": [20,20]}},
-			{"ver": {"type": "label","text": "§l§bUnity Anti-Cheat §7[§2 2§7.§24 §7] \n§l§bThe §eGolden §bStandard"}}
+			{"ver": {"type": "label","text": "§l§bUnity Anti-Cheat §7[§2 2§7.§26 §7] \n§l§bThe §eGolden §bStandard"}}
 		]
 	},
 	"copyright@common_buttons.light_content_button": {
