@@ -2093,9 +2093,9 @@
 				"cause": "entity_attack"
 			  }
 				]
-			  },
-		  "minecraft:npc": {//This will allow the player to have the npc components to have dialogue
-		}
+			  }/* ,
+		 "minecraft:npc": {//This will allow the player to have the npc components to have dialogue
+		}*/
 	  },
 	  "events": {
 		"uac:illegal_items": {

@@ -409,7 +409,7 @@ scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
 scoreboard players set entitydummy entityclear 0
 tag @s add "rank:Member"
-tag @s add "color:b"`
+tag @s add "color:b"
 
 function UAC/asset/discord
 function UAC/asset/version
@@ -428,6 +428,7 @@ scoreboard players operation @s pvp = pvpdummy pvp
 scoreboard players set @s in_combat 0
 scoreboard players set @s combat_timer 0
 scoreboard players set @s online 0
+scoreboard players set mrunban unban 0
 
 #This adds the correct functions for all players
 scoreboard players add @s timeplayedsec 0

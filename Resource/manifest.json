@@ -1,16 +1,17 @@
 {
     "format_version": 1,
     "header": {
-        "description": "§o§byoutube.com/c/nightwalkerlots\n§e§o@Lastofthesorrow\n§7[ §bUnity Anti-Cheat Resource §2v2.4 §7]",
-        "name": "§¶§cUAC ► §7[ §bUnity Anti-Cheat Resource §2v2.7 §7]",
-        "uuid": "f091c9cd-c228-4849-b8a3-89342ab84a48",
-        "version": [1, 5, 35]
+        "description": "§l§byoutube.com/c/nightwalkerlots\n§e§l@Lastofthesorrow\n§7[ §bUnity Anti-Cheat Resource §2v2.6 §7]",
+        "name": "§l§cUAC ► §7[ §bUnity Anti-Cheat Resource §2v2.6 §7] §5VIP", 
+        "uuid": "38ace3bb-222a-4835-9a62-2ad846363da4",
+        "version": [2, 6, 0],
+        "min_engine_version": [ 1, 8, 0 ]
     },
     "modules": [
         {
-            "description": "§7[ §bUnity Anti-Cheat Resource §2v2.4 §7]",
+            "description": "§7[ §bUnity Anti-Cheat Resource §2v2.6 §7]",
             "type": "resources",
-            "uuid": "9f955b4f-26c8-4fec-8728-0ad864a2a34f",
+            "uuid": "5c51d8ab-6ea7-4148-98e4-ea4c658d0f4e",
             "version": [1, 5, 35]
         }
     ]

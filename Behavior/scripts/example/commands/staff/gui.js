@@ -241,7 +241,7 @@ const guiScheme = {
         const cmdlist = [
             [ 'Your Stats'          , plr => guiScheme.pcmd.playerstats(plr) ],
             [ 'Change Display'      , plr => guiScheme.pcmd.display(plr) ],
-            [ 'TPA to Player'      , plr => guiScheme.pcmd.tpa_select(plr) ],
+            [ 'TPA to Player'      , plr => guiScheme.pcmd.tpa_main_menu(plr) ],
             [ 'TP to Spawn'         , plr => guiScheme.pcmd.spawntp(plr) ],
             [ 'Last Death Coords'   , plr => guiScheme.pcmd.lastdeath(plr) ],
             [ 'Close'               , plr => {} ],
@@ -285,6 +285,7 @@ const guiScheme = {
         },
         spawntp: (plr) => {
             let name = plr.getName();
+            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
             if (plr.scoreTest('worldcustom') === 1) {
                 plr.runCommand(`tp @s ${plr.scoreTest('Worldx')} ${plr.scoreTest('Worldy')} ${plr.scoreTest('Worldz')}`);
                 plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${plr.scoreTest('Worldx')} ${plr.scoreTest('Worldy')} ${plr.scoreTest('Worldz')}`);
@@ -333,17 +334,38 @@ const guiScheme = {
             })
         },
 
+        tpa_main_menu: (plr, target) => {
+            const v = new ActionFormData()
+                .title(`§l§bTPA options`)
+            
+            let text = []
+            text.push(`§l§cMust Cancel or Decline Requests before making a new one`)
+
+            const cmdlist = [
+                [ 'Choose Player for TPA'    , () => guiScheme.pcmd.tpa_select(plr, target) ],
+                [ 'Cancel/Deny Request(s)'   , () => guiScheme.pcmd.tpa_cancel(plr, target) ],
+                [ 'Accept Request(s)'        , () => guiScheme.pcmd.tpa_accept(plr, target) ],
+                [ 'Back'                     , () => guiScheme.NonStaff(plr) ]
+            ]
+            for (let [name, f] of cmdlist) v.button(name)
+
+            v.show(plr).then(v => {
+                if (v.isCanceled) return
+                cmdlist[v.selection][1]()
+            })
+
+        },
+
         tpa_request: (plr, target) => {
             const v = new ActionFormData()
                 .title(`${target.name.replace(/§./g, '')}'s TPA options`)
 
             let text = []
+            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
             text.push(`§l§bSend a TPA to §d${target.name.replace(/§./g, '')}§b?`)
             v.body(text.join('\n§r'))
             const cmdlist = [
-                [ 'Send Request'             , () => guiScheme.pcmd.tpa_send(plr, target) ],
-                [ 'Cancel/Deny Request(s)'   , () => guiScheme.pcmd.tpa_cancel(plr, target) ],
-                [ 'Accept Request(s)'        , () => guiScheme.pcmd.tpa_accept(plr, target) ]
+                [ 'Send Request'             , () => guiScheme.pcmd.tpa_send(plr, target) ]
             ]
 
             for (let [name, f] of cmdlist) v.button(name)
@@ -356,9 +378,8 @@ const guiScheme = {
         },
         tpa_send: (plr, target) => {
             let name = plr.getName();
-            if (plr.scoreTest('tpa') >= 1) 
-                return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${plr.scoreTest('tpa')}" \n§bCancel to create a new request.`);
-            
+            if (plr.scoreTest('tpa') >= 1) return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${plr.scoreTest('tpa')}" \n§bCancel to create a new request.`);
+            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
             plr.runCommand(`scoreboard players random @s tpa 1 999999`);
             plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
@@ -379,6 +400,7 @@ const guiScheme = {
             let name = plr.getName();
             if (plr.scoreTest('tpa') === 0) return plr.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);
             if (plr.hasTag('tpatemp')) return plr.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);
+            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
             plr.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
             tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);

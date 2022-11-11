@@ -1,6 +1,7 @@
 #Anti-Creative Stuff
 gamemode s @s[m=c,tag=!staffstatus]
 scoreboard players add @s gmc_flag 1
+clear @s
 kill @s
 
 # creative flag alerts

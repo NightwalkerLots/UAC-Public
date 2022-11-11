@@ -51,6 +51,7 @@ scoreboard players operation @a illench = illenchdummy illench
 scoreboard players operation @a chatrank = crdummy chatrank
 scoreboard players operation @a arm_gt_toggle = armdummy arm_gt_toggle
 scoreboard players operation @a acstoggle = acsdummy acstoggle
+scoreboard players operation @a testin = testindummy testin
 
 #Syncs the method used for Anti-Reach
 scoreboard players set @a[scores={arm_gt_toggle=1}] armtoggle 0
