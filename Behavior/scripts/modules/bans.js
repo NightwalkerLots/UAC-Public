@@ -26,11 +26,10 @@ function playerbans(player) {
         if(player.hasTag('Ban') || player.scoreTest('Ban') >= 1) {
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cBanned By Operator\n§b§lREASON §7: §c${ban_reason}`);
             try{  
-                player.runCommand(`scoreboard players set "${player.nameTag} Ban 1`); 
+                player.runCommand(`scoreboard players set "${player.nameTag}" Ban 1`); 
                 player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§l${ban_reason}`);
             }
             catch{ 
-                player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§l${ban_reason}`);
                 player.runCommand(`event entity @s uac:ban_main`); 
             }  
         }
