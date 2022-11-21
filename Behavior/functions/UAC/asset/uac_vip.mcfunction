@@ -13,6 +13,7 @@ tag @s[name="EnchantedSMC"] add UAC_vip
 tag @s[name="TheEgg3500"] add UAC_vip
 tag @s[name="Musty-Poole91"] add UAC_vip
 tag @s[name="fatdragon2282"] add UAC_vip
+tag @s[name="carthe123"] add UAC_vip
 
 scoreboard players set @s[tag=UAC_vip,scores={vipt=1}] VIPM 2393
 scoreboard players set @s[tag=!UAC_vip,scores={vipt=1}] VIPM 0

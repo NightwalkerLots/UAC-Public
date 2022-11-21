@@ -235,6 +235,11 @@ scoreboard objectives add hmmcache dummy
 scoreboard objectives add entityclear dummy
 scoreboard objectives add chatspam dummy
 scoreboard objectives add money dummy
+scoreboard objectives add gamemode dummy
+scoreboard objectives add water_contact dummy
+scoreboard objectives add in_water dummy
+scoreboard objectives add is_swimming dummy
+scoreboard objectives add seen_gui dummy
 
 
 #module scoreboards
@@ -288,6 +293,8 @@ scoreboard objectives add mdmtoggle dummy mdmtoggle
 scoreboard objectives add clmtoggle dummy
 scoreboard objectives add chatrank dummy
 scoreboard objectives add acstoggle dummy 
+scoreboard objectives add opstoggle dummy 
+scoreboard objectives add ajmtoggle dummy 
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -343,6 +350,8 @@ scoreboard players set @s clmtoggle 0
 scoreboard players set @s illench 0
 scoreboard players set @s chatrank 0
 scoreboard players set @s armtoggle 0
+scoreboard players set @s opstoggle 0
+scoreboard players set @s ajmtoggle 0
 scoreboard players set @s acstoggle 0
 scoreboard players set @s arm_gt_toggle 0
 scoreboard players set @s money 0
@@ -405,13 +414,14 @@ scoreboard objectives add cbe_location dummy
 scoreboard players set @s tp_cooldown 0 
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_sleeping 0
+scoreboard players set @s seen_gui 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
 scoreboard players set entitydummy entityclear 0
 tag @s add "rank:Member"
 tag @s add "color:b"
+tag @s add reason_none
 
-function UAC/asset/discord
 function UAC/asset/version
 function UAC/modules/permban
 
@@ -473,8 +483,6 @@ function UAC/settings/ft_setup_init
 function UAC/settings/ft_settings
 function UAC/asset/toggle_sync
 
-execute @a[scores={welcomed=1,XNEZ=!3892}] ~~~ tag @s add theif
-execute @a[scores={welcomed=1,XNEF=!3342}] ~~~ tag @s add theif
 
 #If experimental features are on, set to true
 event entity @a uac:test_experimental

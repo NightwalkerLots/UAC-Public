@@ -1,4 +1,4 @@
-import { world, Player, BlockLocation, EntityQueryOptions } from '@minecraft/server';
+import { world, Player, BlockLocation, EntityQueryOptions, GameMode } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
 export const content = {
@@ -90,7 +90,6 @@ export function tellrawStaff(message) {
 export function tellrawServer(message) {
     try { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
 }
-
 export function FindPlayer(input) {
     let players = world.getPlayers();
     for (let player of players) {
@@ -98,6 +97,36 @@ export function FindPlayer(input) {
         if(name.match(input)) {
             return true;
         } else { return false; }
+    }
+}
+
+export function tellraw (message) {
+    try {
+        return this.runCommand(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+    }
+    catch {return}
+}
+
+export function scoreTest (objective) {
+    try {
+        const score = parseInt(this.runCommand(`scoreboard players test @s ${objective} *`).statusMessage.match(/-?\d+/));
+        return score;
+    } catch {
+        return;
+    }
+}
+// return gamemode string 
+export function getGamemode (player) {
+    try {
+        let type = '';
+        const score = parseInt(player.runCommand(`scoreboard players test @s gamemode *`).statusMessage.match(/-?\d+/));
+        if(score == 0) type = 'survival';
+        if(score == 1) type = 'creative';
+        if(score == 2) type = 'adventure';
+        if(score == 3) type = 'spectator';
+        return type.toString();
+    } catch {
+        return;
     }
 }
 

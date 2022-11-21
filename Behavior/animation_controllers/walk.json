@@ -55,6 +55,26 @@
 				}
 			}
 		},
+		"controller.animation.swim": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "swim": "query.is_swimming || query.is_in_water"
+                        }
+                    ],
+                    "on_entry": ["/scoreboard players set @s is_swimming 0"]
+                },
+                "swim": {
+                    "transitions": [
+                        {
+                            "default": "!query.is_swimming && !query.is_in_water"
+                        }
+                    ],
+                    "on_entry": ["/scoreboard players set @s is_swimming 1"]
+                }
+            }
+        },
 		"controller.animation.is_levitating": {
 			"states": {
 				"default": {

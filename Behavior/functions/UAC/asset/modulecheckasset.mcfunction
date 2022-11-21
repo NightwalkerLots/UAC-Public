@@ -5,7 +5,7 @@ execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§c=========
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-Fly §7[§c "},{"score":{"name":"@s","objective":"AFM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bCustom Item Ban §7[§c "},{"score":{"name":"@s","objective":"IBM"}},{"text": " §7]"}]}
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-CBE §7[§c "},{"score":{"name":"@s","objective":"ACM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bNo Unobtainable Items §7[§c "},{"score":{"name":"@s","objective":"UOIM"}},{"text": " §7]"}]}
 execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bMining Detection §7[§c "},{"score":{"name":"@s","objective":"MDM"}},{"text": " §7]"},{"text":" §¶§b► §¶§bAnti-Chat Spam §7[§c "},{"score":{"name":"@s","objective":"acstoggle"}},{"text": " §7]"}]}
-execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-32k §7[§c "},{"score":{"name":"@s","objective":"illench"}},{"text": " §7]"}]}
+execute @s[tag=staffstatus] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-32k §7[§c "},{"score":{"name":"@s","objective":"illench"}},{"text": " §7]"},{"text":" §¶§b► §¶§bOne Player Sleep §7[§c "},{"score":{"name":"@s","objective":"opstoggle"}},{"text": " §7]"}]}
 execute @s[tag=staffstatus,scores={clmtoggle=1}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-C Logging §7[ §¶§2KILL MODE §7]"}]}
 execute @s[tag=staffstatus,scores={clmtoggle=2}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-C Logging §7[ §¶§2CLEAR MODE §7]"}]}
 execute @s[tag=staffstatus,scores={clmtoggle=0}] ~~~ tellraw @s {"rawtext":[{"text":"§¶§cUAC §¶§b► §¶§bAnti-C Logging §7[ §¶§cDISABLED §7]"}]}
