@@ -2,61 +2,26 @@ import './wrap.js';
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
+//external module functions
+import { anticbe } from '../modules/cbe.js';
+import { unobtainable } from '../modules/unobtainable.js';
+import { playerbans } from '../modules/bans.js';
+import { ops } from '../modules/oneplayersleep.js';
+import { jesus } from '../modules/jesus.js';
+import { lagclear } from '../modules/lagclear.js';
+import { movement_check } from '../modules/movement.js';
+import { waitMove } from './commands/staff/gui.js';
+
+//game resource dependancies
 import { world as World, MinecraftBlockTypes, EntityEventOptions, system } from "@minecraft/server";
 import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
-
 import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+
+
 const overworld = world.getDimension('overworld');
 //This runs a test to see if gametest is even on. Curtain modules will switch methods if gametest fails
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     overworld.runCommand(`scoreboard players set @a has_gt 1`);
-})
-
-world.events.tick.subscribe(() => {
-    const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
-    const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
-    let players = world.getPlayers();
-    for (let player of players) {   
-        const name = player.getName();
-        //cbe stuff
-        if(acmbool || uoimbool) {
-            let playerInventory = player.getComponent("minecraft:inventory").container;
-            let itemArray = [];
-            let itemname = undefined;
-            let flagtype = undefined;
-            for (let i = 0; i < playerInventory.size; i++) {
-                const item = playerInventory.getItem(i);
-                if (!item) { continue; }
-                if(player.hasTag(`staffstatus`)) { return }
-                // console.warn(item.id);
-                if (bannedItems.includes(item.id) || item.id in unobtainables || spawneggs.includes(item.id)) {
-                    itemname = item.id.replace('minecraft:', '');
-                    if(bannedItems.includes(item.id)) { flagtype = 0; }
-                    if(item.id in unobtainables) { flagtype = 1; }
-                    if(spawneggs.includes(item.id)) { flagtype = 1; }
-                    itemArray.unshift(item.id);
-                    playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
-                }
-            }
-            if (itemArray.length) {
-                if(acmbool && flagtype == 0) {
-                    player.runCommand('function UAC/asset/cbeitem_gt_warn');
-                    overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-                    player.runCommand(`clear @s`);
-                    player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
-                    flagtype = undefined;
-                    //player.runCommand(`event entity @s uac:ban_main`);
-                }
-                if(uoimbool&& flagtype == 1) {
-                    player.runCommand('function UAC/asset/illegalitemwarn');
-                    overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-                    player.runCommand(`clear @s`);
-                    player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
-                    flagtype = undefined;
-                }
-            }
-        }
-    }
 })
 
 function scoreTest(name, objective) {
@@ -83,51 +48,7 @@ function worldBorder(player) {
     }
 }
 
-function playerbans(player) {
-    const name = player.getName();
-    try {
-        if(player.hasTag('PermBan')) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cUAC Global Banned`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUAC Global Banned`); }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); }
-        }
-        if(player.hasTag('BanCBE')) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cCBE Ban`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Ban`); }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); 
-        }
-        }
-        if(player.hasTag('BanCreative')) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cCreative Mode Ban`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCreative Mode Ban`); }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); }  
-        }
-        if(player.hasTag('Ban') || player.scoreTest('Ban') >= 1) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cBanned By Operator`);
-            try{  
-                player.runCommand(`scoreboard players set "${player.nameTag} Ban 1`); 
-                player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lBanned by an Operator`);
-            }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); }  
-        }
-        if(player.hasTag('illegalitemban')) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cUnobtainable Items Ban`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Items Ban`); }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); }  
-        }
-        if(player.hasTag('BanFly')) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cFly Hacks Ban`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lBanned for FlyHacks`); }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); }              
-        }
-        if(player.scoreTest('warn') >= 3) {
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §c3 Warns Reached`);
-            try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§l3 warns reached`); }
-            catch{ player.runCommand(`event entity @s uac:ban_main`); }              
-        }
-    }
-    catch(error) { console.warn(error, error.stack); }
-}
+
 
 /*
 ░░████░░░████░░████████░░████████░░░░░░░
@@ -137,81 +58,94 @@ function playerbans(player) {
 ░░███████████░░███░░███░░████████░░░░░░░
 */
 
-// Filter CBE items
-const bannedItems = [
-    'minecraft:movingblock',
-    'minecraft:moving_block',
-    'minecraft:beehive',
-    'minecraft:bee_nest'
-];
-const spawneggs = [
-    'minecraft:npc_spawn_egg',
-    'minecraft:glow_squid_spawn_egg',
-    'minecraft:axolotl_spawn_egg',
-    'minecraft:goat_spawn_egg',
-    'minecraft:strider_spawn_egg',
-    'minecraft:bee_spawn_egg',
-    'minecraft:fox_spawn_egg',
-    'minecraft:wandering_trader_spawn_egg',
-    'minecraft:panda_spawn_egg',
-    'minecraft:cod_spawn_egg',
-    'minecraft:tropical_fish_spawn_egg',
-    'minecraft:salmon_spawn_egg',
-    'minecraft:pufferfish_spawn_egg',
-    'minecraft:cat_spawn_egg',
-    'minecraft:turtle_spawn_egg',
-    'minecraft:parrot_spawn_egg',
-    'minecraft:dolphin_spawn_egg',
-    'minecraft:llama_spawn_egg',
-    'minecraft:polar_bear_spawn_egg',
-    'minecraft:zombie_horse_spawn_egg',
-    'minecraft:skeleton_horse_spawn_egg',
-    'minecraft:mule_spawn_egg',
-    'minecraft:donkey_spawn_egg',
-    'minecraft:horse_spawn_egg',
-    'minecraft:ocelot_spawn_egg',
-    'minecraft:bat_spawn_egg',
-    'minecraft:rabbit_spawn_egg',
-    'minecraft:squid_spawn_egg',
-    'minecraft:mooshroom_spawn_egg',
-    'minecraft:villager_spawn_egg',
-    'minecraft:wolf_spawn_egg',
-    'minecraft:sheep_spawn_egg',
-    'minecraft:pig_spawn_egg',
-    'minecraft:cow_spawn_egg',
-    'minecraft:chicken_spawn_egg',
-    'minecraft:piglin_brute_spawn_egg',
-    'minecraft:zoglin_spawn_egg',
-    'minecraft:hoglin_spawn_egg',
-    'minecraft:piglin_spawn_egg',
-    'minecraft:drowned_spawn_egg',
-    'minecraft:vex_spawn_egg',
-    'minecraft:evoker_spawn_egg',
-    'minecraft:ravager_spawn_egg',
-    'minecraft:phantom_spawn_egg',
-    'minecraft:vindicator_spawn_egg',
-    'minecraft:endermite_spawn_egg',
-    'minecraft:shulker_spawn_egg',
-    'minecraft:elder_guardian_spawn_egg',
-    'minecraft:guardian_spawn_egg',
-    'minecraft:wither_skeleton_spawn_egg',
-    'minecraft:husk_spawn_egg',
-    'minecraft:stray_spawn_egg',
-    'minecraft:witch_spawn_egg',
-    'minecraft:zombie_villager_spawn_egg',
-    'minecraft:blaze_spawn_egg',
-    'minecraft:magma_cube_spawn_egg',
-    'minecraft:ghast_spawn_egg',
-    'minecraft:cave_spider_spawn_egg',
-    'minecraft:silverfish_spawn_egg',
-    'minecraft:enderman_spawn_egg',
-    'minecraft:slime_spawn_egg',
-    'minecraft:spider_spawn_egg',
-    'minecraft:zombie_pigman_spawn_egg',
-    'minecraft:skeleton_spawn_egg',
-    'minecraft:creeper_spawn_egg',
-    'minecraft:zombie_spawn_egg'
-];
+let SpawnX = scoreTest('worlddum', 'Worldx');
+let SpawnZ = scoreTest('worlddum', 'Worldz');
+let SpawnY = scoreTest('worlddum', 'Worldy');
+let BorderX = scoreTest('BDXdummy', 'Border_Coord_X');
+let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
+
+
+world.events.tick.subscribe(({ deltaTime, currentTick }) => {
+    try {
+        
+        const WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
+        const on_tick = scoreTest('tpsdummy', 'ontick');
+        let lagclear_bool = scoreTest('ltmtoggledummy', 'ltmtoggle');
+        let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
+        let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
+        let opsbool = scoreTest('opsdummy', 'opstoggle');
+        let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
+
+        overworld.runCommand(`scoreboard players add tpsdummy ontick 1`);
+        
+        // one second module functions
+        if(on_tick >= 20) {
+            if(opsbool) { ops(); }
+            movement_check();
+            overworld.runCommand('scoreboard players set tpsdummy ontick 0');
+
+            const entitycount = scoreTest('entitydummy', 'entitycount');
+            if(entitycount >= 340) {
+                overworld.runCommand(`function UAC/packages/autoclear-manual`);
+                overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b."}]}`)
+                overworld.runCommand(`scoreboard players set entitydummy entitycount 0`);
+                
+            }
+        }
+        
+        if(acmbool) { anticbe(); }
+        if(uoimbool) { unobtainable(); }
+        if(ajmbool) { jesus(); }
+        if(lagclear_bool) { lagclear(); }
+        
+        
+        let players = world.getPlayers();
+        for (let player of players) {                                                                   
+            const name = player.getName();
+            worldBorder(player);
+
+            //Namespoof patch provided by the Paradox Team
+            let char_length = player.nameTag
+            for (let i = 0; i < char_length.length; i++) {
+                if (char_length.charCodeAt(i) > 255) {
+                    console.warn(`Illegal bytes outside the UTF-8 range`);
+                    tellrawStaff(`§¶§cUAC ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
+                    try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid GamerTag`); }
+                    catch{ player.runCommand(`event entity @s uac:ban_main`); }  
+                }
+                //console.warn(`Everything appears normal`);
+            }
+            
+            
+            if(player.scoreTest('fzplr') == 1) {
+                if(player.hasTag('staffstatus')) {return player.runCommand(`scoreboard players set @s fzplr 0`);}
+                player.runCommand(`tp @s ${player.scoreTest('lastpos_x')} ~ ${player.scoreTest('lastpos_z')}`);
+            }       
+
+            if(on_tick >= 20) {
+                if(scoreTest('mrunban', 'unban') == 0) {
+                    playerbans(player);
+                }
+                player.runCommand('scoreboard players operation @s lastpos_x = @s X_Coordinate');
+                player.runCommand('scoreboard players operation @s lastpos_z = @s Z_Coordinate');
+                
+                //world border Custom Spawn TP
+                if(WorldBorderbool) {
+                    let {x, y, z} = player.location
+                    if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
+                        player.runCommand(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`);
+                        overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
+                    }
+                }
+            }
+        }
+    } catch (error) {
+        console.warn(error);
+    }
+    // cbe code was contributed by MrPatches123
+    
+});
+
 const unobtainables = {
     'minecraft:flowing_lava': 0,
     'minecraft:lava': 0,
@@ -220,7 +154,6 @@ const unobtainables = {
     'minecraft:lit_redstone_lamp': 0,
     'minecraft:pistonarmcollision': 0,
     'minecraft:tripwire': 0,
-    'minecraft:unpowered_comparator': 0,
     'minecraft:powered_comparator': 0,
     'minecraft:fire': 0,
     'minecraft:lit_furnace': 0,
@@ -257,125 +190,29 @@ const unobtainables = {
     'minecraft:glowingobsidian': 0,
 };
 
-let SpawnX = scoreTest('worlddum', 'Worldx');
-let SpawnZ = scoreTest('worlddum', 'Worldz');
-let SpawnY = scoreTest('worlddum', 'Worldy');
-let BorderX = scoreTest('BDXdummy', 'Border_Coord_X');
-let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
-
-
-world.events.tick.subscribe(({ deltaTime, currentTick }) => {
-    try {
-        
-        const WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
-        const on_tick = scoreTest('tpsdummy', 'ontick');
-        const entitycount = scoreTest('entitydummy', 'entitycount');
-        const entitycountdown = scoreTest('entitydummy', 'entityclear');
-
-        overworld.runCommand(`scoreboard players add tpsdummy ontick 1`);
-        
-        if(on_tick >= 20) {
-            if(entitycount >= 340) {
-                overworld.runCommand(`function UAC/packages/autoclear-manual`);
-                overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b."}]}`)
-                overworld.runCommand(`scoreboard players set entitydummy entitycount 0`);
-                
-            }
-            if(entitycount >= 110) {
-                if(entitycountdown == 0) {
-                    overworld.runCommand(`scoreboard players set entitydummy entityclear 400`);
-                }
-            }
-            overworld.runCommand('scoreboard players set tpsdummy ontick 0');
-        }
-        if(entitycountdown >= 1) {
-            overworld.runCommand(`scoreboard players remove entitydummy entityclear 1`);
-            if(entitycountdown == 350) { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► Clearing Entities in §c5"}]}`); }
-            if(entitycountdown == 300) { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► Clearing Entities in §c4"}]}`); }
-            if(entitycountdown == 250) { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► Clearing Entities in §c3"}]}`); }
-            if(entitycountdown == 200) { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► Clearing Entities in §c2"}]}`); }
-            if(entitycountdown == 150) { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► Clearing Entities in §c1"}]}`); }
-            if(entitycountdown == 100) { overworld.runCommand(`function UAC/packages/autolagclearasset`); }
-        }
-        
-        let players = world.getPlayers();
-        for (let player of players) {                                                                   
-            const name = player.getName();
-            worldBorder(player);
-
-            //Namespoof patch provided by the Paradox Team
-            let char_length = player.nameTag
-            for (let i = 0; i < char_length.length; i++) {
-                if (char_length.charCodeAt(i) > 255) {
-                    console.warn(`Illegal bytes outside the UTF-8 range`);
-                    tellrawStaff(`§¶§cUAC ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
-                    try{  player.runCommand(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid GamerTag`); }
-                    catch{ player.runCommand(`event entity @s uac:ban_main`); }  
-                }
-                //console.warn(`Everything appears normal`);
-            }
-
-            
-            if(player.scoreTest('fzplr') == 1) {
-                if(player.hasTag('staffstatus')) {return player.runCommand(`scoreboard players set @s fzplr 0`);}
-                player.runCommand(`tp @s ${player.scoreTest('lastpos_x')} ~ ${player.scoreTest('lastpos_z')}`);
-            }       
-
-            //slow scripts - players
-            let lastpos_x = player.scoreTest('lastpos_x');
-            let lastpos_z = player.scoreTest('lastpos_z');
-
-            if(on_tick >= 20) {
-                if(scoreTest('mrunban', 'unban') == 0) {
-                    playerbans(player);
-                }
-
-                //afk stuff
-                player.runCommand('scoreboard players operation @s lastpos_x = @s X_Coordinate');
-                player.runCommand('scoreboard players operation @s lastpos_z = @s Z_Coordinate');
-                
-                if(player.scoreTest('X_Coordinate') > lastpos_x || player.scoreTest('X_Coordinate') < lastpos_x) {
-                    player.runCommand('scoreboard players set @s notmovingflag 0');
-                    //player.tellraw(`is moving`);
-                }
-                if(player.scoreTest('Z_Coordinate') > lastpos_z || player.scoreTest('Z_Coordinate') < lastpos_z) {
-                    player.runCommand('scoreboard players set @s notmovingflag 0');
-                    //player.tellraw(`is moving`);
-                }
-                if(player.scoreTest('X_Coordinate') == lastpos_x || player.scoreTest('Z_Coordinate') == lastpos_z) {
-                    player.runCommand(`scoreboard players add @s notmovingflag 1`);
-                }
-                
-                //world border Custom Spawn TP
-                if(WorldBorderbool) {
-                    let {x, y, z} = player.location
-                    if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
-                        player.runCommand(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`);
-                        overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
-                    }
-                }
-            }
-        }
-    } catch (error) {
-        console.warn(error);
-    }
-    // cbe code was contributed by MrPatches123
-    
-});
-
 const blockBans = {
     'minecraft:moving_block': 0,
     'minecraft:beehive': 0,
     'minecraft:bee_nest': 0,
+    'minecraft:dispenser': 0
 };  
+const blockBuckets = {
+    'minecraft:axolotl_bucket': 0,
+    'minecraft:pufferfish_bucket': 0,
+    'minecraft:tropical_fish_bucket': 0,
+    'minecraft:salmon_bucket': 0,
+    'minecraft:cod_bucket': 0
+
+};
 World.events.blockPlace.subscribe(({ block, player }) => {
     // made originally by frost, and perfected by nightwalkerlots
     const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
     const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
     let {x, y, z} = block.location;
+    let type = block.id.replace('minecraft:', '');
+    //overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Test §d${player.nameTag} §bjust placed §c${type}"}]}`);
     if (block.id in blockBans && acmbool || block.id == 'minecraft:moving_block') {
         tellrawStaff(`§¶§c§lUAC ► §6Anti-CBE §bItem Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z} \n§bUse §2UAC.cbetp §bto teleport there!`);
-        let type = block.id.replace('minecraft:', '');
         block.setType(MinecraftBlockTypes.air);
         overworld.runCommand(`scoreboard players set cbe_x cbe_location ${x}`);
         overworld.runCommand(`scoreboard players set cbe_y cbe_location ${y}`);
@@ -399,9 +236,41 @@ World.events.blockPlace.subscribe(({ block, player }) => {
         catch{player.runCommand(`event entity @s uac:ban_main`);}    }
 });
 
+
+world.events.beforeItemUseOn.subscribe((eventData) => {
+    const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
+    let item = eventData.item.id;
+    let item_name = item.replace('minecraft:', '');
+    let name = eventData.source.nameTag;
+    let by_player = undefined;
+    let {x, y, z} = eventData.blockLocation;
+    let p = world.getPlayers();
+    if(!acmbool) return;
+    for (let i of p) {
+        const p_name = i.getName();
+        if(!p_name.match(name)) {
+            by_player = false;
+        } else {
+            by_player = true;
+        }
+    }
+    if(!by_player) return;
+    if(eventData.source.hasTag('staffstatus')) return;
+
+    if(item in blockBans || item in blockBuckets) {
+        eventData.cancel = true;
+        eventData.source.runCommand('function UAC/asset/cbeitem_gt_warn');
+        overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6CBE Item Use §d${name} §bwas temp-kicked for placing §c${item_name} §bat §c${x} ${y} ${z}"}]}`);
+        try{  eventData.source.runCommand(`kick "${eventData.source.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Item Placement | ${item_name}`);  }
+        catch{eventData.source.runCommand(`event entity @s uac:ban_main`);}
+    }
+});
+
+
 world.events.playerJoin.subscribe((data) => {
     let player = data.player;
     let name = player.nameTag;
+    let {x, y, z} = player.location;
     
     function OnPlayerLoad(callback) {
         let LoadedCallBack = world.events.tick.subscribe((tickEvent) => {
@@ -412,7 +281,7 @@ world.events.playerJoin.subscribe((data) => {
             } catch (error) {
                 const on_tick = scoreTest('tpsdummy', 'ontick');
                 if(on_tick == 20) { player.runCommand(`scoreboard players add @s online 1`); }
-                if(player.scoreTest('online') >= 22) { 
+                if(player.scoreTest('online') >= 10) { 
                     tellrawStaff(`§¶§c§lUAC ► §6Anti-Namespoof §d${player.nameTag} §bwas temp-kicked.`); 
                     player.runCommand(`scoreboard players set @s online 0`);
                     player.runCommand(`event entity @s uac:ban_main`);
@@ -422,6 +291,9 @@ world.events.playerJoin.subscribe((data) => {
         });
     }
     OnPlayerLoad(() => {
+        if(player.scoreTest('seen_gui') == 0) {
+            waitMove.set(player, [x, y, z]);
+        }
         overworld.runCommand(`scoreboard players set "${name}" online 1`);
         overworld.runCommand(`execute "${name}" ~~~ function UAC/packages/playerjoined`);
         if(scoreTest('mrunban', 'unban') == 0) {

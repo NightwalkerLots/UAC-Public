@@ -46,11 +46,13 @@ scoreboard players operation @a WBM = wbmtoggledummy WBM
 scoreboard players operation @a wbmtoggle = wbmtoggledummy wbmtoggle
 scoreboard players operation @a armtoggle = armtoggledummy armtoggle
 scoreboard players operation @a afkm = afkdummy afkm
+scoreboard players operation @a opstoggle = opsdummy opstoggle
 scoreboard players operation @a clmtoggle = clmdummy clmtoggle
 scoreboard players operation @a illench = illenchdummy illench
 scoreboard players operation @a chatrank = crdummy chatrank
 scoreboard players operation @a arm_gt_toggle = armdummy arm_gt_toggle
 scoreboard players operation @a acstoggle = acsdummy acstoggle
+scoreboard players operation @a ajmtoggle = ajmdummy ajmtoggle
 scoreboard players operation @a testin = testindummy testin
 
 #Syncs the method used for Anti-Reach
@@ -82,6 +84,10 @@ scoreboard players operation @a pvp = pvpdummy pvp
 scoreboard players set @s in_nether 0
 scoreboard players set @s in_end 0
 scoreboard players set @s riding 0
+scoreboard players set @s[m=survival] gamemode 0
+scoreboard players set @s[m=creative] gamemode 1
+scoreboard players set @s[m=adventure] gamemode 2
+scoreboard players set @s[m=spectator] gamemode 3
 
 
 #This hides this from the in-game function command directory

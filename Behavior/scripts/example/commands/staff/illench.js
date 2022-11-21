@@ -14,7 +14,7 @@ const registerInformation = {
     ]
 };
 
-let sbtoggle = scoreboard.objective.for('EBMT').dummies
+let sbtoggle = scoreboard.objective.for('illench').dummies
 sbtoggle.useCache(false)
 
 /** @type {number} */

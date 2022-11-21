@@ -32,6 +32,7 @@
 			"is_jumping",
 			"is_levitating",
 			"is_on_ground",
+			"swim",
 			"is_gliding",
 			"timer",
 			"player_facing",
@@ -64,6 +65,7 @@
 		  "is_levitating": "controller.animation.is_levitating",
 		  "is_on_ground": "controller.animation.is_on_ground",
 		  "is_gliding": "controller.animation.is_gliding",
+		  "swim": "controller.animation.swim",
 		  "timer": "controller.animation.timer",
       		"player_facing": "controller.animation.player_facing"
 		}
@@ -198,8 +200,8 @@
 					"value":"PermBan"
 				  }
 				]
-			  },
-			  "event":"uac:ban_main"
+			  }//,
+			  //"event":"uac:ban_main"
         },
       //sleeping test
       {
@@ -207,12 +209,38 @@
           { "test": "is_sleeping", "value": true }
         ],
         "event": "minecraft:player_sleep"
-      },
+	  },
       {
         "filters": [
           { "test": "is_sleeping", "value": false }
         ],
         "event": "minecraft:player_awake"
+	  },
+	  //water contact
+      {
+        "filters": [
+          { "test": "in_contact_with_water", "value": true }
+        ],
+        "event": "minecraft:water_contact_true"
+	  },
+      {
+        "filters": [
+          { "test": "in_contact_with_water", "value": false }
+        ],
+        "event": "minecraft:water_contact_false"
+	  },
+	  //in-water bool
+      {
+        "filters": [
+          { "test": "in_water", "value": true }
+        ],
+        "event": "minecraft:in_water_true"
+	  },
+      {
+        "filters": [
+          { "test": "in_water", "value": false }
+        ],
+        "event": "minecraft:in_water_false"
       },
 			// detect for player dimension
 			{
@@ -2172,6 +2200,38 @@
 			]
 		}
 	},
+	"minecraft:water_contact_false":{
+		"run_command": {
+		  "target": "self",
+		  "command": [
+			"scoreboard players set @s water_contact 0"
+		  ]
+	  }
+  },
+  "minecraft:water_contact_true":{
+		"run_command": {
+		  "target": "self",
+		  "command": [
+			"scoreboard players set @s water_contact 1"
+		  ]
+	  }
+  },
+  "minecraft:in_water_false":{
+	"run_command": {
+	  "target": "self",
+	  "command": [
+		"scoreboard players set @s in_water 0"
+	  ]
+  }
+},
+"minecraft:in_water_true":{
+	"run_command": {
+	  "target": "self",
+	  "command": [
+		"scoreboard players set @s in_water 1"
+	  ]
+  }
+},
 	"uac:trident_true":{
 		"run_command": {
 		  "target": "self",
@@ -2238,13 +2298,13 @@
 			]
 		  }
 		}, 
-		"uac:ban_main": {
+		"uac:ban_main": { /*
 		  "run_command": {
 			"target": "self",
 			"command": [
 			  "execute @s ~~~ function UAC/asset/ban_disconnect_message"
 			]
-		  },
+		  }, */
 		  "add": {
 			"component_groups": [
 			  "uac:ban"

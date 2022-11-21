@@ -5,6 +5,7 @@ import scoreboard from "../../../library/scoreboard.js"
 import { tellrawStaff } from '../../../library/utils/prototype.js';
 const { for: obj } = scoreboard.objective
 
+
 const moduleRequires = ['has_xx', 'has_gt']
 const moduleDefs = [
     {
@@ -64,6 +65,13 @@ const moduleDefs = [
         require: ''
     },
     {
+        mname: 'Anti-Jesus',
+        obj: ['ajmtoggle'],
+        name: 'ajmdummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
+    },
+    {
         mname: 'Bottom Bedrock',
         obj: ['BBM', 'bbmtoggle'],
         name: 'bbmtoggledummy',
@@ -120,9 +128,16 @@ const moduleDefs = [
         require: ''
     },
     {
-        mname: 'Player Command',
+        mname: 'Player Commands',
         obj: ['ICM', 'icmtoggle'],
         name: 'icmtoggledummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
+    },
+    {
+        mname: 'One Player Sleep',
+        obj: ['opstoggle', 'opstoggle'],
+        name: 'opsdummy',
         toggle: ['§cOFF', '§aON'],
         require: 'has_gt'
     },
@@ -257,6 +272,35 @@ const guiScheme = {
         })
     })(),
 
+    player_welcome: ((plr) => { // UI for non-staff players
+        /** @type { [name: string, fn: (plr: Player) => void][] } */
+        const v = new ActionFormData()
+            .title(`Welcome`)
+
+        let text = [];
+
+        text.push(`§l§bWelcome!`)
+        text.push(`§l§bProtected by §cUAC \n§bby §dNightwalkerLots`)
+        text.push(`§l`) //space
+        text.push(`§6UAC.help §bfor player commands`)
+        text.push(`§6UAC.gui §bfor ease of access`)
+        text.push(`§l`) //space
+        text.push(`§bJoin the UAC discord for updates`)
+        text.push(`§6https://discord.gg/HzymT3kWSQ`)
+        v.body(text.join('\n§r'))
+        const welcome = [
+            [ 'Accept'          , plr => guiScheme.pcmd.welcome_accept(plr) ]
+        ]
+        
+
+        for (let [name, f] of welcome) v.button(name)
+        
+        return (plr) => void v.show(plr).then(v => {
+            if (v.isCanceled) return
+            welcome[v.selection][1](plr)
+        })
+    })(),
+
     pcmd: {
         display: (plr) => {
             if (plr.scoreTest('hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
@@ -282,6 +326,9 @@ const guiScheme = {
 
         lastdeath: (plr) => {
             plr.runCommand('function UAC/asset/deathcoords_asset')
+        },
+        welcome_accept: (plr) => {
+            plr.runCommand('scoreboard players set @s seen_gui 1')
         },
         spawntp: (plr) => {
             let name = plr.getName();
@@ -384,6 +431,7 @@ const guiScheme = {
             plr.runCommand(`scoreboard players random @s tpa 1 999999`);
             plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
             plr.runCommand('tag @s add tpatemp');
+            if(target.hasTag(`tpatemp`)) target.runCommand(`tag @s remove tpatemp`);
             plr.runCommand(`scoreboard players operation "${target.getName()}" tpa = "${name}" tpa`);
             target.tellraw(`§¶§cUAC ► §d${name} §bhas sent you a TPA Request. Use §6UAC.tpa accept §bto accept the request`);
             plr.tellraw(`§¶§cUAC ► §d${target.getName()} §bwas sent a TPA Request`);
@@ -907,7 +955,7 @@ const waitMove = new Map()
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg, {location: {x, y, z}} = sender
     if(sender.scoreTest('icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-    //if (!sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
+
     sender.tellraw(`§aMove to show the UI.`)
     waitMove.set(chatmsg.sender, [x, y, z])
 })
@@ -917,6 +965,11 @@ world.events.tick.subscribe(() => {
         try {
             let { x: xc, y: yc, z: zc } = plr.location
             if (x != xc || y != yc || z != zc) {
+                if(plr.scoreTest('seen_gui') == 0) {
+                    guiScheme.player_welcome(plr)
+                    waitMove.delete(plr)
+                    return;
+                }
                 if(plr.hasTag('staffstatus')) {
                     guiScheme.main(plr)
                     waitMove.delete(plr)
@@ -930,3 +983,5 @@ world.events.tick.subscribe(() => {
         }
     }
 })
+
+export { waitMove }
