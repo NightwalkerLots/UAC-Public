@@ -26,7 +26,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             if(!args[0]) {return sender.tellraw(`§¶§c§lUAC ► §cPlayer Name not specified`)}
             let input = args[0].replace('@', '').replace(/"/g, '')
             let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
-            if(!playerfound) {return sender.tellraw(`§¶§cUAC ► §c§lError 7: No player by that name. §cUsage : §6UAC.ban @player [reason]`);}
+            if(!playerfound) {return sender.tellraw(`§¶§cUAC ► §c§lError 7: No player by that name. §cUsage : §6UAC.ban @player [reason]\n§bIf they have spaces in their name, instead use\n§6/scoreboard players [ playername ] set Ban 1`);}
             
             //if (playername == name) {return sender.tellraw(`§¶§c§lUAC ► §c§lCan't ban yourself`); }
             if(args[1]) {
@@ -40,7 +40,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 tellrawServer(`§¶§c§lUAC ► §d${name} §bbanned §d${playername} §bREASON : §c${reason}`);
                 sender.runCommand(`tag ${playername} add reason${args.join('_').replace(`${playername}`, '').replace('@', '').replace(args[0], '')}`);
                 sender.runCommand(`scoreboard players set ${playername} Ban 1`);
-                //sender.runCommand(`tag ${playername} add Ban`);
+                sender.runCommand(`tag ${playername} add Ban`);
             }
 
             
