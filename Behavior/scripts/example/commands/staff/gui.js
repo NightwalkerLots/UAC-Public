@@ -51,6 +51,13 @@ const moduleDefs = [
         require: 'has_xx'
     },
     {
+        mname: 'Anti-Lore',
+        obj: ['almtoggle', 'almtoggle'],
+        name: 'almdummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
+    },
+    {
         mname: 'Anti-OP Abuse',
         obj: ['OPAM', 'opamtoggle'],
         name: 'opamtoggledummy',

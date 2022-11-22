@@ -53,6 +53,7 @@ scoreboard players operation @a chatrank = crdummy chatrank
 scoreboard players operation @a arm_gt_toggle = armdummy arm_gt_toggle
 scoreboard players operation @a acstoggle = acsdummy acstoggle
 scoreboard players operation @a ajmtoggle = ajmdummy ajmtoggle
+scoreboard players operation @a almtoggle = almdummy almtoggle
 scoreboard players operation @a testin = testindummy testin
 
 #Syncs the method used for Anti-Reach
