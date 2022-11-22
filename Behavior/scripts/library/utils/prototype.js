@@ -107,6 +107,14 @@ export function tellraw (message) {
     catch {return}
 }
 
+export function hotbar (player, message) {
+    try {
+        return overworld.runCommand(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+    }
+    catch {return}
+}
+
+
 export function scoreTest (objective) {
     try {
         const score = parseInt(this.runCommand(`scoreboard players test @s ${objective} *`).statusMessage.match(/-?\d+/));

@@ -12,7 +12,6 @@ execute @a[scores={has_gt=0}] ~~~ function UAC/packages/bans
 function UAC/modules/permban
 function UAC/modules/ownerstatus
 function UAC/asset/toggle_sync
-function UAC/modules/hotbarmessage
 function UAC/modules/randomspawn
 
 execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
