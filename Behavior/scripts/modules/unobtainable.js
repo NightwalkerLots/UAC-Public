@@ -1,75 +1,8 @@
-import { scoreTest, tellraw } from 'library/utils/prototype.js';
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+import { scoreTest, tellraw, tellrawStaff } from 'library/utils/prototype.js';
+import maxItemStack, { defaultMaxItemStack } from 'library/utils/maxstack.js';
+import { world, ItemStack, MinecraftItemTypes, Items, MinecraftEnchantmentTypes, Enchantment, Player, EntityInventoryComponent, ItemEnchantsComponent } from '@minecraft/server';
 
-const spawneggs = [
-    'minecraft:npc_spawn_egg',
-    'minecraft:glow_squid_spawn_egg',
-    'minecraft:axolotl_spawn_egg',
-    'minecraft:goat_spawn_egg',
-    'minecraft:strider_spawn_egg',
-    'minecraft:bee_spawn_egg',
-    'minecraft:fox_spawn_egg',
-    'minecraft:wandering_trader_spawn_egg',
-    'minecraft:panda_spawn_egg',
-    'minecraft:cod_spawn_egg',
-    'minecraft:tropical_fish_spawn_egg',
-    'minecraft:salmon_spawn_egg',
-    'minecraft:pufferfish_spawn_egg',
-    'minecraft:cat_spawn_egg',
-    'minecraft:turtle_spawn_egg',
-    'minecraft:parrot_spawn_egg',
-    'minecraft:dolphin_spawn_egg',
-    'minecraft:llama_spawn_egg',
-    'minecraft:polar_bear_spawn_egg',
-    'minecraft:zombie_horse_spawn_egg',
-    'minecraft:skeleton_horse_spawn_egg',
-    'minecraft:mule_spawn_egg',
-    'minecraft:donkey_spawn_egg',
-    'minecraft:horse_spawn_egg',
-    'minecraft:ocelot_spawn_egg',
-    'minecraft:bat_spawn_egg',
-    'minecraft:rabbit_spawn_egg',
-    'minecraft:squid_spawn_egg',
-    'minecraft:mooshroom_spawn_egg',
-    'minecraft:villager_spawn_egg',
-    'minecraft:wolf_spawn_egg',
-    'minecraft:sheep_spawn_egg',
-    'minecraft:pig_spawn_egg',
-    'minecraft:cow_spawn_egg',
-    'minecraft:chicken_spawn_egg',
-    'minecraft:piglin_brute_spawn_egg',
-    'minecraft:zoglin_spawn_egg',
-    'minecraft:hoglin_spawn_egg',
-    'minecraft:piglin_spawn_egg',
-    'minecraft:drowned_spawn_egg',
-    'minecraft:vex_spawn_egg',
-    'minecraft:evoker_spawn_egg',
-    'minecraft:ravager_spawn_egg',
-    'minecraft:phantom_spawn_egg',
-    'minecraft:vindicator_spawn_egg',
-    'minecraft:endermite_spawn_egg',
-    'minecraft:shulker_spawn_egg',
-    'minecraft:elder_guardian_spawn_egg',
-    'minecraft:guardian_spawn_egg',
-    'minecraft:wither_skeleton_spawn_egg',
-    'minecraft:husk_spawn_egg',
-    'minecraft:stray_spawn_egg',
-    'minecraft:witch_spawn_egg',
-    'minecraft:zombie_villager_spawn_egg',
-    'minecraft:blaze_spawn_egg',
-    'minecraft:magma_cube_spawn_egg',
-    'minecraft:ghast_spawn_egg',
-    'minecraft:cave_spider_spawn_egg',
-    'minecraft:silverfish_spawn_egg',
-    'minecraft:enderman_spawn_egg',
-    'minecraft:slime_spawn_egg',
-    'minecraft:spider_spawn_egg',
-    'minecraft:zombie_pigman_spawn_egg',
-    'minecraft:skeleton_spawn_egg',
-    'minecraft:creeper_spawn_egg',
-    'minecraft:zombie_spawn_egg'
-];
+const overworld = world.getDimension('overworld');
 
 const unobtainables = {
     'minecraft:flowing_lava': 0,
@@ -120,20 +53,46 @@ const unobtainables = {
 
 function unobtainable() {
     const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
+    const lore_bool = scoreTest('almdummy', 'almtoggle');
     if(uoimbool === 0) return;
 
     let players = world.getPlayers();
     for (let player of players) {   
         const name = player.getName();
+        //if(player.hasTag(`staffstatus`)) { continue }
         let playerInventory = player.getComponent("minecraft:inventory").container;
+        
         let itemArray = [];
         let itemname = undefined;
         for (let i = 0; i < playerInventory.size; i++) {
             const item = playerInventory.getItem(i);
             if (!item) { continue; }
-            if(player.hasTag(`staffstatus`)) { return }
-            if(item.id in unobtainables || spawneggs.includes(item.id)) {
-                itemname = item.id.replace('minecraft:', '');
+            const maxStack = maxItemStack[item.id] ?? defaultMaxItemStack;
+            let loreData = String(item.getLore());
+            itemname = item.id.replace('minecraft:', '');
+            let displayname = item.nameTag;
+            
+            //flag illegal stack of items
+            if (item.amount < 0 || item.amount > maxStack) {
+                tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
+                playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+            }
+            
+            //flag items with lore data
+            if(loreData.length && lore_bool) {
+                if(loreData == '(+DATA)') continue;
+                tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad modified lore on §c${itemname} \n§6§lLore§7: §c§l' ${loreData} '\n§6§lDisplay Name§7: §c§l' ${displayname} '`);
+                playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+            }
+
+            //flag element items
+            if(item.id.includes(`element`)) {
+                tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
+                playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+            }
+
+            //flag illegal items
+            if(item.id in unobtainables || item.id.includes(`_egg`)) {
                 itemArray.unshift(item.id);
                 playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
             }
@@ -144,6 +103,7 @@ function unobtainable() {
                 player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
                 
             }
+            loreData = [];
         }
     }
 }

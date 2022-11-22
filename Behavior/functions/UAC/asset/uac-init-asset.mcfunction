@@ -170,11 +170,6 @@ scoreboard objectives add X_Coord_D dummy
 scoreboard objectives add Y_Coord_D dummy
 scoreboard objectives add Z_Coord_D dummy
 
-#Last command used system
-scoreboard objectives add lstcmd dummy lstcmd
-#Default value for last command system
-scoreboard players set @s lstcmd 0
-
 #Freeze Player
 scoreboard objectives add fzplr dummy fzplr
 #Freeze Player default value
@@ -273,19 +268,14 @@ scoreboard objectives add SSDEBUG dummy SSDEBUG
 scoreboard objectives add afmtoggle dummy afmtoggle
 scoreboard objectives add acmtoggle dummy acmtoggle
 scoreboard objectives add bbmtoggle dummy bbmtoggle
-scoreboard objectives add semtoggle dummy semtoggle
-scoreboard objectives add elpmtoggle dummy elpmtoggle
 scoreboard objectives add hmmtoggle dummy hmmtoggle
 scoreboard objectives add icmtoggle dummy icmtoggle
-scoreboard objectives add kpvpmtoggle dummy kpvpmtoggle
 scoreboard objectives add ltmtoggle dummy ltmtoggle
 scoreboard objectives add nemtoggle dummy nemtoggle
 scoreboard objectives add opamtoggle dummy opamtoggle
 scoreboard objectives add rsmtoggle dummy rsmtoggle
-scoreboard objectives add rtmtoggle dummy rtmtoggle
 scoreboard objectives add ssmtoggle dummy ssmtoggle
 scoreboard objectives add tpmtoggle dummy tpmtoggle
-scoreboard objectives add vipmtoggle dummy vipmtoggle
 scoreboard objectives add wbmtoggle dummy wbmtoggle
 scoreboard objectives add uoimtoggle dummy uoimtoggle
 scoreboard objectives add ibmtoggle dummy ibmtoggle
@@ -295,6 +285,7 @@ scoreboard objectives add chatrank dummy
 scoreboard objectives add acstoggle dummy 
 scoreboard objectives add opstoggle dummy 
 scoreboard objectives add ajmtoggle dummy 
+scoreboard objectives add almtoggle dummy 
 
 #Item Ban dummy Toggles
 scoreboard objectives add BNA dummy BNA
@@ -321,27 +312,19 @@ scoreboard objectives add GFS98 dummy 23LHNK
 scoreboard objectives add D98AD dummy 9DAU32
 scoreboard objectives add I2IO2NO dummy 7D798D8
 
-#Current Worldspawn debug
-scoreboard objectives add x-axis dummy x-axis
-scoreboard objectives add z-axis dummy y-axis
-
 #Default Toggles
 scoreboard players set @s SSDEBUG 0
 scoreboard players set @s acmtoggle 0
+scoreboard players set @s almtoggle 0
 scoreboard players set @s bbmtoggle 0
-scoreboard players set @s semtoggle 0
-scoreboard players set @s elpmtoggle 0
 scoreboard players set @s hmmtoggle 0
 scoreboard players set @s icmtoggle 0
-scoreboard players set @s kpvpmtoggle 0
 scoreboard players set @s ltmtoggle 0
 scoreboard players set @s nemtoggle 0
 scoreboard players set @s opamtoggle 0
 scoreboard players set @s rsmtoggle 0
-scoreboard players set @s rtmtoggle 0
 scoreboard players set @s ssmtoggle 0
 scoreboard players set @s tpmtoggle 0
-scoreboard players set @s vipmtoggle 0
 scoreboard players set @s wbmtoggle 0
 scoreboard players set @s uoimtoggle 0
 scoreboard players set @s ibmtoggle 0
@@ -412,7 +395,6 @@ scoreboard objectives add ontick dummy
 scoreboard objectives add notmovingflag dummy
 scoreboard objectives add cbe_location dummy
 scoreboard players set @s tp_cooldown 0 
-scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s seen_gui 0
 scoreboard players set @s suicide 0
