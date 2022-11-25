@@ -14,7 +14,7 @@ function scoreTest(name, objective) {
 function lagclear() {
     const entitycount = scoreTest('entitydummy', 'entitycount');
     const entitycountdown = scoreTest('entitydummy', 'entityclear');
-    if(entitycount >= 110) {
+    if(entitycount >= 135) {
         if(entitycountdown == 0) {
             overworld.runCommand(`scoreboard players set entitydummy entityclear 400`);
         }
