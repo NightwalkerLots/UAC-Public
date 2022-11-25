@@ -22,7 +22,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let gamemode = getGamemode(sender);
         
         if (sender.hasTag('staffstatus')) {
-            sender.runCommand(`function UAC/vanish`);
+            sender.runCommand(`function UAC/asset/vanish_asset`);
             switch (args[0]) {
                 case undefined:
                     return sender.tellraw(`§¶§c§lUAC ► §bYou've kept your current gamemode of §6${gamemode}`);

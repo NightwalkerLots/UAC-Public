@@ -12,11 +12,13 @@ import { lagclear } from '../modules/lagclear.js';
 import { movement_check } from '../modules/movement.js';
 import { waitMove } from './commands/staff/gui.js';
 import { hotbar_message } from '../modules/hotbar_message.js';
+import { op_abuse } from '../modules/opabuse.js';
 
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, EntityEventOptions, system } from "@minecraft/server";
 import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
 import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+
 
 
 
@@ -77,6 +79,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
         let opsbool = scoreTest('opsdummy', 'opstoggle');
         let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
+        let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
 
         overworld.runCommand(`scoreboard players add tpsdummy ontick 1`);
         
@@ -129,6 +132,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                     playerbans(player);
                 }
                 hotbar_message(player);
+                if(opabuse_bool) { op_abuse(player) }
                 player.runCommand('scoreboard players operation @s lastpos_x = @s X_Coordinate');
                 player.runCommand('scoreboard players operation @s lastpos_z = @s Z_Coordinate');
                 

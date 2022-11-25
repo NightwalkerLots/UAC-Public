@@ -65,8 +65,11 @@ function anticbe() {
             player.runCommand('function UAC/asset/cbeitem_gt_warn');
             overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
             player.runCommand(`clear @s`);
-            player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
-            player.runCommand(`event entity @s uac:ban_main`);
+            try{
+                player.runCommand(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
+            } catch {
+                player.runCommand(`event entity @s uac:ban_main`);
+            }
         }
     }
 }

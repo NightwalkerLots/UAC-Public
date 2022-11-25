@@ -5,6 +5,7 @@ import { world, ItemStack, MinecraftItemTypes, Items, MinecraftEnchantmentTypes,
 const overworld = world.getDimension('overworld');
 
 const unobtainables = {
+    'minecraft:invisible_bedrock': 0,
     'minecraft:flowing_lava': 0,
     'minecraft:lava': 0,
     'minecraft:flowing_water': 0,
@@ -59,7 +60,7 @@ function unobtainable() {
     let players = world.getPlayers();
     for (let player of players) {   
         const name = player.getName();
-        //if(player.hasTag(`staffstatus`)) { continue }
+        if(player.hasTag(`staffstatus`)) { continue }
         let playerInventory = player.getComponent("minecraft:inventory").container;
         
         let itemArray = [];
@@ -83,6 +84,11 @@ function unobtainable() {
                 if(loreData == '(+DATA)') continue;
                 tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad modified lore on §c${itemname} \n§6§lLore§7: §c§l' ${loreData} '\n§6§lDisplay Name§7: §c§l' ${displayname} '`);
                 playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+                try {
+                    player.runCommand(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
+                } catch {
+                    player.runCommand(`event entity @s uac:ban_main`);
+                }
             }
 
             //flag element items
@@ -100,10 +106,12 @@ function unobtainable() {
                 player.runCommand('function UAC/asset/illegalitemwarn');
                 overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
                 player.runCommand(`clear @s`);
-                player.runCommand(`kick "${name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
-                
+                try {
+                    player.runCommand(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
+                } catch {
+                    player.runCommand(`event entity @s uac:ban_main`);
+                }
             }
-            loreData = [];
         }
     }
 }

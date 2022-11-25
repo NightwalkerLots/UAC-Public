@@ -47,7 +47,7 @@ execute @s[scores={ssmtoggle=1}] ~~~ function UAC/modules/staffstatus
 #
 # =Prevent OP abuse =
 # Can't do damange when in creative mode
-execute @s[tag=staffstatus,scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
+execute @s[tag=staffstatus,scores={opamtoggle=1,has_gt=0}] ~~~ function UAC/modules/opabuse
 #
 # =No Echests=
 # Disables echests for nonstaff

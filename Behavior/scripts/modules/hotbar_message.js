@@ -40,7 +40,6 @@ function hotbar_message(player) {
             if(gamemode == 'creative') player.runCommand(`function UAC/asset/hotbar_creative`);
             if(gamemode == 'spectator') return hotbar(player, `§¶§d      SPECTATOR MODE \n §¶§bPlayers§7: §c${playercount} §7|| §bEntities§7: §c${entitycount}`);
         }
-        
     }
 
     if(gamemode == 'survival') {

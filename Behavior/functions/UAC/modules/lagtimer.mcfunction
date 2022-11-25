@@ -2,7 +2,6 @@
 scoreboard players add @s lagtimer 1
 execute @s[scores={chatspam=1..}] ~~~ scoreboard players remove @s chatspam 1
 execute @s[scores={lagtimer=40..}] ~~~ function UAC/packages/autolagclear
-execute @s[scores={opamtoggle=1}] ~~~ function UAC/modules/opabuse
 execute @s[scores={in_combat=1,clmtoggle=1..2}] ~~~ function UAC/packages/combatlogger
 tag @s[scores={notmovingflag=0..2}] add is_moving 
 tag @s[scores={notmovingflag=2..}] remove is_moving
