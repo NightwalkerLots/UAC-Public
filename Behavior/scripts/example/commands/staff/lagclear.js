@@ -18,6 +18,6 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         tellrawStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
     }
     else {
-        sender.runCommand( `function UAC/lagclear` );
+        sender.runCommandAsync( `function UAC/lagclear` );
     }
 });

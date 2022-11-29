@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, content } from '../../../library/utils/prototype.js';
+import { tellrawStaff, content, scoreTest } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'home',
@@ -33,13 +33,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let setOptions = ['set', 'add'];
         let removeOptions = ['remove', 'unadd'];
         let warpOptions = ['warp', 'tp'];
-        if (sender.scoreTest('icmtoggle') === 0) {
+
+        if (scoreTest(sender.nameTag, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if (sender.scoreTest('in_combat') === 1) {
+        } else if (scoreTest(sender.nameTag, 'in_combat') === 1) {
             return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile in combat`);
-        } else if (sender.scoreTest('tp_cooldown') != 0) {
+        } else if (scoreTest(sender.nameTag, 'tp_cooldown') != 0) {
             return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
-        } else if (sender.scoreTest('icmtoggle') === 1) {
+        } else if (scoreTest(sender.nameTag, 'icmtoggle') === 1) {
 
             if (!args.length || listOptions.includes(args[0])) {
                 const allHomes = data.match(findHomeNames);
@@ -53,7 +54,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 if (data.match(homeRegex))
                     return sender.tellraw('§¶§cUAC ► §cYou already have a home set with that name!');
                 sender.addTag(`$(Home{Home-Name: ${homeName}, X: ${Math.trunc(sender.location.x)}, Y: ${Math.trunc(sender.location.y)}, Z: ${Math.trunc(sender.location.z)}})`);
-                sender.runCommand(`playsound note.pling @s ~ ~ ~`);
+                sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bhas set their §e${homeName} §blocation`);
                 return sender.tellraw(`§¶§cUAC ► §bYou have set a home with the name §a${homeName} §bat§r: §a${Math.trunc(sender.location.x)}§r, §a${Math.trunc(sender.location.y)}§r, §a${Math.trunc(sender.location.z)}`);
             }
@@ -72,9 +73,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     return sender.tellraw('§¶§cUAC ► §cPlease type a home name to warp to!');
                 if (!data.match(homeRegex))
                     return sender.tellraw("§¶§cUAC ► §cYou don't have a home with that name!");
-                sender.runCommand(`tp @s ${findXYZ[0]} ${findXYZ[1]} ${findXYZ[2]}`);
-                sender.runCommand(`scoreboard players set @s tp_cooldown 900`);
-                sender.runCommand(`function particle/nether_poof`);
+                sender.runCommandAsync(`tp @s ${findXYZ[0]} ${findXYZ[1]} ${findXYZ[2]}`);
+                sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
+                sender.runCommandAsync(`function particle/nether_poof`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to their §e${homeName} §blocation`);
                 return sender.tellraw(`§¶§cUAC ► §bYou have been teleported to §a${args[1]} §bat §a${findXYZ[0]}§r, §a${findXYZ[1]}§r, §a${findXYZ[2]}`);
             }

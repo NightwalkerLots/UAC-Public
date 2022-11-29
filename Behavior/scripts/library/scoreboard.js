@@ -15,7 +15,7 @@ class CommandError extends Error {
 
 const execCmd = (command, source = 'overworld') => {
     try {
-        return (typeof source == 'string' ? world.getDimension(source) : source).runCommand(command);
+        return (typeof source == 'string' ? world.getDimension(source) : source).runCommandAsync(command);
     }
     catch (e) {
         if (e instanceof Error)

@@ -49,7 +49,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     }
 });
 /** @type { (d: Dimension, v: string) => void } */
-const rc = (d, v) => { try { d.runCommand(v) } catch {} }
+const rc = (d, v) => { try { d.runCommandAsync(v) } catch {} }
 const { floor } = Math
 /** @type { (v: [number, number, number] | Location | BlockLocation) => [number, number, number] } */
 const posify = (v) => Array.isArray(v) ? v : [floor(v.x), floor(v.y), floor(v.z)];

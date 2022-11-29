@@ -35,9 +35,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         if(playerfound) {
             if(args[0] == 'remove') {
                 try {
-                    sender.runCommand(`scoreboard players set "${playername}" chatspam 0`);
-                    sender.runCommand(`tag "${playername}" remove muted`);
-                    sender.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bwas unmuted §bby §d${name}"}]}`);
+                    sender.runCommandAsync(`scoreboard players set "${playername}" chatspam 0`);
+                    sender.runCommandAsync(`tag "${playername}" remove muted`);
+                    sender.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bwas unmuted §bby §d${name}"}]}`);
                     return;
                 }
                 catch {
@@ -45,12 +45,12 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
             }
             try {
-                sender.runCommand(`execute "${playername}" ~~~ execute @s[tag=staffstatus] ~~~ tellraw "${name}" {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bis staff and can't be muted"}]}`);
+                sender.runCommandAsync(`execute "${playername}" ~~~ execute @s[tag=staffstatus] ~~~ tellraw "${name}" {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bis staff and can't be muted"}]}`);
                 return;
             } catch {
-                sender.runCommand(`execute "${playername}" ~~~ execute @s[tag=!staffstatus] ~~~ tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bwas muted for §c${args[0]} §bminutes by §d${name}"}]}`);
-                sender.runCommand(`execute "${playername}" ~~~ scoreboard players add @s[tag=!staffstatus] chatspam ${muteamount}`);
-                sender.runCommand(`execute "${playername}" ~~~ tag @s[tag=!staffstatus] add muted`);
+                sender.runCommandAsync(`execute "${playername}" ~~~ execute @s[tag=!staffstatus] ~~~ tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bwas muted for §c${args[0]} §bminutes by §d${name}"}]}`);
+                sender.runCommandAsync(`execute "${playername}" ~~~ scoreboard players add @s[tag=!staffstatus] chatspam ${muteamount}`);
+                sender.runCommandAsync(`execute "${playername}" ~~~ tag @s[tag=!staffstatus] add muted`);
             }
             
         }

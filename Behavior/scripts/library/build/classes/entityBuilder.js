@@ -49,7 +49,7 @@ export class EntityBuilder {
      * @example EntityBuilder.getTags('[type=villager,name="Bob"]');
      */
     getTags(target) {
-        const data = Server.runCommand(`tag @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} list`);
+        const data = Server.runCommandAsync(`tag @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} list`);
         if (data.error)
             return;
         let tags = data.statusMessage.match(/(?<=: ).*$/);
@@ -67,7 +67,7 @@ export class EntityBuilder {
      * @example EntityBuilder.getScore('Money', '[type=villager,name="Bob"]', { minimum: 0 });
      */
     getScore(objective, target, { minimum, maximum } = {}) {
-        const data = Server.runCommand(`scoreboard players test @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} ${objective} ${minimum ? minimum : '*'} ${maximum ? maximum : '*'}`);
+        const data = Server.runCommandAsync(`scoreboard players test @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} ${objective} ${minimum ? minimum : '*'} ${maximum ? maximum : '*'}`);
         if (data.error)
             return;
         return parseInt(data.statusMessage.match(/-?\d+/)[0]);

@@ -30,10 +30,10 @@ Server.command.register(registerInformation, (data, args) => {
         //sender.tellraw(`§bCustom Command prefix§f: §a${Server.command.prefix}\n§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bCustom Command List: §l§c${cmdList.join(', ')}`);
         if (!args[0]) {
             if (sender.hasTag('staffstatus')) { 
-                if(!sender.hasTag('helptemp')) {} else {sender.runCommand(`tag @s add helptemp`);}
-                sender.runCommand(`function UAC/help/all-commands`);
+                if(!sender.hasTag('helptemp')) {} else {sender.runCommandAsync(`tag @s add helptemp`);}
+                sender.runCommandAsync(`function UAC/help/all-commands`);
                 sender.tellraw(`§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd} §r\n§bStaff Command List: §l§c${stfcmd}§r\n§bStaff Commands for Player Management: §l§c${sftmng}`);
-                sender.runCommand(`tag @s remove helptemp`);
+                sender.runCommandAsync(`tag @s remove helptemp`);
             } else {
                 return sender.tellraw(`§bType §a${Server.command.prefix}help §f[command name] §bfor more information on that command!\n§bPlayer Command List: §l§c${plrcmd}`);
             }

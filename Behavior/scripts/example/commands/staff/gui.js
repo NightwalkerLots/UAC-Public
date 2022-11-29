@@ -2,7 +2,7 @@ import { Player, world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
 import scoreboard from "../../../library/scoreboard.js"
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
 const { for: obj } = scoreboard.objective
 
 
@@ -226,9 +226,9 @@ const setModule = (plr, module, newValue) => {
 
 /** @type { (plr: Player) => 's' | 'c' | 'a' | 'sp' | 'hc' } */
 const getGamemode = (plr) => {
-    try { plr.runCommand('testfor @s[m=c]'); return 'c' } catch {}
-    try { plr.runCommand('testfor @s[m=s]'); return 's' } catch {}
-    try { plr.runCommand('testfor @s[m=a]'); return 'a' } catch {}
+    try { plr.runCommandAsync('testfor @s[m=c]'); return 'c' } catch {}
+    try { plr.runCommandAsync('testfor @s[m=s]'); return 's' } catch {}
+    try { plr.runCommandAsync('testfor @s[m=a]'); return 'a' } catch {}
     return null
 }
 
@@ -307,15 +307,15 @@ const guiScheme = {
             welcome[v.selection][1](plr)
         })
     })(),
-
+    
     pcmd: {
         display: (plr) => {
-            if (plr.scoreTest('hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
+            if (scoreTest(plr.name, 'hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
             
             const actionList = [
-                [ 'Personal Stats'  , () => plr.runCommand('scoreboard players set @s hometp 1337') ],
-                [ 'Server Stats'    , () => plr.runCommand('scoreboard players set @s hometp 420') ],
-                [ 'Off'             , () => plr.runCommand('scoreboard players set @s hometp 3') ],
+                [ 'Personal Stats'  , () => plr.runCommandAsync('scoreboard players set @s hometp 1337') ],
+                [ 'Server Stats'    , () => plr.runCommandAsync('scoreboard players set @s hometp 420') ],
+                [ 'Off'             , () => plr.runCommandAsync('scoreboard players set @s hometp 3') ],
                 [ 'back'            , () => guiScheme.NonStaff(plr) ]
             ]
 
@@ -332,27 +332,29 @@ const guiScheme = {
         },
 
         lastdeath: (plr) => {
-            plr.runCommand('function UAC/asset/deathcoords_asset')
+            plr.runCommandAsync('function UAC/asset/deathcoords_asset')
         },
         welcome_accept: (plr) => {
-            plr.runCommand('scoreboard players set @s seen_gui 1')
+            plr.runCommandAsync('scoreboard players set @s seen_gui 1')
         },
         spawntp: (plr) => {
             let name = plr.getName();
-            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
-            if (plr.scoreTest('worldcustom') === 1) {
-                plr.runCommand(`tp @s ${plr.scoreTest('Worldx')} ${plr.scoreTest('Worldy')} ${plr.scoreTest('Worldz')}`);
-                plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${plr.scoreTest('Worldx')} ${plr.scoreTest('Worldy')} ${plr.scoreTest('Worldz')}`);
+            
+
+            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr.name, 'worldcustom') === 1) {
+                plr.runCommandAsync(`tp @s ${scoreTest(plr.name, 'Worldx')} ${scoreTest(plr.name, 'Worldy')} ${scoreTest(plr.name, 'Worldz')}`);
+                plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(plr.name, 'Worldx')} ${scoreTest(plr.name, 'Worldy')} ${scoreTest(plr.name, 'Worldz')}`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
-                plr.runCommand(`function particle/nether_poof`);
-                plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
+                plr.runCommandAsync(`function particle/nether_poof`);
+                plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
             }
             else {
-                plr.runCommand(`tp @s 0 100 0`)
-                plr.runCommand(`effect @s slow_falling 35 1 `);
+                plr.runCommandAsync(`tp @s 0 100 0`)
+                plr.runCommandAsync(`effect @s slow_falling 35 1 `);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
-                plr.runCommand(`function particle/nether_poof`);
-                plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
+                plr.runCommandAsync(`function particle/nether_poof`);
+                plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
             }
         },
 
@@ -415,7 +417,7 @@ const guiScheme = {
                 .title(`${target.name.replace(/§./g, '')}'s TPA options`)
 
             let text = []
-            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
             text.push(`§l§bSend a TPA to §d${target.name.replace(/§./g, '')}§b?`)
             v.body(text.join('\n§r'))
             const cmdlist = [
@@ -432,43 +434,43 @@ const guiScheme = {
         },
         tpa_send: (plr, target) => {
             let name = plr.getName();
-            if (plr.scoreTest('tpa') >= 1) return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${plr.scoreTest('tpa')}" \n§bCancel to create a new request.`);
-            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr.name, 'tpa') >= 1) return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(plr.name, 'tpa')}" \n§bCancel to create a new request.`);
+            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
-            plr.runCommand(`scoreboard players random @s tpa 1 999999`);
-            plr.runCommand(`scoreboard players set @s tp_cooldown 900`);
-            plr.runCommand('tag @s add tpatemp');
-            if(target.hasTag(`tpatemp`)) target.runCommand(`tag @s remove tpatemp`);
-            plr.runCommand(`scoreboard players operation "${target.getName()}" tpa = "${name}" tpa`);
+            plr.runCommandAsync(`scoreboard players random @s tpa 1 999999`);
+            plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
+            plr.runCommandAsync('tag @s add tpatemp');
+            if(target.hasTag(`tpatemp`)) target.runCommandAsync(`tag @s remove tpatemp`);
+            plr.runCommandAsync(`scoreboard players operation "${target.getName()}" tpa = "${name}" tpa`);
             target.tellraw(`§¶§cUAC ► §d${name} §bhas sent you a TPA Request. Use §6UAC.tpa accept §bto accept the request`);
             plr.tellraw(`§¶§cUAC ► §d${target.getName()} §bwas sent a TPA Request`);
             tellrawStaff(`§¶§cUAC ► §d${name} §bsent a TPA Request to §d${target.getName()}`);
             
         },
         tpa_cancel: (plr, target) => {
-            plr.runCommand(`execute @a[tag=tpatemp,scores={tpa=${plr.scoreTest('tpa')}}] ~~~ tag @s remove tpatemp`);
-            plr.runCommand(`scoreboard players set @a[scores={tpa=${plr.scoreTest('tpa')}}] tpa 0`);
+            plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ tag @s remove tpatemp`);
+            plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr.name, 'tpa')}}] tpa 0`);
             plr.tellraw(` §¶§cUAC ► §bThe TPA request was closed`);
             tellrawStaff(` §¶§cUAC ► §d${plr.getName()} §bclosed a TPA request `);
         },
         tpa_accept: (plr, target) => {
             let name = plr.getName();
-            if (plr.scoreTest('tpa') === 0) return plr.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);
+            if (scoreTest(plr.name, 'tpa') === 0) return plr.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);
             if (plr.hasTag('tpatemp')) return plr.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);
-            if (plr.scoreTest('tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
             plr.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
             tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
-            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ tp @s "${name}"`);
-            plr.runCommand(`scoreboard players set @s tp_cooldown 900`); 
-            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ tp @s "${name}"`);
+            plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`); 
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
 
-            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
-            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ function particle/nether_poof`);
-            plr.runCommand(`execute @p[name=!"${name}",scores={tpa=${plr.scoreTest('tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ function particle/nether_poof`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
 
-            plr.runCommand(`scoreboard players set @a[scores={tpa=${plr.scoreTest('tpa')}}] tpa 0`);
-            plr.runCommand(`execute @a[tag=tpatemp,scores={tpa=${plr.scoreTest('tpa')}}] ~~~ tag @s remove tpatemp`);
+            plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr.name, 'tpa')}}] tpa 0`);
+            plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ tag @s remove tpatemp`);
         },
 
 
@@ -573,43 +575,44 @@ const guiScheme = {
             let chest_type = undefined;
             let leg_type = undefined;
             let boot_type = undefined;
-            let head_enchanted = target.scoreTest('headen');
-            let chest_enchanted = target.scoreTest('chesten');
-            let leg_enchanted = target.scoreTest('legen');
-            let boot_enchanted = target.scoreTest('feeten');
+            let targ_name = target.name
+            let head_enchanted = scoreTest(targ_name, 'headen');
+            let chest_enchanted = scoreTest(targ_name, 'chesten');
+            let leg_enchanted = scoreTest(targ_name, 'legen');
+            let boot_enchanted = scoreTest(targ_name, 'feeten');
 
-            if(target.scoreTest('nethhelm')) { head_type = 'Netherite' }
-            if(target.scoreTest('diahelm')) { head_type = 'Diamond' }
-            if(target.scoreTest('ironhelm')) { head_type = 'Iron' }
-            if(target.scoreTest('goldhelm')) { head_type = 'Gold' }
-            if(target.scoreTest('chainhelm')) { head_type = 'Chainmail' }
-            if(target.scoreTest('leathhelm')) { head_type = 'Leather' }
-            if(target.scoreTest('turthelm')) { head_type = 'Turtle' }
+            if(scoreTest(targ_name, 'nethhelm') === 1) { head_type = 'Netherite' }
+            if(scoreTest(targ_name, 'diahelm') === 1) { head_type = 'Diamond' }
+            if(scoreTest(targ_name, 'ironhelm') === 1) { head_type = 'Iron' }
+            if(scoreTest(targ_name, 'goldhelm') === 1) { head_type = 'Gold' }
+            if(scoreTest(targ_name, 'chainhelm') === 1) { head_type = 'Chainmail' }
+            if(scoreTest(targ_name, 'leathhelm') === 1) { head_type = 'Leather' }
+            if(scoreTest(targ_name, 'turthelm') === 1) { head_type = 'Turtle' }
             if(head_type == undefined) { head_type = 'None'}
 
-            if(target.scoreTest('nethchest')) { chest_type = 'Netherite' }
-            if(target.scoreTest('diachest')) { chest_type = 'Diamond' }
-            if(target.scoreTest('goldchest')) { chest_type = 'Gold' }
-            if(target.scoreTest('ironchest')) { chest_type = 'Iron' }
-            if(target.scoreTest('chainchest')) { chest_type = 'Chain' }
-            if(target.scoreTest('leathchest')) { chest_type = 'Leather' }
-            if(target.scoreTest('elytra')) { chest_type = 'Elytra' }
+            if(scoreTest(targ_name, 'nethchest') === 1) { chest_type = 'Netherite' }
+            if(scoreTest(targ_name, 'diachest') === 1) { chest_type = 'Diamond' }
+            if(scoreTest(targ_name, 'goldchest') === 1) { chest_type = 'Gold' }
+            if(scoreTest(targ_name, 'ironchest') === 1) { chest_type = 'Iron' }
+            if(scoreTest(targ_name, 'chainchest') === 1) { chest_type = 'Chain' }
+            if(scoreTest(targ_name, 'leathchest') === 1) { chest_type = 'Leather' }
+            if(scoreTest(targ_name, 'elytra') === 1) { chest_type = 'Elytra' }
             if(chest_type == undefined) { chest_type = 'None'}
 
-            if(target.scoreTest('nethlegs')) { leg_type = 'Netherite' }
-            if(target.scoreTest('dialegs')) { leg_type = 'Diamond' }
-            if(target.scoreTest('ironlegs')) { leg_type = 'Iron' }
-            if(target.scoreTest('goldlegs')) { leg_type = 'Gold' }
-            if(target.scoreTest('chainlegs')) { leg_type = 'Chain' }
-            if(target.scoreTest('leathlegs')) { leg_type = 'Leather' }
+            if(scoreTest(targ_name, 'nethlegs') === 1) { leg_type = 'Netherite' }
+            if(scoreTest(targ_name, 'dialegs') === 1) { leg_type = 'Diamond' }
+            if(scoreTest(targ_name, 'ironlegs') === 1) { leg_type = 'Iron' }
+            if(scoreTest(targ_name, 'goldlegs') === 1) { leg_type = 'Gold' }
+            if(scoreTest(targ_name, 'chainlegs') === 1) { leg_type = 'Chain' }
+            if(scoreTest(targ_name, 'leathlegs') === 1) { leg_type = 'Leather' }
             if(leg_type == undefined) { leg_type = 'None'}
 
-            if(target.scoreTest('nethboots')) { boot_type = 'Netherite' }
-            if(target.scoreTest('diaboots')) { boot_type = 'Diamond' }
-            if(target.scoreTest('ironboots')) { boot_type = 'Iron' }
-            if(target.scoreTest('goldboots')) { boot_type = 'Gold' }
-            if(target.scoreTest('chainboots')) { boot_type = 'Chain' }
-            if(target.scoreTest('leathboots')) { boot_type = 'Leather' }
+            if(scoreTest(targ_name, 'nethboots') === 1) { boot_type = 'Netherite' }
+            if(scoreTest(targ_name, 'diaboots') === 1) { boot_type = 'Diamond' }
+            if(scoreTest(targ_name, 'ironboots') === 1) { boot_type = 'Iron' }
+            if(scoreTest(targ_name, 'goldboots') === 1) { boot_type = 'Gold' }
+            if(scoreTest(targ_name, 'chainboots') === 1) { boot_type = 'Chain' }
+            if(scoreTest(targ_name, 'leathboots') === 1) { boot_type = 'Leather' }
             if(boot_type == undefined) { boot_type = 'None'}
             
 
@@ -638,22 +641,22 @@ const guiScheme = {
             .title(`${plr.name.replace(/§./g, '')}'s Stats`)
 
             let text = [];
-            let tp_day = plr.scoreTest('timeplayedday');
-            let tp_hour = plr.scoreTest('timeplayedhr');
-            let tp_min = plr.scoreTest('timeplayedmin');
-            let tp_sec = plr.scoreTest('timeplayedsec');
+            
+            let tp_day = scoreTest(plr.name, 'timeplayedday');
+            let tp_hour = scoreTest(plr.name, 'timeplayedhr');
+            let tp_min = scoreTest(plr.name, 'timeplayedmin');
+            let tp_sec = scoreTest(plr.name, 'timeplayedsec');
+            let deaths = scoreTest(plr.name, 'deaths');
+            let kills = scoreTest(plr.name, 'kills');
+            let killstreak = scoreTest(plr.name, 'killstreak');
+            let money = scoreTest(plr.name, 'money');
 
-            let deaths = plr.scoreTest('deaths');
-            let kills = plr.scoreTest('kills');
-            let killstreak = plr.scoreTest('killstreak');
-            let money = plr.scoreTest('money');
-
-            let diamonds = plr.scoreTest('diamond_ore');
-            let emeralds = plr.scoreTest('emerald_ore');
-            let gold = plr.scoreTest('gold_ore');
-            let iron = plr.scoreTest('iron_ore');
-            let lapis = plr.scoreTest('lapis_ore');
-            let netherite = plr.scoreTest('ancient_debris');
+            let diamonds = scoreTest(plr.name, 'diamond_ore');
+            let emeralds = scoreTest(plr.name, 'emerald_ore');
+            let gold = scoreTest(plr.name, 'gold_ore');
+            let iron = scoreTest(plr.name, 'iron_ore');
+            let lapis = scoreTest(plr.name, 'lapis_ore');
+            let netherite = scoreTest(plr.name, 'ancient_debris');
 
             text.push(`§d§lTime Played:`);
             text.push(`§bD/§7:§c${tp_day} §bH/§7:§c${tp_hour} §bM/§7:§c${tp_min} §bS/§7:§c${tp_sec}`);
@@ -680,15 +683,15 @@ const guiScheme = {
             const actionList = [
                 [ 'Stats'        , () => guiScheme.pcmd.stats(plr, target) ],
                 [ 'Inventory'    , () => guiScheme.pcmd.inv(plr, target) ],
-                [ 'TP to Me'     , () => plr.runCommand(`tp "${target.name.replace(/\\|"/g, '\\$&')}" @s`) ],
-                [ 'TP to Them'   , () => plr.runCommand(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" "${target.name.replace(/\\|"/g, '\\$&')}"`) ],
-                [ 'Punish'       , () => target.runCommand('function UAC/punish') ],
-                [ 'Freeze'       , () => target.runCommand('function UAC/freeze_player') ],
-                [ 'Warn'         , () => target.runCommand('function UAC/warn') ],
-                [ 'E-Chest Wipe' , () => target.runCommand('function UAC/echestwipe') ],
-                [ 'Reset Warn'   , () => target.runCommand('function UAC/warnreset') ],
-                [ 'Ban'          , () => target.runCommand('tag @s add Ban') ],
-                [ 'Smite'        , () => target.runCommand('function UAC/smite') ],
+                [ 'TP to Me'     , () => plr.runCommandAsync(`tp "${target.name.replace(/\\|"/g, '\\$&')}" @s`) ],
+                [ 'TP to Them'   , () => plr.runCommandAsync(`tp "${plr.name.replace(/\\|"/g, '\\$&')}" "${target.name.replace(/\\|"/g, '\\$&')}"`) ],
+                [ 'Punish'       , () => target.runCommandAsync('function UAC/punish') ],
+                [ 'Freeze'       , () => target.runCommandAsync('function UAC/freeze_player') ],
+                [ 'Warn'         , () => target.runCommandAsync('function UAC/warn') ],
+                [ 'E-Chest Wipe' , () => target.runCommandAsync('function UAC/echestwipe') ],
+                [ 'Reset Warn'   , () => target.runCommandAsync('function UAC/warnreset') ],
+                [ 'Ban'          , () => target.runCommandAsync('tag @s add Ban') ],
+                [ 'Smite'        , () => target.runCommandAsync('function UAC/smite') ],
             ]
 
             const v = new ActionFormData()
@@ -738,14 +741,14 @@ const guiScheme = {
     more: (() => { // more UI
         /** @type { [name: string, fn: (plr: Player) => void][] } */
         const actionList = [
-            // [ 'Clear Area'     , plr => plr.runCommand('function UAC/cleararea') ],
-            [ 'Clear chat'     , plr => plr.runCommand('function UAC/clearchat') ],
-            [ 'Clear lag'      , plr => plr.runCommand('function UAC/lagclear') ],
-            [ 'Vanish'         , plr => plr.runCommand('function UAC/vanish') ],
-            [ 'Auto Totem'     , plr => plr.runCommand('function UAC/autototem') ],
-            [ 'Godmode'        , plr => plr.runCommand('function UAC/tgm') ],
-            [ 'Fake Leave'     , plr => plr.runCommand('function UAC/fakeleave') ],
-            [ 'Credits'        , plr => plr.runCommand('function UAC/credit') ],
+            // [ 'Clear Area'     , plr => plr.runCommandAsync('function UAC/cleararea') ],
+            [ 'Clear chat'     , plr => plr.runCommandAsync('function UAC/clearchat') ],
+            [ 'Clear lag'      , plr => plr.runCommandAsync('function UAC/lagclear') ],
+            [ 'Vanish'         , plr => plr.runCommandAsync('function UAC/vanish') ],
+            [ 'Auto Totem'     , plr => plr.runCommandAsync('function UAC/autototem') ],
+            [ 'Godmode'        , plr => plr.runCommandAsync('function UAC/tgm') ],
+            [ 'Fake Leave'     , plr => plr.runCommandAsync('function UAC/fakeleave') ],
+            [ 'Credits'        , plr => plr.runCommandAsync('function UAC/credit') ],
             [ 'Back'           , plr => guiScheme.main(plr) ],
         ]
 
@@ -862,7 +865,7 @@ const guiScheme = {
                 if (v.isCanceled || v.selection == particleDefs.length) return guiScheme.main(plr)
 
                 const particle = particleDefs[v.selection]
-                plr.runCommand(`function particle/${particle.fn}`)
+                plr.runCommandAsync(`function particle/${particle.fn}`)
             })
         }
     })(),
@@ -880,7 +883,7 @@ const guiScheme = {
                 if (v.isCanceled || v.selection == kitDefs.length) return guiScheme.main(plr)
 
                 const kit = kitDefs[v.selection]
-                plr.runCommand(`structure load "${kit.structure}" ~~~`)
+                plr.runCommandAsync(`structure load "${kit.structure}" ~~~`)
                 tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has spawned a kit §e${kit.mname}§r`)
             })
         }
@@ -961,7 +964,7 @@ const waitMove = new Map()
 
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg, {location: {x, y, z}} = sender
-    if(sender.scoreTest('icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    if(scoreTest(sender.nameTag, 'icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
 
     sender.tellraw(`§aMove to show the UI.`)
     waitMove.set(chatmsg.sender, [x, y, z])
@@ -972,7 +975,7 @@ world.events.tick.subscribe(() => {
         try {
             let { x: xc, y: yc, z: zc } = plr.location
             if (x != xc || y != yc || z != zc) {
-                if(plr.scoreTest('seen_gui') == 0) {
+                if(scoreTest(plr.name, 'seen_gui') == 0) {
                     guiScheme.player_welcome(plr)
                     waitMove.delete(plr)
                     return;

@@ -37,11 +37,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             }
             if(playerfound) {
                 let playername = playerfound.getName();
-                sender.runCommand(`tag ${playername} remove reason_none`);
+                sender.runCommandAsync(`tag ${playername} remove reason_none`);
                 tellrawServer(`§¶§c§lUAC ► §d${name} §bbanned §d${playername} §bREASON : §c${reason}`);
-                sender.runCommand(`tag ${playername} add reason${args.join('_').replace(`${playername}`, '').replace('@', '').replace(args[0], '')}`);
-                sender.runCommand(`scoreboard players set ${playername} Ban 1`);
-                sender.runCommand(`tag ${playername} add Ban`);
+                sender.runCommandAsync(`tag ${playername} add reason${args.join('_').replace(`${playername}`, '').replace('@', '').replace(args[0], '')}`);
+                sender.runCommandAsync(`scoreboard players set ${playername} Ban 1`);
+                sender.runCommandAsync(`tag ${playername} add Ban`);
             }
 
             

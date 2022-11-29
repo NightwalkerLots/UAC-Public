@@ -8,24 +8,24 @@ function op_abuse(player) {
     if(player.hasTag(`staffstatus`)) {
         //disable godmode
         if(player.hasTag(`tgmGodMode`)) {
-            player.runCommand(`tag @s remove tgmGodMode`);
-            player.runCommand(`scoreboard players @s reset tgmGodMode`);
-            player.runCommand(`effect @s clear`);
-            try {player.runCommand(`tag @s remove godmode`)} catch{}
+            player.runCommandAsync(`tag @s remove tgmGodMode`);
+            player.runCommandAsync(`scoreboard players @s reset tgmGodMode`);
+            player.runCommandAsync(`effect @s clear`);
+            try {player.runCommandAsync(`tag @s remove godmode`)} catch{}
         }
         //disable creative invulnerability
         if(gamemode === 'creative') {
-            player.runCommand(`gamemode spectator`);
+            player.runCommandAsync(`gamemode spectator`);
         }
         //disable autototem
         if(player.hasTag(`totemaut`)) {
-            player.runCommand(`tag @s remove totemaut`);
-            player.runCommand(`scoreboard players @s set totemtog 0`);
-            player.runCommand(`scoreboard players @s set totemaut 0`);
+            player.runCommandAsync(`tag @s remove totemaut`);
+            player.runCommandAsync(`scoreboard players @s set totemtog 0`);
+            player.runCommandAsync(`scoreboard players @s set totemaut 0`);
         }
         //force invisible staff into spectator, to remove pvp advantage
-        if(player.hasTag(`spectate`) || ( player.scoreTest(`vnsh`) >= 1 ) ) {
-            player.runCommand(`gamemode spectator`);
+        if(player.hasTag(`spectate`) || ( scoreTest(player.nameTag, 'vnsh') >= 1 ) ) {
+            player.runCommandAsync(`gamemode spectator`);
         }
     }
 }

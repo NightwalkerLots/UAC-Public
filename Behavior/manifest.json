@@ -1,7 +1,7 @@
 {
 	"format_version": 1,
 	"header": {
-		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§28§7] §2Public §7⋱",
+		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§28§7] §6DEV §7⋱",
 		"description": "§6§lExperimental Features §7: §cREQUIRED \n§bMade By §2NightwalkerLots ",
 		"uuid": "b77a1dc3-7a77-4dd0-a43c-cd2336334308",
 		"version": [2, 7, 0],
@@ -37,7 +37,7 @@
 	"dependencies": [
 		{
 			"uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
-			"version": "1.0.0-beta"
+			"version": "1.1.0-beta"
 		},
 		{
 			"uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",

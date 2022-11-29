@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { world } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
@@ -17,7 +17,6 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
         let input = args.join(' ').replace('@', '').replace(/"/g, '');
         let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
-        //let playername = playerfound.getName();
         const { sender } = chatmsg;
         const name = sender.getName();
         
@@ -29,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 else {
                     tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}'s §bwarns were reset by §d${name}`);
-                    sender.runCommand(`execute "${playerfound.getName()}" ~~~ function UAC/warnreset`);  
+                    sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/warnreset`);  
                 }
             } else {
                 sender.tellraw(`§¶§c§lUAC ► §cNo player specified`);

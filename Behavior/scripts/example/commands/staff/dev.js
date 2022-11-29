@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Dimension, Location } from '@minecraft/server';
+import { scoreTest } from '../../../library/utils/prototype.js';
+import { world } from '@minecraft/server';
 
 const registerInformation = {
     cancelMessage: true,
@@ -45,28 +45,28 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     else { 
                         let playername = playerfound.getName();
                         sender.tellraw(`§¶§cUAC ► §d§l${playername}'s §binit was reset by §d${name}`);
-                        sender.runCommand(`execute "${playername}" ~~~ function UAC/asset/uac-init-asset`); 
+                        sender.runCommandAsync(`execute "${playername}" ~~~ function UAC/asset/uac-init-asset`); 
                     }
                 }
-                else { sender.runCommand(`function UAC/DEV/init`); }
+                else { sender.runCommandAsync(`function UAC/DEV/init`); }
             }  else if (devfeatures.includes(args[0])) {
-                sender.runCommand(`function UAC/DEV/enable-test-features`);
+                sender.runCommandAsync(`function UAC/DEV/enable-test-features`);
             }   else if (version.includes(args[0])) {
-                sender.runCommand(`function UAC/asset/version`);
+                sender.runCommandAsync(`function UAC/asset/version`);
             }   else if (test.includes(args[0])) {
-                sender.runCommand(`function UAC/test`);
+                sender.runCommandAsync(`function UAC/test`);
             }   else if (owner.includes(args[0])) {
-                sender.runCommand(`function test/ownertest`);
-                sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${sender.scoreTest('ssmtoggle')}`);
+                sender.runCommandAsync(`function test/ownertest`);
+                sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${scoreTest(sender.nameTag, 'ssmtoggle')}`);
             }   else if (exp.includes(args[0])) {
-                sender.runCommand(`function UAC/DEV/exp-test`);
+                sender.runCommandAsync(`function UAC/DEV/exp-test`);
             }   else if (bd.includes(args[0])) {
                 sender.tellraw(`§¶§cUAC ► §bGet baited lol`);
             }   else if (devfeat_off.includes(args[0])) {
-                sender.runCommand(`function UAC/DEV/disable-test-features`);
+                sender.runCommandAsync(`function UAC/DEV/disable-test-features`);
             } else if (test_dimention.includes(args[0])) {
                 let dim = sender.getName().dimension
-                overworld.runCommand(`tp "${name}" 0 90 0`);
+                overworld.runCommandAsync(`tp "${name}" 0 90 0`);
                 
             }
              else {

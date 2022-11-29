@@ -1,5 +1,5 @@
-import { scoreTest, tellraw } from 'library/utils/prototype.js';
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+import { scoreTest } from 'library/utils/prototype.js';
+import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 
 const bannedItems = [
@@ -26,13 +26,13 @@ function anticbe() {
     //stop script if module is disabled
     if(acmbool == false) return;
     try {
-        overworld.runCommand(`kill @e[type=item,name="bee nest"]`);
-        overworld.runCommand(`kill @e[type=item,name="beehive"]`);
-        overworld.runCommand(`kill @e[type=item,name="tile.movingblock.name]`);
-        overworld.runCommand(`kill @e[type=item,name="tile.moving_block.name"]`);
-        overworld.runCommand(`kill @e[type=command_block_minecart]`);
-        overworld.runCommand(`kill @e[name="minecart"]`);
-        overworld.runCommand(`kill @e[type=npc]`);
+        overworld.runCommandAsync(`kill @e[type=item,name="bee nest"]`);
+        overworld.runCommandAsync(`kill @e[type=item,name="beehive"]`);
+        overworld.runCommandAsync(`kill @e[type=item,name="tile.movingblock.name]`);
+        overworld.runCommandAsync(`kill @e[type=item,name="tile.moving_block.name"]`);
+        overworld.runCommandAsync(`kill @e[type=command_block_minecart]`);
+        overworld.runCommandAsync(`kill @e[name="minecart"]`);
+        overworld.runCommandAsync(`kill @e[type=npc]`);
     } catch { }
     
 
@@ -62,13 +62,13 @@ function anticbe() {
         }
         if (itemArray.length) {
             if(acmbool === 0) return;
-            player.runCommand('function UAC/asset/cbeitem_gt_warn');
-            overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-            player.runCommand(`clear @s`);
+            player.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
+            overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
+            player.runCommandAsync(`clear @s`);
             try{
-                player.runCommand(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
+                player.runCommandAsync(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
             } catch {
-                player.runCommand(`event entity @s uac:ban_main`);
+                player.runCommandAsync(`event entity @s uac:ban_main`);
             }
         }
     }

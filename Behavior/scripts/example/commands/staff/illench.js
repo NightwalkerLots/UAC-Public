@@ -292,9 +292,9 @@ world.events.tick.subscribe(() => {
                 }
             }
             if(verify === true) {
-                plr.runCommand(`function UAC/punish`);
-                try{  plr.runCommand(`kick "${plr.name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid Enchantment | ${item.id.replace('minecraft:', '')}`); }
-                catch{ plr.runCommand(`event entity @s uac:ban_main`); }  
+                plr.runCommandAsync(`function UAC/punish`);
+                try{  plr.runCommandAsync(`kick "${plr.name}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid Enchantment | ${item.id.replace('minecraft:', '')}`); }
+                catch{ plr.runCommandAsync(`event entity @s uac:ban_main`); }  
             }
         }
     }
@@ -308,8 +308,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             switch (args[0]) {
                 case 'on':
                 case 'enable': {
-                    sender.runCommand(`scoreboard players set illenchdummy illench 1`)
-                    sender.runCommand(`scoreboard players operation @a illench = illenchdummy illench`)
+                    sender.runCommandAsync(`scoreboard players set illenchdummy illench 1`)
+                    sender.runCommandAsync(`scoreboard players operation @a illench = illenchdummy illench`)
                     sender.tellraw(`§¶§cIllegal§b enchantment detection has been §aENABLED`)
                     tellrawStaff(`§¶§cIllegal§b enchantment detection has been §aENABLED§b by §d${sender.name}`)
                     sbtoggle.set('value', toggle = 1)
@@ -317,8 +317,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
                 case 'off':
                 case 'disable': {
-                    sender.runCommand(`scoreboard players set illenchdummy illench 0`)
-                    sender.runCommand(`scoreboard players operation @a illench = illenchdummy illench`)
+                    sender.runCommandAsync(`scoreboard players set illenchdummy illench 0`)
+                    sender.runCommandAsync(`scoreboard players operation @a illench = illenchdummy illench`)
                     sender.tellraw(`§¶§cIllegal§b enchantment detection has been §cDISABLED`)
                     tellrawStaff(`§¶§cIllegal§b enchantment detection has been §cDISABLED§b by §d${sender.name}`)
                     sbtoggle.set('value', toggle = 0)

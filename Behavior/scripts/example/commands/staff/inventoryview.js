@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, content, FindPlayer } from '../../../library/utils/prototype.js';
-import { ItemStack, MinecraftItemTypes, EntityQueryOptions, Player, PlayerInventoryComponentContainer, world } from '@minecraft/server';
+import { tellrawStaff, content } from '../../../library/utils/prototype.js';
+import { ItemStack, MinecraftItemTypes, world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
     name: 'inv',
@@ -86,7 +86,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
                 // dump armor
                 tellrawStaff(`§d${playerfound.getName()}'s§b inventory checked by §d${sender.name}`);
-                sender.runCommand(`execute "${playerfound.getName()}" ~~~ function UAC/asset/enchanted_armor_check`);
+                sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/asset/enchanted_armor_check`);
 
                 let items = playerfound.getInventory(true);
                 console.warn(JSON.stringify(items))
