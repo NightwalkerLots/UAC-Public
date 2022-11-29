@@ -19,7 +19,7 @@ import './staff/lagclear.js';
 import './staff/freeze.js';
 import './staff/gui.js';
 import './staff/mayfly.js';
-import './staff/hasitem.js';
+//import './staff/hasitem.js';
 import './staff/echestwipe.js';
 import './staff/warnreset.js';
 import './staff/warn.js';

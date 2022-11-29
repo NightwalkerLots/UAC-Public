@@ -191,7 +191,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     try {
         const { sender } = chatmsg;
         const message = chatmsg.message.substring(4 + commandBuilder.prefix.length + 1)
-        const tellraw = (v) => sender.runCommand(`tellraw @s {"rawtext":[{"text":"${v.replaceAll(/\\|"/g, '\\$&')}"}]}`)
+        const tellraw = (v) => sender.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${v.replaceAll(/\\|"/g, '\\$&')}"}]}`)
 
         if (!sender.hasTag('staffstatus')) return tellraw(`§¶§cUAC ► §c§lError 4: Only Staff can use this command`)
 

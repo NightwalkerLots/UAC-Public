@@ -1,7 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
     name: 'echestwipe',
@@ -29,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 else {
                     tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was Ender Chest Wiped by §d${name}`);
-                    sender.runCommand(`execute "${playerfound.getName()}" ~~~ function UAC/echestwipe`);  
+                    sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/echestwipe`);  
                 }
             } else {
                 sender.tellraw(`§¶§c§lUAC ► §cNo player specified`);

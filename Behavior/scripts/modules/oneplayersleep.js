@@ -1,6 +1,4 @@
-import { scoreTest, tellraw, tellrawServer } from 'library/utils/prototype.js';
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+import { scoreTest, tellrawServer } from 'library/utils/prototype.js';
 
 
 
@@ -12,10 +10,10 @@ function ops() {
     for (let player of players) {   
         const name = player.getName();
 
-        if(player.scoreTest('is_sleeping')) {
-            player.runCommand(`time set sunrise`);
-            player.runCommand(`time add 2000`);
-            player.runCommand(`weather clear`);
+        if(scoreTest(player.nameTag, 'is_sleeping')) {
+            player.runCommandAsync(`time set sunrise`);
+            player.runCommandAsync(`time add 2000`);
+            player.runCommandAsync(`weather clear`);
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §btriggered one player sleep`);
         }
     }

@@ -1,6 +1,4 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
     name: 'chatspam',
@@ -15,7 +13,6 @@ const registerInformation = {
 Server.command.register(registerInformation, (chatmsg, args) => {
     try {
         const { sender } = chatmsg;
-        const name = sender.getName();
 
         let usage = ['on', 'off'];
         if(args[0]){} else {return sender.tellraw(`§¶§c§lUAC ► §c§lNo argument given. Usage: on/off`)}
@@ -24,11 +21,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
         if(sender.hasTag('staffstatus')) {
             if(usage[0].includes(args[0])) {
-                sender.runCommand(`scoreboard players set acsdummy acstoggle 1`);
+                sender.runCommandAsync(`scoreboard players set acsdummy acstoggle 1`);
                 sender.tellraw(`§¶§c§lUAC ► §6Anti-Chatspam §7: §2ENABLED`);
             }
             if(usage[1].includes(args[0])) {
-                sender.runCommand(`scoreboard players set acsdummy acstoggle 0`);
+                sender.runCommandAsync(`scoreboard players set acsdummy acstoggle 0`);
                 sender.tellraw(`§¶§c§lUAC ► §6Anti-Chatspam §7: §cDISABLED`);
             }
         } else {

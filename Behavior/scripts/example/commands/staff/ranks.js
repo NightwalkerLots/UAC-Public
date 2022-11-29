@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid, content } from '../../../library/utils/prototype.js';
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { world } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
@@ -35,12 +35,12 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
             // turn on
             if(usage[0].includes(args[0])) {
-                sender.runCommand(`scoreboard players set crdummy chatrank 1`);
+                sender.runCommandAsync(`scoreboard players set crdummy chatrank 1`);
                 tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bwere §2ENABLED §bby  §d${self}`);
             }
             // turn off
             if(usage[1].includes(args[0])) {
-                sender.runCommand(`scoreboard players set crdummy chatrank 0`);
+                sender.runCommandAsync(`scoreboard players set crdummy chatrank 0`);
                 tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bwere §cDISABLED §bby  §d${self}`);
             }
             // add rank other
@@ -54,7 +54,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     if(!playerfound) { return sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`); }
                     if(!args[2]) { return sender.tellraw(`§¶§cUAC ► §c§lNo rank was specified`); }
 
-                    sender.runCommand(`tag "${playerfound.getName()}" add "temprank:${args[2]}"`);
+                    sender.runCommandAsync(`tag "${playerfound.getName()}" add "temprank:${args[2]}"`);
                     tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${args[2]} §brank was given to §d${playerfound.getName()} §bby §d${self}`);
 
                 } catch(error) { 
@@ -66,8 +66,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             if(usage[2].includes(args[0])) {
                 try {
                     if(!args[1]) { return sender.tellraw(`§¶§cUAC ► §c§lNo ranks were specified`); }
-                    sender.runCommand(`tag @s remove "${ranktag}"`);
-                    sender.runCommand(`tag @s add "rank:${args[1]}"`);
+                    sender.runCommandAsync(`tag @s remove "${ranktag}"`);
+                    sender.runCommandAsync(`tag @s add "rank:${args[1]}"`);
                     tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${args[1]} §brank was given to §d${self}`);
 
                 } catch(error) { console.warn(error, error.stack); }
@@ -81,11 +81,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         if(!playerfound) { return sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`); }
 
                         tellrawStaff(`§¶§cUAC ► §6Chat Ranks §d${playerfound.getName()} §bhad their rank cleared by §d${self}`);
-                        sender.runCommand(`tag "${playerfound.getName()}" add rankremove`);
+                        sender.runCommandAsync(`tag "${playerfound.getName()}" add rankremove`);
                     } else {
                         tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${ranktag} §brank was cleared from §d${self}`);
-                        sender.runCommand(`tag @s remove "${ranktag}"`);
-                        sender.runCommand(`tag @s add "rank:Member"`);
+                        sender.runCommandAsync(`tag @s remove "${ranktag}"`);
+                        sender.runCommandAsync(`tag @s add "rank:Member"`);
                     }
                 } catch(error) { 
                     console.warn(error, error.stack); 
@@ -130,17 +130,17 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                                     .replace('yellow', '6')
                                     .replace('pink', 'd')
                             }`;
-                            sender.runCommand(`tag "${playerfound.getName()}" add "tempcolor:${rankcolorother}"`);
+                            sender.runCommandAsync(`tag "${playerfound.getName()}" add "tempcolor:${rankcolorother}"`);
                             tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${args[3]} §bcolor was given to §d${playerfound.getName()} §bby §d${self}`);
     
     
                         } else if(args[1] === 'clear') {
-                            sender.runCommand(`tag @s remove "${colortag}"`);
-                            sender.runCommand(`tag @s add "color:b"`);
+                            sender.runCommandAsync(`tag @s remove "${colortag}"`);
+                            sender.runCommandAsync(`tag @s add "color:b"`);
                             tellrawStaff(`§¶§cUAC ► §6Chat Ranks §d${self} §bcleared their rank color`);
                         } else if(colors.includes(args[1])) {
-                            if(colortag) { sender.runCommand(`tag @s remove "${colortag}"`);}
-                                sender.runCommand(`tag @s add "color:${rankcolor}"`);
+                            if(colortag) { sender.runCommandAsync(`tag @s remove "${colortag}"`);}
+                                sender.runCommandAsync(`tag @s add "color:${rankcolor}"`);
                                 tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bthe §c${args[1]} §bcolor was given §d${self}`);
                         } else {
                             sender.tellraw(`§¶§cUAC ► §cInvalide Color. §bUAC.ranks color clear§c, or Possible Colors : §6${colors.toString()}`);

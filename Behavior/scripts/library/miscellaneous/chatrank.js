@@ -1,6 +1,6 @@
 import { Server } from "../build/classes/serverBuilder.js";
 export function displayRank(chatmsg) {
-    const data = Server.runCommand(`tag "${chatmsg.sender.nameTag}" list`);
+    const data = Server.runCommandAsync(`tag "${chatmsg.sender.nameTag}" list`);
     const allRanks = data.statusMessage.match(/(?<=\$\(chatrank:).*?(?=\))/g);
     chatmsg.cancel = true;
     if (!allRanks)

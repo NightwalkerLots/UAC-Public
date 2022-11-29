@@ -1,18 +1,19 @@
-import { scoreTest, tellraw, tellrawStaff, tellrawServer } from 'library/utils/prototype.js';
-import { world, Player, Dimension, Entity, ItemStack, Location, BlockLocation, Block, MinecraftItemTypes } from '@minecraft/server';
+import { scoreTest, tellrawStaff } from 'library/utils/prototype.js';
+import { world, BlockLocation } from '@minecraft/server';
 
 const _player = {
     count: 0,
 };
 
+
 function jesus() {
     let players = world.getPlayers();
     for (let player of players) {   
         const name = player.getName();
-        const in_water = player.scoreTest('in_water');
-        const water_contact = player.scoreTest('water_contact');
-        const swimming = player.scoreTest('is_swimming');
-        const riding = player.scoreTest('riding');
+        const in_water = scoreTest(player.nameTag, 'in_water');
+        const water_contact = scoreTest(player.nameTag, 'water_contact');
+        const swimming = scoreTest(player.nameTag, 'is_swimming');
+        const riding = scoreTest(player.nameTag, 'riding');
         const x = Math.floor(player.location.x);
         const y = Math.floor(player.location.y);
         const z = Math.floor(player.location.z);

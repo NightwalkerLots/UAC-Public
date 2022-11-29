@@ -19,45 +19,14 @@ const betaPlayerFunctions = {
         return this.nameTag;
         //not beta but fixes nameSpoof command tartgeting issues
     },
-    scoreTest: function (objective) {
-        try {
-            const score = parseInt(this.runCommand(`scoreboard players test @s ${objective} *`).statusMessage.match(/-?\d+/));
-            return score;
-        } catch {
-            return;
-        }
-    },
-    scoreTestOther: function (target, objective) {
-        try {
-            const score = parseInt(runCommand(`scoreboard players test "${target}" ${objective} *`).statusMessage.match(/-?\d+/));
-            return score;
-        } catch {
-            return;
-        }
-    },
-    /*
-        if(sender.hasitem('iron_ingot', 32)) {
-                sender.tellraw(`you have it`);
-            }
-    */
-    hasitem: function (item, amount) {
-        try {
-            let id = item.toString();
-            const target = this.runCommand(`testfor @s[hasitem={item=${id},quantity=${amount ? amount : 1}..}]`);
-            let result = target.toString();
-            return result;
-        } catch {
-            return false;
-        }
-    },
     tellraw: function (message) {
-        return this.runCommand(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
     },
     tellrawStringify: function (message) {
-        return this.runCommand(`tellraw @s {"rawtext":[{"text":"${JSON.stringify(message).replaceAll('"', '\\"')}"}]}`);
+        return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${JSON.stringify(message).replaceAll('"', '\\"')}"}]}`);
     },
     tellrawJSON: function (json) {
-        return this.runCommand(`tellraw @s {"rawtext":[${json}]}`);
+        return this.runCommandAsync(`tellraw @s {"rawtext":[${json}]}`);
     },
     queryTopSolid: function (dimension = overworld) {
         const { location: { x, z } } = this;
@@ -85,10 +54,10 @@ const betaPlayerFunctions = {
     }
 };
 export function tellrawStaff(message) {
-    try { overworld.runCommand(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
+    try { overworld.runCommandAsync(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
 }
 export function tellrawServer(message) {
-    try { overworld.runCommand(`tellraw @a {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
+    try { overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
 }
 export function FindPlayer(input) {
     let players = world.getPlayers();
@@ -102,32 +71,32 @@ export function FindPlayer(input) {
 
 export function tellraw (message) {
     try {
-        return this.runCommand(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
     }
     catch {return}
 }
 
 export function hotbar (player, message) {
     try {
-        return overworld.runCommand(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return overworld.runCommandAsync(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
     }
     catch {return}
 }
 
-
-export function scoreTest (objective) {
+export function scoreTest(target, objective, useZero = false) {
     try {
-        const score = parseInt(this.runCommand(`scoreboard players test @s ${objective} *`).statusMessage.match(/-?\d+/));
-        return score;
+        const oB = world.scoreboard.getObjective(objective)
+        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
+        return oB.getScore(target.scoreboard)
     } catch {
-        return;
+        return useZero ? 0 : NaN
     }
 }
 // return gamemode string 
 export function getGamemode (player) {
     try {
         let type = '';
-        const score = parseInt(player.runCommand(`scoreboard players test @s gamemode *`).statusMessage.match(/-?\d+/));
+        const score = parseInt(player.runCommandAsync(`scoreboard players test @s gamemode *`).statusMessage.match(/-?\d+/));
         if(score == 0) type = 'survival';
         if(score == 1) type = 'creative';
         if(score == 2) type = 'adventure';
@@ -137,6 +106,17 @@ export function getGamemode (player) {
         return;
     }
 }
+
+export function hasitem(player, itemId, clearItems = false) {
+    const inventory = player.getComponent("minecraft:inventory").container;
+    let itemAmount = 0;
+    for (let i = 0; i < 36; i++) {
+        let item = inventory.getItem(i);
+        if (item?.typeId != itemId) continue;
+        itemAmount += item.amount;
+    } if (clearItems) player.runCommandAsync(`clear @s ${itemId}`)
+    return itemAmount;
+};
 
 export function queryTopSolid({ location: { x, y, z }, dimension = overworld }) {
     const locations = new BlockLocation(floor(x), 320, floor(z))

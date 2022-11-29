@@ -1,6 +1,6 @@
-import { scoreTest, tellraw, tellrawStaff } from 'library/utils/prototype.js';
+import { scoreTest, tellrawStaff } from 'library/utils/prototype.js';
 import maxItemStack, { defaultMaxItemStack } from 'library/utils/maxstack.js';
-import { world, ItemStack, MinecraftItemTypes, Items, MinecraftEnchantmentTypes, Enchantment, Player, EntityInventoryComponent, ItemEnchantsComponent } from '@minecraft/server';
+import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 
 const overworld = world.getDimension('overworld');
 
@@ -85,9 +85,9 @@ function unobtainable() {
                 tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad modified lore on §c${itemname} \n§6§lLore§7: §c§l' ${loreData} '\n§6§lDisplay Name§7: §c§l' ${displayname} '`);
                 playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
                 try {
-                    player.runCommand(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
+                    player.runCommandAsync(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
                 } catch {
-                    player.runCommand(`event entity @s uac:ban_main`);
+                    player.runCommandAsync(`event entity @s uac:ban_main`);
                 }
             }
 
@@ -103,13 +103,13 @@ function unobtainable() {
                 playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
             }
             if (itemArray.length) {
-                player.runCommand('function UAC/asset/illegalitemwarn');
-                overworld.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-                player.runCommand(`clear @s`);
+                player.runCommandAsync('function UAC/asset/illegalitemwarn');
+                overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
+                player.runCommandAsync(`clear @s`);
                 try {
-                    player.runCommand(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
+                    player.runCommandAsync(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
                 } catch {
-                    player.runCommand(`event entity @s uac:ban_main`);
+                    player.runCommandAsync(`event entity @s uac:ban_main`);
                 }
             }
         }

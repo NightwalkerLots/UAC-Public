@@ -1,6 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
+import { world } from '@minecraft/server';
 
 const registerInformation = {
     cancelMessage: true,
@@ -15,8 +14,8 @@ const registerInformation = {
 Server.command.register(registerInformation, (chatmsg, args) => {
     try {
 
-        let input = args.join(' ').replace('@', '').replace(/"/g, '');
-        let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
+        //let input = args.join(' ').replace('@', '').replace(/"/g, '');
+        //let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
         //let playername = playerfound.getName();
         const { sender } = chatmsg;
         const name = sender.getName();

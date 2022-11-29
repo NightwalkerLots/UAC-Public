@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
+import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
 import { world, Location } from '@minecraft/server';
 
 const registerInformation = {
@@ -12,15 +12,8 @@ const registerInformation = {
         'cbetp'
     ]
 };
-function scoreTest(name, objective) {
-    try {
-        const score = parseInt(overworld.runCommand(`scoreboard players test ${name} ${objective} *`).statusMessage.match(/-?\d+/));
-        return score;
-    } catch {
-        return;
-    }
 
-}
+
 Server.command.register(registerInformation, (chatmsg, args) => {
     try {
 
@@ -37,7 +30,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         
         //
         if (sender.hasTag('staffstatus')) {
-            sender.runCommand(`tp @s ${x} ${y} ${z}`);  
+            sender.runCommandAsync(`tp @s ${x} ${y} ${z}`);  
             tellrawStaff(`§¶§c§lUAC ► §d${name} §bTP'd to the last CBE Placement Attempt at §c${x} ${y} ${z}`);
             
         } else {

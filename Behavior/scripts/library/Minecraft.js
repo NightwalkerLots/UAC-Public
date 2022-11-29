@@ -45,7 +45,7 @@ class ServerBuild extends ServerBuilder {
                 const getCommand = Command.getAllRegistation().some(element => element.name === command || element.aliases && element.aliases.includes(command));
                 if (!getCommand) {
                     data.cancel = true;
-                    return sender.runCommand(`tellraw "${data.sender.nameTag}" {"rawtext":[{"text":"§c"},{"translate":"commands.generic.unknown", "with": ["§f${command}§c"]}]}`);
+                    return sender.runCommandAsync(`tellraw "${data.sender.nameTag}" {"rawtext":[{"text":"§c"},{"translate":"commands.generic.unknown", "with": ["§f${command}§c"]}]}`);
                 }
                 ;
                 Command.getAllRegistation().forEach(element => {
@@ -60,7 +60,7 @@ class ServerBuild extends ServerBuilder {
                         element.callback(data, args);
                     }
                     catch (error) {
-                        this.runCommand(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC JS Error ► §c${error}"}]}`);
+                        this.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC JS Error ► §c${error}"}]}`);
                         
                     }
                     ;
@@ -126,7 +126,7 @@ class ServerBuild extends ServerBuilder {
             });
             let worldLoaded = false, tickCount = 0;
             world.events.tick.subscribe((data) => {
-                if (!this.runCommand('testfor @a').error && !worldLoaded) {
+                if (!this.runCommandAsync('testfor @a').error && !worldLoaded) {
                     /**
                      * Emit to 'ready' event listener
                      */

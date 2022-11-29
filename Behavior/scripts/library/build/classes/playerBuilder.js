@@ -61,7 +61,7 @@ export class PlayerBuilder {
      */
     getItemCount(itemIdentifier, itemData, player) {
         let itemCount = [];
-        const data = Server.runCommand(`clear "${player}" ${itemIdentifier} ${itemData ? itemData : '0'} 0`);
+        const data = Server.runCommandAsync(`clear "${player}" ${itemIdentifier} ${itemData ? itemData : '0'} 0`);
         if (data.error)
             return itemCount;
         data.playerTest.forEach(element => {
@@ -101,7 +101,7 @@ export class PlayerBuilder {
      * @example PlayerBuilder.getScore('Money', 'notbeer', { minimum: 0 });
      */
     getScore(objective, player, { minimum, maximum } = {}) {
-        const data = Server.runCommand(`scoreboard players test "${player}" ${objective} ${minimum ? minimum : '*'} ${maximum ? maximum : '*'}`);
+        const data = Server.runCommandAsync(`scoreboard players test "${player}" ${objective} ${minimum ? minimum : '*'} ${maximum ? maximum : '*'}`);
         if (data.error)
             return;
         return parseInt(data.statusMessage.match(/-?\d+/)[0]);

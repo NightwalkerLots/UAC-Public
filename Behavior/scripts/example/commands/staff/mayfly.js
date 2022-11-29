@@ -1,7 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
     name: 'mayfly',
@@ -33,10 +32,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 if(add.includes(args[0])) {
                     tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was given MayFly by §d${name}`);
-                    sender.runCommand(`execute "${playerfound.getName()}" ~~~ function UAC/mayfly`); 
+                    sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/mayfly`); 
                 } else if (remove.includes(args[0])) {
                     tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was removed from MayFly by §d${name}`);
-                    sender.runCommand(`execute "${playerfound.getName()}" ~~~ function UAC/mayflyremove`); 
+                    sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/mayflyremove`); 
                 }
             } else {
                 sender.tellraw(`§¶§c§lUAC ► §cNo player specified. Usage: §6UAC.mayfly [add | remove] @player`);

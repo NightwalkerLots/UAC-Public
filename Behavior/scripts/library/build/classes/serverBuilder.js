@@ -25,20 +25,20 @@ export class ServerBuilder extends EventEmitter {
      * @example ServerBuilder.broadcast('Hello World!');
      */
     broadcast(text, player) {
-        return this.runCommand(`tellraw ${(player) ? `"${player}"` : '@a'} {"rawtext":[{"text":"${(typeof text === 'object') ? JSON.stringify(text) : text}"}]}`);
+        return this.runCommandAsync(`tellraw ${(player) ? `"${player}"` : '@a'} {"rawtext":[{"text":"${(typeof text === 'object') ? JSON.stringify(text) : text}"}]}`);
     }
     ;
     broadcastStaff(text, player) {
-        return this.runCommand(`tellraw ${player ? `"${player}"` : '@a[tag=staffstatus]'} {"rawtext":[{"text":${JSON.stringify(text)}}]}`);
+        return this.runCommandAsync(`tellraw ${player ? `"${player}"` : '@a[tag=staffstatus]'} {"rawtext":[{"text":${JSON.stringify(text)}}]}`);
     }
     ;
     /**
      * Run a command in game
      * @param command The command you want to run
      * @returns {runCommandReturn}
-     * @example ServerBuilder.runCommand('say Hello World!');
+     * @example ServerBuilder.runCommandAsync('say Hello World!');
      */
-    runCommand(command, dimension = overworld) {
+    runCommandAsync(command, dimension = overworld) {
         try {
             return { error: false, ...dimension.run(command) };
         }
@@ -66,7 +66,7 @@ export class ServerBuilder extends EventEmitter {
         commands.forEach(cmd => {
             if (error && conditionalRegex.test(cmd))
                 return;
-            error = this.runCommand(cmd.replace(conditionalRegex, '')).error;
+            error = this.runCommandAsync(cmd.replace(conditionalRegex, '')).error;
         });
         return { error: error };
     }
@@ -77,7 +77,7 @@ export class ServerBuilder extends EventEmitter {
             if (!Player.find({
                 name: info.name
             })) return;
-            this.runCommand({
+            this.runCommandAsync({
                 command: `tellraw "${info.name}" ${JSON.stringify({
                     rawtext: [{
                         text: info.message

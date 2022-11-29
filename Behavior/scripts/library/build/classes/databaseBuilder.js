@@ -3,7 +3,7 @@ export default class Database {
     constructor(table) {
         if (!table)
             throw `[Database] constructor(): Error - Provide a table name`;
-        Server.runCommand('scoreboard objectives add GAMETEST_DB dummy');
+        Server.runCommandAsync('scoreboard objectives add GAMETEST_DB dummy');
         this.table = table;
         this._createTable();
     }
@@ -15,14 +15,14 @@ export default class Database {
         if (this._getTable())
             return;
         let json = { GAMETEST_DB_TABLE: this.table };
-        return Server.runCommand(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
+        return Server.runCommandAsync(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
     }
     ;
     /**
      * @private
      */
     _getTable() {
-        const data = Server.runCommand(`scoreboard players list`);
+        const data = Server.runCommandAsync(`scoreboard players list`);
         if (data.error)
             return;
         const objectiveUsers = data.statusMessage.match(/(?<=\n).*/)[0];
@@ -43,9 +43,9 @@ export default class Database {
         let json = this._getTable();
         if (typeof value === 'string')
             value = value.replace(/"/g, "'");
-        Server.runCommand(`scoreboard players reset ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB`);
+        Server.runCommandAsync(`scoreboard players reset ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB`);
         Object.assign(json, { [key]: value });
-        Server.runCommand(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
+        Server.runCommandAsync(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
     }
     ;
     /**
@@ -77,9 +77,9 @@ export default class Database {
      */
     delete(key) {
         let json = this._getTable();
-        Server.runCommand(`scoreboard players reset ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB`);
+        Server.runCommandAsync(`scoreboard players reset ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB`);
         const status = delete json[key];
-        Server.runCommand(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
+        Server.runCommandAsync(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
         return status;
     }
     ;
@@ -89,9 +89,9 @@ export default class Database {
      */
     clear() {
         let json = this._getTable();
-        Server.runCommand(`scoreboard players reset ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB`);
+        Server.runCommandAsync(`scoreboard players reset ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB`);
         json = { GAMETEST_DB_TABLE: this.table };
-        Server.runCommand(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
+        Server.runCommandAsync(`scoreboard players add ${JSON.stringify(JSON.stringify(json))} GAMETEST_DB 0`);
     }
     ;
     /**

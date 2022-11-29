@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { world } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
@@ -29,7 +29,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 else {
                     tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was punished by §d${name}`);
-                    sender.runCommand(`execute "${playerfound.getName()}" ~~~ function UAC/punish`);  
+                    sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/punish`);  
                 }
             } else {
                 sender.tellraw(`§¶§c§lUAC ► §cNo player specified`);

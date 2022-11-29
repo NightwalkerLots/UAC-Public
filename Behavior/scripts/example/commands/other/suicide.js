@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'suicide',
@@ -15,11 +15,11 @@ const registerInformation = {
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg;
     const name = sender.getName();
-    if (sender.scoreTest('icmtoggle') === 0) {
+    if (scoreTest(sender.nameTag, 'icmtoggle') === 0) {
         return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-    } else if (sender.scoreTest('in_combat') === 1) {
+    } else if (scoreTest(sender.nameTag, 'in_combat') === 1) {
         return sender.tellraw(`§¶§cUAC ► §6Suicide §cunavailable §bwhile in combat`);
-    } else if (sender.scoreTest('icmtoggle') === 1) {
+    } else if (scoreTest(sender.nameTag, 'icmtoggle') === 1) {
         const cancel = `cancel`;
         if (cancel.includes(args[0])) {
             sender.addTag('suicide1');
@@ -32,7 +32,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             }
             if (sender.hasTag('suicide1')) {
                 sender.removeTag('suicide1');
-                sender.runCommand(`scoreboard players set @s suicide 1`);
+                sender.runCommandAsync(`scoreboard players set @s suicide 1`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bused suicide command`);
                 return sender.tellraw(`§¶§cUAC ► §b§lTo prevent combat logging, suicide will happen in 10 seconds`);
             }

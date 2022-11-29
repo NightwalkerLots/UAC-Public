@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'lastdeath',
@@ -15,11 +15,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     const name = sender.getName();
     const ComString = `function UAC/asset/deathcoords_asset`;
     if (registerInformation.name.match(chatmsg)) {
-        if (sender.scoreTest('icmtoggle') === 0) {
+        if ( scoreTest(sender.nameTag, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if (sender.scoreTest('icmtoggle') === 1) {
-            sender.runCommand(`${ComString}`);
-            sender.runCommand(`playsound note.pling @s ~ ~ ~`);
+        } else if ( scoreTest(sender.nameTag, 'icmtoggle') === 1) {
+            sender.runCommandAsync(`${ComString}`);
+            sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
             tellrawStaff(`§¶§cUAC ► §d${name} §bchecked their last death location`);
         }
     } else {
