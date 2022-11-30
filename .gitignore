@@ -1,6 +1,7 @@
 *.mcpack
 *.zip
 
+.vscode
 types
 .mcattributes
 tsconfig.json

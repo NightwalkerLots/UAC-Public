@@ -11,10 +11,6 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 };
 var _EventControl_listeners, _EventControl_isBroken;
 
-function getStackTrace(deleteCount = 0) {
-    return new Error().stack?.replace(new RegExp(`^(.*(\n|$)){0,${deleteCount + 1}}`), '') ?? ''
-}
-
 export class EventEmitter {
     constructor(name = '<unknown>') {
         this.listeners = Object.create(null);
