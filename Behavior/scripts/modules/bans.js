@@ -1,4 +1,5 @@
-import { scoreTest, tellrawServer} from 'library/utils/prototype.js';
+import { tellrawServer} from 'library/utils/prototype.js';
+import { scoreTest } from '../library/utils/score_testing';
 import { world } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 
@@ -23,7 +24,7 @@ function playerbans(player) {
             try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCreative Mode Ban`); }
             catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
         }
-        if(player.hasTag('Ban') || scoreTest(player.nameTag, 'Ban') >= 1) {
+        if(player.hasTag('Ban') || scoreTest(player, 'Ban') >= 1) {
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cBanned By Operator\n§b§lREASON §7: §c${ban_reason}`);
             try{  
                 player.runCommandAsync(`scoreboard players set "${player.nameTag}" Ban 1`); 
@@ -43,7 +44,7 @@ function playerbans(player) {
             try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lBanned for FlyHacks`); }
             catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }              
         }
-        if(scoreTest(player.nameTag, 'warn') >= 3) {
+        if(scoreTest(player, 'warn') >= 3) {
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §c3 Warns Reached`);
             try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§l3 warns reached`); }
             catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }              

@@ -1,4 +1,5 @@
 scoreboard players add @a welcome 1
+scoreboard players add tpsdummy ontick 1
 scoreboard objectives add welcome dummy welcome
 execute @a[scores={welcome=100}] ~~~ scoreboard objectives add has_gt dummy
 execute @a[scores={welcome=110..140}] ~~~ scoreboard players set @s has_gt 0

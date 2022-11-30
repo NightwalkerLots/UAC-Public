@@ -1,4 +1,4 @@
-import { scoreTest } from 'library/utils/prototype.js';
+import { scoreTest } from '../library/utils/score_testing';
 import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 

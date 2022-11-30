@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing';
 const registerInformation = {
     cancelMessage: true,
     name: 'lastdeath',
@@ -13,16 +14,12 @@ const registerInformation = {
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg;
     const name = sender.getName();
-    const ComString = `function UAC/asset/deathcoords_asset`;
-    if (registerInformation.name.match(chatmsg)) {
-        if ( scoreTest(sender.nameTag, 'icmtoggle') === 0) {
-            return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if ( scoreTest(sender.nameTag, 'icmtoggle') === 1) {
-            sender.runCommandAsync(`${ComString}`);
-            sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bchecked their last death location`);
-        }
-    } else {
-        return sender.tellraw(`§cError Fatal : Command Failed`);
+    try {
+        if ( scoreTest(sender, 'icmtoggle') === 0) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+         
+        sender.runCommandAsync(`function UAC/asset/deathcoords_asset`);
+        tellrawStaff(`§¶§cUAC ► §d${name} §bchecked their last death location`);
+    }catch (error) {
+        console.warn(error, error.stack);
     }
 });

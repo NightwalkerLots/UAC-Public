@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 import { world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
@@ -23,19 +24,19 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let tpsaccept = ['accept'];
 
 
-        if (scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+        if (scoreTest(sender, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if (scoreTest(sender.nameTag, 'in_combat') === 1) {
+        } else if (scoreTest(sender, 'in_combat') === 1) {
             return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile in combat`);
-        } else if (scoreTest(sender.nameTag, 'tp_cooldown') != 0) {
+        } else if (scoreTest(sender, 'tp_cooldown') != 0) {
             return sender.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
-        } else if (scoreTest(sender.nameTag, 'icmtoggle') === 1) {
+        } else if (scoreTest(sender, 'icmtoggle') === 1) {
             if (registerInformation.name.match(chatmsg)) {
 
                 // tpa request
                 if (tpsopen.includes(args[0])) {
-                    if (scoreTest(sender.nameTag, 'tpa') >= 1) {
-                        return sender.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(sender.nameTag, 'tpa')}" `);
+                    if (scoreTest(sender, 'tpa') >= 1) {
+                        return sender.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(sender, 'tpa')}" `);
                     } else {
                         let input = args.join(' ').replace('request ', '').replace('@', '').replace(/"/g, '');
                         let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
@@ -57,30 +58,30 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 // tpa accept
                 else if (tpsaccept.includes(args[0])) { 
-                    if (scoreTest(sender.nameTag, 'tpa') === 0) {return sender.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);}
+                    if (scoreTest(sender, 'tpa') === 0) {return sender.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);}
                     if (sender.hasTag('tpatemp')) {return sender.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);}
                     //tp logic
                     sender.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
                     tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
-                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ tp @s "${name}"`);
+                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ tp @s "${name}"`);
                     sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`); 
-                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
+                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
             
                     //effects
-                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
-                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ function particle/nether_poof`);
-                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
+                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
+                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ function particle/nether_poof`);
+                    sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
 
                     //request reset
-                    sender.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] tpa 0`);
-                    sender.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ tag @s remove tpatemp`);
+                    sender.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(sender, 'tpa')}}] tpa 0`);
+                    sender.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ tag @s remove tpatemp`);
                     
                 } 
                 // tpa cancel/decline
                 else if(tpsclose.includes(args[0])) {
-                    if (scoreTest(sender.nameTag, 'tpa') === 0) {return sender.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to cancel`);}
-                    sender.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] ~~~ tag @s remove tpatemp`);
-                    sender.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(sender.nameTag, 'tpa')}}] tpa 0`);
+                    if (scoreTest(sender, 'tpa') === 0) {return sender.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to cancel`);}
+                    sender.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ tag @s remove tpatemp`);
+                    sender.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(sender, 'tpa')}}] tpa 0`);
                     sender.tellraw(` §¶§cUAC ► §bThe TPA request was closed`);
                     tellrawStaff(` §¶§cUAC ► §d${name} §bclosed a TPA request `);
                 } else {

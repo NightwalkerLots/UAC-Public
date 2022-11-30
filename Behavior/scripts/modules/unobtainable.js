@@ -1,4 +1,5 @@
-import { scoreTest, tellrawStaff } from 'library/utils/prototype.js';
+import { tellrawStaff } from 'library/utils/prototype.js';
+import { scoreTest } from '../library/utils/score_testing';
 import maxItemStack, { defaultMaxItemStack } from 'library/utils/maxstack.js';
 import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 

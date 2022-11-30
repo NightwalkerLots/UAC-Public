@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, content, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff, content } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'home',
@@ -34,13 +35,13 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         let removeOptions = ['remove', 'unadd'];
         let warpOptions = ['warp', 'tp'];
 
-        if (scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+        if (scoreTest(sender, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if (scoreTest(sender.nameTag, 'in_combat') === 1) {
+        } else if (scoreTest(sender, 'in_combat') === 1) {
             return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile in combat`);
-        } else if (scoreTest(sender.nameTag, 'tp_cooldown') != 0) {
+        } else if (scoreTest(sender, 'tp_cooldown') != 0) {
             return sender.tellraw(`§¶§cUAC ► §6Home §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
-        } else if (scoreTest(sender.nameTag, 'icmtoggle') === 1) {
+        } else if (scoreTest(sender, 'icmtoggle') === 1) {
 
             if (!args.length || listOptions.includes(args[0])) {
                 const allHomes = data.match(findHomeNames);

@@ -2,46 +2,31 @@ import { Player, world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
 import scoreboard from "../../../library/scoreboard.js"
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+//import { scoreTest } from '../../../library/utils/score_testing';
 const { for: obj } = scoreboard.objective
+
+function scoreTest(target, objective) {
+    try {
+        const oB = world.scoreboard.getObjective(objective)
+        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
+        return oB.getScore(target.scoreboard)
+    } catch (error) {
+        let na = 0;
+        console.warn(error, error.stack);
+        return na;
+    }
+}
 
 
 const moduleRequires = ['has_xx', 'has_gt']
-const moduleDefs = [
-    {
-        mname: 'AFK Kick',
-        obj: ['afkm'],
-        name: 'afkdummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
-    },
+const moduleDefs_prots = [
     {
         mname: 'Anti-CBE',
         obj: ['ACM', 'acmtoggle'],
         name: 'acmtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: 'has_xx'
-    },
-    {
-        mname: 'Anti CLog',
-        obj: ['clmtoggle', 'clmtoggle'],
-        name: 'clmdummy',
-        toggle: ['§cOFF', '§aKILL', '§aCLEAR'],
-        require: 'has_xx'
-    },
-    {
-        mname: 'Anti ChatSpam',
-        obj: ['acstoggle', 'acstoggle'],
-        name: 'acsdummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_gt'
-    },
-    {
-        mname: 'Anti-EnderChest',
-        obj: ['NEM', 'nemtoggle'],
-        name: 'nemtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
     },
     {
         mname: 'Anti-Fly',
@@ -79,6 +64,65 @@ const moduleDefs = [
         require: 'has_gt'
     },
     {
+        mname: 'Fake Staff Protection',
+        obj: ['SSM', 'ssmtoggle'],
+        name: 'ssmtoggledummy',
+        toggle: ['§cOFF', '§aON'],
+        require: ''
+    },
+    {
+        mname: 'Item Ban',
+        obj: ['IBM', 'ibmtoggle'],
+        name: 'ibmtoggledummy',
+        toggle: ['§cOFF', '§aON'],
+        require: ''
+    },
+    {
+        mname: 'Mining Detection',
+        obj: ['MDM', 'mdmtoggle'],
+        name: 'mdmtoggledummy',
+        toggle: ['§cOFF', '§aON'],
+        require: ''
+    },
+    {
+        mname: 'Unobtainable Items',
+        obj: ['uoimtoggledummy'],
+        name: 'UOIM',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_xx'
+    }
+]
+
+const moduleDefs_util = [
+    {
+        mname: 'AFK Kick',
+        obj: ['afkm'],
+        name: 'afkdummy',
+        toggle: ['§cOFF', '§aON'],
+        require: ''
+    },
+    {
+        mname: 'Anti CLog',
+        obj: ['clmtoggle', 'clmtoggle'],
+        name: 'clmdummy',
+        toggle: ['§cOFF', '§aKILL', '§aCLEAR'],
+        require: 'has_xx'
+    },
+    {
+        mname: 'Anti ChatSpam',
+        obj: ['acstoggle', 'acstoggle'],
+        name: 'acsdummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
+    },
+    {
+        mname: 'Anti-EnderChest',
+        obj: ['NEM', 'nemtoggle'],
+        name: 'nemtoggledummy',
+        toggle: ['§cOFF', '§aON'],
+        require: ''
+    },
+    {
         mname: 'Bottom Bedrock',
         obj: ['BBM', 'bbmtoggle'],
         name: 'bbmtoggledummy',
@@ -100,13 +144,6 @@ const moduleDefs = [
         require: 'has_xx'
     },
     {
-        mname: 'Fake Staff Protection',
-        obj: ['SSM', 'ssmtoggle'],
-        name: 'ssmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
-    },
-    {
         mname: 'Hotbar Message',
         obj: ['HMM', 'hmmtoggle'],
         name: 'hmmtoggledummy',
@@ -114,23 +151,9 @@ const moduleDefs = [
         require: ''
     },
     {
-        mname: 'Item Ban',
-        obj: ['IBM', 'ibmtoggle'],
-        name: 'ibmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
-    },
-    {
         mname: 'Lag Clear',
         obj: ['LTM', 'ltmtoggle'],
         name: 'ltmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
-    },
-    {
-        mname: 'Mining Detection',
-        obj: ['MDM', 'mdmtoggle'],
-        name: 'mdmtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: ''
     },
@@ -161,13 +184,6 @@ const moduleDefs = [
         name: 'tpmtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: ''
-    },
-    {
-        mname: 'Unobtainable Items',
-        obj: ['uoimtoggledummy'],
-        name: 'UOIM',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_xx'
     },
     {
         mname: 'World Border',
@@ -219,7 +235,7 @@ const setModule = (plr, module, newValue) => {
         if (newValue == null) newValue = ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
         objdata.set(module.name, newValue)
         for (const id of module.obj) obj(id).dummies.set(module.name, newValue)
-        tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
+        //tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
     } catch(error) {console.warn(error, error.stack)}
     
 }
@@ -237,7 +253,7 @@ const guiScheme = {
     main: (() => { // main UI
         /** @type { [name: string, fn: (plr: Player) => void][] } */
         const actionList = [
-            [ 'Modules'        , plr => guiScheme.toggle(plr) ],
+            [ 'Modules'        , plr => guiScheme.toggle_main(plr) ],
             [ 'Item bans'      , plr => guiScheme.itemban(plr) ],
             [ 'Ore alerts'     , plr => guiScheme.oreban(plr) ],
             [ 'Kits'           , plr => guiScheme.kits(plr) ],
@@ -310,7 +326,7 @@ const guiScheme = {
     
     pcmd: {
         display: (plr) => {
-            if (scoreTest(plr.name, 'hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
+            if (scoreTest(plr, 'hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
             
             const actionList = [
                 [ 'Personal Stats'  , () => plr.runCommandAsync('scoreboard players set @s hometp 1337') ],
@@ -341,10 +357,10 @@ const guiScheme = {
             let name = plr.getName();
             
 
-            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
-            if (scoreTest(plr.name, 'worldcustom') === 1) {
-                plr.runCommandAsync(`tp @s ${scoreTest(plr.name, 'Worldx')} ${scoreTest(plr.name, 'Worldy')} ${scoreTest(plr.name, 'Worldz')}`);
-                plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(plr.name, 'Worldx')} ${scoreTest(plr.name, 'Worldy')} ${scoreTest(plr.name, 'Worldz')}`);
+            if (scoreTest(plr, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr, 'worldcustom') === 1) {
+                plr.runCommandAsync(`tp @s ${scoreTest(plr, 'Worldx')} ${scoreTest(plr, 'Worldy')} ${scoreTest(plr, 'Worldz')}`);
+                plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(plr, 'Worldx')} ${scoreTest(plr, 'Worldy')} ${scoreTest(plr, 'Worldz')}`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
                 plr.runCommandAsync(`function particle/nether_poof`);
                 plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
@@ -417,7 +433,7 @@ const guiScheme = {
                 .title(`${target.name.replace(/§./g, '')}'s TPA options`)
 
             let text = []
-            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
             text.push(`§l§bSend a TPA to §d${target.name.replace(/§./g, '')}§b?`)
             v.body(text.join('\n§r'))
             const cmdlist = [
@@ -434,8 +450,8 @@ const guiScheme = {
         },
         tpa_send: (plr, target) => {
             let name = plr.getName();
-            if (scoreTest(plr.name, 'tpa') >= 1) return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(plr.name, 'tpa')}" \n§bCancel to create a new request.`);
-            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr, 'tpa') >= 1) return plr.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(plr, 'tpa')}" \n§bCancel to create a new request.`);
+            if (scoreTest(plr, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
             plr.runCommandAsync(`scoreboard players random @s tpa 1 999999`);
             plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
@@ -448,29 +464,29 @@ const guiScheme = {
             
         },
         tpa_cancel: (plr, target) => {
-            plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ tag @s remove tpatemp`);
-            plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr.name, 'tpa')}}] tpa 0`);
+            plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ tag @s remove tpatemp`);
+            plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr, 'tpa')}}] tpa 0`);
             plr.tellraw(` §¶§cUAC ► §bThe TPA request was closed`);
             tellrawStaff(` §¶§cUAC ► §d${plr.getName()} §bclosed a TPA request `);
         },
         tpa_accept: (plr, target) => {
             let name = plr.getName();
-            if (scoreTest(plr.name, 'tpa') === 0) return plr.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);
+            if (scoreTest(plr, 'tpa') === 0) return plr.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);
             if (plr.hasTag('tpatemp')) return plr.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);
-            if (scoreTest(plr.name, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
+            if (scoreTest(plr, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
             plr.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
             tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
-            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ tp @s "${name}"`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ tp @s "${name}"`);
             plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`); 
-            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
 
-            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
-            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ function particle/nether_poof`);
-            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ function particle/nether_poof`);
+            plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ playsound mob.shulker.teleport @s ~~~ 2 2 2`); 
 
-            plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr.name, 'tpa')}}] tpa 0`);
-            plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr.name, 'tpa')}}] ~~~ tag @s remove tpatemp`);
+            plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr, 'tpa')}}] tpa 0`);
+            plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ tag @s remove tpatemp`);
         },
 
 
@@ -575,44 +591,43 @@ const guiScheme = {
             let chest_type = undefined;
             let leg_type = undefined;
             let boot_type = undefined;
-            let targ_name = target.name
             let head_enchanted = scoreTest(targ_name, 'headen');
             let chest_enchanted = scoreTest(targ_name, 'chesten');
             let leg_enchanted = scoreTest(targ_name, 'legen');
             let boot_enchanted = scoreTest(targ_name, 'feeten');
 
-            if(scoreTest(targ_name, 'nethhelm') === 1) { head_type = 'Netherite' }
-            if(scoreTest(targ_name, 'diahelm') === 1) { head_type = 'Diamond' }
-            if(scoreTest(targ_name, 'ironhelm') === 1) { head_type = 'Iron' }
-            if(scoreTest(targ_name, 'goldhelm') === 1) { head_type = 'Gold' }
-            if(scoreTest(targ_name, 'chainhelm') === 1) { head_type = 'Chainmail' }
-            if(scoreTest(targ_name, 'leathhelm') === 1) { head_type = 'Leather' }
-            if(scoreTest(targ_name, 'turthelm') === 1) { head_type = 'Turtle' }
+            if(scoreTest(target, 'nethhelm') === 1) { head_type = 'Netherite' }
+            if(scoreTest(target, 'diahelm') === 1) { head_type = 'Diamond' }
+            if(scoreTest(target, 'ironhelm') === 1) { head_type = 'Iron' }
+            if(scoreTest(target, 'goldhelm') === 1) { head_type = 'Gold' }
+            if(scoreTest(target, 'chainhelm') === 1) { head_type = 'Chainmail' }
+            if(scoreTest(target, 'leathhelm') === 1) { head_type = 'Leather' }
+            if(scoreTest(target, 'turthelm') === 1) { head_type = 'Turtle' }
             if(head_type == undefined) { head_type = 'None'}
 
-            if(scoreTest(targ_name, 'nethchest') === 1) { chest_type = 'Netherite' }
-            if(scoreTest(targ_name, 'diachest') === 1) { chest_type = 'Diamond' }
-            if(scoreTest(targ_name, 'goldchest') === 1) { chest_type = 'Gold' }
-            if(scoreTest(targ_name, 'ironchest') === 1) { chest_type = 'Iron' }
-            if(scoreTest(targ_name, 'chainchest') === 1) { chest_type = 'Chain' }
-            if(scoreTest(targ_name, 'leathchest') === 1) { chest_type = 'Leather' }
-            if(scoreTest(targ_name, 'elytra') === 1) { chest_type = 'Elytra' }
+            if(scoreTest(target, 'nethchest') === 1) { chest_type = 'Netherite' }
+            if(scoreTest(target, 'diachest') === 1) { chest_type = 'Diamond' }
+            if(scoreTest(target, 'goldchest') === 1) { chest_type = 'Gold' }
+            if(scoreTest(target, 'ironchest') === 1) { chest_type = 'Iron' }
+            if(scoreTest(target, 'chainchest') === 1) { chest_type = 'Chain' }
+            if(scoreTest(target, 'leathchest') === 1) { chest_type = 'Leather' }
+            if(scoreTest(target, 'elytra') === 1) { chest_type = 'Elytra' }
             if(chest_type == undefined) { chest_type = 'None'}
 
-            if(scoreTest(targ_name, 'nethlegs') === 1) { leg_type = 'Netherite' }
-            if(scoreTest(targ_name, 'dialegs') === 1) { leg_type = 'Diamond' }
-            if(scoreTest(targ_name, 'ironlegs') === 1) { leg_type = 'Iron' }
-            if(scoreTest(targ_name, 'goldlegs') === 1) { leg_type = 'Gold' }
-            if(scoreTest(targ_name, 'chainlegs') === 1) { leg_type = 'Chain' }
-            if(scoreTest(targ_name, 'leathlegs') === 1) { leg_type = 'Leather' }
+            if(scoreTest(target, 'nethlegs') === 1) { leg_type = 'Netherite' }
+            if(scoreTest(target, 'dialegs') === 1) { leg_type = 'Diamond' }
+            if(scoreTest(target, 'ironlegs') === 1) { leg_type = 'Iron' }
+            if(scoreTest(target, 'goldlegs') === 1) { leg_type = 'Gold' }
+            if(scoreTest(target, 'chainlegs') === 1) { leg_type = 'Chain' }
+            if(scoreTest(target, 'leathlegs') === 1) { leg_type = 'Leather' }
             if(leg_type == undefined) { leg_type = 'None'}
 
-            if(scoreTest(targ_name, 'nethboots') === 1) { boot_type = 'Netherite' }
-            if(scoreTest(targ_name, 'diaboots') === 1) { boot_type = 'Diamond' }
-            if(scoreTest(targ_name, 'ironboots') === 1) { boot_type = 'Iron' }
-            if(scoreTest(targ_name, 'goldboots') === 1) { boot_type = 'Gold' }
-            if(scoreTest(targ_name, 'chainboots') === 1) { boot_type = 'Chain' }
-            if(scoreTest(targ_name, 'leathboots') === 1) { boot_type = 'Leather' }
+            if(scoreTest(target, 'nethboots') === 1) { boot_type = 'Netherite' }
+            if(scoreTest(target, 'diaboots') === 1) { boot_type = 'Diamond' }
+            if(scoreTest(target, 'ironboots') === 1) { boot_type = 'Iron' }
+            if(scoreTest(target, 'goldboots') === 1) { boot_type = 'Gold' }
+            if(scoreTest(target, 'chainboots') === 1) { boot_type = 'Chain' }
+            if(scoreTest(target, 'leathboots') === 1) { boot_type = 'Leather' }
             if(boot_type == undefined) { boot_type = 'None'}
             
 
@@ -642,21 +657,21 @@ const guiScheme = {
 
             let text = [];
             
-            let tp_day = scoreTest(plr.name, 'timeplayedday');
-            let tp_hour = scoreTest(plr.name, 'timeplayedhr');
-            let tp_min = scoreTest(plr.name, 'timeplayedmin');
-            let tp_sec = scoreTest(plr.name, 'timeplayedsec');
-            let deaths = scoreTest(plr.name, 'deaths');
-            let kills = scoreTest(plr.name, 'kills');
-            let killstreak = scoreTest(plr.name, 'killstreak');
-            let money = scoreTest(plr.name, 'money');
+            let tp_day = scoreTest(plr, 'timeplayedday');
+            let tp_hour = scoreTest(plr, 'timeplayedhr');
+            let tp_min = scoreTest(plr, 'timeplayedmin');
+            let tp_sec = scoreTest(plr, 'timeplayedsec');
+            let deaths = scoreTest(plr, 'deaths');
+            let kills = scoreTest(plr, 'kills');
+            let killstreak = scoreTest(plr, 'killstreak');
+            let money = scoreTest(plr, 'money');
 
-            let diamonds = scoreTest(plr.name, 'diamond_ore');
-            let emeralds = scoreTest(plr.name, 'emerald_ore');
-            let gold = scoreTest(plr.name, 'gold_ore');
-            let iron = scoreTest(plr.name, 'iron_ore');
-            let lapis = scoreTest(plr.name, 'lapis_ore');
-            let netherite = scoreTest(plr.name, 'ancient_debris');
+            let diamonds = scoreTest(plr, 'diamond_ore');
+            let emeralds = scoreTest(plr, 'emerald_ore');
+            let gold = scoreTest(plr, 'gold_ore');
+            let iron = scoreTest(plr, 'iron_ore');
+            let lapis = scoreTest(plr, 'lapis_ore');
+            let netherite = scoreTest(plr, 'ancient_debris');
 
             text.push(`§d§lTime Played:`);
             text.push(`§bD/§7:§c${tp_day} §bH/§7:§c${tp_hour} §bM/§7:§c${tp_min} §bS/§7:§c${tp_sec}`);
@@ -764,15 +779,36 @@ const guiScheme = {
     })(),
 
     /** @type { (plr: Player) => void } */
-    toggle: (plr) => { // module toggle UI
+    toggle_main: (plr) => {
+        const v = new ActionFormData()
+            .title(`§l§bModules Menu`)
+        
+        let text = []
+        text.push(`§l§bYeet`)
+
+        const cmdlist = [
+            [ 'Utilities'     ,     () => guiScheme.toggle_utility(plr) ],
+            [ 'Protections'   ,     () => guiScheme.toggle_protections(plr) ],
+            [ 'Back'          ,     () => guiScheme.main(plr) ]
+        ]
+        for (let [name, f] of cmdlist) v.button(name)
+
+        v.show(plr).then(v => {
+            if (v.isCanceled) return
+            cmdlist[v.selection][1]()
+        })
+
+    },
+
+    toggle_utility: (plr) => { // utility module toggle UI
         const v = new ModalFormData()
-            .title('Modules')
+            .title('Utility Modules')
 
         /** @type { number[] } */
         const values = []
 
         const exps = Object.fromEntries( moduleRequires.map(v => [ v, obj(v).players.get(plr) ]) )
-        for (let module of moduleDefs) {
+        for (let module of moduleDefs_util) {
             const vl = obj(module.obj[0]).dummies.get(module.name)
             values.push(vl)
             module.toggle.length == 2
@@ -784,7 +820,33 @@ const guiScheme = {
             if (v.isCanceled) return guiScheme.main(plr)
             const newValues = v.formValues.map(v => Number(v))
             for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
-                if (a != b) setModule(plr, moduleDefs[i], b)
+                if (a != b) setModule(plr, moduleDefs_util[i], b)
+            }
+            guiScheme.main(plr)
+        })
+    },
+
+    toggle_protections: (plr) => { // utility module toggle UI
+        const v = new ModalFormData()
+            .title('Protection Modules')
+
+        /** @type { number[] } */
+        const values = []
+
+        const exps = Object.fromEntries( moduleRequires.map(v => [ v, obj(v).players.get(plr) ]) )
+        for (let module of moduleDefs_prots) {
+            const vl = obj(module.obj[0]).dummies.get(module.name)
+            values.push(vl)
+            module.toggle.length == 2
+                ? v.toggle(`${module.mname} ${ module.require ? ( exps[module.require] ? '§a' : '§c' ) : '§8' }[EXP]`, !!vl)
+                : v.dropdown(`${module.mname} ${ module.require ? ( exps[module.require] ? '§a' : '§c' ) : '§8' }[EXP]`, module.toggle, vl)
+        }
+
+        v.show(plr).then(v => {
+            if (v.isCanceled) return guiScheme.main(plr)
+            const newValues = v.formValues.map(v => Number(v))
+            for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
+                if (a != b) setModule(plr, moduleDefs_prots[i], b)
             }
             guiScheme.main(plr)
         })
@@ -964,7 +1026,7 @@ const waitMove = new Map()
 
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg, {location: {x, y, z}} = sender
-    if(scoreTest(sender.nameTag, 'icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    if(scoreTest(sender, 'icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
 
     sender.tellraw(`§aMove to show the UI.`)
     waitMove.set(chatmsg.sender, [x, y, z])
@@ -975,7 +1037,7 @@ world.events.tick.subscribe(() => {
         try {
             let { x: xc, y: yc, z: zc } = plr.location
             if (x != xc || y != yc || z != zc) {
-                if(scoreTest(plr.name, 'seen_gui') == 0) {
+                if(scoreTest(plr, 'seen_gui') == 0) {
                     guiScheme.player_welcome(plr)
                     waitMove.delete(plr)
                     return;

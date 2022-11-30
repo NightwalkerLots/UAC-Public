@@ -1,23 +1,33 @@
-import { scoreTest } from 'library/utils/prototype.js';
 import { world } from '@minecraft/server';
 
-function movement_check() {
-    let players = world.getPlayers();
-        for (let player of players) { 
-        let lastpos_x = scoreTest(player.nameTag, 'lastpos_x');
-        let lastpos_z = scoreTest(player.nameTag, 'lastpos_z');
+function scoreTest(target, objective) {
+    try {
+        const oB = world.scoreboard.getObjective(objective)
+        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
+        return oB.getScore(target.scoreboard)
+    } catch (error) {
+        console.warn(error, error.stack);
+    }
+}
 
-        if(scoreTest(player.nameTag, 'X_Coordinate') > lastpos_x || scoreTest(player.nameTag, 'X_Coordinate') < lastpos_x) {
+function movement_check(player) {
+    try {
+        let lastpos_x = scoreTest(player, 'lastpos_x');
+        let lastpos_z = scoreTest(player, 'lastpos_z');
+
+        if(scoreTest(player, 'X_Coordinate') > lastpos_x || scoreTest(player, 'X_Coordinate') < lastpos_x) {
             player.runCommandAsync('scoreboard players set @s notmovingflag 0');
             //player.tellraw(`is moving`);
         }
-        if(scoreTest(player.nameTag, 'Z_Coordinate') > lastpos_z || scoreTest(player.nameTag, 'Z_Coordinate') < lastpos_z) {
+        if(scoreTest(player, 'Z_Coordinate') > lastpos_z || scoreTest(player, 'Z_Coordinate') < lastpos_z) {
             player.runCommandAsync('scoreboard players set @s notmovingflag 0');
             //player.tellraw(`is moving`);
         }
-        if(scoreTest(player.nameTag, 'X_Coordinate') == lastpos_x || scoreTest(player.nameTag, 'Z_Coordinate') == lastpos_z) {
+        if(scoreTest(player, 'X_Coordinate') == lastpos_x || scoreTest(player, 'Z_Coordinate') == lastpos_z) {
             player.runCommandAsync(`scoreboard players add @s notmovingflag 1`);
         }
+    }catch (error) {
+        console.warn(error);
     }
 }
 

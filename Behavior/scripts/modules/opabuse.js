@@ -1,4 +1,5 @@
 import { getGamemode } from 'library/utils/prototype.js';
+import { scoreTest } from '../library/utils/score_testing';
 
 
 function op_abuse(player) {
@@ -24,7 +25,7 @@ function op_abuse(player) {
             player.runCommandAsync(`scoreboard players @s set totemaut 0`);
         }
         //force invisible staff into spectator, to remove pvp advantage
-        if(player.hasTag(`spectate`) || ( scoreTest(player.nameTag, 'vnsh') >= 1 ) ) {
+        if(player.hasTag(`spectate`) || ( scoreTest(player, 'vnsh') >= 1 ) ) {
             player.runCommandAsync(`gamemode spectator`);
         }
     }

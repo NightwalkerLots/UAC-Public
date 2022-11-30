@@ -1,6 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, tellrawServer, queryTopSolid } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
+import { world } from '@minecraft/server';
 const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,

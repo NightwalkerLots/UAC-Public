@@ -1,7 +1,8 @@
 import { Player, world as World } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import area from '../../../library/utils/area.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing';
 import scoreboard from '../../../library/scoreboard.js';
 
 const registerInformation = {
@@ -41,7 +42,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             
             sender.tellraw(`§eAnti-Reach§f has been §aENABLED§r.`);
             tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §aENABLED§r.`);
-            if(scoreTest(sender.nameTag, 'armtoggle') == 1) {
+            if(scoreTest(sender, 'armtoggle') == 1) {
                 sender.runCommandAsync(`scoreboard players set @s armtoggle 0`);
                 sender.runCommandAsync(`scoreboard players set armtoggledummy armtoggle 0`);
                 tellrawStaff(`§¶§cUAC ► §6Anti-Reach §bThe module's function method was disabled, sense the gametest method is now in use.`)

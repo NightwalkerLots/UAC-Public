@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { scoreTest } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 import { world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
@@ -16,13 +16,13 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
 
-        if ( scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+        if ( scoreTest(sender, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
         }
 
         let input = args.join(' ').replace('@', '').replace(/"/g, '').replace(`${args[0]} `, '');
         let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
-        let money =  scoreTest(sender.nameTag, 'money');
+        let money =  scoreTest(sender, 'money');
         if(!args[0]) { return sender.tellraw(`§¶§cUAC ► §c§lNo amount specified`); }
         if(!args[1]) { return sender.tellraw(`§¶§cUAC ► §c§lNo player specified`); }
         if(!playerfound) { return sender.tellraw(`§¶§cUAC ► §c§lNo player by that name`); }
@@ -36,7 +36,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommandAsync(`scoreboard players remove @s money ${amount}`);
             sender.runCommandAsync(`scoreboard players add "${playerfound.getName()}" money ${amount}`);
             playerfound.tellraw(`§¶§cUAC ► §d${name} §bpayed you §c${amount}$§b. You now have §c${ scoreTest(playerfound, 'money')}$.`);
-            let moneyupdate =  scoreTest(sender.nameTag, 'money');
+            let moneyupdate =  scoreTest(sender, 'money');
             sender.tellraw(`§¶§cUAC ► §bYou payed §c${amount} §bto §d${playerfound.getName()}§b. You have §c${moneyupdate} §bleft.`);
         }
 

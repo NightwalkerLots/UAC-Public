@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 
 const registerInformation = {
     cancelMessage: true,
@@ -18,21 +19,21 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
         
-        if ( scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+        if ( scoreTest(sender, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if (scoreTest(sender.nameTag, 'in_combat') === 1) {
+        } else if (scoreTest(sender, 'in_combat') === 1) {
             return sender.tellraw(`§¶§cUAC ► §6SpawnTP §cunavailable §bwhile in combat`);
-        } else if (scoreTest(sender.nameTag, 'tp_cooldown') != 0) {
+        } else if (scoreTest(sender, 'tp_cooldown') != 0) {
             return sender.tellraw(`§¶§cUAC ► §6Spawn TP §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`);
-        } else if (scoreTest(sender.nameTag, 'icmtoggle') === 1) {
+        } else if (scoreTest(sender, 'icmtoggle') === 1) {
 
             if (args[0]) {
                 sender.tellraw(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
             }
             else {
-                if (scoreTest(sender.nameTag, 'worldcustom') === 1) {
-                    sender.runCommandAsync(`tp @s ${scoreTest(sender.nameTag, 'Worldx')} ${scoreTest(sender.nameTag, 'Worldy')} ${scoreTest(sender.nameTag, 'Worldz')}`);
-                    sender.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(sender.nameTag, 'Worldx')} ${scoreTest(sender.nameTag, 'Worldy')} ${scoreTest(sender.nameTag, 'Worldz')}`);
+                if (scoreTest(sender, 'worldcustom') === 1) {
+                    sender.runCommandAsync(`tp @s ${scoreTest(sender, 'Worldx')} ${scoreTest(sender, 'Worldy')} ${scoreTest(sender, 'Worldz')}`);
+                    sender.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(sender, 'Worldx')} ${scoreTest(sender, 'Worldy')} ${scoreTest(sender, 'Worldz')}`);
                     tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
                     sender.runCommandAsync(`function particle/nether_poof`);
                     sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);

@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
-import { world, Location } from '@minecraft/server';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing';
 
 const registerInformation = {
     cancelMessage: true,

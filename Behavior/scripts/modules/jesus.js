@@ -1,4 +1,5 @@
-import { scoreTest, tellrawStaff } from 'library/utils/prototype.js';
+import { tellrawStaff } from 'library/utils/prototype.js';
+import { scoreTest } from '../library/utils/score_testing';
 import { world, BlockLocation } from '@minecraft/server';
 
 const _player = {
@@ -10,10 +11,10 @@ function jesus() {
     let players = world.getPlayers();
     for (let player of players) {   
         const name = player.getName();
-        const in_water = scoreTest(player.nameTag, 'in_water');
-        const water_contact = scoreTest(player.nameTag, 'water_contact');
-        const swimming = scoreTest(player.nameTag, 'is_swimming');
-        const riding = scoreTest(player.nameTag, 'riding');
+        const in_water = scoreTest(player, 'in_water');
+        const water_contact = scoreTest(player, 'water_contact');
+        const swimming = scoreTest(player, 'is_swimming');
+        const riding = scoreTest(player, 'riding');
         const x = Math.floor(player.location.x);
         const y = Math.floor(player.location.y);
         const z = Math.floor(player.location.z);

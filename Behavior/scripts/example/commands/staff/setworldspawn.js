@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { scoreTest } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing';
 const registerInformation = {
     cancelMessage: true,
     name: 'worldspawn',
@@ -23,13 +23,13 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommandAsync(`scoreboard players operation worlddum Worldy = @s Y_Coordinate`);
             sender.runCommandAsync(`scoreboard players operation worlddum Worldz = @s Z_Coordinate`);       
             sender.runCommandAsync(`function UAC/asset/toggle_sync `);
-            sender.runCommandAsync(`scoreboard players set @s Worldx ${scoreTest(sender.nameTag, 'X_Coordinate')}`);
-            sender.runCommandAsync(`scoreboard players set @s Worldy ${scoreTest(sender.nameTag, 'Y_Coordinate')}`);
-            sender.runCommandAsync(`scoreboard players set @s Worldz ${scoreTest(sender.nameTag, 'Z_Coordinate')}`);
+            sender.runCommandAsync(`scoreboard players set @s Worldx ${scoreTest(sender, 'X_Coordinate')}`);
+            sender.runCommandAsync(`scoreboard players set @s Worldy ${scoreTest(sender, 'Y_Coordinate')}`);
+            sender.runCommandAsync(`scoreboard players set @s Worldz ${scoreTest(sender, 'Z_Coordinate')}`);
             sender.runCommandAsync(`setworldspawn  ~~~`);
             sender.runCommandAsync(`function particle/explode`);
             sender.runCommandAsync(`scoreboard players set worlddum worldcustom 1`);
-            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${scoreTest(sender.nameTag, 'X_Coordinate')} ${scoreTest(sender.nameTag, 'Y_Coordinate')} ${scoreTest(sender.nameTag, 'Z_Coordinate')}§b! Players will be sent here after passing World Border`);
+            sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${scoreTest(sender, 'X_Coordinate')} ${scoreTest(sender, 'Y_Coordinate')} ${scoreTest(sender, 'Z_Coordinate')}§b! Players will be sent here after passing World Border`);
         }
         else if (worldremove.includes(args[0])) {
             sender.runCommandAsync(`scoreboard players set worlddum worldcustom 0`);
