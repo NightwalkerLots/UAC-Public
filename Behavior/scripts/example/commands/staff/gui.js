@@ -235,7 +235,7 @@ const setModule = (plr, module, newValue) => {
         if (newValue == null) newValue = ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
         objdata.set(module.name, newValue)
         for (const id of module.obj) obj(id).dummies.set(module.name, newValue)
-        //tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
+        tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
     } catch(error) {console.warn(error, error.stack)}
     
 }
@@ -746,7 +746,7 @@ const guiScheme = {
                     ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
                     || ( !selection ? null : pl[selection - 1] )
                 if (!target) return guiScheme.pcmd.new(plr, 1)
-                //if (target == plr) return guiScheme.pcmd.new(plr, 2)
+                if (target == plr) return guiScheme.pcmd.new(plr, 2)
                 guiScheme.pcmd.exec(plr, target)
             })
         }

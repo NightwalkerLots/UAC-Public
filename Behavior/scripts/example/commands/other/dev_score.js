@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { scoreTest } from '../../../library/utils/score_testing.js';
+import { asyncExecCmd } from '../../../library/async_fix/cmd_queue.js';
 
 
 const registerInformation = {
@@ -21,7 +22,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
 
-        sender.tellraw(`(Dev) Last Pos X   :   ${scoreTest(sender, 'lastpos_x')}`);
+        asyncExecCmd(`say this worked`, sender);
         
         
     } catch (error) {

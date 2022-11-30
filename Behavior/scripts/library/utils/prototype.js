@@ -1,4 +1,5 @@
-import { world, Player, BlockLocation, EntityQueryOptions, GameMode } from '@minecraft/server';
+import { world, Player, BlockLocation } from '@minecraft/server';
+//import { asyncExecCmd } from '../async_fix/cmd_queue';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
 export const content = {

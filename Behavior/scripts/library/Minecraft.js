@@ -34,7 +34,7 @@ class ServerBuild extends ServerBuilder {
                  * Emit to 'beforeMessage' event listener
                  */
                 const sender = data.sender;
-                this.emit('beforeMessage', data);
+                this._emit('beforeMessage', data);
                 /**
                  * This is for the command builder and a emitter
                  */
@@ -67,7 +67,7 @@ class ServerBuild extends ServerBuilder {
                     /**
                      * Emit to 'customCommand' event listener
                      */
-                    this.emit('customCommand', {
+                    this._emit('customCommand', {
                         registration: element,
                         data,
                         createdAt: date,
@@ -80,41 +80,41 @@ class ServerBuild extends ServerBuilder {
             /**
              * Emit to 'beforeExplosion' event listener
              */
-            world.events.beforeExplosion.subscribe(data => this.emit('beforeExplosion', data));
+            world.events.beforeExplosion.subscribe(data => this._emit('beforeExplosion', data));
             /**
              * Emit to 'beforePistonActivate' event listener
              */
-            world.events.beforePistonActivate.subscribe(data => this.emit('beforePistonActivate', data));
+            world.events.beforePistonActivate.subscribe(data => this._emit('beforePistonActivate', data));
             /**
              * Emit to 'blockExplode' event listener
              */
-            world.events.blockExplode.subscribe(data => this.emit('blockExplode', data));
+            world.events.blockExplode.subscribe(data => this._emit('blockExplode', data));
             /**
              * Emit to 'beforeExplosion' event listener
              */
-            world.events.explosion.subscribe(data => this.emit('explosion', data));
+            world.events.explosion.subscribe(data => this._emit('explosion', data));
             /**
              * Emit to 'beforeExplosion' event listener
              */
-            world.events.pistonActivate.subscribe(data => this.emit('pistonActivate', data));
+            world.events.pistonActivate.subscribe(data => this._emit('pistonActivate', data));
             /**
              * Emit to 'messageCreate' event listener
              */
-            world.events.chat.subscribe(data => this.emit('messageCreate', data));
+            world.events.chat.subscribe(data => this._emit('messageCreate', data));
             /**
              * Emit to 'entityEffected' event listener
              */
-            world.events.effectAdd.subscribe(data => this.emit('entityEffected', data));
+            world.events.effectAdd.subscribe(data => this._emit('entityEffected', data));
             /**
              * Emit to 'weatherChange' event listener
              */
-            world.events.weatherChange.subscribe(data => this.emit('weatherChange', data));
+            world.events.weatherChange.subscribe(data => this._emit('weatherChange', data));
             let oldPlayer = [];
             world.events.entityCreate.subscribe(data => {
                 /**
                  * Emit to 'entityCreate' event listener
                  */
-                this.emit('entityCreate', data.entity);
+                this._emit('entityCreate', data.entity);
                 if (data.entity.id !== 'minecraft:player')
                     return;
                 let playerJoined = Player.list().filter(current => !oldPlayer.some(old => current === old));
@@ -122,7 +122,7 @@ class ServerBuild extends ServerBuilder {
                  * Emit to 'playerJoin' event listener
                  */
                 if (playerJoined.includes(data.entity.nameTag))
-                    this.emit('playerJoin', data.entity);
+                    this._emit('playerJoin', data.entity);
             });
             let worldLoaded = false, tickCount = 0;
             world.events.tick.subscribe((data) => {
@@ -130,7 +130,7 @@ class ServerBuild extends ServerBuilder {
                     /**
                      * Emit to 'ready' event listener
                      */
-                    this.emit('ready', { loadTime: tickCount });
+                    this._emit('ready', { loadTime: tickCount });
                     worldLoaded = true;
                 }
                 ;
