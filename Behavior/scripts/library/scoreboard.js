@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server";
-import { asyncExecCmd } from "./async_fix/cmd_queue"
+import { asyncExecCmd } from "./utils/cmd_queue"
 
 class CommandError extends Error {
     code
