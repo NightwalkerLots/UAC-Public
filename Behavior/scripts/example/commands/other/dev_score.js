@@ -14,6 +14,12 @@ const registerInformation = {
     ]
 };
 
+function hotbar (player, message) {
+    try {
+        return asyncExecCmd(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`, player);
+    }
+    catch {return}
+}
 
 Server.command.register(registerInformation, (chatmsg, args) => {
     try {
@@ -22,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         const { sender } = chatmsg;
         const name = sender.getName();
 
-        asyncExecCmd(`say this worked`, sender);
+        hotbar(sender, `§¶§bYOU HAVE BEEN §cFROZEN §bBY AN OPERATOR \n §¶§bLEAVING MAY RESULT IN A BAN test`);
         
         
     } catch (error) {

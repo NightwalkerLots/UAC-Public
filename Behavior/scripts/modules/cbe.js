@@ -1,5 +1,6 @@
 import { scoreTest } from '../library/utils/score_testing';
 import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+import { asyncExecCmd } from '../library/utils/cmd_queue.js'
 const overworld = world.getDimension('overworld');
 
 const bannedItems = [
@@ -26,13 +27,13 @@ function anticbe() {
     //stop script if module is disabled
     if(acmbool == false) return;
     try {
-        overworld.runCommandAsync(`kill @e[type=item,name="bee nest"]`);
-        overworld.runCommandAsync(`kill @e[type=item,name="beehive"]`);
-        overworld.runCommandAsync(`kill @e[type=item,name="tile.movingblock.name]`);
-        overworld.runCommandAsync(`kill @e[type=item,name="tile.moving_block.name"]`);
-        overworld.runCommandAsync(`kill @e[type=command_block_minecart]`);
-        overworld.runCommandAsync(`kill @e[name="minecart"]`);
-        overworld.runCommandAsync(`kill @e[type=npc]`);
+        asyncExecCmd(`kill @e[type=item,name="bee nest"]`);
+        asyncExecCmd(`kill @e[type=item,name="beehive"]`);
+        asyncExecCmd(`kill @e[type=item,name="tile.movingblock.name]`);
+        asyncExecCmd(`kill @e[type=item,name="tile.moving_block.name"]`);
+        asyncExecCmd(`kill @e[type=command_block_minecart]`);
+        asyncExecCmd(`kill @e[name="minecart"]`);
+        asyncExecCmd(`kill @e[type=npc]`);
     } catch { }
     
 

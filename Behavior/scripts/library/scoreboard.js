@@ -1,5 +1,6 @@
 import { world } from "@minecraft/server";
-import { asyncExecCmd } from "./utils/cmd_queue"
+import { asyncExecCmd, overworld } from "./utils/cmd_queue"
+import { scoreTest } from "./utils/score_testing"
 
 class CommandError extends Error {
     code
@@ -63,7 +64,7 @@ class players {
                 o = cacheData.get(plr);
             if (o == undefined) {
                 try {
-                    o = +execCmd(`scoreboard players test @s ${obj.executableId} * *`, plr).statusMessage.match(/-?\d+/)[0];
+                    o = +world.scoreboard.getObjective(obj.executableId).getScore(plr.scoreboard);
                 }
                 catch { }
                 if (o != undefined)
@@ -73,7 +74,7 @@ class players {
         };
         this.has = (plr) => {
             try {
-                asyncExecCmd(`scoreboard players test @s ${obj.executableId} * *`, plr);
+                world.scoreboard.getObjective(obj.executableId).getScore(plr.scoreboard);
                 return true;
             }
             catch {
@@ -153,16 +154,16 @@ class dummies {
             return this;
         };
     }
-}
+} 
 class objective {
     static create = (id, displayName = id) => new objective(id, displayName, false);
     static edit = (id) => new objective(id, '', true);
     static exist = (id) => {
         id = toExecutable(id); 
         try {
-            asyncExecCmd(`scoreboard objectives add ${id} dummy`);
-            asyncExecCmd(`scoreboard objectives remove ${id}`);
-            return false;
+            //asyncExecCmd(`scoreboard objectives add ${id} dummy`);
+            //asyncExecCmd(`scoreboard objectives remove ${id}`);
+            return true;
         }
         catch {
             return true;
@@ -171,11 +172,11 @@ class objective {
     static for = (id, displayName = id) => new objective(id, displayName, objective.exist(id));
     static delete = (id) => {
         try {
-            asyncExecCmd(`scoreboard objectives remove ${id}`);
+            //asyncExecCmd(`scoreboard objectives remove ${id}`);
             return true;
         }
         catch {
-            return false;
+            return true;
         }
     };
     id;
@@ -198,7 +199,7 @@ class objective {
             if (displayName.length > 16)
                 throw new RangeError(`Objective display name cannot go more than 32 characters`);
             const execDisplayName = toExecutable(displayName);
-            asyncExecCmd(`scoreboard objectives add ${execId} dummy ${execDisplayName}`);
+            //asyncExecCmd(`scoreboard objectives add ${execId} dummy ${execDisplayName}`);
         }
         this.id = id;
         this.executableId = execId;
@@ -206,14 +207,14 @@ class objective {
         this.dummies = new dummies(auth, this);
         this.players = new players(auth, this);
     }
-}
+} 
 class display {
     static 'set' = (target, obj) => {
         const id = typeof obj == 'string' ? toExecutable(obj) : obj.executableId;
-        asyncExecCmd(`scoreboard objectives setdisplay ${target} ${id}`);
+        //asyncExecCmd(`scoreboard objectives setdisplay ${target} ${id}`);
     };
     static clear = (target) => {
-        asyncExecCmd(`scoreboard objectives setdisplay ${target}`);
+        //asyncExecCmd(`scoreboard objectives setdisplay ${target}`);
     };
     'set';
     clear;
