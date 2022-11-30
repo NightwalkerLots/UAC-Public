@@ -1,4 +1,5 @@
 import { world } from "@minecraft/server";
+import { asyncExecCmd } from "./async_fix/cmd_queue"
 
 class CommandError extends Error {
     code
@@ -15,7 +16,8 @@ class CommandError extends Error {
 
 const execCmd = (command, source = 'overworld') => {
     try {
-        return (typeof source == 'string' ? world.getDimension(source) : source).runCommandAsync(command);
+        return asyncExecCmd(command, (typeof source == 'string' ? world.getDimension(source) : source))
+        //return (typeof source == 'string' ? world.getDimension(source) : source).asyncExecCmd(command);
     }
     catch (e) {
         if (e instanceof Error)
@@ -45,13 +47,13 @@ class players {
         this.set = (plr, score) => {
             if (useCache)
                 cacheData.set(plr, score);
-                execCmd(`scoreboard players set @s ${obj.executableId} ${~~score}`, plr);
+                asyncExecCmd(`scoreboard players set @s ${obj.executableId} ${~~score}`, plr);
             return this;
         };
         this.add = (plr, score) => {
             if (useCache)
                 cacheData.set(plr, (cacheData.get(plr) ?? 0) + score);
-                execCmd(`scoreboard players add @s ${obj.executableId} ${~~score}`, plr);
+                asyncExecCmd(`scoreboard players add @s ${obj.executableId} ${~~score}`, plr);
             return this;
         };
         /** @returns {number} */
@@ -71,7 +73,7 @@ class players {
         };
         this.has = (plr) => {
             try {
-                execCmd(`scoreboard players test @s ${obj.executableId} * *`, plr);
+                asyncExecCmd(`scoreboard players test @s ${obj.executableId} * *`, plr);
                 return true;
             }
             catch {
@@ -82,7 +84,7 @@ class players {
             if (useCache)
                 cacheData.delete(plr);
             try {
-                execCmd(`scoreboard players reset @s ${obj.executableId}`, plr);
+                asyncExecCmd(`scoreboard players reset @s ${obj.executableId}`, plr);
             }
             catch { }
             return this;
@@ -108,13 +110,13 @@ class dummies {
         this.set = (dummy, score) => {
             if (useCache)
                 cacheData[dummy] = score;
-            execCmd(`scoreboard players set ${nameToExecutable(dummy)} ${~~score}`);
+                asyncExecCmd(`scoreboard players set ${nameToExecutable(dummy)} ${~~score}`);
             return this;
         };
         this.add = (dummy, score) => {
             if (useCache)
                 cacheData[dummy] = cacheData[dummy] ?? 0 + score;
-            execCmd(`scoreboard players add ${nameToExecutable(dummy)} ${~~score}`);
+                asyncExecCmd(`scoreboard players add ${nameToExecutable(dummy)} ${~~score}`);
             return this;
         };
         /** @returns {number} */
@@ -134,7 +136,7 @@ class dummies {
         };
         this.has = (dummy) => {
             try {
-                execCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`);
+                asyncExecCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`);
                 return true;
             }
             catch {
@@ -145,7 +147,7 @@ class dummies {
             if (useCache)
                 delete cacheData[plr];
             try {
-                execCmd(`scoreboard players reset ${nameToExecutable(plr)}`);
+                asyncExecCmd(`scoreboard players reset ${nameToExecutable(plr)}`);
             }
             catch { }
             return this;
@@ -158,8 +160,8 @@ class objective {
     static exist = (id) => {
         id = toExecutable(id); 
         try {
-            execCmd(`scoreboard objectives add ${id} dummy`);
-            execCmd(`scoreboard objectives remove ${id}`);
+            asyncExecCmd(`scoreboard objectives add ${id} dummy`);
+            asyncExecCmd(`scoreboard objectives remove ${id}`);
             return false;
         }
         catch {
@@ -169,7 +171,7 @@ class objective {
     static for = (id, displayName = id) => new objective(id, displayName, objective.exist(id));
     static delete = (id) => {
         try {
-            execCmd(`scoreboard objectives remove ${id}`);
+            asyncExecCmd(`scoreboard objectives remove ${id}`);
             return true;
         }
         catch {
@@ -196,7 +198,7 @@ class objective {
             if (displayName.length > 16)
                 throw new RangeError(`Objective display name cannot go more than 32 characters`);
             const execDisplayName = toExecutable(displayName);
-            execCmd(`scoreboard objectives add ${execId} dummy ${execDisplayName}`);
+            asyncExecCmd(`scoreboard objectives add ${execId} dummy ${execDisplayName}`);
         }
         this.id = id;
         this.executableId = execId;
@@ -208,10 +210,10 @@ class objective {
 class display {
     static 'set' = (target, obj) => {
         const id = typeof obj == 'string' ? toExecutable(obj) : obj.executableId;
-        execCmd(`scoreboard objectives setdisplay ${target} ${id}`);
+        asyncExecCmd(`scoreboard objectives setdisplay ${target} ${id}`);
     };
     static clear = (target) => {
-        execCmd(`scoreboard objectives setdisplay ${target}`);
+        asyncExecCmd(`scoreboard objectives setdisplay ${target}`);
     };
     'set';
     clear;
@@ -219,8 +221,8 @@ class display {
         if (key !== auth)
             throw new ReferenceError('Class is not constructable');
         const id = typeof obj == 'string' ? toExecutable(obj) : obj.executableId;
-        this.set = (target) => void execCmd(`scoreboard objectives setdisplay ${target} ${id}`);
-        this.clear = (target) => void execCmd(`scoreboard objectives setdisplay ${target}`);
+        this.set = (target) => void asyncExecCmd(`scoreboard objectives setdisplay ${target} ${id}`);
+        this.clear = (target) => void asyncExecCmd(`scoreboard objectives setdisplay ${target}`);
     }
 }
 export default class scoreboard {

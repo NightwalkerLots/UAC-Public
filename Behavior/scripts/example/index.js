@@ -15,7 +15,7 @@ import { hotbar_message } from '../modules/hotbar_message.js';
 import { op_abuse } from '../modules/opabuse.js';
 
 //game resource dependancies
-import { world as World, MinecraftBlockTypes, EntityEventOptions, system } from "@minecraft/server";
+import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
 import { tellrawStaff } from '../library/utils/prototype.js';
 import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 

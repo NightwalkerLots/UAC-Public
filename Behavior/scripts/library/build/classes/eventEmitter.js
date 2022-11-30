@@ -1,5 +1,25 @@
-export const EventEmitter = class Class {
-    constructor() {
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _EventControl_listeners, _EventControl_isBroken;
+
+function getStackTrace(deleteCount = 0) {
+    return new Error().stack?.replace(new RegExp(`^(.*(\n|$)){0,${deleteCount + 1}}`), '') ?? ''
+}
+
+export class EventEmitter {
+    constructor(name = '<unknown>') {
+        this.listeners = Object.create(null);
+        this.handlers = Object.create(null);
+        this.name = name;
         this._listeners = [];
         this._configurations = {
             maxListeners: 10
@@ -28,6 +48,28 @@ export const EventEmitter = class Class {
             this._listeners.push(data);
     }
     ;
+    addEventListener(eventName, listener, options = {}) {
+        var _a;
+        var _b;
+        const evd = {
+            eventName,
+            listener,
+            options,
+            cancel: false
+        };
+        this.emitHandler('addEventListener', evd);
+        if (evd.cancel)
+            return listener;
+        const eventListenerData = (_a = (_b = this.listeners)[eventName]) !== null && _a !== void 0 ? _a : (_b[eventName] = { baseListeners: new Set, prioritizedListeners: new Map, sorted: true });
+        if (!evd.options.priority) {
+            eventListenerData.baseListeners.add(listener);
+        }
+        else {
+            eventListenerData.sorted = false;
+            eventListenerData.prioritizedListeners.set(listener, evd.options.priority);
+        }
+        return listener;
+    }
     /**
      * @private
      * @param {string} eventName Event type to remove
@@ -41,12 +83,24 @@ export const EventEmitter = class Class {
             this._listeners.splice(index, 1);
     }
     ;
+    removeEventListener(eventName, listener) {
+        const evd = {
+            eventName,
+            listener,
+            cancel: false
+        };
+        this.emitHandler('removeEventListener', evd);
+        if (evd.cancel)
+            return false;
+        const eventListenerData = this.listeners[eventName];
+        return Boolean(eventListenerData && (eventListenerData.baseListeners.delete(listener) || eventListenerData.prioritizedListeners.delete(listener)));
+    }
     addListener(eventName, listener) {
         this._addListener(eventName, listener, false);
         return this;
     }
     ;
-    emit(eventName, ...args) {
+    _emit(eventName, ...args) {
         let status = false;
         this._listeners.forEach(object => {
             if (object.eventName === eventName) {
@@ -60,6 +114,65 @@ export const EventEmitter = class Class {
         return status;
     }
     ;
+    emit(eventName, eventData, breakable = true) {
+        const evd = {
+            eventName,
+            eventData,
+            breakable,
+            cancel: false
+        };
+        this.emitHandler('emit', evd);
+        if (evd.cancel)
+            return false;
+        let currentListener = () => { };
+        const control = new EventControl({
+            'break': (r) => {
+                const evd = {
+                    eventName,
+                    eventData,
+                    listener: currentListener,
+                    reason: r,
+                    cancel: false
+                };
+                this.emitHandler('controlBreak', evd);
+                return !evd.cancel;
+            }
+        });
+        const eventListenerData = this.listeners[eventName];
+        if (!eventListenerData)
+            return true;
+        if (eventListenerData.sorted === false) {
+            eventListenerData.sorted = true;
+            eventListenerData.prioritizedListeners = new Map([...eventListenerData.prioritizedListeners].sort(([, a], [, b]) => b - a));
+        }
+        for (const listener of (function* () { yield* eventListenerData.prioritizedListeners.keys(); yield* eventListenerData.baseListeners; })()) {
+            try {
+                currentListener = listener;
+                listener(eventData, control);
+            }
+            catch (err) {
+                const evd = {
+                    eventName,
+                    eventData,
+                    listener,
+                    err,
+                    log: true,
+                    break: false,
+                    throw: false
+                };
+                this.emitHandler('listenerErr', evd);
+                if (evd.log)
+                    console.error(`${this.name} > ${eventName} > ${getFunctionName(listener)}: ${err instanceof Error ? `${err}\n${err.stack}` : err}`);
+                if (evd.throw)
+                    throw err;
+                else if (evd.break)
+                    control.break(err);
+            }
+            if (control.isBroken)
+                return false;
+        }
+        return true;
+    }
     eventNames() {
         return this._listeners.map(v => v.eventName);
     }
@@ -72,6 +185,22 @@ export const EventEmitter = class Class {
         return eventName ? this._listeners.filter(v => v.eventName === eventName).length : this._listeners.length;
     }
     ;
+    addHandler(eventName, handler) {
+        var _a;
+        var _b;
+        ((_a = (_b = this.handlers)[eventName]) !== null && _a !== void 0 ? _a : (_b[eventName] = new Set())).add(handler);
+        return handler;
+    }
+    removeHandler(eventName, handler) {
+        var _a, _b;
+        return (_b = (_a = this.handlers[eventName]) === null || _a === void 0 ? void 0 : _a.delete(handler)) !== null && _b !== void 0 ? _b : false;
+    }
+    emitHandler(eventName, eventData) {
+        var _a;
+        for (const listener of (_a = this.handlers[eventName]) !== null && _a !== void 0 ? _a : [])
+            listener(eventData);
+        return eventData;
+    }
     listeners(eventName) {
         const Functions = [];
         this._listeners.forEach(object => {
@@ -130,3 +259,20 @@ export const EventEmitter = class Class {
     }
     ;
 };
+
+class EventControl {
+    constructor(listeners = {}, canBreak = true) {
+        _EventControl_listeners.set(this, void 0);
+        _EventControl_isBroken.set(this, false);
+        __classPrivateFieldSet(this, _EventControl_listeners, listeners, "f");
+        this.canBreak = canBreak;
+    }
+    get isBroken() { return __classPrivateFieldGet(this, _EventControl_isBroken, "f"); }
+    break(reason) {
+        var _a, _b, _c;
+        return ((_c = (_b = (_a = __classPrivateFieldGet(this, _EventControl_listeners, "f")).break) === null || _b === void 0 ? void 0 : _b.call(_a, reason)) !== null && _c !== void 0 ? _c : true) && !__classPrivateFieldGet(this, _EventControl_isBroken, "f") && (__classPrivateFieldSet(this, _EventControl_isBroken, true, "f"));
+    }
+}
+
+_EventControl_listeners = new WeakMap(), _EventControl_isBroken = new WeakMap();
+
