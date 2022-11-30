@@ -21,7 +21,6 @@ for (const cl of [Dimension, Entity, Player, SimulatedPlayer]) {
                 return ORC(c).finally(() => queueCount--);
             } catch (error) {
                 await new Promise(res => system.run(res, 0))
-                this.runCommandAsync(c);
             }
         }
     }
