@@ -14,7 +14,7 @@
 	"modules": [
 		{
 			"type": "data",
-			"uuid": "4c37083f-ff85-445-3436-345361c338f8",
+			"uuid": "4c37083f-ff85-4452-3436-345361c338f8",
 			"version": [
 				1,
 				1,
@@ -31,7 +31,7 @@
 				0,
 				1
 			],
-			"entry": "scripts/example/index.js"
+			"entry": "example/index.js"
 		}
 	],
 	"dependencies": [
