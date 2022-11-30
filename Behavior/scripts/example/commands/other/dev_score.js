@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { scoreTest } from '../../../library/utils/score_testing.js';
-import { asyncExecCmd } from '../../../library/async_fix/cmd_queue.js';
+import { asyncExecCmd } from '../../../library/utils/cmd_queue.js';
 
 
 const registerInformation = {
