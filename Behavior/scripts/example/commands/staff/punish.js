@@ -1,7 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
 import { world } from '@minecraft/server';
-const overworld = world.getDimension('overworld');
 const registerInformation = {
     cancelMessage: true,
     name: 'punish',

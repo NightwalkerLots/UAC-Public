@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'suicide',
@@ -15,11 +16,11 @@ const registerInformation = {
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg;
     const name = sender.getName();
-    if (scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+    if (scoreTest(sender, 'icmtoggle') === 0) {
         return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-    } else if (scoreTest(sender.nameTag, 'in_combat') === 1) {
+    } else if (scoreTest(sender, 'in_combat') === 1) {
         return sender.tellraw(`§¶§cUAC ► §6Suicide §cunavailable §bwhile in combat`);
-    } else if (scoreTest(sender.nameTag, 'icmtoggle') === 1) {
+    } else if (scoreTest(sender, 'icmtoggle') === 1) {
         const cancel = `cancel`;
         if (cancel.includes(args[0])) {
             sender.addTag('suicide1');

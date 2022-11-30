@@ -399,6 +399,8 @@ scoreboard players set @s is_sleeping 0
 scoreboard players set @s seen_gui 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
+scoreboard players set @s deaths 0
+scoreboard players set @s killstreak 0
 scoreboard players set entitydummy entityclear 0
 tag @s add "rank:Member"
 tag @s add "color:b"

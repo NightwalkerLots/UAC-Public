@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { scoreTest } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'sell',
@@ -28,7 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         };
         const usage = `§6UAC.sell [item] [amount]`;
         const allitems = `§6coal, copper_ingot, quartz, iron_ingot, redstone, gold_ingot, diamond, emerald, netherite_scrap, netherite_ingot`;
-        if ( scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+        if ( scoreTest(sender, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
         }
         if(!args[0]) {return sender.tellraw(`§¶§cUAC ► §cItem not specified. ${usage}`)}
@@ -52,7 +52,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 let cost = ( price * amount );
                 sender.runCommandAsync(`scoreboard players add @s money ${cost}`);
                 sender.runCommandAsync(`clear @s ${item} 0 ${amount}`);
-                sender.tellraw(`§¶§cUAC ► §bSold! You now have §c${ scoreTest(sender.nameTag, 'money')}$. §6Item §7: §c${item} §6Amount §7: §c${amount} §6Total Profit §7: §c${cost} §6 Sell Price Per Item §7: §c${price}`);
+                sender.tellraw(`§¶§cUAC ► §bSold! You now have §c${ scoreTest(sender, 'money')}$. §6Item §7: §c${item} §6Amount §7: §c${amount} §6Total Profit §7: §c${cost} §6 Sell Price Per Item §7: §c${price}`);
 
             }
             else {

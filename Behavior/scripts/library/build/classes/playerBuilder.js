@@ -99,13 +99,13 @@ export class PlayerBuilder {
      * @param {number} [maximum] Maximum score you are looking for
      * @returns {number}
      * @example PlayerBuilder.getScore('Money', 'notbeer', { minimum: 0 });
-     */
+     
     getScore(objective, player, { minimum, maximum } = {}) {
         const data = Server.runCommandAsync(`scoreboard players test "${player}" ${objective} ${minimum ? minimum : '*'} ${maximum ? maximum : '*'}`);
         if (data.error)
             return;
         return parseInt(data.statusMessage.match(/-?\d+/)[0]);
-    }
+    }*/
     ;
 }
 ;

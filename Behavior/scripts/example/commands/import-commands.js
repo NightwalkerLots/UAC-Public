@@ -10,6 +10,7 @@ import './other/suicide.js';
 import './other/vipm.js';
 import './other/sell.js';
 import './other/pay.js';
+import './other/dev_score.js';
 
 import './staff/setworldspawn.js';
 import './staff/inventoryview.js';

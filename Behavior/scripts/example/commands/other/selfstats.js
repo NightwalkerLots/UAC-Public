@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'stats',
@@ -31,9 +32,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             three: `execute "${args[1]} ${args[2]} ${args[3]}" ~~~ function UAC/itemcommand/playerstats`,
             four: `execute "${args[1]} ${args[2]} ${args[3]} ${args[4]}" ~~~ function UAC/itemcommand/playerstats`
         };
-        if ( scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+        if ( scoreTest(sender, 'icmtoggle') === 0) {
             return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-        } else if ( scoreTest(sender.nameTag, 'icmtoggle') === 1) {
+        } else if ( scoreTest(sender, 'icmtoggle') === 1) {
             sender.addTag('stats_temp');  //gives tag
             if (cmdUsage.includes(args[0])) {
                 if (!args[1]) {

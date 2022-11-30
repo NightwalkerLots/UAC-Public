@@ -82,21 +82,11 @@ export function hotbar (player, message) {
     }
     catch {return}
 }
-
-export function scoreTest(target, objective, useZero = false) {
-    try {
-        const oB = world.scoreboard.getObjective(objective)
-        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
-        return oB.getScore(target.scoreboard)
-    } catch {
-        return useZero ? 0 : NaN
-    }
-}
 // return gamemode string 
 export function getGamemode (player) {
     try {
         let type = '';
-        const score = parseInt(player.runCommandAsync(`scoreboard players test @s gamemode *`).statusMessage.match(/-?\d+/));
+        const score = world.scoreboard.getObjective('gamemode').getScore(player.scoreboard);
         if(score == 0) type = 'survival';
         if(score == 1) type = 'creative';
         if(score == 2) type = 'adventure';
@@ -123,4 +113,5 @@ export function queryTopSolid({ location: { x, y, z }, dimension = overworld }) 
         .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();
     for (const location of locations) if (!dimension.getBlock(location).isEmpty) return location.y;
 }
+
 Object.assign(Player.prototype, betaPlayerFunctions);

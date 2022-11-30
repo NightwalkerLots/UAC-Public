@@ -1,4 +1,5 @@
-import { scoreTest, tellrawServer } from 'library/utils/prototype.js';
+import { tellrawServer } from 'library/utils/prototype.js';
+import { scoreTest } from '../library/utils/score_testing';
 
 
 
@@ -10,7 +11,7 @@ function ops() {
     for (let player of players) {   
         const name = player.getName();
 
-        if(scoreTest(player.nameTag, 'is_sleeping')) {
+        if(scoreTest(player, 'is_sleeping')) {
             player.runCommandAsync(`time set sunrise`);
             player.runCommandAsync(`time add 2000`);
             player.runCommandAsync(`weather clear`);

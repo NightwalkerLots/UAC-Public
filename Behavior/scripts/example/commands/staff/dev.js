@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { scoreTest } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing';
 import { world } from '@minecraft/server';
 
 const registerInformation = {
@@ -57,7 +57,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommandAsync(`function UAC/test`);
             }   else if (owner.includes(args[0])) {
                 sender.runCommandAsync(`function test/ownertest`);
-                sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${scoreTest(sender.nameTag, 'ssmtoggle')}`);
+                sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${scoreTest(sender, 'ssmtoggle')}`);
             }   else if (exp.includes(args[0])) {
                 sender.runCommandAsync(`function UAC/DEV/exp-test`);
             }   else if (bd.includes(args[0])) {

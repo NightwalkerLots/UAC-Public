@@ -16,27 +16,20 @@ import { op_abuse } from '../modules/opabuse.js';
 
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, EntityEventOptions, system } from "@minecraft/server";
-import { tellrawStaff, tellrawServer } from '../library/utils/prototype.js';
+import { tellrawStaff } from '../library/utils/prototype.js';
 import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
 
-
-
-
-const overworld = world.getDimension('overworld');
-//This runs a test to see if gametest is even on. Curtain modules will switch methods if gametest fails
-world.events.tick.subscribe(({ deltaTime, currentTick }) => {
-    overworld.runCommandAsync(`scoreboard players set @a has_gt 1`);
-})
-
-function scoreTest(target, objective, useZero = false) {
+function scoreTest(target, objective) {
     try {
         const oB = world.scoreboard.getObjective(objective)
         if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
         return oB.getScore(target.scoreboard)
-    } catch {
-        return useZero ? 0 : NaN
+    } catch (error) {
+        //console.warn(error, error.stack);
     }
 }
+
+const overworld = world.getDimension('overworld');
 
 function worldBorder(player) {
     const {x, y, z} = player.location
@@ -73,8 +66,8 @@ let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     try {
         
-        const WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
-        const on_tick = scoreTest('tpsdummy', 'ontick');
+        let WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
+        let on_tick = scoreTest('tpsdummy', 'ontick');
         let lagclear_bool = scoreTest('ltmtoggledummy', 'ltmtoggle');
         let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
@@ -87,7 +80,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         // one second module functions
         if(on_tick >= 20) {
             if(opsbool) { ops(); }
-            movement_check();
+            overworld.runCommandAsync(`scoreboard players set @a has_gt 1`);
             overworld.runCommandAsync('scoreboard players set tpsdummy ontick 0');
 
             const entitycount = scoreTest('entitydummy', 'entitycount');
@@ -123,9 +116,9 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             }
             
             
-            if(scoreTest(player.nameTag, 'fzplr') == 1) {
+            if(scoreTest(player, 'fzplr') == 1) {
                 if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
-                player.runCommandAsync(`tp @s ${scoreTest(player.nameTag, 'lastpos_x')} ~ ${scoreTest(player.nameTag, 'lastpos_z')}`);
+                player.runCommandAsync(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`);
             }       
 
             if(on_tick >= 20) {
@@ -134,6 +127,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 }
                 hotbar_message(player);
                 if(opabuse_bool) { op_abuse(player) }
+                movement_check(player);
                 player.runCommandAsync('scoreboard players operation @s lastpos_x = @s X_Coordinate');
                 player.runCommandAsync('scoreboard players operation @s lastpos_z = @s Z_Coordinate');
                 
@@ -288,7 +282,7 @@ world.events.playerJoin.subscribe((data) => {
             }).catch(error => {
                 const on_tick = scoreTest('tpsdummy', 'ontick');
                 if(on_tick == 20) { player.runCommandAsync(`scoreboard players add @s online 1`); }
-                if(scoreTest(name, 'online') >= 10) { 
+                if(scoreTest(data.player, 'online') >= 10) { 
                     tellrawStaff(`§¶§c§lUAC ► §6Anti-Namespoof §d${player.nameTag} §bwas temp-kicked.`); 
                     player.runCommandAsync(`scoreboard players set @s online 0`);
                     player.runCommandAsync(`event entity @s uac:ban_main`);
@@ -298,7 +292,7 @@ world.events.playerJoin.subscribe((data) => {
         });
     }
     OnPlayerLoad(() => {
-        if(scoreTest(player.nameTag, 'seen_gui') == 0) {
+        if(scoretest(player, 'seen_gui') == 0) {
             waitMove.set(player, [x, y, z]);
         }
         overworld.runCommandAsync(`scoreboard players set "${name}" online 1`);
@@ -453,7 +447,7 @@ world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, p
         if(blockname == 'minecraft:ancient_debris') {player.runCommandAsync(`scoreboard players add @s ancient_debris 1`); if(nether_notiv == 0) { send_mdm_message = 0;}}   
 
         if(send_mdm_message == 1) {
-            tellrawStaff(`§l§¶§cUAC ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoreTest(player.nameTag, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+            tellrawStaff(`§l§¶§cUAC ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoretest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
         }
     }
 

@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff, scoreTest } from '../../../library/utils/prototype.js';
+import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'display',
@@ -20,9 +21,9 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let off = ['off', 'disable'];
 
 
-    if (scoreTest(sender.nameTag, 'icmtoggle') === 0) {
+    if (scoreTest(sender, 'icmtoggle') === 0) {
         return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
-    } else if (scoreTest(sender.nameTag, 'hmmtoggle') === 1 || scoreTest(sender.nameTag, 'hmmtoggle') === 2) {
+    } else if (scoreTest(sender, 'hmmtoggle') === 1 || scoreTest(sender, 'hmmtoggle') === 2) {
         return sender.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
     } else if (registerInformation.name.match('display')) {
         if (personal.includes(args[0])) {
