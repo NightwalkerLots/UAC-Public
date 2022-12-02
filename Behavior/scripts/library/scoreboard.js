@@ -1,6 +1,6 @@
 import { world } from "@minecraft/server";
 import { asyncExecCmd, overworld } from "./utils/cmd_queue"
-import { scoreTest } from "./utils/score_testing"
+///import { scoreTest } from "./utils/score_testing"
 
 class CommandError extends Error {
     code
@@ -12,6 +12,18 @@ class CommandError extends Error {
         this.name = this.constructor.name
         this.message += `\nCode: ${code}  -  Command: ${command}`
         this.stack = this.stack.replace(/.*\n?/, '')
+    }
+}
+
+function scoreTest(target, objective) {
+    try {
+        const oB = world.scoreboard.getObjective(objective)
+        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
+        return oB.getScore(target.scoreboard)
+    }catch (error) {
+        let na = 0;
+        console.warn(error, error.stack);
+        return na;
     }
 }
 
@@ -64,7 +76,9 @@ class players {
                 o = cacheData.get(plr);
             if (o == undefined) {
                 try {
-                    o = +world.scoreboard.getObjective(obj.executableId).getScore(plr.scoreboard);
+                    const p = nameToExecutable(dummy).split(" ");
+                    const oB = world.scoreboard.getObjective(p[1])
+                    o = oB.getScore(oB.getParticipants().find(pT => pT.displayName == p[0]))
                 }
                 catch { }
                 if (o != undefined)
@@ -74,7 +88,7 @@ class players {
         };
         this.has = (plr) => {
             try {
-                world.scoreboard.getObjective(obj.executableId).getScore(plr.scoreboard);
+                    //asyncExecCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`);
                 return true;
             }
             catch {
@@ -127,9 +141,14 @@ class dummies {
                 o = cacheData[dummy];
             if (o == undefined) {
                 try {
-                    o = +execCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`).statusMessage.match(/-?\d+/)[0];
+                    const p = nameToExecutable(dummy).split(" ");
+                    const oB = world.scoreboard.getObjective(p[1]);
+                    o = oB.getScore(oB.getParticipants().find(pT => pT.displayName == p[0]));
+                    //o = scoreTest(p[0].toString(),p[1].toString());
+                    asyncExecCmd(`say get ${p[0]} ${o}`);
+                    //o = +execCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`).statusMessage.match(/-?\d+/)[0];
                 }
-                catch { }
+                catch(error) { console.warn(error, error.stack); }
                 if (o != undefined)
                     cacheData[dummy] = o;
             }
@@ -137,7 +156,7 @@ class dummies {
         };
         this.has = (dummy) => {
             try {
-                asyncExecCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`);
+                //asyncExecCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`);
                 return true;
             }
             catch {
