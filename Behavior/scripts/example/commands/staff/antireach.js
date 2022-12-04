@@ -18,7 +18,7 @@ const registerInformation = {
     ]
 };
 
-const obj = scoreboard.objective.for('antireach').dummies.useCache(false)
+const obj = scoreboard.objective.for('antireach').dummies
 if (!obj.has('toggle')) obj.set('toggle', 0)
 if (!obj.has('max_dist')) obj.set('max_dist', 6000)
 
