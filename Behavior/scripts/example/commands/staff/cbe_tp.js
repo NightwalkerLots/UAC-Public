@@ -1,6 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
-import { scoreTest } from '../../../library/utils/score_testing';
+import { scoreTest } from '../../../library/utils/score_testing.js';
+import { asyncExecCmd } from '../../../library/utils/cmd_queue.js';
 
 const registerInformation = {
     cancelMessage: true,
@@ -30,7 +31,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         
         //
         if (sender.hasTag('staffstatus')) {
-            sender.runCommandAsync(`tp @s ${x} ${y} ${z}`);  
+            asyncExecCmd(`tp @s ${x} ${y} ${z}`, sender);  
             tellrawStaff(`§¶§c§lUAC ► §d${name} §bTP'd to the last CBE Placement Attempt at §c${x} ${y} ${z}`);
             
         } else {

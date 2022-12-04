@@ -1,8 +1,8 @@
 import { Player, world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
-import scoreboard from "../../../library/utils/scoreboard.js"
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import scoreboard from "../../../library/scoreboard.js"
+import { tellrawStaff, getGamemode } from '../../../library/utils/prototype.js';
 //import { scoreTest } from '../../../library/utils/score_testing';
 const { for: obj } = scoreboard.objective
 
@@ -240,13 +240,6 @@ const setModule = (plr, module, newValue) => {
     
 }
 
-/** @type { (plr: Player) => 's' | 'c' | 'a' | 'sp' | 'hc' } */
-const getGamemode = (plr) => {
-    try { plr.runCommandAsync('testfor @s[m=c]'); return 'c' } catch {}
-    try { plr.runCommandAsync('testfor @s[m=s]'); return 's' } catch {}
-    try { plr.runCommandAsync('testfor @s[m=a]'); return 'a' } catch {}
-    return null
-}
 
 const guiScheme = {
     /** @type { (plr: Player) => void } */
@@ -544,10 +537,10 @@ const guiScheme = {
             text.push(`Mayfly: ${mayFly ? '§aYes' : '§eNo'}`)
             text.push(`Godmode: ${isGodmode ? '§aYes' : '§eNo'}`)
             text.push(`Gamemode: §b${
-                gamemode == 's' ? 'Survival'
-                : gamemode == 'c' ? 'Creative'
-                : gamemode == 'a' ? 'Adventure'
-                : gamemode == 'sp' ? 'Spectator'
+                gamemode == 'survival' ? 'Survival'
+                : gamemode == 'creative' ? 'Creative'
+                : gamemode == 'adventure' ? 'Adventure'
+                : gamemode == 'spectator' ? 'Spectator'
                 : gamemode == 'hc' ? 'Hardcore'
                 : 'Unknown'
             }`)
