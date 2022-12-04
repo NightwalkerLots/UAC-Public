@@ -19,8 +19,8 @@ const registerInformation = {
 };
 
 const obj = scoreboard.objective.for('antireach').dummies
-if (!obj.has('toggle')) obj.set('toggle', 0)
-if (!obj.has('max_dist')) obj.set('max_dist', 6000)
+if (!obj.get('toggle')) obj.set('toggle', 0)
+if (!obj.get('max_dist')) obj.set('max_dist', 6000)
 
 // note that this is multiplied by 1000 to support decimals.
 let maxdist = obj.get('max_dist')
