@@ -1,7 +1,7 @@
 import { Player, world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
-import scoreboard from "../../../library/scoreboard.js"
+import scoreboard from "../../../library/utils/scoreboard.js"
 import { tellrawStaff } from '../../../library/utils/prototype.js';
 //import { scoreTest } from '../../../library/utils/score_testing';
 const { for: obj } = scoreboard.objective
