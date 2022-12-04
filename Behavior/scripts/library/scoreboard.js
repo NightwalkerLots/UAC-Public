@@ -1,234 +1,217 @@
-import { world } from "@minecraft/server";
-import { asyncExecCmd, overworld } from "./utils/cmd_queue"
-import { scoreTest } from "./utils/score_testing"
-
-class CommandError extends Error {
-    code
-    command
-    constructor(code, message, command) {
-        super(message)
-        this.code = code
-        this.command = command
-        this.name = this.constructor.name
-        this.message += `\nCode: ${code}  -  Command: ${command}`
-        this.stack = this.stack.replace(/.*\n?/, '')
-    }
+import { ObjectiveSortOrder, ScoreboardIdentityType, ScoreboardObjective as MCSO, world } from "@minecraft/server";
+export default class scoreboard {
+    static get objective() { return ScoreboardObjective; }
+    static get display() { return ScoreboardDisplay; }
+    static get dummiesObject() { return scoreboardDummiesObject; }
+    constructor() { throw new TypeError(`Class '${this.constructor.name}' is not constructable`); }
 }
-
-const execCmd = (command, source = 'overworld') => {
-    try {
-        return asyncExecCmd(command, (typeof source == 'string' ? world.getDimension(source) : source))
-        //return (typeof source == 'string' ? world.getDimension(source) : source).asyncExecCmd(command);
-    }
-    catch (e) {
-        if (e instanceof Error)
-            throw e;
-        const { statusCode, statusMessage } = JSON.parse(e);
-        throw new CommandError(statusCode, statusMessage, command);
-    }
-};
-const empty = (obj) => Object.defineProperties(Object.create(null), Object.getOwnPropertyDescriptors(obj ?? {}));
-
-const auth = Symbol();
-const toExecutable = (v) => `"${v.replace(/\\|"/g, '\\$&')}"`;
-class players {
-    useCache;
-    'set';
-    add;
-    'get';
-    has;
-    reset;
-    dummies;
-    constructor(key, obj) {
-        if (key !== auth)
-            throw new ReferenceError('Class is not constructable');
-        let cacheData = new Map(), useCache = true;
-        Object.defineProperty(this, 'dummies', { get: () => obj.dummies });
-        this.useCache = (set) => (useCache = set, this);
-        this.set = (plr, score) => {
-            if (useCache)
-                cacheData.set(plr, score);
-                asyncExecCmd(`scoreboard players set @s ${obj.executableId} ${~~score}`, plr);
-            return this;
-        };
-        this.add = (plr, score) => {
-            if (useCache)
-                cacheData.set(plr, (cacheData.get(plr) ?? 0) + score);
-                asyncExecCmd(`scoreboard players add @s ${obj.executableId} ${~~score}`, plr);
-            return this;
-        };
-        /** @returns {number} */
-        this.get = (plr) => {
-            let o;
-            if (useCache)
-                o = cacheData.get(plr);
-            if (o == undefined) {
-                try {
-                    o = +world.scoreboard.getObjective(obj.executableId).getScore(plr.scoreboard);
-                }
-                catch { }
-                if (o != undefined)
-                    cacheData.set(plr, o);
-            }
-            return o;
-        };
-        this.has = (plr) => {
-            try {
-                world.scoreboard.getObjective(obj.executableId).getScore(plr.scoreboard);
+export class scoreboardDummiesObject {
+    static create(sb, prefix = '') {
+        const { dummies } = typeof sb == 'string' ? ScoreboardObjective.for(sb) : sb instanceof MCSO ? new ScoreboardObjective(PRIVATE, sb) : sb;
+        const obj = Object.create(null);
+        for (const [key, value] of dummies)
+            obj[key.slice(prefix.length)] = value;
+        return new Proxy(obj, {
+            set: (t, p, v) => {
+                if (typeof p == 'symbol')
+                    return true;
+                t[p] = v;
+                dummies.set(prefix + p, v);
+                return true;
+            },
+            deleteProperty: (t, p) => {
+                if (typeof p == 'symbol')
+                    return true;
+                delete t[p];
+                dummies.reset(prefix + p);
                 return true;
             }
-            catch {
-                return false;
-            }
-        };
-        this.reset = (plr) => {
-            if (useCache)
-                cacheData.delete(plr);
-            try {
-                asyncExecCmd(`scoreboard players reset @s ${obj.executableId}`, plr);
-            }
-            catch { }
-            return this;
-        };
+        });
     }
-}
-class dummies {
-    useCache;
-    'set';
-    add;
-    'get';
-    has;
-    reset;
-    players;
-    constructor(key, obj) {
-        if (key !== auth)
-            throw new ReferenceError('Class is not constructable');
-        let cacheData = empty(), useCache = true;
-        
-        Object.defineProperty(this, 'players', { get: () => obj.players });
-        const nameToExecutable = (v) => `${toExecutable(v)} ${obj.executableId}`;
-        this.useCache = (set) => (useCache = set, this);
-        this.set = (dummy, score) => {
-            if (useCache)
-                cacheData[dummy] = score;
-                asyncExecCmd(`scoreboard players set ${nameToExecutable(dummy)} ${~~score}`);
-            return this;
-        };
-        this.add = (dummy, score) => {
-            if (useCache)
-                cacheData[dummy] = cacheData[dummy] ?? 0 + score;
-                asyncExecCmd(`scoreboard players add ${nameToExecutable(dummy)} ${~~score}`);
-            return this;
-        };
-        /** @returns {number} */
-        this.get = (dummy) => {
-            let o;
-            if (useCache)
-                o = cacheData[dummy];
-            if (o == undefined) {
-                try {
-                    o = +execCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`).statusMessage.match(/-?\d+/)[0];
-                }
-                catch { }
-                if (o != undefined)
-                    cacheData[dummy] = o;
-            }
-            return o;
-        };
-        this.has = (dummy) => {
-            try {
-                asyncExecCmd(`scoreboard players test ${nameToExecutable(dummy)} * *`);
+    static async asyncCreate(sb, dataPerTick = 100, prefix = '') {
+        const { dummies } = typeof sb == 'string' ? ScoreboardObjective.for(sb) : sb instanceof MCSO ? new ScoreboardObjective(PRIVATE, sb) : sb;
+        const obj = Object.create(null);
+        let i = 0;
+        for (const [key, value] of dummies) {
+            if (++i % dataPerTick == 0)
+                await null;
+            obj[key.slice(prefix.length)] = value;
+        }
+        return new Proxy(obj, {
+            set: (t, p, v) => {
+                if (typeof p == 'symbol')
+                    return true;
+                t[p] = v;
+                dummies.set(prefix + p, v);
+                return true;
+            },
+            deleteProperty: (t, p) => {
+                if (typeof p == 'symbol')
+                    return true;
+                delete t[p];
+                dummies.reset(prefix + p);
                 return true;
             }
-            catch {
-                return false;
-            }
-        };
-        this.reset = (plr) => {
-            if (useCache)
-                delete cacheData[plr];
-            try {
-                asyncExecCmd(`scoreboard players reset ${nameToExecutable(plr)}`);
-            }
-            catch { }
-            return this;
-        };
+        });
     }
-} 
-class objective {
-    static create = (id, displayName = id) => new objective(id, displayName, false);
-    static edit = (id) => new objective(id, '', true);
-    static exist = (id) => {
-        id = toExecutable(id); 
-        try {
-            //asyncExecCmd(`scoreboard objectives add ${id} dummy`);
-            //asyncExecCmd(`scoreboard objectives remove ${id}`);
-            return true;
-        }
-        catch {
-            return true;
-        }
-    };
-    static for = (id, displayName = id) => new objective(id, displayName, objective.exist(id));
-    static delete = (id) => {
-        try {
-            //asyncExecCmd(`scoreboard objectives remove ${id}`);
-            return true;
-        }
-        catch {
-            return true;
-        }
-    };
+    static directCreate(sb, prefix = '') {
+        const { dummies } = typeof sb == 'string' ? ScoreboardObjective.for(sb) : sb instanceof MCSO ? new ScoreboardObjective(PRIVATE, sb) : sb;
+        return new Proxy(Object.create(null), {
+            get: (t, p) => {
+                if (typeof p == 'symbol')
+                    return undefined;
+                return dummies.get(prefix + p);
+            },
+            set: (t, p, v) => {
+                if (typeof p == 'symbol')
+                    return true;
+                dummies.set(prefix + p, v);
+                return true;
+            },
+            deleteProperty: (t, p) => {
+                if (typeof p == 'symbol')
+                    return true;
+                dummies.reset(prefix + p);
+                return true;
+            }
+        });
+    }
+}
+export class ScoreboardObjective {
+    static create(id, displayName = id) {
+        const obj = world.scoreboard.addObjective(id, displayName);
+        return new this(PRIVATE, obj);
+    }
+    static 'get'(id) {
+        const obj = world.scoreboard.getObjective(id);
+        return obj ? new this(PRIVATE, obj) : undefined;
+    }
+    static 'for'(id, displayName = id) { return this.get(id) ?? this.create(id, displayName); }
+    static exist(id) { return Boolean(world.scoreboard.getObjective(id)); }
+    static 'delete'(id) { world.scoreboard.removeObjective(id); }
+    static *getList() {
+        for (const obj of world.scoreboard.getObjectives())
+            yield new this(PRIVATE, obj);
+    }
+    static *[Symbol.iterator]() { yield* this.getList(); }
+    constructor(KEY, obj) {
+        if (KEY !== PRIVATE)
+            throw new TypeError(`Class '${this.constructor.name}' is not directly constructable`);
+        this.id = obj.id;
+        this.execId = JSON.stringify(obj.id);
+        this.displayName = obj.displayName;
+        this.data = obj;
+        this.dummies = new ScoreboardDummies(PRIVATE, this);
+        this.players = new ScoreboardPlayers(PRIVATE, this);
+        this.display = new ScoreboardDisplay(PRIVATE, this);
+    }
     id;
-    executableId;
+    execId;
+    displayName;
+    data;
     dummies;
     players;
     display;
-    constructor(id, displayName = id, edit = false) {
-        if (id.length > 16)
-            throw new RangeError(`Objective identifier cannot go more than 16 characters`);
-        const execId = toExecutable(id);
-        const exist = objective.exist(id);
-        if (edit) {
-            if (!exist)
-                throw new ReferenceError(`Objective '${id}' not found`);
-        }
-        else {
-            if (exist)
-                throw new ReferenceError(`Objective '${id}' has already been created`);
-            if (displayName.length > 16)
-                throw new RangeError(`Objective display name cannot go more than 32 characters`);
-            const execDisplayName = toExecutable(displayName);
-            //asyncExecCmd(`scoreboard objectives add ${execId} dummy ${execDisplayName}`);
-        }
-        this.id = id;
-        this.executableId = execId;
-        this.display = new display(auth, execId);
-        this.dummies = new dummies(auth, this);
-        this.players = new players(auth, this);
-    }
-} 
-class display {
-    static 'set' = (target, obj) => {
-        const id = typeof obj == 'string' ? toExecutable(obj) : obj.executableId;
-        //asyncExecCmd(`scoreboard objectives setdisplay ${target} ${id}`);
-    };
-    static clear = (target) => {
-        //asyncExecCmd(`scoreboard objectives setdisplay ${target}`);
-    };
-    'set';
-    clear;
-    constructor(key, obj) {
-        if (key !== auth)
-            throw new ReferenceError('Class is not constructable');
-        const id = typeof obj == 'string' ? toExecutable(obj) : obj.executableId;
-        this.set = (target) => void asyncExecCmd(`scoreboard objectives setdisplay ${target} ${id}`);
-        this.clear = (target) => void asyncExecCmd(`scoreboard objectives setdisplay ${target}`);
-    }
 }
-export default class scoreboard {
-    static objective = objective;
-    static objectives = objective;
-    static display = display;
-    constructor() { throw new ReferenceError(`Class is not constructable`); }
+export class ScoreboardDummies {
+    constructor(KEY, obj) {
+        if (KEY !== PRIVATE)
+            throw new TypeError(`Class '${this.constructor.name}' is not directly constructable`);
+        this.#obj = obj.data;
+        this.#execId = obj.execId;
+    }
+    #obj;
+    #execId;
+    #tempSet = new Map();
+    'set'(name, score) {
+        score = ~~score;
+        this.#tempSet.set(name, score);
+        return asyncExecCmd(`scoreboard players set ${JSON.stringify(name)} ${this.#execId} ${score}`, undefined)
+            .finally(() => this.#tempSet.delete(name))
+            .then(() => true, () => false);
+    }
+    'get'(name) {
+        return this.#tempSet.get(name) ?? this.#obj.getScores().find(({ participant: { type, displayName } }) => type == ScoreboardIdentityType.fakePlayer && displayName == name)?.score;
+    }
+    exist(name) {
+        return asyncExecCmd(`scoreboard players test ${JSON.stringify(name)} ${this.#execId} * *`, undefined)
+            .then(() => true, () => false);
+    }
+    reset(name) {
+        this.#tempSet.set(name, undefined);
+        return asyncExecCmd(`scoreboard players reset ${JSON.stringify(name)} ${this.#execId}`, undefined)
+            .finally(() => this.#tempSet.delete(name))
+            .then(() => true, () => false);
+    }
+    *getScores() {
+        for (const { score, participant } of this.#obj.getScores())
+            if (participant.type === ScoreboardIdentityType.fakePlayer)
+                yield [JSON.parse(`"${participant.displayName}"`), score, participant.id];
+    }
+    *[Symbol.iterator]() { yield* this.getScores(); }
 }
+export class ScoreboardPlayers {
+    constructor(KEY, obj) {
+        if (KEY !== PRIVATE)
+            throw new TypeError(`Class '${this.constructor.name}' is not directly constructable`);
+        this.#obj = obj.data;
+        this.#execId = obj.execId;
+    }
+    #obj;
+    #execId;
+    #tempSet = new Map();
+    'set'(plr, score) {
+        score = ~~score;
+        this.#tempSet.set(plr, score);
+        return asyncExecCmd(`scoreboard players set @s ${this.#execId} ${score}`, plr)
+            .finally(() => this.#tempSet.delete(plr))
+            .then(() => true, () => false);
+    }
+    'get'(plr) {
+        try {
+            return this.#tempSet.get(plr) ?? (plr.scoreboard ? this.#obj.getScore(plr.scoreboard) : undefined);
+        }
+        catch {
+            return undefined;
+        }
+    }
+    exist(plr) {
+        return asyncExecCmd(`scoreboard players test @s ${this.#execId} * *`, plr)
+            .then(() => true, () => false);
+    }
+    reset(plr) {
+        this.#tempSet.set(plr, undefined);
+        return asyncExecCmd(`scoreboard players reset @s ${this.#execId}`, plr)
+            .finally(() => this.#tempSet.delete(plr))
+            .then(() => true, () => false);
+    }
+    *getScores() {
+        for (const { score, participant } of this.#obj.getScores()) {
+            if (participant.type !== ScoreboardIdentityType.player)
+                continue;
+            try {
+                yield [participant.getEntity(), score, participant.id];
+            }
+            catch {
+                yield [null, score, participant.id];
+            }
+        }
+    }
+    *[Symbol.iterator]() { yield* this.getScores(); }
+}
+export class ScoreboardDisplay {
+    static 'set'(slot, obj, sort = 'descending') {
+        obj ? world.scoreboard.setObjectiveAtDisplaySlot(slot, { objective: obj instanceof MCSO ? obj : obj.data, sortOrder: ObjectiveSortOrder[sort] })
+            : world.scoreboard.clearObjectiveAtDisplaySlot(slot);
+    }
+    static clear(slot) { this.set(slot); }
+    constructor(KEY, obj) {
+        if (KEY !== PRIVATE)
+            throw new TypeError(`Class '${this.constructor.name}' is not directly constructable`);
+        this.#obj = obj;
+    }
+    #obj;
+    'set'(slot, sort = 'descending') { ScoreboardDisplay.set(slot, this.#obj, sort); }
+    clear(slot) { ScoreboardDisplay.clear(slot); }
+}
+const PRIVATE = Symbol();
