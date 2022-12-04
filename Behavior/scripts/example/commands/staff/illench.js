@@ -1,6 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
-import scoreboard from '../../../library/scoreboard.js'
+import scoreboard from '../../../library/utils/scoreboard.js'
 const registerInformation = {
     cancelMessage: true,
     name: 'illench',
@@ -15,7 +15,6 @@ const registerInformation = {
 };
 
 let sbtoggle = scoreboard.objective.for('illench').dummies
-sbtoggle.useCache(false)
 
 /** @type {number} */
 let toggle = sbtoggle.get('value') ?? ( sbtoggle.set('value', 1), 1 )

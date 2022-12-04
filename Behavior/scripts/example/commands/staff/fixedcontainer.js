@@ -1,7 +1,7 @@
 import { BlockLocation, Dimension, Location, world} from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
-import scoreboard from '../../../library/scoreboard.js';
+import scoreboard from '../../../library/utils/scoreboard.js';
 
 const registerInformation = {
     cancelMessage: true,
@@ -15,7 +15,7 @@ const registerInformation = {
     ]
 };
 
-const obj = scoreboard.objective.for('fixedcontainer').dummies.useCache(false)
+const obj = scoreboard.objective.for('fixedcontainer').dummies
 if (!obj.has('toggle')) obj.set('toggle', 0)
 
 let toggle = obj.get('toggle')
