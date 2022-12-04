@@ -1,4 +1,5 @@
 import { ObjectiveSortOrder, ScoreboardIdentityType, ScoreboardObjective as MCSO, world } from "@minecraft/server";
+import { asyncExecCmd } from "./utils/cmd_queue";
 export default class scoreboard {
     static get objective() { return ScoreboardObjective; }
     static get display() { return ScoreboardDisplay; }
