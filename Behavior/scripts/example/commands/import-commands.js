@@ -35,3 +35,4 @@ import './staff/ban.js';
 import './staff/illench.js';
 import './staff/antireach.js';
 import './staff/fixedcontainer.js';
+import './staff/eval.js';

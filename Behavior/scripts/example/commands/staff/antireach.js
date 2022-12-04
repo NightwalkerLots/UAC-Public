@@ -3,7 +3,7 @@ import { Server } from '../../../library/Minecraft.js';
 import area from '../../../library/utils/area.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
 import { scoreTest } from '../../../library/utils/score_testing';
-import scoreboard from '../../../library/utils/scoreboard.js';
+import scoreboard from '../../../library/scoreboard.js';
 
 const registerInformation = {
     cancelMessage: true,
@@ -18,7 +18,7 @@ const registerInformation = {
     ]
 };
 
-const obj = scoreboard.objective.for('antireach').dummies
+const obj = scoreboard.objective.for('antireach').dummies.useCache(false)
 if (!obj.has('toggle')) obj.set('toggle', 0)
 if (!obj.has('max_dist')) obj.set('max_dist', 6000)
 
