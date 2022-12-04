@@ -15,7 +15,7 @@ const registerInformation = {
     ]
 };
 
-const obj = scoreboard.objective.for('fixedcontainer').dummies.useCache(false)
+const obj = scoreboard.objective.for('fixedcontainer').dummies
 if (!obj.has('toggle')) obj.set('toggle', 0)
 
 let toggle = obj.get('toggle')

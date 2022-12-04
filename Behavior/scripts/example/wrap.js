@@ -13,8 +13,8 @@ for (const cl of [Dimension, Entity, Player, SimulatedPlayer]) {
     console.warn(cl.name, cl.prototype)
     const ORC = cl.prototype.runCommandAsync
     cl.prototype.runCommandAsync = async function(c) {
-        //if (++queueCount > 127) console.warn(`Command queue overload! (${queueCount}) \n${getStackTrace(1)}`)
-        //console.warn(`[${cl.name}/${this.id}] Run command (queue count: ${queueCount}): ${c} \n${getStackTrace(1)}`)
+        if (++queueCount > 127) console.warn(`Command queue overload! (${queueCount}) \n${getStackTrace(1)}`)
+        console.warn(`[${cl.name}/${this.id}] Run command (queue count: ${queueCount}): ${c} \n${getStackTrace(1)}`)
         while (true) {
             try {
                 return ORC.call(this, c).finally(() => queueCount--);

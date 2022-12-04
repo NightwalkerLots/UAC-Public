@@ -15,7 +15,7 @@ const registerInformation = {
 };
 
 let sbtoggle = scoreboard.objective.for('illench').dummies
-sbtoggle.useCache(false)
+sbtoggle
 
 /** @type {number} */
 let toggle = sbtoggle.get('value') ?? ( sbtoggle.set('value', 1), 1 )
