@@ -4,7 +4,8 @@ import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
 import scoreboard from "../../../library/scoreboard.js"
 import { tellrawStaff, getGamemode } from '../../../library/utils/prototype.js';
 //import { scoreTest } from '../../../library/utils/score_testing';
-const { for: obj } = scoreboard.objective
+/** @type {typeof scoreboard.objective.for} */
+const obj = scoreboard.objective.for.bind(scoreboard.objective)
 
 function scoreTest(target, objective) {
     try {
@@ -228,13 +229,17 @@ const particleDefs = [
     { mname: 'Totem Poof', fn: 'totem_poof' },
 ]
 
-/** @type { (plr: Player, module: typeof moduleDefs[number], newValue?: number) => void } */
+/** @type { (plr: Player, module: typeof moduleDefs_prots[number], newValue?: number) => void } */
 const setModule = (plr, module, newValue) => {
     try { 
         const objdata = obj(module.obj[0]).dummies
         if (newValue == null) newValue = ( ( objdata.get(module.name) ?? 0 ) + 1 ) % module.toggle.length
         objdata.set(module.name, newValue)
-        for (const id of module.obj) obj(id).dummies.set(module.name, newValue)
+
+        for (const id of module.obj) {
+            const v = obj(id).dummies.set(module.name, newValue)
+            console.warn(`${id} ${typeof v} ${v?.constructor.fileName}`)
+        }
         tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
     } catch(error) {console.warn(error, error.stack)}
     
@@ -262,7 +267,7 @@ const guiScheme = {
         for (let [name, f] of actionList) v.button(name)
         
         return (plr) => void v.show(plr).then(v => {
-            if (v.isCanceled) return
+            if (v.canceled) return
             actionList[v.selection][1](plr)
         })
     })(),
@@ -283,13 +288,12 @@ const guiScheme = {
         for (let [name, f] of cmdlist) v.button(name)
         
         return (plr) => void v.show(plr).then(v => {
-            if (v.isCanceled) return
+            if (v.canceled) return
             cmdlist[v.selection][1](plr)
         })
     })(),
 
     player_welcome: ((plr) => { // UI for non-staff players
-        /** @type { [name: string, fn: (plr: Player) => void][] } */
         const v = new ActionFormData()
             .title(`Welcome`)
 
@@ -312,7 +316,7 @@ const guiScheme = {
         for (let [name, f] of welcome) v.button(name)
         
         return (plr) => void v.show(plr).then(v => {
-            if (v.isCanceled) return
+            if (v.canceled) return
             welcome[v.selection][1](plr)
         })
     })(),
@@ -335,7 +339,7 @@ const guiScheme = {
 
 
             v.show(plr).then(v => {
-                if (v.isCanceled) return
+                if (v.canceled) return
                 actionList[v.selection][1]()
             })
         },
@@ -386,7 +390,7 @@ const guiScheme = {
             v.show(plr).then(v => {
                 const input = v.formValues[0],
                     selection = v.formValues[1]
-                    if ((!input && !selection) || v.isCanceled) return guiScheme.NonStaff(plr)
+                    if ((!input && !selection) || v.canceled) return guiScheme.NonStaff(plr)
                 const inputUnformatted = input.replace(/§./g, '')
 
                 const target =
@@ -415,7 +419,7 @@ const guiScheme = {
             for (let [name, f] of cmdlist) v.button(name)
 
             v.show(plr).then(v => {
-                if (v.isCanceled) return
+                if (v.canceled) return
                 cmdlist[v.selection][1]()
             })
 
@@ -436,7 +440,7 @@ const guiScheme = {
             for (let [name, f] of cmdlist) v.button(name)
 
             v.show(plr).then(v => {
-                if (v.isCanceled) return
+                if (v.canceled) return
                 cmdlist[v.selection][1]()
             })
             
@@ -681,7 +685,7 @@ const guiScheme = {
             v.body(text.join('\n§r'))
             v.button('Back')
 
-            v.show(plr).then(evd => guiScheme.NonStaff(plr, target))
+            v.show(plr).then(evd => guiScheme.NonStaff(plr))
 
         },
 
@@ -708,7 +712,7 @@ const guiScheme = {
             for (let [name, f] of actionList) v.button(name)
 
             v.show(plr).then(v => {
-                if (v.isCanceled) return
+                if (v.canceled) return
                 actionList[v.selection][1]()
             })
         },
@@ -733,7 +737,7 @@ const guiScheme = {
                 /** @type {string} */
                 const input = v.formValues[0],
                     selection = v.formValues[1]
-                if ((!input && !selection) || v.isCanceled) return guiScheme.main(plr)
+                if ((!input && !selection) || v.canceled) return guiScheme.main(plr)
                 const inputUnformatted = input.replace(/§./g, '')
                 const target =
                     ( !input ? null : [...world.getPlayers()].find( v => v.name == input || v.name.replace(/§./g, '') == inputUnformatted ) )
@@ -766,7 +770,7 @@ const guiScheme = {
         for (let [name, f] of actionList) v.button(name)
 
         return (plr) => void v.show(plr).then(v => {
-            if (v.isCanceled) return
+            if (v.canceled) return
             actionList[v.selection][1](plr)
         })
     })(),
@@ -787,7 +791,7 @@ const guiScheme = {
         for (let [name, f] of cmdlist) v.button(name)
 
         v.show(plr).then(v => {
-            if (v.isCanceled) return
+            if (v.canceled) return
             cmdlist[v.selection][1]()
         })
 
@@ -810,7 +814,7 @@ const guiScheme = {
         }
 
         v.show(plr).then(v => {
-            if (v.isCanceled) return guiScheme.main(plr)
+            if (v.canceled) return guiScheme.main(plr)
             const newValues = v.formValues.map(v => Number(v))
             for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
                 if (a != b) setModule(plr, moduleDefs_util[i], b)
@@ -836,7 +840,7 @@ const guiScheme = {
         }
 
         v.show(plr).then(v => {
-            if (v.isCanceled) return guiScheme.main(plr)
+            if (v.canceled) return guiScheme.main(plr)
             const newValues = v.formValues.map(v => Number(v))
             for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
                 if (a != b) setModule(plr, moduleDefs_prots[i], b)
@@ -860,7 +864,7 @@ const guiScheme = {
         }
 
         v.show(plr).then(v => {
-            if (v.isCanceled) return guiScheme.main(plr)
+            if (v.canceled) return guiScheme.main(plr)
 
             const newValues = v.formValues.map(v => Number(v))
             for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
@@ -891,7 +895,7 @@ const guiScheme = {
         }
 
         v.show(plr).then(v => {
-            if (v.isCanceled) return guiScheme.main(plr)
+            if (v.canceled) return guiScheme.main(plr)
 
             const newValues = v.formValues.map(v => Number(v))
             for (let i = 0, m = newValues.length, a, b; (a = values[i], b = newValues[i], i < m); i++) {
@@ -917,7 +921,7 @@ const guiScheme = {
         /** @type { (plr: Player) => void } */
         return (plr) => {
             v.show(plr).then(v => {
-                if (v.isCanceled || v.selection == particleDefs.length) return guiScheme.main(plr)
+                if (v.canceled || v.selection == particleDefs.length) return guiScheme.main(plr)
 
                 const particle = particleDefs[v.selection]
                 plr.runCommandAsync(`function particle/${particle.fn}`)
@@ -935,7 +939,7 @@ const guiScheme = {
         /** @type { (plr: Player) => void } */
         return (plr) => {
             v.show(plr).then(v => {
-                if (v.isCanceled || v.selection == kitDefs.length) return guiScheme.main(plr)
+                if (v.canceled || v.selection == kitDefs.length) return guiScheme.main(plr)
 
                 const kit = kitDefs[v.selection]
                 plr.runCommandAsync(`structure load "${kit.structure}" ~~~`)
@@ -951,7 +955,7 @@ const guiScheme = {
         
         /** @type { (plr: Player) => void } */
         return (plr) => void v.show(plr).then(v => {
-            if (v.isCanceled || !v.formValues[0]) return guiScheme.worldborder(plr)
+            if (v.canceled || !v.formValues[0]) return guiScheme.worldborder(plr)
 
             let newValue = Number(v.formValues[0])
             if (isNaN(newValue)) return guiScheme.worldborder(plr)
@@ -981,11 +985,11 @@ const guiScheme = {
             .button('Back')
         
         v.show(plr).then(v => {
-            if (v.isCanceled || v.selection == moduleDefs.length) return guiScheme.main(plr)
+            if (v.canceled) return guiScheme.main(plr)
             switch (v.selection) {
                 case 0: return guiScheme.wbchange(plr)
                 case 1: {
-                    /** @type { typeof moduleDefs[number] } */
+                    /** @type { typeof moduleDefs_prots[number] } */
                     const module = {
                         mname: 'World Border',
                         obj: ['WBM', 'wbmtoggle'],
@@ -1043,7 +1047,8 @@ world.events.tick.subscribe(() => {
                     waitMove.delete(plr)
                 }
             }
-        } catch {
+        } catch (e) {
+            console.warn(e instanceof Error ? `${e}\n${e.stack}` : e)
             waitMove.delete(plr)
         }
     }
