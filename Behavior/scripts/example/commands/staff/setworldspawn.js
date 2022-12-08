@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { scoreTest } from '../../../library/utils/score_testing';
+import { scoreTest } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'worldspawn',

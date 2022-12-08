@@ -77,13 +77,11 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
 
         asyncExecCmd(`scoreboard players add tpsdummy ontick 1`);
-        
-        // one second module functions
+        // one second module functions  -- ran from backend not players
         if(on_tick >= 20) {
             if(opsbool) { ops(); }
+            if(lagclear_bool) { lagclear(); }
             asyncExecCmd(`scoreboard players set @a has_gt 1`);
-            asyncExecCmd('scoreboard players set tpsdummy ontick 0');
-
             const entitycount = scoreTest('entitydummy', 'entitycount');
             if(entitycount >= 340) {
                 asyncExecCmd(`function UAC/packages/autoclear-manual`);
@@ -91,18 +89,39 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 asyncExecCmd(`scoreboard players set entitydummy entitycount 0`);
                 
             }
+            asyncExecCmd('scoreboard players set tpsdummy ontick 0');
         }
         
         if(acmbool) { anticbe(); }
         if(uoimbool) { unobtainable(); }
         if(ajmbool) { jesus(); }
-        if(lagclear_bool) { lagclear(); }
-        
         
         let players = world.getPlayers();
         for (let player of players) {                                                                   
             const name = player.getName();
+            let on_tick = scoreTest('tpsdummy', 'ontick');
             worldBorder(player);
+
+            if(on_tick >= 20) {
+                if(scoreTest('mrunban', 'unban') == 0) {
+                    playerbans(player);
+                }
+                hotbar_message(player);
+                movement_check(player);
+                if(opabuse_bool) { op_abuse(player) }
+                
+                asyncExecCmd('scoreboard players operation @s lastpos_x = @s X_Coordinate', player);
+                asyncExecCmd('scoreboard players operation @s lastpos_z = @s Z_Coordinate', player);
+                
+                //world border Custom Spawn TP
+                if(WorldBorderbool) {
+                    let {x, y, z} = player.location
+                    if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
+                        asyncExecCmd(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`, player);
+                        asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
+                    }
+                }
+            }
 
             //Namespoof patch provided by the Paradox Team
             let char_length = player.nameTag
@@ -120,27 +139,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             if(scoreTest(player, 'fzplr') == 1) {
                 if(player.hasTag('staffstatus')) {return asyncExecCmd(`scoreboard players set @s fzplr 0`, player);}
                 asyncExecCmd(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`, player);
-            }       
-
-            if(on_tick >= 20) {
-                if(scoreTest('mrunban', 'unban') == 0) {
-                    playerbans(player);
-                }
-                hotbar_message(player);
-                if(opabuse_bool) { op_abuse(player) }
-                movement_check(player);
-                asyncExecCmd('scoreboard players operation @s lastpos_x = @s X_Coordinate');
-                asyncExecCmd('scoreboard players operation @s lastpos_z = @s Z_Coordinate');
-                
-                //world border Custom Spawn TP
-                if(WorldBorderbool) {
-                    let {x, y, z} = player.location
-                    if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
-                        asyncExecCmd(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`, player);
-                        asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
-                    }
-                }
-            }
+            }    
         }
     } catch (error) {
         console.warn(error);
@@ -394,7 +393,7 @@ world.events.beforeChat.subscribe((data) => {
 });
 
 
-//Anti-Nuker
+
 /** 
  * The log of the players break times
  * @type {Object<Player.name: number>}

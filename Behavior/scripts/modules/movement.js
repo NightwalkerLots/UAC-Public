@@ -1,14 +1,5 @@
-import { world } from '@minecraft/server';
-
-function scoreTest(target, objective) {
-    try {
-        const oB = world.scoreboard.getObjective(objective)
-        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
-        return oB.getScore(target.scoreboard)
-    } catch (error) {
-        console.warn(error, error.stack);
-    }
-}
+import { scoreTest } from '../library/utils/score_testing.js';
+import { asyncExecCmd } from '../library/utils/cmd_queue.js';
 
 function movement_check(player) {
     try {
@@ -16,15 +7,15 @@ function movement_check(player) {
         let lastpos_z = scoreTest(player, 'lastpos_z');
 
         if(scoreTest(player, 'X_Coordinate') > lastpos_x || scoreTest(player, 'X_Coordinate') < lastpos_x) {
-            player.runCommandAsync('scoreboard players set @s notmovingflag 0');
+            asyncExecCmd('scoreboard players set @s notmovingflag 0', player);
             //player.tellraw(`is moving`);
         }
         if(scoreTest(player, 'Z_Coordinate') > lastpos_z || scoreTest(player, 'Z_Coordinate') < lastpos_z) {
-            player.runCommandAsync('scoreboard players set @s notmovingflag 0');
+            asyncExecCmd('scoreboard players set @s notmovingflag 0', player);
             //player.tellraw(`is moving`);
         }
         if(scoreTest(player, 'X_Coordinate') == lastpos_x || scoreTest(player, 'Z_Coordinate') == lastpos_z) {
-            player.runCommandAsync(`scoreboard players add @s notmovingflag 1`);
+            asyncExecCmd(`scoreboard players add @s notmovingflag 1`, player);
         }
     }catch (error) {
         console.warn(error);

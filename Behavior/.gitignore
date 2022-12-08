@@ -1,0 +1,6 @@
+
+UAC 2.6.1 .mcpack
+uac 2.6.1 test.mcpack
+uac test.mcpack
+*.mcpack
+*.zip

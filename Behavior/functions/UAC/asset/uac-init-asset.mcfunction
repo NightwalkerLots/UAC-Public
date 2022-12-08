@@ -396,6 +396,7 @@ scoreboard objectives add notmovingflag dummy
 scoreboard objectives add cbe_location dummy
 scoreboard players set @s tp_cooldown 0 
 scoreboard players set @s is_sleeping 0
+scoreboard players set @s is_swimming 0
 scoreboard players set @s seen_gui 0
 scoreboard players set @s suicide 0
 scoreboard players set @s kills 0
@@ -422,6 +423,7 @@ scoreboard players operation @s pvp = pvpdummy pvp
 scoreboard players set @s in_combat 0
 scoreboard players set @s combat_timer 0
 scoreboard players set @s online 0
+scoreboard players set @s warn 0
 scoreboard players set mrunban unban 0
 
 #This adds the correct functions for all players
