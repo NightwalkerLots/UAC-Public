@@ -1,5 +1,5 @@
 import { tellrawStaff } from 'library/utils/prototype.js';
-import { scoreTest } from '../library/utils/score_testing';
+import { scoreTest } from '../library/utils/score_testing.js';
 import { world, BlockLocation } from '@minecraft/server';
 
 const _player = {
