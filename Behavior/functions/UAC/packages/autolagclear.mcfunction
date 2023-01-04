@@ -28,12 +28,15 @@ execute @a[scores={chesten=1}] ~~~ scoreboard players set @s chesten 0
 execute @a[scores={legen=1}] ~~~ scoreboard players set @s legen 0
 execute @a[scores={feeten=1}] ~~~ scoreboard players set @s feeten 0
 
+#lastpos for movement detection
+execute @a ~~~ scoreboard players operation @s lastpos_x = @s X_Coordinate
+execute @a ~~~ scoreboard players operation @s lastpos_z = @s Z_Coordinate
 #player counter
 scoreboard players reset playerdummy playercount
 execute @a ~~~ scoreboard players add playerdummy playercount 1
 
 #Extra stuff for TPS control
-execute @s ~~~ execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
+execute @e[r=100,type=xp_orb] ~~~ tp @s[type=xp_orb] @p
 #suicide counter
 scoreboard players add @s[scores={suicide=1..}] suicide 1
 kill @s[scores={suicide=11}]

@@ -21,7 +21,6 @@ const clearedItems = [
     'minecraft:dispenser'
 ]
 
-
 function anticbe() {
     let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
     let on_tick = scoreTest('tpsdummy', 'ontick');
