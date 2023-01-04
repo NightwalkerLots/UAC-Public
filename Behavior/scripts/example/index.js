@@ -76,7 +76,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
 
-        asyncExecCmd(`scoreboard players add tpsdummy ontick 1`);
+        overworld.runCommandAsync(`scoreboard players add tpsdummy ontick 1`);
         // one second module functions  -- ran from backend not players
         if(on_tick >= 20) {
             if(opsbool) { ops(); }
@@ -110,9 +110,6 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 movement_check(player);
                 if(opabuse_bool) { op_abuse(player) }
                 
-                asyncExecCmd('scoreboard players operation @s lastpos_x = @s X_Coordinate', player);
-                asyncExecCmd('scoreboard players operation @s lastpos_z = @s Z_Coordinate', player);
-                
                 //world border Custom Spawn TP
                 if(WorldBorderbool) {
                     let {x, y, z} = player.location
@@ -137,8 +134,8 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             
             
             if(scoreTest(player, 'fzplr') == 1) {
-                if(player.hasTag('staffstatus')) {return asyncExecCmd(`scoreboard players set @s fzplr 0`, player);}
-                asyncExecCmd(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`, player);
+                if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
+                player.runCommandAsync(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`);
             }    
         }
     } catch (error) {
@@ -280,7 +277,7 @@ world.events.playerJoin.subscribe((data) => {
                 callback();
             }).catch(error => {
                 const on_tick = scoreTest('tpsdummy', 'ontick');
-                if(on_tick == 20) { asyncExecCmd(`scoreboard players add @s online 1`, player); }
+                if(on_tick == 20) { overworld.runCommandAsync(`scoreboard players add @s online 1`, player); }
                 if(scoreTest(data.player, 'online') >= 10) { 
                     tellrawStaff(`§¶§c§lUAC ► §6Anti-Namespoof §d${player.nameTag} §bwas temp-kicked.`); 
                     asyncExecCmd(`scoreboard players set @s online 0`, player);
