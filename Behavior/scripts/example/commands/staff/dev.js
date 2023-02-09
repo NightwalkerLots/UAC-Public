@@ -48,7 +48,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         sender.runCommandAsync(`execute "${playername}" ~~~ function UAC/asset/uac-init-asset`); 
                     }
                 }
-                else { sender.runCommandAsync(`function UAC/DEV/init`); }
+                else { 
+                    sender.runCommandAsync(`function UAC/DEV/init`);
+                    sender.tellraw(`§¶§cUAC ► §bINIT reset for all players`);
+                }
             }  else if (devfeatures.includes(args[0])) {
                 sender.runCommandAsync(`function UAC/DEV/enable-test-features`);
             }   else if (version.includes(args[0])) {
