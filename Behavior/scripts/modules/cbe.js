@@ -56,10 +56,10 @@ function anticbe() {
             if (bannedItems.includes(item.id)) {
                 itemname = item.id.replace('minecraft:', '');
                 itemArray.unshift(item.id);
-                playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+                playerInventory.clearItem(i); //removes item
             }
             if (clearedItems.includes(item.id)) {
-                playerInventory.setItem(i, new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)); //removes item
+                playerInventory.clearItem(i); //removes item
                 itemname = item.id.replace('minecraft:', '');
                 player.tellraw(`§¶§c§lUAC ► §6Anti-CBE §c${itemname} §bwas cleared from your inventory`);
             }

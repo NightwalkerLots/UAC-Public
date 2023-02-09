@@ -110,19 +110,19 @@ class ServerBuild extends ServerBuilder {
              */
             world.events.weatherChange.subscribe(data => this._emit('weatherChange', data));
             let oldPlayer = [];
-            world.events.entityCreate.subscribe(data => {
+            world.events.entitySpawn.subscribe(data => {
                 /**
-                 * Emit to 'entityCreate' event listener
+                 * Emit to 'entitySpawn' event listener
                  */
-                this._emit('entityCreate', data.entity);
+                this._emit('entitySpawn', data.entity);
                 if (data.entity.id !== 'minecraft:player')
                     return;
-                let playerJoined = Player.list().filter(current => !oldPlayer.some(old => current === old));
+                let playerSpawned = Player.list().filter(current => !oldPlayer.some(old => current === old));
                 /**
-                 * Emit to 'playerJoin' event listener
+                 * Emit to 'playerSpawn' event listener
                  */
-                if (playerJoined.includes(data.entity.nameTag))
-                    this._emit('playerJoin', data.entity);
+                if (playerSpawned.includes(data.entity.nameTag))
+                    this._emit('playerSpawn', data.entity);
             });
             let worldLoaded = false, tickCount = 0;
             world.events.tick.subscribe((data) => {

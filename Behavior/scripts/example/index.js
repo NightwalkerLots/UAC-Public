@@ -265,7 +265,7 @@ world.events.beforeItemUseOn.subscribe((eventData) => {
 });
 
 
-world.events.playerJoin.subscribe((data) => {
+world.events.playerSpawn.subscribe((data) => {
     let player = data.player;
     let name = player.nameTag;
     let {x, y, z} = player.location;
