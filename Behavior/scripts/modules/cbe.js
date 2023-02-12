@@ -21,29 +21,26 @@ const clearedItems = [
     'minecraft:dispenser'
 ]
 
+let on_tick = 0;
+
 function anticbe() {
     let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
-    let on_tick = scoreTest('tpsdummy', 'ontick');
+    //let on_tick = scoreTest('tpsdummy', 'ontick');
     //stop script if module is disabled
-    if(acmbool == false) return;
-
-    if(on_tick === 1) {
+    if(acmbool != 1) return;
+    on_tick++;
+    //console.warn(on_tick);
+    if(on_tick == 20) {
         try {
-            asyncExecCmd(`kill @e[type=item,name="bee nest"]`);
-            asyncExecCmd(`kill @e[type=item,name="beehive"]`);
-            asyncExecCmd(`kill @e[type=item,name="tile.movingblock.name]`);
-            asyncExecCmd(`kill @e[type=item,name="tile.moving_block.name"]`);
-            asyncExecCmd(`kill @e[type=command_block_minecart]`);
-            asyncExecCmd(`kill @e[name="minecart"]`);
-            asyncExecCmd(`kill @e[type=npc]`);
+            asyncExecCmd(`function UAC/asset/cbe_item_kill`);
+            on_tick = 0;
         } catch { }
     }
     
-
+    
     let players = world.getPlayers();
     for (let player of players) {   
         const name = player.getName();
-        if(acmbool == 0) return;
         let playerInventory = player.getComponent("minecraft:inventory").container;
         let itemArray = [];
         let itemname = undefined;
@@ -65,7 +62,6 @@ function anticbe() {
             }
         }
         if (itemArray.length) {
-            if(acmbool === 0) return;
             asyncExecCmd('function UAC/asset/cbeitem_gt_warn', player);
             overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
             asyncExecCmd(`clear @s`, player);

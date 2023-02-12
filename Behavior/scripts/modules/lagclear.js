@@ -1,18 +1,17 @@
-import { scoreTest } from '../library/utils/score_testing.js';
+import { scoreTest, setScore } from '../library/utils/score_testing.js';
 import { world } from '@minecraft/server';
 import { asyncExecCmd } from '../library/utils/cmd_queue.js';
 
-const overworld = world.getDimension('overworld');
 
 
 function lagclear() {
     try {
         let entitycount = scoreTest('entitydummy', 'entitycount');
         let entitycountdown = scoreTest('entitydummy', 'entityclear');
-
-        if(entitycount >= 135) {
+        
+        if(entitycount >= 145) {
             if(entitycountdown <= 0) {
-                asyncExecCmd(`scoreboard players set entitydummy entityclear 400`);
+                setScore('entitydummy', 'entityclear', 400, false);
             }
         }
             
@@ -25,7 +24,7 @@ function lagclear() {
             if(entitycountdown == 150) { asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► Clearing Entities in §c1"}]}`); }
             if(entitycountdown == 100) { asyncExecCmd(`function UAC/packages/autolagclearasset`); }
         }
-    } catch{}
+    } catch(error){console.warn(error);}
 }
 
 export { lagclear }

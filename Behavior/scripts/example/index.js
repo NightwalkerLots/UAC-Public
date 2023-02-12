@@ -17,7 +17,8 @@ import { op_abuse } from '../modules/opabuse.js';
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
 import { tellrawStaff } from '../library/utils/prototype.js';
-import { world, Player, Dimension, Entity, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+import { setScore } from '../library/utils/score_testing.js';
+import { world, Player} from '@minecraft/server';
 import { asyncExecCmd } from '../library/utils/cmd_queue.js'
 
 function scoreTest(target, objective) {
@@ -62,26 +63,32 @@ let SpawnZ = scoreTest('worlddum', 'Worldz');
 let SpawnY = scoreTest('worlddum', 'Worldy');
 let BorderX = scoreTest('BDXdummy', 'Border_Coord_X');
 let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
+let on_tick = 0;
 
 
 world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     try {
-        
+        on_tick++;
         let WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
-        let on_tick = scoreTest('tpsdummy', 'ontick');
-        let lagclear_bool = scoreTest('ltmtoggledummy', 'ltmtoggle');
+        //let on_tick = scoreTest('tpsdummy', 'ontick');
+        
         let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
         let opsbool = scoreTest('opsdummy', 'opstoggle');
         let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
 
-        overworld.runCommandAsync(`scoreboard players add tpsdummy ontick 1`);
+        if(acmbool == 1) { anticbe(); }
+        if(uoimbool == 1) { unobtainable(); }
+        if(ajmbool == 1) { jesus(); }
+        
+        //overworld.runCommandAsync(`scoreboard players add tpsdummy ontick 1`);
         // one second module functions  -- ran from backend not players
         if(on_tick >= 20) {
+            let lagclear_bool = scoreTest('ltmtoggledummy', 'ltmtoggle');
+            let players = world.getPlayers();
             if(opsbool) { ops(); }
-            if(lagclear_bool) { lagclear(); }
-            asyncExecCmd(`scoreboard players set @a has_gt 1`);
+            if(lagclear_bool == 1) { lagclear(); }
             const entitycount = scoreTest('entitydummy', 'entitycount');
             if(entitycount >= 340) {
                 asyncExecCmd(`function UAC/packages/autoclear-manual`);
@@ -89,26 +96,18 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 asyncExecCmd(`scoreboard players set entitydummy entitycount 0`);
                 
             }
-            asyncExecCmd('scoreboard players set tpsdummy ontick 0');
-        }
-        
-        if(acmbool) { anticbe(); }
-        if(uoimbool) { unobtainable(); }
-        if(ajmbool) { jesus(); }
-        
-        let players = world.getPlayers();
-        for (let player of players) {                                                                   
-            const name = player.getName();
-            let on_tick = scoreTest('tpsdummy', 'ontick');
-            worldBorder(player);
 
-            if(on_tick >= 20) {
+            for (let player of players) {                                                                   
+                const name = player.getName();
+                //let on_tick = scoreTest('tpsdummy', 'ontick');
+                worldBorder(player);
                 if(scoreTest('mrunban', 'unban') == 0) {
                     playerbans(player);
                 }
                 hotbar_message(player);
                 movement_check(player);
                 if(opabuse_bool) { op_abuse(player) }
+                setScore(player, "has_gt", 1, false);
                 
                 //world border Custom Spawn TP
                 if(WorldBorderbool) {
@@ -118,25 +117,27 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                         asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
                     }
                 }
-            }
-
-            //Namespoof patch provided by the Paradox Team
-            let char_length = player.nameTag
-            for (let i = 0; i < char_length.length; i++) {
-                if (char_length.charCodeAt(i) > 255) {
-                    console.warn(`Illegal bytes outside the UTF-8 range`);
-                    tellrawStaff(`§¶§cUAC ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
-                    try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid GamerTag`); }
-                    catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
+    
+                //Namespoof patch provided by the Paradox Team
+                let char_length = player.nameTag
+                for (let i = 0; i < char_length.length; i++) {
+                    if (char_length.charCodeAt(i) > 255) {
+                        console.warn(`Illegal bytes outside the UTF-8 range`);
+                        tellrawStaff(`§¶§cUAC ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
+                        try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid GamerTag`); }
+                        catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
+                    }
+                    //console.warn(`Everything appears normal`);
                 }
-                //console.warn(`Everything appears normal`);
+                
+                
+                if(scoreTest(player, 'fzplr') == 1) {
+                    if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
+                    player.runCommandAsync(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`);
+                }    
             }
-            
-            
-            if(scoreTest(player, 'fzplr') == 1) {
-                if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
-                player.runCommandAsync(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`);
-            }    
+            on_tick = 0;
+            //asyncExecCmd('scoreboard players set tpsdummy ontick 0');
         }
     } catch (error) {
         console.warn(error);
@@ -276,8 +277,8 @@ world.events.playerSpawn.subscribe((data) => {
                 world.events.tick.unsubscribe(LoadedCallBack);
                 callback();
             }).catch(error => {
-                const on_tick = scoreTest('tpsdummy', 'ontick');
-                if(on_tick == 20) { overworld.runCommandAsync(`scoreboard players add @s online 1`, player); }
+                if(on_tick == 20) { setScore(player, "online", 1, true); }
+                console.warn(on_tick);
                 if(scoreTest(data.player, 'online') >= 10) { 
                     tellrawStaff(`§¶§c§lUAC ► §6Anti-Namespoof §d${player.nameTag} §bwas temp-kicked.`); 
                     asyncExecCmd(`scoreboard players set @s online 0`, player);
@@ -324,7 +325,7 @@ world.events.beforeChat.subscribe((data) => {
     }
 
     
-    if(acsbool) { data.sender.runCommandAsync(`scoreboard players add @s chatspam 100`); }
+    if(acsbool) { setScore(data.sender, "chatspam", 100, true); }
     if(acsbool && scoreTest(data.sender, 'chatspam') >= 500 && !data.sender.hasTag('staffstatus')) {
         
         (data.cancel = true);

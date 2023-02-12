@@ -56,7 +56,7 @@ const unobtainables = {
 function unobtainable() {
     const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
     const lore_bool = scoreTest('almdummy', 'almtoggle');
-    if(uoimbool === 0) return;
+    if(uoimbool != 1) return;
 
     let players = world.getPlayers();
     for (let player of players) {   

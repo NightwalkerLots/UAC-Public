@@ -1,4 +1,4 @@
-import { scoreTest } from '../library/utils/score_testing.js';
+import { scoreTest, setScore } from '../library/utils/score_testing.js';
 import { asyncExecCmd } from '../library/utils/cmd_queue.js';
 
 function movement_check(player) {
@@ -7,15 +7,14 @@ function movement_check(player) {
         let lastpos_z = scoreTest(player, 'lastpos_z');
 
         if(scoreTest(player, 'X_Coordinate') > lastpos_x || scoreTest(player, 'X_Coordinate') < lastpos_x) {
-            asyncExecCmd('scoreboard players set @s notmovingflag 0', player);
-            //player.tellraw(`is moving`);
+            setScore(player, "notmovingflag", 0, false);
         }
         if(scoreTest(player, 'Z_Coordinate') > lastpos_z || scoreTest(player, 'Z_Coordinate') < lastpos_z) {
-            asyncExecCmd('scoreboard players set @s notmovingflag 0', player);
+            setScore(player, "notmovingflag", 0, false);
             //player.tellraw(`is moving`);
         }
         if(scoreTest(player, 'X_Coordinate') == lastpos_x || scoreTest(player, 'Z_Coordinate') == lastpos_z) {
-            asyncExecCmd(`scoreboard players add @s notmovingflag 1`, player);
+            setScore(player, "notmovingflag", 1, true);
         }
     }catch (error) {
         console.warn(error);

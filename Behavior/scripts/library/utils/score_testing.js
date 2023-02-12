@@ -1,4 +1,4 @@
-import { world } from '@minecraft/server';
+import { ObjectiveSortOrder, ScoreboardIdentityType, ScoreboardObjective, world } from "@minecraft/server";
 
 
 function scoreTest(target, objective) {
@@ -11,6 +11,25 @@ function scoreTest(target, objective) {
         console.warn(error, error.stack);
         return na;
     }
-}
+}  
+/*
+function scoreTest(target, objective) {
+    try {
+        return world.scoreboard.getObjective(objective).getScore(typeof target === 'string' ? oB.getParticipants().find(pT => pT.displayName == target) : target.scoreboard)
+    } catch {
+        return NaN
+    }
+}*/
 
-export { scoreTest }
+function setScore(target, objective, amount, add = false) {
+    const scoreObj = world.scoreboard.getObjective(objective);
+    const dummy = scoreObj.getParticipants().find(pT => pT.displayName == target);
+    const score = (add ? target.scoreboard.getScore(scoreObj) : 0) + amount;
+    try { 
+        if(typeof target === 'string') return scoreObj.setScore(dummy, amount);
+        target.scoreboard.setScore(scoreObj, score) 
+    } catch { return NaN };
+    return score;
+};
+
+export { scoreTest, setScore }
