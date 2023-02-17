@@ -1,4 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
+import { setScore } from '../../../library/utils/score_testing.js'
 const registerInformation = {
     cancelMessage: true,
     name: 'chatspam',
@@ -21,11 +22,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
         if(sender.hasTag('staffstatus')) {
             if(usage[0].includes(args[0])) {
-                sender.runCommandAsync(`scoreboard players set acsdummy acstoggle 1`);
+                setScore('acsdummy', 'acstoggle', 1, false);
                 sender.tellraw(`§¶§c§lUAC ► §6Anti-Chatspam §7: §2ENABLED`);
             }
             if(usage[1].includes(args[0])) {
-                sender.runCommandAsync(`scoreboard players set acsdummy acstoggle 0`);
+                setScore('acsdummy', 'acstoggle', 0, false);
                 sender.tellraw(`§¶§c§lUAC ► §6Anti-Chatspam §7: §cDISABLED`);
             }
         } else {

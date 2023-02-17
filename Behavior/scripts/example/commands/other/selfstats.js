@@ -1,7 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 import { world } from '@minecraft/server';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
-import { asyncExecCmd } from '../../../library/utils/cmd_queue';
+import { setScore } from '../../../library/utils/score_testing.js';
 const registerInformation = {
     cancelMessage: true,
     name: 'stats',
@@ -23,7 +23,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             case undefined:
                 sender.addTag('stats_temp');
                 tellrawStaff(`§¶§c§lUAC ► §d${name} §bchecked their own stats`);
-                return asyncExecCmd(`function UAC/itemcommand/playerstats`, sender);
+                return sender.runCommandAsync(`function UAC/itemcommand/playerstats`);
             case 'get': {
                 let input = args.join(' ').replace('@', '').replace(/"/g, '').replace('get ', '');
                 let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
@@ -34,7 +34,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 if(playername == name) {tellrawStaff(`§¶§c§lUAC ► §d${name} §bchecked their own stats`);}
                 else {tellrawStaff(`§¶§c§lUAC ► §d${name} §bchecked §d${playername}§b's stats`);}
                 sender.addTag('stats_temp');
-                asyncExecCmd(`function UAC/itemcommand/playerstats`, playerfound);
+                sender.runCommandAsync(`execute "${playerfound}" ~~~ function UAC/itemcommand/playerstats`);
             }break
         }
     }

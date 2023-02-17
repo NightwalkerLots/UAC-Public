@@ -425,6 +425,7 @@ scoreboard players set @s combat_timer 0
 scoreboard players set @s online 0
 scoreboard players set @s warn 0
 scoreboard players set mrunban unban 0
+scoreboard players set @s chatspam 0
 
 #This adds the correct functions for all players
 scoreboard players add @s timeplayedsec 0

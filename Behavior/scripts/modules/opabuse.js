@@ -1,6 +1,6 @@
 import { getGamemode } from 'library/utils/prototype.js';
-import { scoreTest } from '../library/utils/score_testing.js';
-import { asyncExecCmd } from '../library/utils/cmd_queue.js'
+import { scoreTest, setScore } from '../library/utils/score_testing.js';
+import { overworld } from '../library/utils/cmd_queue.js';
 
 
 function op_abuse(player) {
@@ -11,23 +11,23 @@ function op_abuse(player) {
         //disable godmode
         if(player.hasTag(`tgmGodMode`)) {
             player.removeTag(`tgmGodMode`);
-            asyncExecCmd(`scoreboard players @s reset tgmGodMode`, player);
-            asyncExecCmd(`effect @s clear`, player);
+            setScore(player, 'tgmGodMode', 0, false);
+            player.runCommandAsync(`effect @s clear`);
             try {player.removeTag(`godmode`)} catch{}
         }
         //disable creative invulnerability
         if(gamemode === 'creative') {
-            asyncExecCmd(`gamemode spectator`, player);
+            player.runCommandAsync(`gamemode spectator`);
         }
         //disable autototem
         if(player.hasTag(`totemaut`)) {
             player.removeTag(`totemaut`);
-            asyncExecCmd(`scoreboard players @s set totemtog 0`, player);
-            asyncExecCmd(`scoreboard players @s set totemaut 0`, player);
+            setScore(player, 'totemtog', 0, false);
+            setScore(player, 'totemaut', 0, false);
         }
         //force invisible staff into spectator, to remove pvp advantage
         if(player.hasTag(`spectate`) || ( scoreTest(player, 'vnsh') >= 1 ) ) {
-            asyncExecCmd(`gamemode spectator`, player);
+            player.runCommandAsync(`gamemode spectator`);
         }
     }
 }

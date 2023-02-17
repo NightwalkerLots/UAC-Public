@@ -19,7 +19,6 @@ import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
 import { tellrawStaff } from '../library/utils/prototype.js';
 import { setScore } from '../library/utils/score_testing.js';
 import { world, Player} from '@minecraft/server';
-import { asyncExecCmd } from '../library/utils/cmd_queue.js'
 
 function scoreTest(target, objective) {
     try {
@@ -70,7 +69,6 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
     try {
         on_tick++;
         let WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
-        //let on_tick = scoreTest('tpsdummy', 'ontick');
         
         let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
@@ -81,25 +79,27 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         if(acmbool == 1) { anticbe(); }
         if(uoimbool == 1) { unobtainable(); }
         if(ajmbool == 1) { jesus(); }
-        
-        //overworld.runCommandAsync(`scoreboard players add tpsdummy ontick 1`);
-        // one second module functions  -- ran from backend not players
-        if(on_tick >= 20) {
+
+        if( on_tick == 10 ) {
             let lagclear_bool = scoreTest('ltmtoggledummy', 'ltmtoggle');
-            let players = world.getPlayers();
             if(opsbool) { ops(); }
             if(lagclear_bool == 1) { lagclear(); }
+        }
+
+        if ( on_tick == 15 ) {
             const entitycount = scoreTest('entitydummy', 'entitycount');
             if(entitycount >= 340) {
-                asyncExecCmd(`function UAC/packages/autoclear-manual`);
-                asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b."}]}`)
-                asyncExecCmd(`scoreboard players set entitydummy entitycount 0`);
-                
+                overworld.runCommandAsync(`function UAC/packages/autoclear-manual`);
+                overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b."}]}`)
+                setScore('entitydummy', 'entitycount', 0, false);
             }
-
+        }
+        
+        // one second module functions -- 2nd schedual  -- ran from backend not players
+        if(on_tick >= 20) {
+            let players = world.getPlayers();
             for (let player of players) {                                                                   
                 const name = player.getName();
-                //let on_tick = scoreTest('tpsdummy', 'ontick');
                 worldBorder(player);
                 if(scoreTest('mrunban', 'unban') == 0) {
                     playerbans(player);
@@ -113,8 +113,8 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 if(WorldBorderbool) {
                     let {x, y, z} = player.location
                     if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
-                        asyncExecCmd(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`, player);
-                        asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
+                        player.runCommandAsync(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`);
+                        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
                     }
                 }
     
@@ -137,7 +137,6 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 }    
             }
             on_tick = 0;
-            //asyncExecCmd('scoreboard players set tpsdummy ontick 0');
         }
     } catch (error) {
         console.warn(error);
@@ -213,13 +212,13 @@ World.events.blockPlace.subscribe(({ block, player }) => {
     if (block.id in blockBans && acmbool || block.id == 'minecraft:moving_block') {
         tellrawStaff(`§¶§c§lUAC ► §6Anti-CBE §bItem Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z} \n§bUse §2UAC.cbetp §bto teleport there!`);
         block.setType(MinecraftBlockTypes.air);
-        asyncExecCmd(`scoreboard players set cbe_x cbe_location ${x}`);
-        asyncExecCmd(`scoreboard players set cbe_y cbe_location ${y}`);
-        asyncExecCmd(`scoreboard players set cbe_z cbe_location ${z}`);
+        overworld.runCommandAsync(`scoreboard players set cbe_x cbe_location ${x}`);
+        overworld.runCommandAsync(`scoreboard players set cbe_y cbe_location ${y}`);
+        overworld.runCommandAsync(`scoreboard players set cbe_z cbe_location ${z}`);
         if(player.hasTag(`staffstatus`)) { return }
-        asyncExecCmd('function UAC/asset/cbeitem_gt_warn', player);
-        asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
-        asyncExecCmd(`clear @s`, player);
+        player.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
+        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
+        player.runCommandAsync(`clear @s`);
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${type}`);  }
         catch{player.runCommandAsync(`event entity @s uac:ban_main`);}
     }
@@ -229,7 +228,7 @@ World.events.blockPlace.subscribe(({ block, player }) => {
         if(player.hasTag(`staffstatus`)) { return };
         block.setType(MinecraftBlockTypes.air);
         player.runCommandAsync(`function UAC/asset/illegalitemwarn`);
-        asyncExecCmd(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
+        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
         player.runCommandAsync(`clear @s`);
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Items | ${type}`);  }
         catch{player.runCommandAsync(`event entity @s uac:ban_main`);}    }
@@ -271,38 +270,25 @@ world.events.playerSpawn.subscribe((data) => {
     let name = player.nameTag;
     let {x, y, z} = player.location;
     
-    function OnPlayerLoad(callback) {
-        let LoadedCallBack = world.events.tick.subscribe((tickEvent) => {
-                world.getDimension("overworld").runCommandAsync(`testfor "${name}"`).then(e => {
-                world.events.tick.unsubscribe(LoadedCallBack);
-                callback();
-            }).catch(error => {
-                if(on_tick == 20) { setScore(player, "online", 1, true); }
-                console.warn(on_tick);
-                if(scoreTest(data.player, 'online') >= 10) { 
-                    tellrawStaff(`§¶§c§lUAC ► §6Anti-Namespoof §d${player.nameTag} §bwas temp-kicked.`); 
-                    asyncExecCmd(`scoreboard players set @s online 0`, player);
-                    asyncExecCmd(`event entity @s uac:ban_main`, player);
-                }
-                console.warn(error);
-            });
-        });
+    let NewP = 0;
+    while(NewP <= 750000 ) {
+        NewP++
+        if( NewP >= 750000 ) {
+            if(scoreTest(player, 'seen_gui') == 0) {
+                waitMove.set(player, [x, y, z]);
+            }
+            overworld.runCommandAsync(`execute "${name}" ~~~ function UAC/packages/playerjoined`);
+            if(scoreTest('mrunban', 'unban') == 0) {
+                playerbans(player);
+            }
+            return;
+        }
     }
-    OnPlayerLoad(() => {
-        if(scoretest(player, 'seen_gui') == 0) {
-            waitMove.set(player, [x, y, z]);
-        }
-        overworld.runCommandAsync(`scoreboard players set "${name}" online 1`);
-        overworld.runCommandAsync(`execute "${name}" ~~~ function UAC/packages/playerjoined`);
-        if(scoreTest('mrunban', 'unban') == 0) {
-            playerbans(player);
-        }
-    })
 });
 
 world.events.playerLeave.subscribe(data => {
-    asyncExecCmd(`scoreboard players set * online 0`);
-    asyncExecCmd(`scoreboard players set @a online 1`);
+    overworld.runCommandAsync(`scoreboard players set * online 0`);
+    overworld.runCommandAsync(`scoreboard players set @a online 1`);
 });
 
 //  chat filter example code
@@ -434,14 +420,14 @@ world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, p
     const nether_notiv = scoreTest('mdmtoggledummy', 'scrapmd');
     
     //Mining Detection - Gametest Implementation
-    if(ores.includes(blockname) && mdmbool) {
+    if(ores.includes(blockname) && mdmbool) { 
         let send_mdm_message = 1;
-        if(blockname.replace('deepslate_', '') == 'minecraft:diamond_ore') {asyncExecCmd(`scoreboard players add @s diamond_ore 1`, player); if(diamond_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:emerald_ore') {asyncExecCmd(`scoreboard players add @s emerald_ore 1`, player); if(emerald_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:gold_ore') {asyncExecCmd(`scoreboard players add @s gold_ore 1`, player); if(gold_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:iron_ore') {asyncExecCmd(`scoreboard players add @s iron_ore 1`, player); if(iron_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:lapis_ore') {asyncExecCmd(`scoreboard players add @s lapis_ore 1`, player); if(lapiz_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname == 'minecraft:ancient_debris') {asyncExecCmd(`scoreboard players add @s ancient_debris 1`, player); if(nether_notiv == 0) { send_mdm_message = 0;}}   
+        if(blockname.replace('deepslate_', '') == 'minecraft:diamond_ore') {setScore(player, 'diamond_ore', 1, true);; if(diamond_notiv == 0) { send_mdm_message = 0;}}
+        if(blockname.replace('deepslate_', '') == 'minecraft:emerald_ore') {setScore(player, 'emerald_ore', 1, true);; if(emerald_notiv == 0) { send_mdm_message = 0;}}
+        if(blockname.replace('deepslate_', '') == 'minecraft:gold_ore') {setScore(player, 'gold_ore', 1, true);; if(gold_notiv == 0) { send_mdm_message = 0;}}
+        if(blockname.replace('deepslate_', '') == 'minecraft:iron_ore') {setScore(player, 'iron_ore', 1, true);; if(iron_notiv == 0) { send_mdm_message = 0;}}
+        if(blockname.replace('deepslate_', '') == 'minecraft:lapis_ore') {setScore(player, 'lapis_ore', 1, true);; if(lapiz_notiv == 0) { send_mdm_message = 0;}}
+        if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true);; if(nether_notiv == 0) { send_mdm_message = 0;}}   
 
         if(send_mdm_message == 1) {
             tellrawStaff(`§l§¶§cUAC ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoretest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);

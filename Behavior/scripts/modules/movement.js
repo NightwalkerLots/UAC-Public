@@ -1,5 +1,4 @@
 import { scoreTest, setScore } from '../library/utils/score_testing.js';
-import { asyncExecCmd } from '../library/utils/cmd_queue.js';
 
 function movement_check(player) {
     try {

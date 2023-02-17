@@ -35,12 +35,12 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
             // turn on
             if(usage[0].includes(args[0])) {
-                sender.runCommandAsync(`scoreboard players set crdummy chatrank 1`);
+                setScore('crdummy', 'chatrank', 1, false);
                 tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bwere §2ENABLED §bby  §d${self}`);
             }
             // turn off
             if(usage[1].includes(args[0])) {
-                sender.runCommandAsync(`scoreboard players set crdummy chatrank 0`);
+                setScore('crdummy', 'chatrank', 0, false);
                 tellrawStaff(`§¶§cUAC ► §6Chat Ranks §bwere §cDISABLED §bby  §d${self}`);
             }
             // add rank other

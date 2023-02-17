@@ -1,6 +1,5 @@
 import { scoreTest } from '../library/utils/score_testing.js';
 import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
-import { asyncExecCmd } from '../library/utils/cmd_queue.js'
 const overworld = world.getDimension('overworld');
 
 const bannedItems = [
@@ -30,9 +29,9 @@ function anticbe() {
     if(acmbool != 1) return;
     on_tick++;
     //console.warn(on_tick);
-    if(on_tick == 20) {
+    if(on_tick == 40) {
         try {
-            asyncExecCmd(`function UAC/asset/cbe_item_kill`);
+            overworld.runCommandAsync(`function UAC/asset/cbe_item_kill`);
             on_tick = 0;
         } catch { }
     }
@@ -62,13 +61,13 @@ function anticbe() {
             }
         }
         if (itemArray.length) {
-            asyncExecCmd('function UAC/asset/cbeitem_gt_warn', player);
+            player.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
             overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
-            asyncExecCmd(`clear @s`, player);
+            player.runCommandAsync(`clear @s`);
             try{
-                asyncExecCmd(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`, player);
+                player.runCommandAsync(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${itemname}`);
             } catch {
-                asyncExecCmd(`event entity @s uac:ban_main`, player);
+                player.runCommandAsync(`event entity @s uac:ban_main`);
             }
         }
     }

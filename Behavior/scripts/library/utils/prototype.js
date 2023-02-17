@@ -1,5 +1,4 @@
 import { world, Player, BlockLocation } from '@minecraft/server';
-import { asyncExecCmd } from '../utils/cmd_queue';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
 export const content = {
@@ -55,7 +54,7 @@ const betaPlayerFunctions = {
     }
 };
 export function tellrawStaff(message) {
-    try { asyncExecCmd(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
+    try { overworld.runCommandAsync(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
 }
 export function tellrawServer(message) {
     try { overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
@@ -72,14 +71,14 @@ export function FindPlayer(input) {
 
 export function tellraw (message) {
     try {
-        return this.asyncExecCmd(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
     }
     catch {return}
 }
 
 export function hotbar (player, message) {
     try {
-        return asyncExecCmd(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`, player);
+        return player.runCommandAsync(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
     }
     catch {return}
 }

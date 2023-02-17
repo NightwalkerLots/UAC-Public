@@ -1,9 +1,9 @@
 {
 	"format_version": 1,
 	"header": {
-		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§28§7.§25§7] §6DEV §7⋱",
+		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§28§7.§26§7] §6Dev §7⋱",
 		"description": "§6§lExperimental Features §7: §cREQUIRED \n§bMade By §2NightwalkerLots ",
-		"uuid": "b77a1dc3-7a77-4dd0-a43c-cd4526334308",
+		"uuid": "b77d3dc3-7a77-4bb0-a43c-cd6726334308",
 		"version": [2, 8, 5],
 		"min_engine_version": [
 			1,

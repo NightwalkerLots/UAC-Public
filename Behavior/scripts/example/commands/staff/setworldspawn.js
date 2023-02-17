@@ -18,27 +18,15 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     let worldremove = ['remove'];
 
     if (sender.hasTag('staffstatus')) {
-        if (worldset.includes(args[0])) {
-            sender.runCommandAsync(`scoreboard players operation worlddum Worldx = @s X_Coordinate`);
-            sender.runCommandAsync(`scoreboard players operation worlddum Worldy = @s Y_Coordinate`);
-            sender.runCommandAsync(`scoreboard players operation worlddum Worldz = @s Z_Coordinate`);       
-            sender.runCommandAsync(`function UAC/asset/toggle_sync `);
+        if (worldset.includes(args[0])) {   
+            sender.runCommandAsync(`function UAC/asset/SetWorldSpawn_gt_asset`);
             sender.runCommandAsync(`scoreboard players set @s Worldx ${scoreTest(sender, 'X_Coordinate')}`);
             sender.runCommandAsync(`scoreboard players set @s Worldy ${scoreTest(sender, 'Y_Coordinate')}`);
             sender.runCommandAsync(`scoreboard players set @s Worldz ${scoreTest(sender, 'Z_Coordinate')}`);
-            sender.runCommandAsync(`setworldspawn  ~~~`);
-            sender.runCommandAsync(`function particle/explode`);
-            sender.runCommandAsync(`scoreboard players set worlddum worldcustom 1`);
             sender.tellraw(`§¶§cUAC ► §b§lWorld Spawn configured to §e${scoreTest(sender, 'X_Coordinate')} ${scoreTest(sender, 'Y_Coordinate')} ${scoreTest(sender, 'Z_Coordinate')}§b! Players will be sent here after passing World Border`);
         }
         else if (worldremove.includes(args[0])) {
-            sender.runCommandAsync(`scoreboard players set worlddum worldcustom 0`);
-            sender.runCommandAsync(`scoreboard players set worlddum Worldx 0`);
-            sender.runCommandAsync(`scoreboard players set worlddum Worldz 0`);
-            sender.runCommandAsync(`scoreboard players set worlddum Worldy 0`);
-            sender.runCommandAsync(`scoreboard players operation @s Worldx = worlddum Worldx`);
-            sender.runCommandAsync(`scoreboard players operation @s Worldy = worlddum Worldy`);
-            sender.runCommandAsync(`scoreboard players operation @s Worldz = worlddum Worldz`);
+            sender.runCommandAsync(`function UAC/asset/RemoveWorldSpawn_gt_asset`);
             sender.tellraw(`§¶§cUAC ► §b§lCustom World Spawn has been set back to default`);
         }
         else {

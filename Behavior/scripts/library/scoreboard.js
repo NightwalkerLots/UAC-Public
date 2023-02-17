@@ -1,11 +1,13 @@
 import { ObjectiveSortOrder, ScoreboardIdentityType, ScoreboardObjective as MCSO, world } from "@minecraft/server";
-import { asyncExecCmd } from "./utils/cmd_queue";
+const overworld = world.getDimension('overworld');
 export default class scoreboard {
     static get objective() { return ScoreboardObjective; }
     static get display() { return ScoreboardDisplay; }
     static get dummiesObject() { return scoreboardDummiesObject; }
     constructor() { throw new TypeError(`Class '${this.constructor.name}' is not constructable`); }
 }
+
+
 export class scoreboardDummiesObject {
     static create(sb, prefix = '') {
         const { dummies } = typeof sb == 'string' ? ScoreboardObjective.for(sb) : sb instanceof MCSO ? new ScoreboardObjective(PRIVATE, sb) : sb;
@@ -127,7 +129,7 @@ export class ScoreboardDummies {
     'set'(name, score) {
         score = ~~score;
         this.#tempSet.set(name, score);
-        return asyncExecCmd(`scoreboard players set ${JSON.stringify(name)} ${this.#execId} ${score}`, undefined)
+        return overworld.runCommandAsync(`scoreboard players set ${JSON.stringify(name)} ${this.#execId} ${score}`)
             .finally(() => this.#tempSet.delete(name))
             .then(() => true, () => false);
     }
@@ -135,12 +137,12 @@ export class ScoreboardDummies {
         return this.#tempSet.get(name) ?? this.#obj.getScores().find(({ participant: { type, displayName } }) => type == ScoreboardIdentityType.fakePlayer && displayName == name)?.score;
     }
     exist(name) {
-        return asyncExecCmd(`scoreboard players test ${JSON.stringify(name)} ${this.#execId} * *`, undefined)
+        return overworld.runCommandAsync(`scoreboard players test ${JSON.stringify(name)} ${this.#execId} * *`)
             .then(() => true, () => false);
     }
     reset(name) {
         this.#tempSet.set(name, undefined);
-        return asyncExecCmd(`scoreboard players reset ${JSON.stringify(name)} ${this.#execId}`, undefined)
+        return overworld.runCommandAsync(`scoreboard players reset ${JSON.stringify(name)} ${this.#execId}`)
             .finally(() => this.#tempSet.delete(name))
             .then(() => true, () => false);
     }
@@ -164,7 +166,7 @@ export class ScoreboardPlayers {
     'set'(plr, score) {
         score = ~~score;
         this.#tempSet.set(plr, score);
-        return asyncExecCmd(`scoreboard players set @s ${this.#execId} ${score}`, plr)
+        return plr.runCommandAsync(`scoreboard players set @s ${this.#execId} ${score}`)
             .finally(() => this.#tempSet.delete(plr))
             .then(() => true, () => false);
     }
@@ -177,12 +179,12 @@ export class ScoreboardPlayers {
         }
     }
     exist(plr) {
-        return asyncExecCmd(`scoreboard players test @s ${this.#execId} * *`, plr)
+        return plr.runCommandAsync(`scoreboard players test @s ${this.#execId} * *`)
             .then(() => true, () => false);
     }
     reset(plr) {
         this.#tempSet.set(plr, undefined);
-        return asyncExecCmd(`scoreboard players reset @s ${this.#execId}`, plr)
+        return plr.runCommandAsync(`scoreboard players reset @s ${this.#execId}`)
             .finally(() => this.#tempSet.delete(plr))
             .then(() => true, () => false);
     }

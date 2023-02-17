@@ -1,6 +1,7 @@
 import { Player, world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
-import { ActionFormData, ModalFormData } from '@minecraft/server-ui'
+import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
+import { setScore } from '../../../library/utils/score_testing.js'
 import scoreboard from "../../../library/scoreboard.js"
 import { tellrawStaff, getGamemode } from '../../../library/utils/prototype.js';
 //import { scoreTest } from '../../../library/utils/score_testing';
@@ -44,13 +45,6 @@ const moduleDefs_prots = [
         require: 'has_gt'
     },
     {
-        mname: 'Anti-OP Abuse',
-        obj: ['OPAM', 'opamtoggle'],
-        name: 'opamtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
-    },
-    {
         mname: 'Anti-Reach',
         obj: ['armtoggle'],
         name: 'armtoggledummy',
@@ -63,13 +57,6 @@ const moduleDefs_prots = [
         name: 'ajmdummy',
         toggle: ['§cOFF', '§aON'],
         require: 'has_gt'
-    },
-    {
-        mname: 'Fake Staff Protection',
-        obj: ['SSM', 'ssmtoggle'],
-        name: 'ssmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: ''
     },
     {
         mname: 'Item Ban',
@@ -322,10 +309,10 @@ const guiScheme = {
         display: (plr) => {
             if (scoreTest(plr, 'hmmtoggle') >= 1) return plr.tellraw(`§¶§cUAC ► §c§lRealm owner has set a global hotbar message `);
             
-            const actionList = [
-                [ 'Personal Stats'  , () => plr.runCommandAsync('scoreboard players set @s hometp 1337') ],
-                [ 'Server Stats'    , () => plr.runCommandAsync('scoreboard players set @s hometp 420') ],
-                [ 'Off'             , () => plr.runCommandAsync('scoreboard players set @s hometp 3') ],
+            const actionList = [ 
+                [ 'Personal Stats'  , () => setScore(plr, 'hometp', 1337, false) ],
+                [ 'Server Stats'    , () => setScore(plr, 'hometp', 420, false) ],
+                [ 'Off'             , () => setScore(plr, 'hometp', 3, false) ],
                 [ 'back'            , () => guiScheme.NonStaff(plr) ]
             ]
 
@@ -345,7 +332,7 @@ const guiScheme = {
             plr.runCommandAsync('function UAC/asset/deathcoords_asset')
         },
         welcome_accept: (plr) => {
-            plr.runCommandAsync('scoreboard players set @s seen_gui 1')
+            setScore(plr, 'seen_gui', 1, false)
         },
         spawntp: (plr) => {
             let name = plr.getName();
@@ -357,14 +344,14 @@ const guiScheme = {
                 plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(plr, 'Worldx')} ${scoreTest(plr, 'Worldy')} ${scoreTest(plr, 'Worldz')}`);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
                 plr.runCommandAsync(`function particle/nether_poof`);
-                plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
+                setScore(plr, 'tp_cooldown', 900, false);
             }
             else {
                 plr.runCommandAsync(`tp @s 0 100 0`)
                 plr.runCommandAsync(`effect @s slow_falling 35 1 `);
                 tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
                 plr.runCommandAsync(`function particle/nether_poof`);
-                plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
+                setScore(plr, 'tp_cooldown', 900, false);
             }
         },
 
@@ -448,7 +435,7 @@ const guiScheme = {
             if (scoreTest(plr, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
             plr.runCommandAsync(`scoreboard players random @s tpa 1 999999`);
-            plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
+            setScore(plr, 'tp_cooldown', 900, false);
             plr.runCommandAsync('tag @s add tpatemp');
             if(target.hasTag(`tpatemp`)) target.runCommandAsync(`tag @s remove tpatemp`);
             plr.runCommandAsync(`scoreboard players operation "${target.getName()}" tpa = "${name}" tpa`);
@@ -472,7 +459,7 @@ const guiScheme = {
             plr.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
             tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
             plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ tp @s "${name}"`);
-            plr.runCommandAsync(`scoreboard players set @s tp_cooldown 900`); 
+            setScore(plr, 'tp_cooldown', 900, false);
             plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
 
             plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ playsound note.pling @s ~ ~ ~`);
@@ -581,6 +568,7 @@ const guiScheme = {
                 .title(`${target.name.replace(/§./g, '')}'s Items`)
 
             let text = []
+            let targ_name = target.name;
             let head_type = undefined;
             let chest_type = undefined;
             let leg_type = undefined;

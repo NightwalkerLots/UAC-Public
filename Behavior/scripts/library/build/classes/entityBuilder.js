@@ -49,30 +49,13 @@ export class EntityBuilder {
      * @example EntityBuilder.getTags('[type=villager,name="Bob"]');
      */
     getTags(target) {
-        const data = Server.runCommandAsync(`tag @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} list`);
+        //const data = Server.runCommandAsync(`tag @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} list`);
         if (data.error)
             return;
         let tags = data.statusMessage.match(/(?<=: ).*$/);
         if (tags)
             return tags[0].split('§r, §a');
     }
-    ;
-    /**
-     * Get score of an entity
-     * @param {string} objective Objective name you want to search
-     * @param {string} [target] Requirements for the entity
-     * @param {number} [minimum] Minumum score you are looking for
-     * @param {number} [maximum] Maximum score you are looking for
-     * @returns {number | null}
-     * @example EntityBuilder.getScore('Money', '[type=villager,name="Bob"]', { minimum: 0 });
-     */
-    getScore(objective, target, { minimum, maximum } = {}) {
-        const data = Server.runCommandAsync(`scoreboard players test @e${target ? `[${target.replace(/\]|\[/g, '')}]` : ''} ${objective} ${minimum ? minimum : '*'} ${maximum ? maximum : '*'}`);
-        if (data.error)
-            return;
-        return parseInt(data.statusMessage.match(/-?\d+/)[0]);
-    }
-    ;
 }
 ;
 export const Entity = new EntityBuilder();

@@ -1,5 +1,6 @@
 import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { setScore } from '../../../library/utils/score_testing.js';
 import scoreboard from '../../../library/scoreboard.js'
 const registerInformation = {
     cancelMessage: true,
@@ -308,7 +309,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             switch (args[0]) {
                 case 'on':
                 case 'enable': {
-                    sender.runCommandAsync(`scoreboard players set illenchdummy illench 1`)
+                    setScore('illenchdummy', 'illench', 1, false);
                     sender.runCommandAsync(`scoreboard players operation @a illench = illenchdummy illench`)
                     sender.tellraw(`§¶§cIllegal§b enchantment detection has been §aENABLED`)
                     tellrawStaff(`§¶§cIllegal§b enchantment detection has been §aENABLED§b by §d${sender.name}`)
@@ -317,7 +318,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
                 case 'off':
                 case 'disable': {
-                    sender.runCommandAsync(`scoreboard players set illenchdummy illench 0`)
+
+                    setScore('illenchdummy', 'illench', 0, false);
                     sender.runCommandAsync(`scoreboard players operation @a illench = illenchdummy illench`)
                     sender.tellraw(`§¶§cIllegal§b enchantment detection has been §cDISABLED`)
                     tellrawStaff(`§¶§cIllegal§b enchantment detection has been §cDISABLED§b by §d${sender.name}`)

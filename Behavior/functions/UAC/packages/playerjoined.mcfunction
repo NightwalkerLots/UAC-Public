@@ -5,6 +5,7 @@
 execute @s[scores={in_combat=1,clmtoggle=1}] ~~~ function UAC/asset/clog_punish
 execute @s[scores={in_combat=1,clmtoggle=2}] ~~~ function UAC/asset/clog_punish
 scoreboard players set @s afktimer 0
+scoreboard players set @s online 1
 
 function UAC/modules/permban
 

@@ -1,7 +1,6 @@
 import { tellrawServer } from '../../../library/utils/prototype.js';
 import { Server } from '../../../library/Minecraft.js';
 import { world } from '@minecraft/server';
-import { asyncExecCmd } from '../../../library/utils/cmd_queue.js'
 
 const registerInformation = {
     cancelMessage: true,
@@ -39,11 +38,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             if(playerfound) {
                 let playername = playerfound.getName();
                 if (playername == name) {return sender.tellraw(`§¶§c§lUAC ► §c§lCan't ban yourself`); }
-                asyncExecCmd(`tag ${playername} remove reason_none`, sender);
+                sender.runCommandAsync(`tag ${playername} remove reason_none`);
                 tellrawServer(`§¶§c§lUAC ► §d${name} §bbanned §d${playername} §bREASON : §c${reason}`);
-                asyncExecCmd(`tag ${playername} add reason${args.join('_').replace(`${playername}`, '').replace('@', '').replace(args[0], '')}`, sender);
-                asyncExecCmd(`scoreboard players set ${playername} Ban 1`, sender);
-                asyncExecCmd(`tag ${playername} add Ban`, sender);
+                sender.runCommandAsync(`tag ${playername} add reason${args.join('_').replace(`${playername}`, '').replace('@', '').replace(args[0], '')}`);
+                sender.runCommandAsync(`scoreboard players set ${playername} Ban 1`);
+                sender.runCommandAsync(`tag ${playername} add Ban`);
             }
 
             

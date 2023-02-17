@@ -12,7 +12,8 @@ const registerInformation = {
         'dev init @player',
         'dev init',
         'dev features',
-        'dev version'
+        'dev version',
+        'dev scoretest [objective]'
     ]
 };
 Server.command.register(registerInformation, (chatmsg, args) => {
@@ -20,60 +21,66 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         
         let input = args.join(' ').replace('init ', '').replace('@', '').replace(/"/g, '');
         let playerfound = [...world.getPlayers()].find(player => player.getName() === input);
-        //const playername = playerfound.getName();
+        
         const { sender } = chatmsg;
         const name = sender.getName();
-        const overworld = world.getDimension('overworld');
-        //
-
-        let devinit = ['init'];
-        let devfeatures = ['features', 'testing'];
-        let devfeat_off = ['disable'];
-        let version = ['version', 'build'];
-        let bd = ['backdoor'];
-        let test = ['test', 'testbuild', 'devbuild']
-        let owner = ['ownertest', 'owner']
-        let exp = ['exptest', 'exp', 'testexp']
-        let test_dimention = ['dimension']
         
         if (sender.hasTag('staffstatus')) {
-            if (devinit.includes(args[0])) {
-                if(args[1]) {
-                    if (!playerfound) {
-                        return sender.tellraw(`§¶§cUAC ► §c§lError 7: No player by that name`); 
+
+            switch (args[0]) {
+                case undefined:
+                    return sender.tellraw(`§¶§c§lUAC ► §cNo args given`);
+
+                case 'init': {
+                    if(args[1]) {
+                        if (!playerfound) {
+                            return sender.tellraw(`§¶§cUAC ► §c§lError 7: No player by that name`); 
+                        }
+                        else { 
+                            let playername = playerfound.getName();
+                            sender.tellraw(`§¶§cUAC ► §d§l${playername}'s §binit was reset by §d${name}`);
+                            return sender.runCommandAsync(`execute "${playername}" ~~~ function UAC/asset/uac-init-asset`); 
+                        }
                     }
                     else { 
-                        let playername = playerfound.getName();
-                        sender.tellraw(`§¶§cUAC ► §d§l${playername}'s §binit was reset by §d${name}`);
-                        sender.runCommandAsync(`execute "${playername}" ~~~ function UAC/asset/uac-init-asset`); 
+                        sender.runCommandAsync(`function UAC/DEV/init`);
+                        sender.tellraw(`§¶§cUAC ► §bINIT reset for all players`);
                     }
+                } break;
+
+                case 'features': {  //enable testing features
+                    sender.runCommandAsync(`function UAC/DEV/enable-test-features`);
+                } break;
+
+                case 'disable': {  //disable testing features
+                    sender.runCommandAsync(`function UAC/DEV/disable-test-features`);
                 }
-                else { 
-                    sender.runCommandAsync(`function UAC/DEV/init`);
-                    sender.tellraw(`§¶§cUAC ► §bINIT reset for all players`);
-                }
-            }  else if (devfeatures.includes(args[0])) {
-                sender.runCommandAsync(`function UAC/DEV/enable-test-features`);
-            }   else if (version.includes(args[0])) {
-                sender.runCommandAsync(`function UAC/asset/version`);
-            }   else if (test.includes(args[0])) {
-                sender.runCommandAsync(`function UAC/test`);
-            }   else if (owner.includes(args[0])) {
-                sender.runCommandAsync(`function test/ownertest`);
-                sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${scoreTest(sender, 'ssmtoggle')}`);
-            }   else if (exp.includes(args[0])) {
-                sender.runCommandAsync(`function UAC/DEV/exp-test`);
-            }   else if (bd.includes(args[0])) {
-                sender.tellraw(`§¶§cUAC ► §bGet baited lol`);
-            }   else if (devfeat_off.includes(args[0])) {
-                sender.runCommandAsync(`function UAC/DEV/disable-test-features`);
-            } else if (test_dimention.includes(args[0])) {
-                let dim = sender.getName().dimension
-                overworld.runCommandAsync(`tp "${name}" 0 90 0`);
-                
-            }
-             else {
-                return sender.tellraw(`§¶§c§lUAC ► §cNo args given`);
+
+                case 'version': {
+                    sender.runCommandAsync(`function UAC/asset/version`);
+                } break;
+
+                case 'test': {
+                    sender.runCommandAsync(`function UAC/test`);
+                } break;
+
+                case 'owner': {
+                    sender.runCommandAsync(`function test/ownertest`);
+                    sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${scoreTest(sender, 'ssmtoggle')}`);
+                } break;
+
+                case 'exp': { //test to see if experimental features are on
+                    sender.runCommandAsync(`function UAC/DEV/exp-test`);
+                } break;
+
+                case 'backdoor': {
+                    sender.tellraw(`§¶§cUAC ► §bGet baited lol`);
+                } break;
+
+                case 'scoretest': {
+                    let result = scoreTest(sender, `${args[1]}`);
+                    sender.tellraw(`§¶§c§lUAC ► §d${name} §7: §c${args[1]} §7: §7${result}`);
+                } break;
             }
         } else {
             return sender.tellraw(`§¶§c§lUAC ► §c§lThis command is meant for staff only`);
