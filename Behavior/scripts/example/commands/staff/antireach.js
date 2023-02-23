@@ -41,11 +41,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             toggle = 1
             
             sender.tellraw(`§eAnti-Reach§f has been §aENABLED§r.`);
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §aENABLED§r.`);
+            tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §aENABLED§r.`);
             if(scoreTest(sender, 'armtoggle') == 1) {
                 setScore(sender, 'armtoggle', 0, false);
                 setScore('armtoggledummy', 'armtoggle', 0, false);
-                tellrawStaff(`§¶§cUAC ► §6Anti-Reach §bThe module's function method was disabled, sense the gametest method is now in use.`)
+                tellrawStaff(`§¶§cUAC STAFF ► §6Anti-Reach §bThe module's function method was disabled, sense the gametest method is now in use.`)
             }
             return setScore(sender, 'arm_gt_toggle', 1, false);
             
@@ -56,7 +56,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             obj.set('toggle', 0)
             toggle = 0
             sender.tellraw(`§eAnti-Reach§f has been §cDISABLED§r.`);
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §cDISABLED§r.`);
+            tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${sender.name}§b toggles the §eAnti-Reach§f module to §cDISABLED§r.`);
             return setScore(sender, 'arm_gt_toggle', 0, false);
         } break 
 
@@ -74,7 +74,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             obj.set('max_dist', newValue)
 
             sender.tellraw(`Max reach has been set to §a${(newValue / 1000).toFixed(3)}`);
-            tellrawStaff(`§¶§cUAC ► §d${sender.name}§b has set the max reach to §a${(newValue / 1000).toFixed(3)}§r`);
+            tellrawStaff(`§¶§cUAC STAFF ► §d${sender.name}§b has set the max reach to §a${(newValue / 1000).toFixed(3)}§r`);
             return;
         }
         default:
@@ -91,5 +91,5 @@ World.events.entityHit.subscribe(({entity: plr, hitEntity: target}) => {
         distarr = areaData.getDistanceWithLocation(plr.headLocation),
         dist = Math.hypot(...distarr)
 
-    if (dist > (maxdist / 1000)) tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has §chigh reach§b detected (§c${dist.toFixed(3)}§b)`)
+    if (dist > (maxdist / 1000)) tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${plr.name}§b has §chigh reach§b detected (§c${dist.toFixed(3)}§b)`)
 })

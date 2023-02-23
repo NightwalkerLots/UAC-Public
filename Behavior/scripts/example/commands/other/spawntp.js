@@ -34,14 +34,14 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 if (scoreTest(sender, 'worldcustom') === 1) {
                     sender.runCommandAsync(`tp @s ${scoreTest(sender, 'Worldx')} ${scoreTest(sender, 'Worldy')} ${scoreTest(sender, 'Worldz')}`);
                     sender.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(sender, 'Worldx')} ${scoreTest(sender, 'Worldy')} ${scoreTest(sender, 'Worldz')}`);
-                    tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                    tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bwarped to worldspawn`);
                     sender.runCommandAsync(`function particle/nether_poof`);
                     sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
                 }
                 else {
                     sender.runCommandAsync(`tp @s 0 100 0`)
                     sender.runCommandAsync(`effect @s slow_falling 35 1 `);
-                    tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                    tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bwarped to worldspawn`);
                     sender.runCommandAsync(`function particle/nether_poof`);
                     sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
                 }

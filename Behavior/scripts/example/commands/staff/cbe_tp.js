@@ -31,7 +31,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         //
         if (sender.hasTag('staffstatus')) {
             sender.runCommandAsync(`tp @s ${x} ${y} ${z}`, sender);  
-            tellrawStaff(`§¶§c§lUAC ► §d${name} §bTP'd to the last CBE Placement Attempt at §c${x} ${y} ${z}`);
+            tellrawStaff(`§l§¶§cUAC STAFF ► §d${name} §bTP'd to the last CBE Placement Attempt at §c${x} ${y} ${z}`);
             
         } else {
             return sender.tellraw(`§¶§c§lUAC ► §c§lThis command is meant for staff only`);

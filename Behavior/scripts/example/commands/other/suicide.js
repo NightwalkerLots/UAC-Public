@@ -34,7 +34,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             if (sender.hasTag('suicide1')) {
                 sender.removeTag('suicide1');
                 sender.runCommandAsync(`scoreboard players set @s suicide 1`);
-                tellrawStaff(`§¶§cUAC ► §d${name} §bused suicide command`);
+                tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bused suicide command`);
                 return sender.tellraw(`§¶§cUAC ► §b§lTo prevent combat logging, suicide will happen in 10 seconds`);
             }
         }

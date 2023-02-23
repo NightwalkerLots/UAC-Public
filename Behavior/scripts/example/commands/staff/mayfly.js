@@ -31,10 +31,10 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     return sender.tellraw(`§¶§c§lUAC ► §cPlayer not found`);  
                 }
                 if(add.includes(args[0])) {
-                    tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was given MayFly by §d${name}`);
+                    tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was given MayFly by §d${name}`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/mayfly`); 
                 } else if (remove.includes(args[0])) {
-                    tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was removed from MayFly by §d${name}`);
+                    tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was removed from MayFly by §d${name}`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/mayflyremove`); 
                 }
             } else {

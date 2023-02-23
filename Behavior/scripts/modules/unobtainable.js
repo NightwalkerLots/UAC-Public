@@ -76,14 +76,14 @@ function unobtainable() {
             
             //flag illegal stack of items
             if (item.amount < 0 || item.amount > maxStack) {
-                tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
+                tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
                 playerInventory.clearItem(i); //removes item
             }
             
             //flag items with lore data
             if(loreData.length && lore_bool) {
                 if(loreData == '(+DATA)') continue;
-                tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad modified lore on §c${itemname} \n§6§lLore§7: §c§l' ${loreData} '\n§6§lDisplay Name§7: §c§l' ${displayname} '`);
+                tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §d${name} §bhad modified lore on §c${itemname} \n§6§lLore§7: §c§l' ${loreData} '\n§6§lDisplay Name§7: §c§l' ${displayname} '`);
                 playerInventory.clearItem(i); //removes item
                 try {
                     player.runCommandAsync(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);
@@ -94,7 +94,7 @@ function unobtainable() {
 
             //flag element items
             if(item.id.includes(`element`)) {
-                tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
+                tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
                 playerInventory.clearItem(i); //removes item
             }
 

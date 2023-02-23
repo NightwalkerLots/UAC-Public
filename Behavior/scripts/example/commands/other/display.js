@@ -30,17 +30,17 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
             sender.tellraw(`§l§¶§cUAC ► §b§lNow showing display for self stats `);
             sender.runCommandAsync(`scoreboard players set @s hometp 1337`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bset their hotbar display to §epersonal`);
+            tellrawStaff(`§¶§cUAC STAFF STAFF ► §d${name} §bset their hotbar display to §epersonal`);
         } else if (realm.includes(args[0])) {
             sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
             sender.tellraw(`§l§¶§cUAC ► §b§lNow showing display for server stats `);
             sender.runCommandAsync(`scoreboard players set @s hometp 420`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bset their hotbar display to §eserver`);
+            tellrawStaff(`§¶§cUAC STAFF STAFF ► §d${name} §bset their hotbar display to §eserver`);
         } else if (off.includes(args[0])) {
             sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
             sender.tellraw(`§l§¶§cUAC ► §b§lStats Display has been §cDISABLED `);
             sender.runCommandAsync(`scoreboard players set @s hometp 3`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bset their hotbar display to §eoff`);
+            tellrawStaff(`§¶§cUAC STAFF STAFF ► §d${name} §bset their hotbar display to §eoff`);
         } else {
             return sender.tellraw(`§¶§cUAC ► §cERROR! §6Usage Example §7:§b§l UAC.display [ self | server | off ]`);
         }

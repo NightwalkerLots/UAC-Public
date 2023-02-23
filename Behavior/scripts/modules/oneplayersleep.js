@@ -13,9 +13,9 @@ function ops() {
         const name = player.getName();
 
         if(scoreTest(player, 'is_sleeping') == 1) {
-            player.runCommandAsync(`time set sunrise`, player);
-            player.runCommandAsync(`time add 2000`, player);
-            player.runCommandAsync(`weather clear`, player);
+            player.runCommandAsync(`time set sunrise`);
+            player.runCommandAsync(`time add 2000`);
+            player.runCommandAsync(`weather clear`);
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §btriggered one player sleep`);
         }
     }

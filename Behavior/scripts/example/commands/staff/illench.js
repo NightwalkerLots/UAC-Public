@@ -287,7 +287,7 @@ world.events.tick.subscribe(() => {
                     maxLvl = enchlist[ench.id] ?? 0
                 if ( enchLvl > maxLvl ) {
                     verify = true;
-                    tellrawStaff(`§¶§cUAC §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected §c${item.id.replace('minecraft:', '')} §bin their inventory: §c${ench.id} §b(§e${enchLvl}§b/§e${maxLvl}§b)`);
+                    tellrawStaff(`§¶§cUAC STAFF §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected §c${item.id.replace('minecraft:', '')} §bin their inventory: §c${ench.id} §b(§e${enchLvl}§b/§e${maxLvl}§b)`);
                     plr.tellraw(`§¶§cUAC §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected §c${item.id.replace('minecraft:', '')} §bin their inventory: §c${ench.id} §b(§e${enchLvl}§b/§e${maxLvl}§b)`);
                     c.setItem(i, air);
                 }
@@ -311,7 +311,6 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 case 'enable': {
                     setScore('illenchdummy', 'illench', 1, false);
                     sender.runCommandAsync(`scoreboard players operation @a illench = illenchdummy illench`)
-                    sender.tellraw(`§¶§cIllegal§b enchantment detection has been §aENABLED`)
                     tellrawStaff(`§¶§cIllegal§b enchantment detection has been §aENABLED§b by §d${sender.name}`)
                     sbtoggle.set('value', toggle = 1)
                 }; break
@@ -321,7 +320,6 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
                     setScore('illenchdummy', 'illench', 0, false);
                     sender.runCommandAsync(`scoreboard players operation @a illench = illenchdummy illench`)
-                    sender.tellraw(`§¶§cIllegal§b enchantment detection has been §cDISABLED`)
                     tellrawStaff(`§¶§cIllegal§b enchantment detection has been §cDISABLED§b by §d${sender.name}`)
                     sbtoggle.set('value', toggle = 0)
                 }; break

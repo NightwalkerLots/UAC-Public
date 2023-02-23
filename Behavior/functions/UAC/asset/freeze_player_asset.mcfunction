@@ -1,5 +1,5 @@
 #If player is staff
-execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§bis staff and can't be frozen."}]}
+execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF ► §d"},{"selector":"@s"},{"text":" §¶§bis staff and can't be frozen."}]}
 execute @s[tag=staffstatus] ~~~ execute @a[tag=staffstatus] ~~~ playsound note.bass @s ~ ~ ~
 execute @s[tag=!staffstatus] ~~~ execute @a[tag=staffstatus] ~~~ playsound note.pling @s ~ ~ ~
 

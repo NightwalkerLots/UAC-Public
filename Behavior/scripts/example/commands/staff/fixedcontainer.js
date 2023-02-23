@@ -33,7 +33,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             obj.set('toggle', 1)
             toggle = 1
             sender.tellraw(`§eFixedContainer§f has been §aENABLED§r.`);
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eFixedContainer§f module to §aENABLED§r.`);
+            tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${sender.name}§b toggles the §eFixedContainer§f module to §aENABLED§r.`);
         } break
 
         case 'disable':
@@ -41,7 +41,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
             obj.set('toggle', 0)
             toggle = 0
             sender.tellraw(`§eFixedContainer§f has been §cDISABLED§r.`);
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${sender.name}§b toggles the §eFixedContainer§f module to §cDISABLED§r.`);
+            tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${sender.name}§b toggles the §eFixedContainer§f module to §cDISABLED§r.`);
         } break
 
         default:
@@ -78,7 +78,7 @@ world.events.blockPlace.subscribe(({ block, player: plr, dimension: dim }) => {
             const item = c.getItem(i);
             if (!item) continue;
 
-            tellrawStaff(`§¶§cUAC ► §cNon-empty ${id}§r placed by §b${plr.name}§r in ${posConvert(block.location)}`);
+            tellrawStaff(`§¶§cUAC STAFF ► §cNon-empty ${id}§r placed by §b${plr.name}§r in ${posConvert(block.location)}`);
             const slc = `x=${x}, y=${y}, z=${z}, dx=0, dy=0, dz=0, type=item`;
             rc(dim, `tag @e[${slc}] add tmp`);
             rc(dim, `setblock ${posStr} air 0 destroy`);

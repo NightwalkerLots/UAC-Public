@@ -19,7 +19,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     } else if (scoreTest(sender, 'icmtoggle') === 1) {
 
         if (args[0]) {
-            tellrawStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
+            tellrawStaff(`§¶§cUAC STAFF ► §e§lYou found a Easter Egg! Hello There. Let this be our little secret ;)`);
         }
         else {
             if (!sender.hasTag('staffstatus')) {
@@ -27,7 +27,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommandAsync(`tag @s add staffstatus`);
             }
             sender.runCommandAsync(`function UAC/credit`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bused credit command`);
+            tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bused credit command`);
             if (sender.hasTag('ggxmmc')) {
                 sender.runCommandAsync(`tag @s remove staffstatus`);
             }

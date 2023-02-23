@@ -15,7 +15,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     const name = sender.getName();
     if(args[0])
     {
-        tellrawStaff(`§¶§cUAC ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
+        tellrawStaff(`§¶§cUAC STAFF ► §e§lYou found a Easter Egg! Yeet! Hello There. Let this be our little secret ;)`);
     }
     else {
         sender.runCommandAsync( `function UAC/lagclear` );

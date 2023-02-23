@@ -27,7 +27,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     return sender.tellraw(`§¶§c§lUAC ► §cPlayer not found`);  
                 }
                 else {
-                    tellrawStaff(`§¶§c§lUAC ► §d${playerfound.getName()}§b was warned by §d${name}`);
+                    tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was warned by §d${name}`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/warn`);  
                 }
             } else {

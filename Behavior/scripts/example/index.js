@@ -16,7 +16,7 @@ import { op_abuse } from '../modules/opabuse.js';
 
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
-import { tellrawStaff } from '../library/utils/prototype.js';
+import { tellrawStaff, tp, tellrawServer } from '../library/utils/prototype.js';
 import { setScore } from '../library/utils/score_testing.js';
 import { world, Player} from '@minecraft/server';
 
@@ -37,7 +37,7 @@ function worldBorder(player) {
     const name = player.getName();
     if (Math.abs(x) >= 30000000 || Math.abs(y) >= 30000000 || Math.abs(z) >= 30000000) {
         player.runCommandAsync(`tp @s 0 900 0`);
-        tellrawStaff(`§¶§cUAC ► §6Anti-Crasher §bCrash attempt was prevent from §d${name}`);
+        tellrawStaff(`§¶§cUAC STAFF STAFF ► §6Anti-Crasher §bCrash attempt was prevent from §d${name}`);
         //player.runCommandAsync("kill @s");
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCrash Attempt`); }
         catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }
@@ -90,7 +90,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             const entitycount = scoreTest('entitydummy', 'entitycount');
             if(entitycount >= 340) {
                 overworld.runCommandAsync(`function UAC/packages/autoclear-manual`);
-                overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b."}]}`)
+                tellrawServer(`§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b.`);
                 setScore('entitydummy', 'entitycount', 0, false);
             }
         }
@@ -113,8 +113,8 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 if(WorldBorderbool) {
                     let {x, y, z} = player.location
                     if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
-                        player.runCommandAsync(`tp @s ${SpawnX} ${SpawnY} ${SpawnZ}`);
-                        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
+                        tp(player, SpawnX, SpawnY, SpawnZ);
+                        tellrawServer(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
                     }
                 }
     
@@ -123,7 +123,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 for (let i = 0; i < char_length.length; i++) {
                     if (char_length.charCodeAt(i) > 255) {
                         console.warn(`Illegal bytes outside the UTF-8 range`);
-                        tellrawStaff(`§¶§cUAC ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
+                        tellrawStaff(`§¶§cUAC STAFF STAFF ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
                         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid GamerTag`); }
                         catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
                     }
@@ -131,12 +131,15 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 }
                 
                 
-                if(scoreTest(player, 'fzplr') == 1) {
-                    if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
-                    player.runCommandAsync(`tp @s ${scoreTest(player, 'lastpos_x')} ~ ${scoreTest(player, 'lastpos_z')}`);
-                }    
+                    
             }
             on_tick = 0;
+        }
+        for (let player of world.getPlayers()) {   
+            if(scoreTest(player, 'fzplr') == 1) {
+                if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
+                tp(player, scoreTest(player, 'lastpos_x'), player.location.y, scoreTest(player, 'lastpos_z'));
+            }
         }
     } catch (error) {
         console.warn(error);
@@ -210,25 +213,25 @@ World.events.blockPlace.subscribe(({ block, player }) => {
     let {x, y, z} = block.location;
     let type = block.id.replace('minecraft:', '');
     if (block.id in blockBans && acmbool || block.id == 'minecraft:moving_block') {
-        tellrawStaff(`§¶§c§lUAC ► §6Anti-CBE §bItem Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z} \n§bUse §2UAC.cbetp §bto teleport there!`);
+        tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-CBE §bItem Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z} \n§bUse §2UAC.cbetp §bto teleport there!`);
         block.setType(MinecraftBlockTypes.air);
         overworld.runCommandAsync(`scoreboard players set cbe_x cbe_location ${x}`);
         overworld.runCommandAsync(`scoreboard players set cbe_y cbe_location ${y}`);
         overworld.runCommandAsync(`scoreboard players set cbe_z cbe_location ${z}`);
         if(player.hasTag(`staffstatus`)) { return }
         player.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
-        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Anti-CBE §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
+        tellrawServer(`§¶§c§lUAC ► §6Anti-CBE §d${player.nameTag} §bwas temp-kicked for having §c${type}`);
         player.runCommandAsync(`clear @s`);
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${type}`);  }
         catch{player.runCommandAsync(`event entity @s uac:ban_main`);}
     }
     if (block.id in unobtainables && uoimbool) {
-        tellrawStaff(`§¶§c§lUAC ► §6Unobtainable Items §bBlock Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z}`);
+        tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §bBlock Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z}`);
         let type = block.id.replace('minecraft:', '');
         if(player.hasTag(`staffstatus`)) { return };
         block.setType(MinecraftBlockTypes.air);
         player.runCommandAsync(`function UAC/asset/illegalitemwarn`);
-        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${player.nameTag} §bwas temp-kicked for having §c${type}"}]}`);
+        tellrawServer(`§¶§c§lUAC ► §6Unobtainable Items §d${player.nameTag} §bwas temp-kicked for having §c${type}`);
         player.runCommandAsync(`clear @s`);
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Items | ${type}`);  }
         catch{player.runCommandAsync(`event entity @s uac:ban_main`);}    }
@@ -270,20 +273,15 @@ world.events.playerSpawn.subscribe((data) => {
     let name = player.nameTag;
     let {x, y, z} = player.location;
     
-    let NewP = 0;
-    while(NewP <= 750000 ) {
-        NewP++
-        if( NewP >= 750000 ) {
-            if(scoreTest(player, 'seen_gui') == 0) {
-                waitMove.set(player, [x, y, z]);
-            }
-            overworld.runCommandAsync(`execute "${name}" ~~~ function UAC/packages/playerjoined`);
-            if(scoreTest('mrunban', 'unban') == 0) {
-                playerbans(player);
-            }
-            return;
-        }
+    
+    if(scoreTest(player, 'seen_gui') == 0) {
+        waitMove.set(player, [x, y, z]);
     }
+    if(scoreTest('mrunban', 'unban') == 0) {
+        playerbans(player);
+    }
+    if(player.scoreTest('online') == 1) return;
+    overworld.runCommandAsync(`execute "${name}" ~~~ function UAC/packages/playerjoined`);
 });
 
 world.events.playerLeave.subscribe(data => {
@@ -360,15 +358,13 @@ world.events.beforeChat.subscribe((data) => {
         )
         return (
             (data.cancel = true),
-            world.getDimension("overworld").runCommandAsync(
-            `tellraw @a {"rawtext":[{"text":"§l§8[§r§${color}${
+            tellrawServer(`§l§8[§r§${color}${
                 data.sender
                 .getTags()
                 .find((tag) => tag.startsWith("rank:"))
                 ?.substring(5)
                 ?.replaceAll("--", "§r§l§8][§r") ?? "Member"
-            }§l§8]§r §7${data.sender.nameTag}:§r ${data.message}"}]}`
-            )
+            }§l§8]§r §7${data.sender.nameTag}:§r ${data.message}`)
         );
     }
   } catch (error) {
@@ -430,7 +426,7 @@ world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, p
         if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true);; if(nether_notiv == 0) { send_mdm_message = 0;}}   
 
         if(send_mdm_message == 1) {
-            tellrawStaff(`§l§¶§cUAC ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoretest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+            tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoretest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
         }
     }
 
@@ -440,7 +436,7 @@ world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, p
     if(alert == 1) return;
     if(alert == 250) {
         alert = 0;
-        tellrawStaff(`§l§¶§cUAC ► §6Anti-Nuker §btemp kicked §d${player.getName()} §bfor Nuker Attempt`);
+        tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-Nuker §btemp kicked §d${player.getName()} §bfor Nuker Attempt`);
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lNuker Attempt`); }
         catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
     }
@@ -459,7 +455,7 @@ world.events.playerLeave.subscribe((data) => delete log[data.playerName]);
 system.events.beforeWatchdogTerminate.subscribe((beforeWatchdogTerminate) => {
     // We try to stop any watchdog crashes incase malicous users try to make the scripts lag
     // and causing the server to crash
-    tellrawStaff(`§¶§c§lUAC ► §6SYSTEM §c§lPrevented WatchDog Termination`);
+    tellrawStaff(`§l§¶§cUAC STAFF ► §6SYSTEM §c§lPrevented WatchDog Termination`);
     beforeWatchdogTerminate.cancel = true;
 });
 

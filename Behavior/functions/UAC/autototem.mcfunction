@@ -1,6 +1,6 @@
 #On on first use
 scoreboard players add @s[tag=staffstatus] totemtog 1
-execute @s[scores={totemtog=1},tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":" §¶§bhas §2ENABLED §6Auto Totem"}]}
+execute @s[scores={totemtog=1},tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §b► §d"},{"selector":"@s"},{"text":" §¶§bhas §2ENABLED §6Auto Totem"}]}
 scoreboard players set @s[scores={totemtog=1},tag=staffstatus] totemaut  329
 tag @s[scores={totemtog=1},tag=staffstatus] add totemaut
 execute @s[scores={totemtog=1},tag=staffstatus] ~~~ function particle/totem_poof
@@ -13,7 +13,7 @@ execute @s[scores={totemaut=329,totemtog=2}] ~~~ function particle/totem_poof
 execute @s[scores={totemaut=329,totemtog=2}] ~~~ playsound note.pling @s ~ ~ ~
 scoreboard players set @s[scores={totemtog=2}] totemaut 0
 scoreboard players set @s[scores={totemtog=2}] totemtog 0
-execute @s[scores={totemaut=0,totemtog=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":" §¶§bhas §cDISABLED §6Auto Totem"}]}
+execute @s[scores={totemaut=0,totemtog=0}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §b► §d"},{"selector":"@s"},{"text":" §¶§bhas §cDISABLED §6Auto Totem"}]}
 
 
 

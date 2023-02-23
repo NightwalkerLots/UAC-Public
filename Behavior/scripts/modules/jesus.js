@@ -29,7 +29,7 @@ function jesus() {
             _player.count++;
         }
         if(_player.count === 20) {
-            tellrawStaff(`§¶§c§lUAC ► §6Anti-Jesus §d${name} §bwas flagged`);
+            tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-Jesus §d${name} §bwas flagged`);
             _player.count = 0;
         }
         if(player.hasTag('Is_On_Ground')) {

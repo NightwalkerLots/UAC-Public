@@ -224,7 +224,7 @@ const setModule = (plr, module, newValue) => {
         objdata.set(module.name, newValue)
 
         for (const id of module.obj) obj(id).dummies.set(module.name, newValue)
-        tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
+        tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${plr.name}§b has set the module §e${module.mname}§b to ${module.toggle[newValue]}`)
     } catch(error) {console.warn(error, error.stack)}
     
 }
@@ -342,14 +342,14 @@ const guiScheme = {
             if (scoreTest(plr, 'worldcustom') === 1) {
                 plr.runCommandAsync(`tp @s ${scoreTest(plr, 'Worldx')} ${scoreTest(plr, 'Worldy')} ${scoreTest(plr, 'Worldz')}`);
                 plr.tellraw(`§¶§cUAC ► §l§d${name} §bHas warped to World Spawn at §6${scoreTest(plr, 'Worldx')} ${scoreTest(plr, 'Worldy')} ${scoreTest(plr, 'Worldz')}`);
-                tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bwarped to worldspawn`);
                 plr.runCommandAsync(`function particle/nether_poof`);
                 setScore(plr, 'tp_cooldown', 900, false);
             }
             else {
                 plr.runCommandAsync(`tp @s 0 100 0`)
                 plr.runCommandAsync(`effect @s slow_falling 35 1 `);
-                tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to worldspawn`);
+                tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bwarped to worldspawn`);
                 plr.runCommandAsync(`function particle/nether_poof`);
                 setScore(plr, 'tp_cooldown', 900, false);
             }
@@ -441,14 +441,14 @@ const guiScheme = {
             plr.runCommandAsync(`scoreboard players operation "${target.getName()}" tpa = "${name}" tpa`);
             target.tellraw(`§¶§cUAC ► §d${name} §bhas sent you a TPA Request. Use §6UAC.tpa accept §bto accept the request`);
             plr.tellraw(`§¶§cUAC ► §d${target.getName()} §bwas sent a TPA Request`);
-            tellrawStaff(`§¶§cUAC ► §d${name} §bsent a TPA Request to §d${target.getName()}`);
+            tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bsent a TPA Request to §d${target.getName()}`);
             
         },
         tpa_cancel: (plr, target) => {
             plr.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ tag @s remove tpatemp`);
             plr.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(plr, 'tpa')}}] tpa 0`);
-            plr.tellraw(` §¶§cUAC ► §bThe TPA request was closed`);
-            tellrawStaff(` §¶§cUAC ► §d${plr.getName()} §bclosed a TPA request `);
+            plr.tellraw(`§¶§cUAC ► §bThe TPA request was closed`);
+            tellrawStaff(`§¶§cUAC STAFF ► §d${plr.getName()} §bclosed a TPA request `);
         },
         tpa_accept: (plr, target) => {
             let name = plr.getName();
@@ -456,8 +456,8 @@ const guiScheme = {
             if (plr.hasTag('tpatemp')) return plr.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);
             if (scoreTest(plr, 'tp_cooldown') >= 1) return plr.tellraw(`§¶§cUAC ► §6TPA §cunavailable §bwhile warp commands are in cooldown. Please wait 40 seconds.`)
 
-            plr.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
-            tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
+            plr.tellraw(`§¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
+            tellrawStaff(`§¶§cUAC STAFF ► §d${name} §baccepted a TPA request `);
             plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ tp @s "${name}"`);
             setScore(plr, 'tp_cooldown', 900, false);
             plr.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(plr, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
@@ -857,7 +857,7 @@ const guiScheme = {
                     const itemban = itembanDefs[i]
                     let objdata = obj(itemban.obj).dummies
                     objdata.set(itemban.name, b)
-                    tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${b ? '§aenabled' : '§cdisabled'}§r §eItemBan/${itemban.mname}§r`)
+                    tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${plr.name}§b has ${b ? '§aenabled' : '§cdisabled'}§r §eItemBan/${itemban.mname}§r`)
                 }
             }
 
@@ -888,7 +888,7 @@ const guiScheme = {
                     const oreban = oreBanDefs[i]
                     let objdata = obj(oreban.obj).dummies
                     objdata.set(oreban.name, b)
-                    tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has ${b ? '§aenabled' : '§cdisabled'}§r §eOreAlert/${oreban.mname}§r`)
+                    tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${plr.name}§b has ${b ? '§aenabled' : '§cdisabled'}§r §eOreAlert/${oreban.mname}§r`)
                 }
             }
 
@@ -928,7 +928,7 @@ const guiScheme = {
 
                 const kit = kitDefs[v.selection]
                 plr.runCommandAsync(`structure load "${kit.structure}" ~~~`)
-                tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has spawned a kit §e${kit.mname}§r`)
+                tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${plr.name}§b has spawned a kit §e${kit.mname}§r`)
             })
         }
     })(),
@@ -947,7 +947,7 @@ const guiScheme = {
 
             obj('Border_Coord_X').dummies.set('BDXdummy', newValue)
             obj('Border_Coord_Z').dummies.set('BDXdummy', newValue)
-            tellrawStaff(`§¶§cUAC ► §bPlayer §d${plr.name}§b has set the world border size to §a${newValue}§b/§a${newValue}§r`)
+            tellrawStaff(`§¶§cUAC STAFF ► §bPlayer §d${plr.name}§b has set the world border size to §a${newValue}§b/§a${newValue}§r`)
 
             guiScheme.worldborder(plr)
         })

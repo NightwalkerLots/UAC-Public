@@ -1,4 +1,4 @@
-execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC §b► §d"},{"selector":"@s"},{"text":" §¶§bis staff and cannot be warned"}]}
+execute @s[tag=staffstatus] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §b► §d"},{"selector":"@s"},{"text":" §¶§bis staff and cannot be warned"}]}
 
 execute @s[tag=!staffstatus] ~~~ scoreboard players add @s warn 1
 execute @s[tag=!staffstatus] ~~~ playsound random.break @s ~ ~ ~

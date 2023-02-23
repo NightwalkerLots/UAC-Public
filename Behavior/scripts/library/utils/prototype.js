@@ -20,7 +20,7 @@ const betaPlayerFunctions = {
         //not beta but fixes nameSpoof command tartgeting issues
     },
     tellraw: function (message) {
-        return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return this.tell(`${message.replaceAll('"', '\\"')}`);
     },
     tellrawStringify: function (message) {
         return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${JSON.stringify(message).replaceAll('"', '\\"')}"}]}`);
@@ -54,10 +54,23 @@ const betaPlayerFunctions = {
     }
 };
 export function tellrawStaff(message) {
-    try { overworld.runCommandAsync(`tellraw @a[tag=staffstatus] {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
+    try { 
+        for (let player of world.getPlayers()) { 
+            if(player.hasTag('staffstatus')) {
+                player.tell(`${message.replaceAll('"', '\\"')}`);
+            }
+        }
+    } catch { }
+}
+export function tp( target, x, y, z ) {
+    try { target.teleport( { x: x, y: y, z: z }, target.dimension, 0, 0 ); } catch(e) { console.warn(e); }
 }
 export function tellrawServer(message) {
-    try { overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`); } catch { }
+    try { 
+        for (let player of world.getPlayers()) { 
+            player.tell(`${message.replaceAll('"', '\\"')}`);
+        }
+    } catch { }
 }
 export function FindPlayer(input) {
     let players = world.getPlayers();
@@ -71,7 +84,7 @@ export function FindPlayer(input) {
 
 export function tellraw (message) {
     try {
-        return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return this.tell(`${message.replaceAll('"', '\\"')}`);
     }
     catch {return}
 }

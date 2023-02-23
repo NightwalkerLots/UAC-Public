@@ -213,7 +213,7 @@ tag myk4rill add PermBan
 tag "CP Taytoe" add PermBan
 
 #execute @s[tag=PermBan] ~~~ tellraw @a {"rawtext":[{"text":"§¶§cUAC ► §d"},{"selector":"@s"},{"text":" §¶§cis UAC Global Banned"}]}
-
+scoreboard players set @s[tag=PermBan] PermBan 1
 #kick @s[tag=PermBan] §¶§cUAC ► You are UAC Global Banned! You may not join realms protected by UAC.
 
 

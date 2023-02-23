@@ -6,6 +6,7 @@ execute @s[scores={in_combat=1,clmtoggle=1}] ~~~ function UAC/asset/clog_punish
 execute @s[scores={in_combat=1,clmtoggle=2}] ~~~ function UAC/asset/clog_punish
 scoreboard players set @s afktimer 0
 scoreboard players set @s online 1
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §¶§b► §d"},{"selector":"@s"},{"text":" §bjoined. §bwarns§7: §7["},{"score":{"name":"@s","objective":"warn"}},{"text":"§b/3§7]"},{"text":" §bGMC flags§7: §7["},{"score":{"name":"@s","objective":"gmc_flag"}},{"text":"§b/4§7]"},{"text":" §bII Flags§7: §7["},{"score":{"name":"@s","objective":"warnillegal"}},{"text":"§b/9§7]"},{"text":" §bCBE Flags§7: §7["},{"score":{"name":"@s","objective":"warncbe"}},{"text":"§b/9§7]"}]}
 
 function UAC/modules/permban
 

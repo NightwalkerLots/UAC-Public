@@ -53,7 +53,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                         sender.runCommandAsync(`scoreboard players operation "${playerfound.getName()}" tpa = "${name}" tpa`);
                         playerfound.tellraw(`§¶§cUAC ► §d${name} §bhas sent you a TPA Request. Use §6UAC.tpa accept §bto accept the request`);
                         sender.tellraw(`§¶§cUAC ► §d${playerfound.getName()} §bwas sent a TPA Request`);
-                        tellrawStaff(`§¶§cUAC ► §d${name} §bsent a TPA Request to §d${playerfound.getName()}`);
+                        tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bsent a TPA Request to §d${playerfound.getName()}`);
                     }
                 }
                 // tpa accept
@@ -61,8 +61,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     if (scoreTest(sender, 'tpa') === 0) {return sender.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to accept`);}
                     if (sender.hasTag('tpatemp')) {return sender.tellraw(`§¶§c§lUAC ► §cYou have a request open to someone, and cannot accept others.`);}
                     //tp logic
-                    sender.tellraw(` §¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
-                    tellrawStaff(` §¶§cUAC ► §d${name} §baccepted a TPA request `);
+                    sender.tellraw(`§¶§cUAC ► §bTPA Request was §2ACCEPTED§7.`);
+                    tellrawStaff(`§¶§cUAC STAFF ► §d${name} §baccepted a TPA request `);
                     sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ tp @s "${name}"`);
                     sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`); 
                     sender.runCommandAsync(`execute @p[name=!"${name}",scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ scoreboard players set @s tp_cooldown 900`);
@@ -82,8 +82,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     if (scoreTest(sender, 'tpa') === 0) {return sender.tellraw(`§¶§c§lUAC ► §cNo TPA Requests to cancel`);}
                     sender.runCommandAsync(`execute @a[tag=tpatemp,scores={tpa=${scoreTest(sender, 'tpa')}}] ~~~ tag @s remove tpatemp`);
                     sender.runCommandAsync(`scoreboard players set @a[scores={tpa=${scoreTest(sender, 'tpa')}}] tpa 0`);
-                    sender.tellraw(` §¶§cUAC ► §bThe TPA request was closed`);
-                    tellrawStaff(` §¶§cUAC ► §d${name} §bclosed a TPA request `);
+                    sender.tellraw(`§¶§cUAC ► §bThe TPA request was closed`);
+                    tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bclosed a TPA request `);
                 } else {
                     return sender.tellraw(`§¶§cUAC ► §cERROR! §6Usage Example §7:§b§l UAC.tpa [ request | cancel | accept ]`);
                 }

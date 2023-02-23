@@ -18,7 +18,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
         if ( scoreTest(sender, 'icmtoggle') === 0) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
          
         sender.runCommandAsync(`function UAC/asset/deathcoords_asset`);
-        tellrawStaff(`§¶§cUAC ► §d${name} §bchecked their last death location`);
+        tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bchecked their last death location`);
     }catch (error) {
         console.warn(error, error.stack);
     }

@@ -56,7 +56,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     return sender.tellraw('§¶§cUAC ► §cYou already have a home set with that name!');
                 sender.addTag(`$(Home{Home-Name: ${homeName}, X: ${Math.trunc(sender.location.x)}, Y: ${Math.trunc(sender.location.y)}, Z: ${Math.trunc(sender.location.z)}})`);
                 sender.runCommandAsync(`playsound note.pling @s ~ ~ ~`);
-                tellrawStaff(`§¶§cUAC ► §d${name} §bhas set their §e${homeName} §blocation`);
+                tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bhas set their §e${homeName} §blocation`);
                 return sender.tellraw(`§¶§cUAC ► §bYou have set a home with the name §a${homeName} §bat§r: §a${Math.trunc(sender.location.x)}§r, §a${Math.trunc(sender.location.y)}§r, §a${Math.trunc(sender.location.z)}`);
             }
             else if (removeOptions.includes(args[0])) {
@@ -77,7 +77,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommandAsync(`tp @s ${findXYZ[0]} ${findXYZ[1]} ${findXYZ[2]}`);
                 sender.runCommandAsync(`scoreboard players set @s tp_cooldown 900`);
                 sender.runCommandAsync(`function particle/nether_poof`);
-                tellrawStaff(`§¶§cUAC ► §d${name} §bwarped to their §e${homeName} §blocation`);
+                tellrawStaff(`§¶§cUAC STAFF ► §d${name} §bwarped to their §e${homeName} §blocation`);
                 return sender.tellraw(`§¶§cUAC ► §bYou have been teleported to §a${args[1]} §bat §a${findXYZ[0]}§r, §a${findXYZ[1]}§r, §a${findXYZ[2]}`);
             }
             else

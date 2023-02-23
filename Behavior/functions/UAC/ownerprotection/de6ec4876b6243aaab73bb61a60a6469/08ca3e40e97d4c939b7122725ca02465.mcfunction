@@ -25,7 +25,7 @@ execute @s[tag=staffstatus,scores={SSDEBUG2=1}] ~~~ execute @s[tag=staffstatus,s
 execute @s[scores={SSDEBUG2=2}] ~~~ scoreboard players set @s ds9209D2n 0
 execute @s[scores={SSDEBUG2=2}] ~~~ tag @s remove staffstatus
 execute @s[scores={SSDEBUG2=2}] ~~~ tag @s remove ownerstatus
-execute @s[tag=!staffstatus,scores={SSDEBUG2=2}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC ► §bOwner status §cremoved §bsuccessfully from §d"},{"selector":"@s"}]}
+execute @s[tag=!staffstatus,scores={SSDEBUG2=2}] ~~~ tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF ► §bOwner status §cremoved §bsuccessfully from §d"},{"selector":"@s"}]}
 execute @s[scores={SSDEBUG2=2}] ~~~ scoreboard players set @s SSDEBUG2 0
 
 #fucntion call name: (I would change this if i were you. Using a UUID works best.)
