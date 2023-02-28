@@ -1,6 +1,7 @@
 import { Server } from '../../../library/Minecraft.js';
 import { scoreTest } from '../../../library/utils/score_testing';
 import { world } from '@minecraft/server';
+import { TellRB } from '../../../library/utils/prototype.js';
 
 const registerInformation = {
     cancelMessage: true,
@@ -80,6 +81,20 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 case 'scoretest': {
                     let result = scoreTest(sender, `${args[1]}`);
                     sender.tellraw(`§¶§c§lUAC ► §d${name} §7: §c${args[1]} §7: §7${result}`);
+                } break;
+
+                case 'RB': {
+                    TellRB(`${args[1]}`, `${args.join(' ').replace(`${args[0]}`, '').replace(`${args[1]}`, '')}`);
+                } break;
+
+                case 'RB1': {
+                    TellRB(`flag_0`, `${args.join(' ').replace(`${args[0]}`, '')}`);
+                } break;
+
+                case 'testop': {
+                    if(sender.isOp()) { sender.tellraw(`yes`) } else {
+                        sender.tellraw(`no`);
+                    }
                 } break;
             }
         } else {

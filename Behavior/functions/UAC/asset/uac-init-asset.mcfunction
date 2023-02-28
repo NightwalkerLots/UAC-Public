@@ -340,6 +340,7 @@ scoreboard players set @s arm_gt_toggle 0
 scoreboard players set @s money 0
 
 
+
 #Give everyone default module scoreboard scores
 scoreboard players set @s ACM 0
 scoreboard players set @s AFM 0

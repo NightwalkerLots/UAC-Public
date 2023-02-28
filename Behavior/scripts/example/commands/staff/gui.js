@@ -167,6 +167,13 @@ const moduleDefs_util = [
         require: 'has_xx'
     },
     {
+        mname: 'RealmBot Flag Relay',
+        obj: ['acstoggle', 'acstoggle'],
+        name: 'rbflagdummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
+    },
+    {
         mname: 'Time Played',
         obj: ['TPM', 'tpmtoggle'],
         name: 'tpmtoggledummy',

@@ -1,4 +1,5 @@
 import { world, Player, BlockLocation } from '@minecraft/server';
+import { scoreTest } from './score_testing';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
 export const content = {
@@ -61,6 +62,41 @@ export function tellrawStaff(message) {
             }
         }
     } catch { }
+}
+export function TellRB(color, message) {
+    try { 
+        if (scoreTest(`rbflagdummy`, `acstoggle`) != 1) { return; } //check to see if RB Relay is enabled
+        if(!color) {
+            color = `1317f2`; //default color if color is not defined
+        }
+        switch(color) {
+            case 'ban': { color = `FB0000`; } break; //red
+            case 'flag_0': { color = `02EBFE`; } break; // cyan
+            case 'flag_1': { color = `E7FE02`; } break; //yellow
+        } 
+        for (let player of world.getPlayers()) {
+            if(player.hasTag(`rb1337`)) {
+                player.onScreenDisplay.updateSubtitle(JSON.stringify({
+                    name: 'Placeholder1',
+                    url: 'https://discord.gg/uac',
+                    author: {
+                        name: 'Powered by U-E Studios',
+                        icon_url: 'https://cdn.discordapp.com/attachments/824151082791075860/874492420694360124/Unity_AntiCheat.png',
+                        url: 'https://discord.gg/uac'
+                    },
+                    description: `RB1337: UAC ${message.replaceAll('"', '\\"')}`,
+                    color: `${color}`,
+                    thumbnail: 'https://cdn.discordapp.com/attachments/824151082791075860/874429993164345354/uac_glitch.gif',
+                    footer: 'placeholder2',
+                }))
+            }
+        }
+        //let URL = `https://discord.gg/uac`;
+        //let thumbnail = `https://cdn.discordapp.com/attachments/824151082791075860/874429993164345354/uac_glitch.gif`;
+        //overworld.runCommandAsync(`titleraw @a[tag=rb1337] subtitle {"rawtext":[{"text":"RB1337: RBAC_UAC thumbnail.url:${thumbnail};url:${URL};color:${color};description:${message.replaceAll('"', '\\"')}"}]}`);
+        console.warn(color.toString());
+    }
+    catch(c) { console.warn(c) }
 }
 export function tp( target, x, y, z ) {
     try { target.teleport( { x: x, y: y, z: z }, target.dimension, 0, 0 ); } catch(e) { console.warn(e); }
