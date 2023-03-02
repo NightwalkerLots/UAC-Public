@@ -1015,7 +1015,7 @@ const waitMove = new Map()
 
 Server.command.register(registerInformation, (chatmsg, args) => {
     const { sender } = chatmsg, {location: {x, y, z}} = sender
-    if(scoreTest(sender, 'icmtoggle') === 0 && !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
+    if(scoreTest(sender, 'icmtoggle') === 0 || !sender.hasTag('staffstatus')) return sender.tellraw(`§¶§cUAC ► §c§lThe Realm Owner currently has Player Commands Disabled`);
 
     sender.tellraw(`§aMove to show the UI.`)
     waitMove.set(chatmsg.sender, [x, y, z])
