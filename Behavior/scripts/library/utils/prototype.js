@@ -2,6 +2,7 @@ import { world, Player, BlockLocation } from '@minecraft/server';
 import { scoreTest } from './score_testing';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
+
 export const content = {
     warn: function (message) {
         if (typeof message === 'object' || Array.isArray(message)) {
@@ -76,24 +77,26 @@ export function TellRB(color, message) {
         } 
         for (let player of world.getPlayers()) {
             if(player.hasTag(`rb1337`)) {
-                player.onScreenDisplay.updateSubtitle(JSON.stringify({
-                    name: 'Placeholder1',
+                player.onScreenDisplay.updateSubtitle("RB1337: " + JSON.stringify({
                     url: 'https://discord.gg/uac',
                     author: {
-                        name: 'Powered by U-E Studios',
-                        icon_url: 'https://cdn.discordapp.com/attachments/824151082791075860/874492420694360124/Unity_AntiCheat.png',
+                        name: 'UAC Discord Flag Log',
+                        icon_url: 'https://cdn.discordapp.com/attachments/824151082791075860/1081761748387893328/Discord_Certified_Moderator.png',
                         url: 'https://discord.gg/uac'
                     },
-                    description: `RB1337: UAC ${message.replaceAll('"', '\\"')}`,
+                    description: `${message.replaceAll('"', '\\"')}`,
+                    anticheat: `Unity Anti-Cheat`,
                     color: `${color}`,
                     thumbnail: 'https://cdn.discordapp.com/attachments/824151082791075860/874429993164345354/uac_glitch.gif',
-                    footer: 'placeholder2',
+                    footer: {
+                        icon_url: "https://cdn.discordapp.com/attachments/824151082791075860/874492420694360124/Unity_AntiCheat.png",
+                        text: "Powered by U-E Studios",
+                        url: 'https://discord.gg/uac'
+                    },
                 }))
             }
         }
-        //let URL = `https://discord.gg/uac`;
-        //let thumbnail = `https://cdn.discordapp.com/attachments/824151082791075860/874429993164345354/uac_glitch.gif`;
-        //overworld.runCommandAsync(`titleraw @a[tag=rb1337] subtitle {"rawtext":[{"text":"RB1337: RBAC_UAC thumbnail.url:${thumbnail};url:${URL};color:${color};description:${message.replaceAll('"', '\\"')}"}]}`);
+        tellrawServer(`UAC function RB was called`);
         console.warn(color.toString());
     }
     catch(c) { console.warn(c) }
