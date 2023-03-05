@@ -1,4 +1,4 @@
-import { tellrawServer } from '../../../library/utils/prototype.js';
+import { tellrawServer, TellRB } from '../../../library/utils/prototype.js';
 import { Server } from '../../../library/Minecraft.js';
 import { world } from '@minecraft/server';
 
@@ -40,6 +40,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 if (playername == name) {return sender.tellraw(`§¶§c§lUAC ► §c§lCan't ban yourself`); }
                 sender.runCommandAsync(`tag ${playername} remove reason_none`);
                 tellrawServer(`§¶§c§lUAC ► §d${name} §bbanned §d${playername} §bREASON : §c${reason}`);
+                TellRB(`ban`, `UAC ► ${name} has banned ${playername}. REASON : ${reason}`);
                 sender.runCommandAsync(`tag ${playername} add reason${args.join('_').replace(`${playername}`, '').replace('@', '').replace(args[0], '')}`);
                 sender.runCommandAsync(`scoreboard players set ${playername} Ban 1`);
                 sender.runCommandAsync(`tag ${playername} add Ban`);

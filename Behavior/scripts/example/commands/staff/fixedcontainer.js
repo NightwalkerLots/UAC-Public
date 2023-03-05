@@ -1,6 +1,6 @@
 import { BlockLocation, Dimension, Location, world} from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { tellrawStaff, TellRB } from '../../../library/utils/prototype.js';
 import scoreboard from '../../../library/scoreboard.js';
 
 const registerInformation = {
@@ -79,6 +79,7 @@ world.events.blockPlace.subscribe(({ block, player: plr, dimension: dim }) => {
             if (!item) continue;
 
             tellrawStaff(`§¶§cUAC STAFF ► §cNon-empty ${id}§r placed by §b${plr.name}§r in ${posConvert(block.location)}`);
+            TellRB(`flag_1`, `UAC ► ${plr.name} placed a Non-Empty ${id} at ${posConvert(block.location)}`);
             const slc = `x=${x}, y=${y}, z=${z}, dx=0, dy=0, dz=0, type=item`;
             rc(dim, `tag @e[${slc}] add tmp`);
             rc(dim, `setblock ${posStr} air 0 destroy`);

@@ -28,6 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 else {
                     tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was warned by §d${name}`);
+                    TellRB(`flag_0`, `UAC ► ${name} has warned ${playerfound.getName()}`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/warn`);  
                 }
             } else {

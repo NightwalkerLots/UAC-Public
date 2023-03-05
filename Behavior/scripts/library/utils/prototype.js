@@ -130,7 +130,7 @@ export function tellraw (message) {
 
 export function hotbar (player, message) {
     try {
-        return player.runCommandAsync(`titleraw "${player.nameTag}" actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return player.setActionBar(`${message.replaceAll('"', '\\"')}`);
     }
     catch {return}
 }
