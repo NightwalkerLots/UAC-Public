@@ -10,7 +10,6 @@ function afk_kick(player) {
     }
     if(scoreTest(player, `afkm`) == 1 && !player.hasTag('is_moving')) { // start counter
         setScore(player, 'afktimer', 1, true);
-        player.tell(`${scoreTest(player, `afktimer`)}`);
     }
 
     //kick count down
@@ -30,7 +29,7 @@ function afk_kick(player) {
         tellrawServer(`§¶§cUAC §6Anti-AFK §b► §d${name} §¶§cTemp Kicked for Inactivity`);
         TellRB(`flag_0`, `UAC Anti-AFK ► ${name} was temp kicked for inactivity`);
         setScore(player, 'afktimer', 0, false);
-        player.runCommandAsync(`event entity @s uac:ban_soft`);
+        player.runCommandAsync(`kick "${player.getName().replace(`"`, ``)}" §¶§cUAC §6AFK Kick`);
     }
 }
 

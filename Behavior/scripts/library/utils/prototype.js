@@ -96,7 +96,6 @@ export function TellRB(color, message) {
                 }))
             }
         }
-        tellrawServer(`UAC function RB was called`);
         console.warn(color.toString());
     }
     catch(c) { console.warn(c) }

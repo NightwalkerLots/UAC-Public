@@ -15,11 +15,14 @@ import { hotbar_message } from '../modules/hotbar_message.js';
 import { op_abuse } from '../modules/opabuse.js';
 import { opCheck } from '../modules/OpCheck.js';
 import { afk_kick } from '../modules/afk_kick.js';
+import { lockdown } from '../modules/lockdown.js';
+import { Check_Packet_Behavior } from '../modules/bad_packet.js';
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
 import { tellrawStaff, tp, tellrawServer, TellRB } from '../library/utils/prototype.js';
 import { setScore } from '../library/utils/score_testing.js';
 import { world, Player} from '@minecraft/server';
+
 
 function scoreTest(target, objective) {
     try {
@@ -77,6 +80,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         let opsbool = scoreTest('opsdummy', 'opstoggle');
         let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
+        let ld_bool = scoreTest('lddummy', 'SSDEBUG');
 
         if(acmbool == 1) { anticbe(); }
         if(uoimbool == 1) { unobtainable(); }
@@ -111,6 +115,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 movement_check(player);
                 opCheck(player);
                 afk_kick(player);
+                if(ld_bool) { lockdown(player); }
                 if(opabuse_bool) { op_abuse(player) }
                 setScore(player, "has_gt", 1, false);
                 
@@ -143,6 +148,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             on_tick = 0;
         }
         for (let player of world.getPlayers()) {   
+            Check_Packet_Behavior(player);
             if(scoreTest(player, 'fzplr') == 1) {
                 if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
                 tp(player, scoreTest(player, 'lastpos_x'), player.location.y, scoreTest(player, 'lastpos_z'));
@@ -412,54 +418,36 @@ const ores = [
 ];
 
 world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, player }) => {
-    let {x, y, z} = block.location;
-    const old = log[player.name];
-    let playername = player.getName();
-    let blockname = brokenBlockPermutation.type.id;
-    log[player.name] = Date.now();
-    const mdmbool = scoreTest('mdmtoggledummy', 'mdmtoggle');
-    const diamond_notiv = scoreTest('mdmtoggledummy', 'diamondmd');
-    const emerald_notiv = scoreTest('mdmtoggledummy', 'emeraldmd');
-    const gold_notiv = scoreTest('mdmtoggledummy', 'goldmd');
-    const iron_notiv = scoreTest('mdmtoggledummy', 'ironmd');
-    const lapiz_notiv = scoreTest('mdmtoggledummy', 'lapizmd');
-    const nether_notiv = scoreTest('mdmtoggledummy', 'scrapmd');
-    
-    //Mining Detection - Gametest Implementation
-    if(ores.includes(blockname) && mdmbool) { 
-        let send_mdm_message = 1;
-        if(blockname.replace('deepslate_', '') == 'minecraft:diamond_ore') {setScore(player, 'diamond_ore', 1, true); if(diamond_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:emerald_ore') {setScore(player, 'emerald_ore', 1, true); if(emerald_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:gold_ore') {setScore(player, 'gold_ore', 1, true); if(gold_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:iron_ore') {setScore(player, 'iron_ore', 1, true); if(iron_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:lapis_ore') {setScore(player, 'lapis_ore', 1, true); if(lapiz_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true); if(nether_notiv == 0) { send_mdm_message = 0;}}   
+    try {
+        let {x, y, z} = block.location;
+        const old = log[player.name];
+        let playername = player.getName();
+        let blockname = brokenBlockPermutation.type.id;
+        log[player.name] = Date.now();
+        const mdmbool = scoreTest('mdmtoggledummy', 'mdmtoggle');
+        const diamond_notiv = scoreTest('mdmtoggledummy', 'diamondmd');
+        const emerald_notiv = scoreTest('mdmtoggledummy', 'emeraldmd');
+        const gold_notiv = scoreTest('mdmtoggledummy', 'goldmd');
+        const iron_notiv = scoreTest('mdmtoggledummy', 'ironmd');
+        const lapiz_notiv = scoreTest('mdmtoggledummy', 'lapizmd');
+        const nether_notiv = scoreTest('mdmtoggledummy', 'scrapmd');
+        
+        //Mining Detection - Gametest Implementation
+        if(ores.includes(blockname) && mdmbool) { 
+            let send_mdm_message = 1;
+            if(blockname.replace('deepslate_', '') == 'minecraft:diamond_ore') {setScore(player, 'diamond_ore', 1, true); if(diamond_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:emerald_ore') {setScore(player, 'emerald_ore', 1, true); if(emerald_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:gold_ore') {setScore(player, 'gold_ore', 1, true); if(gold_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:iron_ore') {setScore(player, 'iron_ore', 1, true); if(iron_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:lapis_ore') {setScore(player, 'lapis_ore', 1, true); if(lapiz_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true); if(nether_notiv == 0) { send_mdm_message = 0;}}   
 
-        if(send_mdm_message == 1) {
-            tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoretest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+            if(send_mdm_message == 1) {
+                tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoreTest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+            }
         }
-    }
-
-    //Anti-Nuker
-    if (old < Date.now() - 15 || player.hasTag(byPassTag)) return;
-    alert++
-    if(alert == 1) return;
-    if(alert == 250) {
-        alert = 0;
-        TellRB(`flag_1`, `UAC Anti-Nuker ► ${player.nameTag} was temp-kicked for Nuker Flag`);
-        tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-Nuker §btemp kicked §d${player.getName()} §bfor Nuker Attempt`);
-        try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lNuker Attempt`); }
-        catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
-    }
-    dimension
-      .getBlock(block.location)
-      .setPermutation(brokenBlockPermutation.clone());
-    dimension
-      .getEntitiesAtBlockLocation(block.location)
-      .filter((entity) => entity.id === "minecraft:item")
-      .forEach((item) => item.kill());
-  }
-);
+    } catch(c) {console.warn(c)}
+});
 
 world.events.playerLeave.subscribe((data) => delete log[data.playerName]);
 

@@ -31,6 +31,7 @@ execute @a[scores={feeten=1}] ~~~ scoreboard players set @s feeten 0
 #lastpos for movement detection
 execute @a ~~~ scoreboard players operation @s lastpos_x = @s X_Coordinate
 execute @a ~~~ scoreboard players operation @s lastpos_z = @s Z_Coordinate
+execute @a ~~~ scoreboard players operation @s lastpos_y = @s Y_Coordinate
 #player counter
 scoreboard players reset playerdummy playercount
 execute @a ~~~ scoreboard players add playerdummy playercount 1

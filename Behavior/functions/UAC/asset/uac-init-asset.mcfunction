@@ -442,6 +442,7 @@ scoreboard objectives add Y_Coordinate dummy Y_Coordinate
 scoreboard objectives add Z_Coordinate dummy Z_Coordinate
 scoreboard objectives add lastpos_x dummy
 scoreboard objectives add lastpos_z dummy
+scoreboard objectives add lastpos_y dummy
 scoreboard players set @s X_Coordinate 0
 scoreboard players set @s Y_Coordinate 0
 scoreboard players set @s Z_Coordinate 0
