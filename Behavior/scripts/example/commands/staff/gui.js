@@ -1,4 +1,4 @@
-import { Player, world } from '@minecraft/server';
+import { Player, world, system } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
 import { setScore } from '../../../library/utils/score_testing.js'
@@ -50,13 +50,6 @@ const moduleDefs_prots = [
         name: 'armtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: ''
-    },
-    {
-        mname: 'Anti-Jesus',
-        obj: ['ajmtoggle'],
-        name: 'ajmdummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_gt'
     },
     {
         mname: 'Item Ban',
@@ -1035,7 +1028,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
     waitMove.set(chatmsg.sender, [x, y, z])
 })
 
-world.events.tick.subscribe(() => {
+system.runInterval(() => {
     for (let [plr, [x, y, z]] of waitMove) {
         try {
             let { x: xc, y: yc, z: zc } = plr.location

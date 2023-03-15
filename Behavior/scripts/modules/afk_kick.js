@@ -14,16 +14,16 @@ function afk_kick(player) {
 
     //kick count down
     if(scoreTest(player, `afktimer`) == 55) {
-        player.tell(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c4`);
+        player.sendMessage(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c4`);
     }
     if(scoreTest(player, `afktimer`) == 60) {
-        player.tell(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c3`);
+        player.sendMessage(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c3`);
     }
     if(scoreTest(player, `afktimer`) == 65) {
-        player.tell(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c2`);
+        player.sendMessage(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c2`);
     }
     if(scoreTest(player, `afktimer`) == 70) {
-        player.tell(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c1`);
+        player.sendMessage(`§¶§cUAC §6AFK Kick §b► §d${name} §¶§bRemoved for inactivity in §7: §c1`);
     }
     if(scoreTest(player, `afktimer`) == 72) {
         tellrawServer(`§¶§cUAC §6Anti-AFK §b► §d${name} §¶§cTemp Kicked for Inactivity`);

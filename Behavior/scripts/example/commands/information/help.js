@@ -52,6 +52,6 @@ Server.command.register(registerInformation, (data, args) => {
             string += `§eExample§f: §a${Server.command.prefix}§f${cmdInfo.example.join(`\n${Server.command.prefix}§f`)}`;
         return sender.tellraw(string);
     } catch (error) {
-        console.warn(error, error.stack);
+        console.warn( JSON.stringify(e.stack), e);
     }
 });

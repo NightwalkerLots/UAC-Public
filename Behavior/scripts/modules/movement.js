@@ -16,7 +16,7 @@ function movement_check(player) {
             setScore(player, "notmovingflag", 1, true);
         }
     }catch (error) {
-        console.warn(error);
+        console.warn( JSON.stringify(e.stack), e)
     }
 }
 

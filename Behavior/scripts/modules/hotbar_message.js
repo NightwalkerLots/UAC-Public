@@ -68,8 +68,7 @@ function hotbar_message(player) {
         
         } 
     }catch(error) {
-        console.warn(JSON.stringify(error));
-        console.warn(error.toString());
+        console.warn( JSON.stringify(e.stack), e)
     }
 }
 

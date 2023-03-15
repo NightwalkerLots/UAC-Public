@@ -1,11 +1,11 @@
 
-import { clearTickInterval, clearTickTimeout, setTickInterval, setTickTimeout } from "./utils/scheduling.js";
-export { clearTickInterval, clearTickTimeout, setTickInterval, setTickTimeout };
+//import { clearTickInterval, clearTickTimeout, setTickInterval, setTickTimeout } from "./utils/scheduling.js";
+//export { clearTickInterval, clearTickTimeout, setTickInterval, setTickTimeout };
 import { compressNumber, formatNumber, MS, rainbowText } from "./utils/formatter.js";
 export { compressNumber, formatNumber, MS, rainbowText };
 import Database from "./build/classes/databaseBuilder.js";
 export { Database };
-import { world } from '@minecraft/server';
+import { world, system } from '@minecraft/server';
 import { Entity } from "./build/classes/entityBuilder.js";
 import { Player } from "./build/classes/playerBuilder.js";
 import { Command } from "./build/classes/commandBuilder.js";
@@ -125,7 +125,7 @@ class ServerBuild extends ServerBuilder {
                     this._emit('playerSpawn', data.entity);
             });
             let worldLoaded = false, tickCount = 0;
-            world.events.tick.subscribe((data) => {
+            system.runInterval((data) => {
                 if (!this.runCommandAsync('testfor @a').error && !worldLoaded) {
                     /**
                      * Emit to 'ready' event listener

@@ -2,6 +2,7 @@ import { Server } from '../../../library/Minecraft.js';
 import { tellrawStaff, TellRB } from '../../../library/utils/prototype.js';
 import { setScore } from '../../../library/utils/score_testing.js';
 import scoreboard from '../../../library/scoreboard.js'
+import { system } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
     name: 'illench',
@@ -268,10 +269,9 @@ const enchantmentDefs = {
     }
 }
 
-const allEnchantments = Object.values(MinecraftEnchantmentTypes)
-const air = new ItemStack(MinecraftItemTypes.acaciaBoat, 0, 0)
+const allEnchantments = Object.values(MinecraftEnchantmentTypes);
 
-world.events.tick.subscribe(() => {
+system.runInterval(() => {
     if (!toggle) return
     for (let plr of world.getPlayers()) {
         if (plr.hasTag('staffstatus')) continue
@@ -289,7 +289,7 @@ world.events.tick.subscribe(() => {
                     verify = true;
                     tellrawStaff(`§¶§cUAC STAFF §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected §c${item.id.replace('minecraft:', '')} §bin their inventory: §c${ench.id} §b(§e${enchLvl}§b/§e${maxLvl}§b)`);
                     plr.tellraw(`§¶§cUAC §b► §l§d${plr.name} §bhas §cillegal enchantment §bdetected §c${item.id.replace('minecraft:', '')} §bin their inventory: §c${ench.id} §b(§e${enchLvl}§b/§e${maxLvl}§b)`);
-                    c.setItem(i, air);
+                    c.setItem(i, MinecraftItemTypes.air);
                 }
             }
             if(verify === true) {

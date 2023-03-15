@@ -1,4 +1,4 @@
-import './mc_compability.js';
+import './wrap.js';
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
@@ -7,7 +7,6 @@ import { anticbe } from '../modules/cbe.js';
 import { unobtainable } from '../modules/unobtainable.js';
 import { playerbans } from '../modules/bans.js';
 import { ops } from '../modules/oneplayersleep.js';
-import { jesus } from '../modules/jesus.js';
 import { lagclear } from '../modules/lagclear.js';
 import { movement_check } from '../modules/movement.js';
 import { waitMove } from './commands/staff/gui.js';
@@ -30,7 +29,7 @@ function scoreTest(target, objective) {
         if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
         return oB.getScore(target.scoreboard)
     } catch (error) {
-        //console.warn(error, error.stack);
+        //console.warn( JSON.stringify(e.stack), e)
     }
 }
 
@@ -70,7 +69,7 @@ let BorderZ = scoreTest('BDXdummy', 'Border_Coord_Z');
 let on_tick = 0;
 
 
-world.events.tick.subscribe(({ deltaTime, currentTick }) => {
+system.runInterval(() => {
     try {
         on_tick++;
         let WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
@@ -78,13 +77,11 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
         let opsbool = scoreTest('opsdummy', 'opstoggle');
-        let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
         let ld_bool = scoreTest('lddummy', 'SSDEBUG');
 
         if(acmbool == 1) { anticbe(); }
         if(uoimbool == 1) { unobtainable(); }
-        if(ajmbool == 1) { jesus(); }
 
         if( on_tick == 10 ) {
             let lagclear_bool = scoreTest('ltmtoggledummy', 'ltmtoggle');
@@ -151,11 +148,11 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             Check_Packet_Behavior(player);
             if(scoreTest(player, 'fzplr') == 1) {
                 if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
-                tp(player, scoreTest(player, 'lastpos_x'), player.location.y, scoreTest(player, 'lastpos_z'));
+                tp(player, scoreTest(player, 'lastpos_x'), scoreTest(player, 'lastpos_y'), scoreTest(player, 'lastpos_z'));
             }
         }
-    } catch (error) {
-        console.warn(error);
+    } catch (e) {
+        console.warn( JSON.stringify(e.stack), e)
     }
     // cbe code was contributed by MrPatches123
     
@@ -223,7 +220,7 @@ World.events.blockPlace.subscribe(({ block, player }) => {
     // made originally by frost, and perfected by nightwalkerlots
     const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
     const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
-    let {x, y, z} = block.location;
+    let {x, y, z} = player.location;
     let type = block.id.replace('minecraft:', '');
     if (block.id in blockBans && acmbool || block.id == 'minecraft:moving_block') {
         TellRB(`flag_1`, `UAC Anti-CBE ► ${player.nameTag} tried to place ${block.id.replace('minecraft:', '')} at ${x} ${y} ${z}`);
@@ -259,7 +256,7 @@ world.events.beforeItemUseOn.subscribe((eventData) => {
     let item_name = item.replace('minecraft:', '');
     let name = eventData.source.nameTag;
     let by_player = undefined;
-    let {x, y, z} = eventData.blockLocation;
+    let {x, y, z} = eventData.source.location;
     let p = world.getPlayers();
     if(!acmbool) return;
     for (let i of p) {
@@ -419,7 +416,7 @@ const ores = [
 
 world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, player }) => {
     try {
-        let {x, y, z} = block.location;
+        let {x, y, z} = player.location;
         const old = log[player.name];
         let playername = player.getName();
         let blockname = brokenBlockPermutation.type.id;
@@ -443,10 +440,10 @@ world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, p
             if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true); if(nether_notiv == 0) { send_mdm_message = 0;}}   
 
             if(send_mdm_message == 1) {
-                tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoreTest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+                tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${Math.round(x)} ${Math.round(y)} ${Math.round(z)}. §bTotal §7: §c${scoreTest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
             }
         }
-    } catch(c) {console.warn(c)}
+    } catch(c) {console.warn( JSON.stringify(e.stack), e)}
 });
 
 world.events.playerLeave.subscribe((data) => delete log[data.playerName]);

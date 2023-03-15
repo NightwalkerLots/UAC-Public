@@ -1,4 +1,4 @@
-import { world, Player, BlockLocation } from '@minecraft/server';
+import { world, Player } from '@minecraft/server';
 import { scoreTest } from './score_testing';
 const overworld = world.getDimension('overworld');
 const { floor } = Math;
@@ -22,19 +22,13 @@ const betaPlayerFunctions = {
         //not beta but fixes nameSpoof command tartgeting issues
     },
     tellraw: function (message) {
-        return this.tell(`${message.replaceAll('"', '\\"')}`);
+        return this.sendMessage(`${message.replaceAll('"', '\\"')}`);
     },
     tellrawStringify: function (message) {
         return this.runCommandAsync(`tellraw @s {"rawtext":[{"text":"${JSON.stringify(message).replaceAll('"', '\\"')}"}]}`);
     },
     tellrawJSON: function (json) {
         return this.runCommandAsync(`tellraw @s {"rawtext":[${json}]}`);
-    },
-    queryTopSolid: function (dimension = overworld) {
-        const { location: { x, z } } = this;
-        const locations = new BlockLocation(floor(x), 320, floor(z))
-            .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();
-        for (const location of locations) if (!dimension.getBlock(location).isEmpty) return location.y;
     },
     getInventory: function (array) {
         let inventory = this.getComponent('minecraft:inventory').container;
@@ -59,7 +53,7 @@ export function tellrawStaff(message) {
     try { 
         for (let player of world.getPlayers()) { 
             if(player.hasTag('staffstatus')) {
-                player.tell(`${message.replaceAll('"', '\\"')}`);
+                player.sendMessage(`${message.replaceAll('"', '\\"')}`);
             }
         }
     } catch { }
@@ -98,15 +92,15 @@ export function TellRB(color, message) {
         }
         console.warn(color.toString());
     }
-    catch(c) { console.warn(c) }
+    catch(c) { console.warn( JSON.stringify(e.stack), e) }
 }
 export function tp( target, x, y, z ) {
-    try { target.teleport( { x: x, y: y, z: z }, target.dimension, 0, 0 ); } catch(e) { console.warn(e); }
+    try { target.teleport( { x: x, y: y, z: z }, target.dimension, 0, 0 ); } catch(e) { console.warn( JSON.stringify(e.stack), e) }
 }
 export function tellrawServer(message) {
     try { 
         for (let player of world.getPlayers()) { 
-            player.tell(`${message.replaceAll('"', '\\"')}`);
+            player.sendMessage(`${message.replaceAll('"', '\\"')}`);
         }
     } catch { }
 }
@@ -122,7 +116,7 @@ export function FindPlayer(input) {
 
 export function tellraw (message) {
     try {
-        return this.tell(`${message.replaceAll('"', '\\"')}`);
+        return this.sendMessage(`${message.replaceAll('"', '\\"')}`);
     }
     catch {return}
 }
@@ -158,11 +152,11 @@ export function hasitem(player, itemId, clearItems = false) {
     } if (clearItems) player.runCommandAsync(`clear @s ${itemId}`)
     return itemAmount;
 };
-
+/*
 export function queryTopSolid({ location: { x, y, z }, dimension = overworld }) {
     const locations = new BlockLocation(floor(x), 320, floor(z))
         .blocksBetween(new BlockLocation(floor(x), -64, floor(z))).reverse();
     for (const location of locations) if (!dimension.getBlock(location).isEmpty) return location.y;
 }
-
+*/
 Object.assign(Player.prototype, betaPlayerFunctions);

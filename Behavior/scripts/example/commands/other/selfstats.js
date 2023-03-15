@@ -37,7 +37,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     sender.addTag('stats_temp');
                     sender.runCommandAsync(`execute "${playername}" ~~~ function UAC/itemcommand/playerstats`);
                 } catch(error) {
-                    console.warn(error);
+                    console.warn( JSON.stringify(e.stack), e)
                 }
                 
             }break
