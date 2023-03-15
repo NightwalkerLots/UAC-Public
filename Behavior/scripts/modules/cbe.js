@@ -1,5 +1,6 @@
 import { scoreTest } from '../library/utils/score_testing.js';
 import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+import { TellRB } from '../library/utils/prototype.js';
 const overworld = world.getDimension('overworld');
 
 const bannedItems = [
@@ -58,6 +59,7 @@ function anticbe() {
                 playerInventory.clearItem(i); //removes item
                 itemname = item.id.replace('minecraft:', '');
                 player.tellraw(`§¶§c§lUAC ► §6Anti-CBE §c${itemname} §bwas cleared from your inventory`);
+                TellRB(`flag_1`, `UAC Anti-CBE ► ${name} had a ${itemname} cleared from their inventory`);
             }
         }
         if (itemArray.length) {

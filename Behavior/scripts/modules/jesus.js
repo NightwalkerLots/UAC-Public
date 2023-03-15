@@ -1,4 +1,4 @@
-import { tellrawStaff } from 'library/utils/prototype.js';
+import { tellrawStaff, TellRB } from 'library/utils/prototype.js';
 import { scoreTest } from '../library/utils/score_testing.js';
 import { world, BlockLocation } from '@minecraft/server';
 
@@ -30,6 +30,7 @@ function jesus() {
         }
         if(_player.count === 20) {
             tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-Jesus §d${name} §bwas flagged`);
+            TellRB(`flag_1`, `UAC Anti-Jesus ► ${name} was flagged`);
             _player.count = 0;
         }
         if(player.hasTag('Is_On_Ground')) {

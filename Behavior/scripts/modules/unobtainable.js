@@ -1,7 +1,7 @@
-import { tellrawStaff } from 'library/utils/prototype.js';
 import { scoreTest } from '../library/utils/score_testing';
 import maxItemStack, { defaultMaxItemStack } from 'library/utils/maxstack.js';
 import { world, ItemStack, MinecraftItemTypes } from '@minecraft/server';
+import { tellrawServer, tellrawStaff, TellRB } from '../library/utils/prototype';
 
 const overworld = world.getDimension('overworld');
 
@@ -76,6 +76,7 @@ function unobtainable() {
             
             //flag illegal stack of items
             if (item.amount < 0 || item.amount > maxStack) {
+                TellRB(`flag_1`, `UAC Unobtainable Items (Max Stack Size) ► ${name} flagged for having ${item.amount} of ${itemname}`);
                 tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
                 playerInventory.clearItem(i); //removes item
             }
@@ -83,6 +84,7 @@ function unobtainable() {
             //flag items with lore data
             if(loreData.length && lore_bool) {
                 if(loreData == '(+DATA)') continue;
+                TellRB(`flag_1`, `UAC Unobtainable Items (Lore Flag) ► ${name} had modified lore on ${itemname}\nDISPLAY NAME : ${displayname}\NLORE : ${loreData}`);
                 tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §d${name} §bhad modified lore on §c${itemname} \n§6§lLore§7: §c§l' ${loreData} '\n§6§lDisplay Name§7: §c§l' ${displayname} '`);
                 playerInventory.clearItem(i); //removes item
                 try {
@@ -94,6 +96,7 @@ function unobtainable() {
 
             //flag element items
             if(item.id.includes(`element`)) {
+                TellRB(`flag_1`, `UAC Unobtainable Items (elements) ► ${name} had ${item.amount} of ${itemname}`);
                 tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §d${name} §bhad §c${item.amount} §bof §c${itemname}`);
                 playerInventory.clearItem(i); //removes item
             }
@@ -105,7 +108,8 @@ function unobtainable() {
             }
             if (itemArray.length) {
                 player.runCommandAsync('function UAC/asset/illegalitemwarn');
-                overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}"}]}`);
+                tellrawServer(`§¶§c§lUAC ► §6Unobtainable Items §d${name} §bwas temp-kicked for having §c${itemname}`);
+                TellRB(`flag_1`, `UAC Unobtainable Items ► ${name} kicked for having ${item.amount} of ${itemname}`);
                 player.runCommandAsync(`clear @s`);
                 try {
                     player.runCommandAsync(`kick ${name} §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUnobtainable Item | ${itemname}`);

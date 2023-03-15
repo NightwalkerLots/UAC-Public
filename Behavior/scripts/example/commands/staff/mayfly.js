@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { tellrawStaff, TellRB } from '../../../library/utils/prototype.js';
 import { world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
@@ -32,9 +32,11 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 if(add.includes(args[0])) {
                     tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was given MayFly by §d${name}`);
+                    TellRB(`flag_0`, `UAC ► ${name} has whitelisted ${playerfound.getName()} from anti-fly`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/mayfly`); 
                 } else if (remove.includes(args[0])) {
                     tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was removed from MayFly by §d${name}`);
+                    TellRB(`flag_0`, `UAC ► ${name} has unwhitelisted ${playerfound.getName()} from anti-fly`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/mayflyremove`); 
                 }
             } else {

@@ -35,13 +35,11 @@
 			"swim",
 			"is_gliding",
 			"timer",
-			"player_facing",
-      		"afkDetector"
+			"player_facing"
 		  ]
 		},
 		"animations": {
 		  "testing": "animation.testing",
-		  "afkDetector" : "controller.animation.afkDetector",
 		  "death_effect": "controller.animation.death_effect",
 		  "on_death": "controller.animation.on_death",
 		  "home_x_negative": "controller.animation.home_x_negative",

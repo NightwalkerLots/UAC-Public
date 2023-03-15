@@ -1,5 +1,6 @@
 import { world } from '@minecraft/server';
 import { Server } from '../../../library/Minecraft.js';
+import { tellrawServer, TellRB } from '../../../library/utils/prototype.js';
 
 const registerInformation = {
     cancelMessage: true,
@@ -37,7 +38,8 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 try {
                     sender.runCommandAsync(`scoreboard players set "${playername}" chatspam 0`);
                     sender.runCommandAsync(`tag "${playername}" remove muted`);
-                    sender.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bwas unmuted §bby §d${name}"}]}`);
+                    tellrawServer(`§¶§c§lUAC ► §d${playername} §bwas unmuted §bby §d${name}`);
+                    TellRB(`flag_0`, `UAC ► ${name} unmuted ${playername}`);
                     return;
                 }
                 catch {
@@ -48,6 +50,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 sender.runCommandAsync(`execute "${playername}" ~~~ execute @s[tag=staffstatus] ~~~ tellraw "${name}" {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bis staff and can't be muted"}]}`);
                 return;
             } catch {
+                TellRB(`flag_0`, `UAC ► ${name} has muted ${playername} from game chat for ${args[0]} minutes`);
                 sender.runCommandAsync(`execute "${playername}" ~~~ execute @s[tag=!staffstatus] ~~~ tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §d${playername} §bwas muted for §c${args[0]} §bminutes by §d${name}"}]}`);
                 sender.runCommandAsync(`execute "${playername}" ~~~ scoreboard players add @s[tag=!staffstatus] chatspam ${muteamount}`);
                 sender.runCommandAsync(`execute "${playername}" ~~~ tag @s[tag=!staffstatus] add muted`);

@@ -73,9 +73,16 @@ const moduleDefs_prots = [
         require: ''
     },
     {
+        mname: 'Movement Check',
+        obj: ['afmtoggle'],
+        name: 'pkdummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
+    },
+    {
         mname: 'Unobtainable Items',
-        obj: ['uoimtoggledummy'],
-        name: 'UOIM',
+        obj: ['UOIM'],
+        name: 'uoimtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: 'has_xx'
     }
@@ -144,6 +151,13 @@ const moduleDefs_util = [
         name: 'ltmtoggledummy',
         toggle: ['§cOFF', '§aON'],
         require: ''
+    },
+    {
+        mname: 'Lock Down',
+        obj: ['SSDEBUG', 'SSDEBUG'],
+        name: 'lddummy',
+        toggle: ['§cOFF', '§aON'],
+        require: 'has_gt'
     },
     {
         mname: 'Player Commands',

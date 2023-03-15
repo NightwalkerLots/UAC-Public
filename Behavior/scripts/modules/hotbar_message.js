@@ -4,7 +4,7 @@ import { world } from '@minecraft/server';
 
 function hotbar (player, message) {
     try {
-        return player.runCommandAsync(`titleraw @s actionbar {"rawtext":[{"text":"${message.replaceAll('"', '\\"')}"}]}`);
+        return player.onScreenDisplay.setActionBar(`${message.replaceAll('"', '\\"')}`);
     }
     catch {return}
 }
@@ -53,11 +53,11 @@ function hotbar_message(player) {
         }
         if(gamemode == 'survival') {
             //with score
-            if(hmm_toggle == 1) return hotbar(player, `         §¶§bUAC §7[§2v2§7.§28§7] Public \n §¶§bkills§7: §c${kills} §7| §bdeaths§7: §c${deaths} §7| §bkillstreak§7: §c${killstreak} §7| §c$ ${money}`);
+            if(hmm_toggle == 1) return hotbar(player, `         §¶§bUAC §7[§2v2§7.§28§7.§27§7] Public \n §¶§bkills§7: §c${kills} §7| §bdeaths§7: §c${deaths} §7| §bkillstreak§7: §c${killstreak} §7| §c$ ${money}`);
             //without score
-            if(hmm_toggle == 2) return hotbar(player, `§¶§bUAC §7[§2v2§7.§28§7] Public`);
+            if(hmm_toggle == 2) return hotbar(player, `§¶§bUAC §7[§2v2§7.§28§7.§27§7] Public`);
             //resource mode
-            if(hmm_toggle == 3) return player.runCommandAsync(`titleraw @s title {"rawtext":[{"text":"§¶§bCurrent Version §7[§2v2.8.7§7] \n\n§6Self Stats"},{"text":"\n§¶§bKills §7: "},{"score":{"name":"@s","objective":"kills"}},{"text":"\n§bDeaths §7: "},{"score":{"name":"@s","objective":"deaths"}},{"text":"\n§bCurrent Killstreak §7: "},{"score":{"name":"@s","objective":"killstreak"}},{"text":"\n§bMoney §7: "},{"score":{"name":"@s","objective":"money"}},{"text":"\n§¶§bDeath Coords: §g "},{"score":{"name":"@s","objective":"X_Coord_D"}},{"text":"/"},{"score":{"name":"@s","objective":"Y_Coord_D"}},{"text":"/"},{"score":{"name":"@s","objective":"Z_Coord_D"}},{"text":"\n§bTime played: "},{"score":{"name":"@s","objective":"timeplayedday"}},{"text":"d/"},{"score":{"name":"@s","objective":"timeplayedhr"}},{"text":"h/"},{"score":{"name":"@s","objective":"timeplayedmin"}},{"text":"m/"},{"score":{"name":"@s","objective":"timeplayedsec"}},{"text":"s/"},{"score":{"name":"@s","objective":"timeplayedtick"}},{"text":"t"},{"text":"\n\n§6Server Stats\n§bPlayerCount §7: "},{"score":{"name":"playerdummy","objective":"playercount"}},{"text":"\n§bEntityCount §7: "},{"score":{"name":"entitydummy","objective":"entitycount"}}]}`)
+            if(hmm_toggle == 3) return player.onScreenDisplay.setTitle(`§¶§bCurrent Version §7[§2v2.8.7§7] \n\n§6Self Stats \n§¶§bKills §7: §c${kills}\n§bDeaths §7: §c${deaths}\n§bCurrent Killstreak §7: §c${killstreak}\n§bMoney §7: §c$${money}\n§¶§bDeath Coords: §g §c${scoreTest(player, `X_Coord_D`)}§g/§c${scoreTest(player, `Y_Coord_D`)}§g/§c${scoreTest(player, `Z_Coord_D`)}\n§bTime played: §gd/§c${scoreTest(player, `timeplayedday`)}§g h/§c${scoreTest(player, `timeplayedhr`)}§g m/§c${scoreTest(player, `timeplayedmin`)}§g s/§c${scoreTest(player, `timeplayedsec`)}§g t/§c${scoreTest(player, `timeplayedtick`)}§g\n\n§6Server Stats\n§bPlayerCount §7: §c${playercount}\n§bEntityCount §7: §c${entitycount}`);
         
             if(hmm_toggle == 0) {
                 // self stats display
@@ -69,6 +69,7 @@ function hotbar_message(player) {
         } 
     }catch(error) {
         console.warn(JSON.stringify(error));
+        console.warn(error.toString());
     }
 }
 

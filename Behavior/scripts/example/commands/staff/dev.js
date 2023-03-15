@@ -46,6 +46,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                     else { 
                         sender.runCommandAsync(`function UAC/DEV/init`);
                         sender.tellraw(`§¶§cUAC ► §bINIT reset for all players`);
+                        TellRB(`flag_0`, `UAC ► ${name} reset the INIT process for all players via developer command 'UAC.dev init' `);
                     }
                 } break;
 
@@ -67,7 +68,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
                 case 'owner': {
                     sender.runCommandAsync(`function test/ownertest`);
-                    sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection:§c ${scoreTest(sender, 'ssmtoggle')}`);
+                    sender.tellraw(`§¶§c§lUAC ► §bFake Staff Protection Toggle:§c ${scoreTest(sender, 'ssmtoggle')}`);
                 } break;
 
                 case 'exp': { //test to see if experimental features are on
@@ -92,9 +93,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 } break;
 
                 case 'testop': {
-                    if(sender.isOp()) { sender.tellraw(`yes`) } else {
-                        sender.tellraw(`no`);
-                    }
+                    if(!sender.isOp()) { sender.tellraw(`tested not op`) } 
                 } break;
             }
         } else {

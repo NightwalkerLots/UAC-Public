@@ -13,12 +13,16 @@ import { movement_check } from '../modules/movement.js';
 import { waitMove } from './commands/staff/gui.js';
 import { hotbar_message } from '../modules/hotbar_message.js';
 import { op_abuse } from '../modules/opabuse.js';
-
+import { opCheck } from '../modules/OpCheck.js';
+import { afk_kick } from '../modules/afk_kick.js';
+import { lockdown } from '../modules/lockdown.js';
+import { Check_Packet_Behavior } from '../modules/bad_packet.js';
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
-import { tellrawStaff, tp, tellrawServer } from '../library/utils/prototype.js';
+import { tellrawStaff, tp, tellrawServer, TellRB } from '../library/utils/prototype.js';
 import { setScore } from '../library/utils/score_testing.js';
 import { world, Player} from '@minecraft/server';
+
 
 function scoreTest(target, objective) {
     try {
@@ -38,6 +42,7 @@ function worldBorder(player) {
     if (Math.abs(x) >= 30000000 || Math.abs(y) >= 30000000 || Math.abs(z) >= 30000000) {
         player.runCommandAsync(`tp @s 0 900 0`);
         tellrawStaff(`§¶§cUAC STAFF STAFF ► §6Anti-Crasher §bCrash attempt was prevent from §d${name}`);
+        TellRB(`flag_1`, `UAC SYSTEM ► Crash was prevented from ${name}`);
         //player.runCommandAsync("kill @s");
         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCrash Attempt`); }
         catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }
@@ -75,6 +80,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
         let opsbool = scoreTest('opsdummy', 'opstoggle');
         let ajmbool = scoreTest('ajmdummy', 'ajmtoggle');
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
+        let ld_bool = scoreTest('lddummy', 'SSDEBUG');
 
         if(acmbool == 1) { anticbe(); }
         if(uoimbool == 1) { unobtainable(); }
@@ -91,6 +97,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             if(entitycount >= 340) {
                 overworld.runCommandAsync(`function UAC/packages/autoclear-manual`);
                 tellrawServer(`§¶§cUAC §¶§b► §cEmergency Lag Clear §bwas performed due to entity count going over §6340§b.`);
+                TellRB(`flag_0`, `UAC SYSTEM ► Emergency Lag Clear triggered due to entity count going over 340`);
                 setScore('entitydummy', 'entitycount', 0, false);
             }
         }
@@ -106,6 +113,9 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                 }
                 hotbar_message(player);
                 movement_check(player);
+                opCheck(player);
+                afk_kick(player);
+                if(ld_bool) { lockdown(player); }
                 if(opabuse_bool) { op_abuse(player) }
                 setScore(player, "has_gt", 1, false);
                 
@@ -115,6 +125,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                     if(Math.abs(x) > BorderX || Math.abs(z) > BorderZ) {
                         tp(player, SpawnX, SpawnY, SpawnZ);
                         tellrawServer(`tellraw @a {"rawtext":[{"text":"§¶§cUAC §¶§b► §d${player.getName()} §btried passing world border"}]}`);
+                        TellRB(`flag_0`, `UAC ► ${player.getName()} tried to pass the world border`);
                     }
                 }
     
@@ -124,6 +135,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
                     if (char_length.charCodeAt(i) > 255) {
                         console.warn(`Illegal bytes outside the UTF-8 range`);
                         tellrawStaff(`§¶§cUAC STAFF STAFF ► §6Anti-NameSpoof §bBypass was prevented from §d${name}`);
+                        TellRB(`flag_1`, `UAC SYSTEM ► ${name} was kicked for namespoofing`);
                         try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lInvalid GamerTag`); }
                         catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
                     }
@@ -136,6 +148,7 @@ world.events.tick.subscribe(({ deltaTime, currentTick }) => {
             on_tick = 0;
         }
         for (let player of world.getPlayers()) {   
+            Check_Packet_Behavior(player);
             if(scoreTest(player, 'fzplr') == 1) {
                 if(player.hasTag('staffstatus')) {return player.runCommandAsync(`scoreboard players set @s fzplr 0`);}
                 tp(player, scoreTest(player, 'lastpos_x'), player.location.y, scoreTest(player, 'lastpos_z'));
@@ -213,6 +226,7 @@ World.events.blockPlace.subscribe(({ block, player }) => {
     let {x, y, z} = block.location;
     let type = block.id.replace('minecraft:', '');
     if (block.id in blockBans && acmbool || block.id == 'minecraft:moving_block') {
+        TellRB(`flag_1`, `UAC Anti-CBE ► ${player.nameTag} tried to place ${block.id.replace('minecraft:', '')} at ${x} ${y} ${z}`);
         tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-CBE §bItem Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z} \n§bUse §2UAC.cbetp §bto teleport there!`);
         block.setType(MinecraftBlockTypes.air);
         overworld.runCommandAsync(`scoreboard players set cbe_x cbe_location ${x}`);
@@ -226,6 +240,7 @@ World.events.blockPlace.subscribe(({ block, player }) => {
         catch{player.runCommandAsync(`event entity @s uac:ban_main`);}
     }
     if (block.id in unobtainables && uoimbool) {
+        TellRB(`flag_1`, `UAC Unobtainable Items ► ${player.nameTag} tried to place ${block.id.replace('minecraft:', '')} at ${x} ${y} ${z}`);
         tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §bBlock Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z}`);
         let type = block.id.replace('minecraft:', '');
         if(player.hasTag(`staffstatus`)) { return };
@@ -261,7 +276,8 @@ world.events.beforeItemUseOn.subscribe((eventData) => {
     if(item in blockBans || item in blockBuckets) {
         eventData.cancel = true;
         eventData.source.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
-        overworld.runCommandAsync(`tellraw @a {"rawtext":[{"text":"§¶§c§lUAC ► §6CBE Item Use §d${name} §bwas temp-kicked for placing §c${item_name} §bat §c${x} ${y} ${z}"}]}`);
+        tellrawServer(`§¶§c§lUAC ► §6CBE Item Use §d${name} §bwas temp-kicked for placing §c${item_name} §bat §c${x} ${y} ${z}`);
+        TellRB(`flag_1`, `UAC Anti-CBE ► ${name} was temp-kicked for placing ${item_name} at ${x} ${y} ${z}`);
         try{  eventData.source.runCommandAsync(`kick "${eventData.source.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Item Placement | ${item_name}`);  }
         catch{eventData.source.runCommandAsync(`event entity @s uac:ban_main`);}
     }
@@ -402,59 +418,43 @@ const ores = [
 ];
 
 world.events.blockBreak.subscribe(({ block, brokenBlockPermutation, dimension, player }) => {
-    let {x, y, z} = block.location;
-    const old = log[player.name];
-    let playername = player.getName();
-    let blockname = brokenBlockPermutation.type.id;
-    log[player.name] = Date.now();
-    const mdmbool = scoreTest('mdmtoggledummy', 'mdmtoggle');
-    const diamond_notiv = scoreTest('mdmtoggledummy', 'diamondmd');
-    const emerald_notiv = scoreTest('mdmtoggledummy', 'emeraldmd');
-    const gold_notiv = scoreTest('mdmtoggledummy', 'goldmd');
-    const iron_notiv = scoreTest('mdmtoggledummy', 'ironmd');
-    const lapiz_notiv = scoreTest('mdmtoggledummy', 'lapizmd');
-    const nether_notiv = scoreTest('mdmtoggledummy', 'scrapmd');
-    
-    //Mining Detection - Gametest Implementation
-    if(ores.includes(blockname) && mdmbool) { 
-        let send_mdm_message = 1;
-        if(blockname.replace('deepslate_', '') == 'minecraft:diamond_ore') {setScore(player, 'diamond_ore', 1, true);; if(diamond_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:emerald_ore') {setScore(player, 'emerald_ore', 1, true);; if(emerald_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:gold_ore') {setScore(player, 'gold_ore', 1, true);; if(gold_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:iron_ore') {setScore(player, 'iron_ore', 1, true);; if(iron_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname.replace('deepslate_', '') == 'minecraft:lapis_ore') {setScore(player, 'lapis_ore', 1, true);; if(lapiz_notiv == 0) { send_mdm_message = 0;}}
-        if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true);; if(nether_notiv == 0) { send_mdm_message = 0;}}   
+    try {
+        let {x, y, z} = block.location;
+        const old = log[player.name];
+        let playername = player.getName();
+        let blockname = brokenBlockPermutation.type.id;
+        log[player.name] = Date.now();
+        const mdmbool = scoreTest('mdmtoggledummy', 'mdmtoggle');
+        const diamond_notiv = scoreTest('mdmtoggledummy', 'diamondmd');
+        const emerald_notiv = scoreTest('mdmtoggledummy', 'emeraldmd');
+        const gold_notiv = scoreTest('mdmtoggledummy', 'goldmd');
+        const iron_notiv = scoreTest('mdmtoggledummy', 'ironmd');
+        const lapiz_notiv = scoreTest('mdmtoggledummy', 'lapizmd');
+        const nether_notiv = scoreTest('mdmtoggledummy', 'scrapmd');
+        
+        //Mining Detection - Gametest Implementation
+        if(ores.includes(blockname) && mdmbool) { 
+            let send_mdm_message = 1;
+            if(blockname.replace('deepslate_', '') == 'minecraft:diamond_ore') {setScore(player, 'diamond_ore', 1, true); if(diamond_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:emerald_ore') {setScore(player, 'emerald_ore', 1, true); if(emerald_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:gold_ore') {setScore(player, 'gold_ore', 1, true); if(gold_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:iron_ore') {setScore(player, 'iron_ore', 1, true); if(iron_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname.replace('deepslate_', '') == 'minecraft:lapis_ore') {setScore(player, 'lapis_ore', 1, true); if(lapiz_notiv == 0) { send_mdm_message = 0;}}
+            if(blockname == 'minecraft:ancient_debris') {setScore(player, 'ancient_debris', 1, true); if(nether_notiv == 0) { send_mdm_message = 0;}}   
 
-        if(send_mdm_message == 1) {
-            tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoretest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+            if(send_mdm_message == 1) {
+                tellrawStaff(`§l§¶§cUAC STAFF ► §6Mining Detection §d§l${playername} §bmined §c${blockname.replace('minecraft:', '')} §bat §c${x} ${y} ${z}. §bTotal §7: §c${scoreTest(player, `${blockname.replace('minecraft:', '').replace('deepslate_', '')}`)}`);
+            }
         }
-    }
-
-    //Anti-Nuker
-    if (old < Date.now() - 15 || player.hasTag(byPassTag)) return;
-    alert++
-    if(alert == 1) return;
-    if(alert == 250) {
-        alert = 0;
-        tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-Nuker §btemp kicked §d${player.getName()} §bfor Nuker Attempt`);
-        try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lNuker Attempt`); }
-        catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }  
-    }
-    dimension
-      .getBlock(block.location)
-      .setPermutation(brokenBlockPermutation.clone());
-    dimension
-      .getEntitiesAtBlockLocation(block.location)
-      .filter((entity) => entity.id === "minecraft:item")
-      .forEach((item) => item.kill());
-  }
-);
+    } catch(c) {console.warn(c)}
+});
 
 world.events.playerLeave.subscribe((data) => delete log[data.playerName]);
 
 system.events.beforeWatchdogTerminate.subscribe((beforeWatchdogTerminate) => {
     // We try to stop any watchdog crashes incase malicous users try to make the scripts lag
     // and causing the server to crash
+    TellRB(`ban`, `UAC SYSTEM ► Prevented a WatchDog Termination. This could be triggered when scripting memory is high!`);
     tellrawStaff(`§l§¶§cUAC STAFF ► §6SYSTEM §c§lPrevented WatchDog Termination`);
     beforeWatchdogTerminate.cancel = true;
 });

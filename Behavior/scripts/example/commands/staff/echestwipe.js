@@ -1,5 +1,5 @@
 import { Server } from '../../../library/Minecraft.js';
-import { tellrawStaff } from '../../../library/utils/prototype.js';
+import { tellrawStaff, TellRB } from '../../../library/utils/prototype.js';
 import { world } from '@minecraft/server';
 const registerInformation = {
     cancelMessage: true,
@@ -28,6 +28,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 }
                 else {
                     tellrawStaff(`§l§¶§cUAC STAFF ► §d${playerfound.getName()}§b was Ender Chest Wiped by §d${name}`);
+                    TellRB(`flag_0`, `UAC ► ${name} manually wiped ${playerfound.getName()}'s Ender Chest`);
                     sender.runCommandAsync(`execute "${playerfound.getName()}" ~~~ function UAC/echestwipe`);  
                 }
             } else {
