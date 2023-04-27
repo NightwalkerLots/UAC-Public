@@ -12,7 +12,6 @@ import { movement_check } from '../modules/movement.js';
 import { waitMove } from './commands/staff/gui.js';
 import { hotbar_message } from '../modules/hotbar_message.js';
 import { op_abuse } from '../modules/opabuse.js';
-import { opCheck } from '../modules/OpCheck.js';
 import { afk_kick } from '../modules/afk_kick.js';
 import { lockdown } from '../modules/lockdown.js';
 import { Check_Packet_Behavior } from '../modules/bad_packet.js';
@@ -110,7 +109,6 @@ system.runInterval(() => {
                 }
                 hotbar_message(player);
                 movement_check(player);
-                opCheck(player);
                 afk_kick(player);
                 if(ld_bool) { lockdown(player); }
                 if(opabuse_bool) { op_abuse(player) }

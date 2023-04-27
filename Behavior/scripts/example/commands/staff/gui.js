@@ -146,13 +146,6 @@ const moduleDefs_util = [
         require: ''
     },
     {
-        mname: 'Lock Down',
-        obj: ['SSDEBUG', 'SSDEBUG'],
-        name: 'lddummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_gt'
-    },
-    {
         mname: 'Player Commands',
         obj: ['ICM', 'icmtoggle'],
         name: 'icmtoggledummy',
