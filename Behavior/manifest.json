@@ -1,10 +1,10 @@
 {
 	"format_version": 1,
 	"header": {
-		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§28§7.§27§7] §5VIP §7⋱",
+		"name": "§7⋰ §bUnity Anticheat §7[§22§7.§28§7.§28§7] §5VIP §7⋱",
 		"description": "§6§lExperimental Features §7: §cREQUIRED \n§bMade By §2NightwalkerLots ",
 		"uuid": "b77d3dc3-7a77-4bb0-a43c-cd6726334308",
-		"version": [2, 8, 5],
+		"version": [2, 8, 8],
 		"min_engine_version": [
 			1,
 			8,

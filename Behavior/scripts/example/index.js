@@ -1,4 +1,4 @@
-import './wrap.js';
+import './mc_compability.js';
 import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
