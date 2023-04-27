@@ -4,7 +4,7 @@ import { ObjectiveSortOrder, ScoreboardIdentityType, ScoreboardObjective, world 
 function scoreTest(target, objective) {
     try {
         const oB = world.scoreboard.getObjective(objective)
-        if (typeof target == 'string') return oB.getScore(oB.getParticipants().find(pT => pT.displayName == target))
+        if (typeof target == 'string') return oB.getScores().find(pT => pT.displayName == target)?.score
         return oB.getScore(target.scoreboard)
     }catch (error) {
         let na = 0;
