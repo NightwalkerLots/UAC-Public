@@ -8,7 +8,6 @@ import './other/yeet.js';
 import './other/spawntp.js';
 import './other/suicide.js';
 import './other/vipm.js';
-import './other/sell.js';
 import './other/pay.js';
 import './other/dev_score.js';
 
@@ -28,7 +27,6 @@ import './staff/ranks.js';
 import './staff/chatspam.js';
 import './staff/mute.js';
 import './staff/vanish.js';
-import './staff/cbe_tp.js';
 import './staff/ban.js';
 
 //made by frost

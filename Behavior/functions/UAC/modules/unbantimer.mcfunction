@@ -6,9 +6,7 @@ execute @s[tag=staffstatus,scores={unban=1}] ~~~ scoreboard players set @a lagti
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ function UAC/modules/hotbarmessage
 
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanCreative] ~~~ function UAC/asset/ban_asset_remove
-execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=cbesoft] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanWarn] ~~~ function UAC/asset/ban_asset_remove
-execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanCBE] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=Ban] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=illegalitemban] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[tag=BanFly] ~~~ function UAC/asset/ban_asset_remove
@@ -20,7 +18,6 @@ execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={BanPhase=1..
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={BanWarn=1..}] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={BanFly=1..}] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={IIB=1..}] ~~~ function UAC/asset/ban_asset_remove
-execute @s[tag=staffstatus,scores={unban=1}] ~~~ execute @a[scores={BanCBE=1..}] ~~~ function UAC/asset/ban_asset_remove
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ event entity * uac:ban_soft_remove 
 
 execute @s[tag=staffstatus,scores={unban=1,unbantimer=0..15}] ~~~ scoreboard players set @s hometp 3

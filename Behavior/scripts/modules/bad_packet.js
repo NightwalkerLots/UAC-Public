@@ -7,7 +7,7 @@ function Check_Packet_Behavior(player) {
         //check for module bool
         //skip staff & module disable
         //player.onScreenDisplay.setActionBar(`${player.getComponent("minecraft:breathable").suffocateTime}`);
-        //if(player.hasTag(`staffstatus`)) return;
+        if(player.hasTag(`staffstatus`)) return;
         if ( scoreTest('pkdummy', 'afmtoggle') != 1) return;
 
         

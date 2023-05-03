@@ -35,7 +35,7 @@ execute @s ~~~ function UAC/asset/gmcheck
 
 ##Detections
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§c§b§l======= §d"},{"selector":"@s"},{"text":"'s §6Detections §b======="}]}
-tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §b► §d"},{"selector":"@s"},{"text":"'s §bwarns§7: §7["},{"score":{"name":"@s","objective":"warn"}},{"text":"§b/3§7]"},{"text":" §bcreative flags§7: §7["},{"score":{"name":"@s","objective":"gmc_flag"}},{"text":"§b/4§7]"},{"text":" §billegal item warns§7: §7["},{"score":{"name":"@s","objective":"warnillegal"}},{"text":"§b/9§7]"},{"text":" §bCBE item warns§7: §7["},{"score":{"name":"@s","objective":"warncbe"}},{"text":"§b/9§7]"}]}
+tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §b► §d"},{"selector":"@s"},{"text":"'s §bwarns§7: §7["},{"score":{"name":"@s","objective":"warn"}},{"text":"§b/3§7]"},{"text":" §bcreative flags§7: §7["},{"score":{"name":"@s","objective":"gmc_flag"}},{"text":"§b/4§7]"},{"text":" §billegal item warns§7: §7["},{"score":{"name":"@s","objective":"warnillegal"}},{"text":"§b/9§7]"}]}
 tellraw @a[tag=staffstatus] {"rawtext":[{"text":"§¶§cUAC STAFF §b► §d"},{"selector":"@s"},{"text":"'s §bDiamonds§7: §c"},{"score":{"name":"@s","objective":"diamond_ore"}},{"text":" §bEmeralds§7: §c"},{"score":{"name":"@s","objective":"emerald_ore"}},{"text":" §bGold§7: §c"},{"score":{"name":"@s","objective":"gold_ore"}},{"text":" §bIron§7: §c"},{"score":{"name":"@s","objective":"iron_ore"}},{"text":"§b Lapis§7: §c"},{"score":{"name":"@s","objective":"lapis_ore"}},{"text":"§b Netherite§7: §c"},{"score":{"name":"@s","objective":"ancient_debris"}}]}
 
 execute @s ~~~ function UAC/asset/ban_check_asset

@@ -67,7 +67,6 @@ scoreboard players set @s turthelm 0
 
 #Ban Checks
 scoreboard objectives add PermBan dummy PermBan
-scoreboard objectives add BanCBE dummy BanCBE
 scoreboard objectives add Ban dummy Ban
 scoreboard objectives add IIB dummy IIB
 scoreboard objectives add BanFly dummy BanFly
@@ -197,8 +196,6 @@ scoreboard players set @s feeten 0
 #This adds all the scoreboard stuff we need
 scoreboard objectives add warn dummy warn
 scoreboard objectives add warnillegal dummy warnillegal
-scoreboard objectives add warncbe dummy
-scoreboard objectives add cbetime dummy
 scoreboard objectives add staff dummy §¶§bStaff
 scoreboard objectives setdisplay belowname staff
 scoreboard objectives add lagtimer dummy lagtimer
@@ -216,7 +213,6 @@ scoreboard objectives add kills dummy kills
 scoreboard objectives add killstreak dummy killstreak
 scoreboard objectives add randomspawn dummy randomspawn
 scoreboard objectives add cleararealarge dummy cleararealargelarge
-scoreboard objectives add cbespawn dummy cbespawn
 scoreboard objectives add flycount dummy flycount
 scoreboard objectives add flyreset dummy flyreset
 scoreboard objectives add phasecount 
@@ -238,7 +234,6 @@ scoreboard objectives add seen_gui dummy
 
 
 #module scoreboards
-scoreboard objectives add ACM dummy ACM
 scoreboard objectives add AFM dummy AFM
 scoreboard objectives add APM dummy APM
 scoreboard objectives add BBM dummy BBM
@@ -266,7 +261,6 @@ scoreboard objectives add vipt dummy
 #Module Toggles
 scoreboard objectives add SSDEBUG dummy SSDEBUG
 scoreboard objectives add afmtoggle dummy afmtoggle
-scoreboard objectives add acmtoggle dummy acmtoggle
 scoreboard objectives add bbmtoggle dummy bbmtoggle
 scoreboard objectives add hmmtoggle dummy hmmtoggle
 scoreboard objectives add icmtoggle dummy icmtoggle
@@ -314,7 +308,6 @@ scoreboard objectives add I2IO2NO dummy 7D798D8
 
 #Default Toggles
 scoreboard players set @s SSDEBUG 0
-scoreboard players set @s acmtoggle 0
 scoreboard players set @s almtoggle 0
 scoreboard players set @s bbmtoggle 0
 scoreboard players set @s hmmtoggle 0
@@ -342,7 +335,6 @@ scoreboard players set @s money 0
 
 
 #Give everyone default module scoreboard scores
-scoreboard players set @s ACM 0
 scoreboard players set @s AFM 0
 scoreboard players set @s APM 0
 scoreboard players set @s BBM 0
@@ -394,7 +386,6 @@ scoreboard objectives add invcheck dummy
 scoreboard objectives add tp_cooldown dummy
 scoreboard objectives add ontick dummy
 scoreboard objectives add notmovingflag dummy
-scoreboard objectives add cbe_location dummy
 scoreboard players set @s tp_cooldown 0 
 scoreboard players set @s is_sleeping 0
 scoreboard players set @s is_swimming 0

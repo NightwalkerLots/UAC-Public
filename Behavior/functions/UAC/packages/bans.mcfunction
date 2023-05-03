@@ -3,7 +3,6 @@ hide
 
 
 tag @a[tag=staffstatus] remove BanCreative
-tag @a[tag=staffstatus] remove BanCBE
 tag @a[tag=staffstatus] remove BanBypass
 tag @a[tag=staffstatus] remove Ban
 
@@ -14,7 +13,6 @@ tag @a[tag=staffstatus] remove Ban
 #Restrict Player's Gameplay
 title @s times 0 100 0
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=PermBan] ~~~ function UAC/asset/ban_asset
-execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCBE] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=BanCreative] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=Ban] ~~~ function UAC/asset/ban_asset
 execute @s[tag=!staffstatus] ~~~ execute @s[tag=illegalitemban] ~~~ function UAC/asset/ban_asset
@@ -23,7 +21,6 @@ execute @s[tag=!staffstatus] ~~~ execute @s[scores={warn=3..}] ~~~ function UAC/
 execute @s[tag=!staffstatus,scores={Ban=1}] ~~~ tag @s add Ban
 
 
-execute @s[scores={BanCBE=1..}] ~~~ tag @s add BanCBE
 execute @s[scores={IIB=1..}] ~~~ tag @s add illegalitemban
 execute @s[scores={BanFly=1..}] ~~~ tag @s add BanFly
 execute @s[scores={BanPhase=1..}] ~~~ tag @s add BanPhase

@@ -6,7 +6,6 @@ effect @s strength 99999 255 true
 function UAC/asset/inv_lock
 
 execute @s[tag=!staffstatus] ~~~ title @s[tag=PermBan] title §¶§cUAC ► You are UAC Global Banned!
-execute @s[tag=!staffstatus] ~~~ title @s[tag=BanCBE] title §¶§cUAC ► Flagged for CBE
 execute @s[tag=!staffstatus] ~~~ title @s[tag=BanCreative] title §¶§cUAC ► Flagged Creative Mode
 execute @s[tag=!staffstatus] ~~~ title @s[tag=Ban] title §¶§cUAC ► BANNED BY OPERATOR
 execute @s[tag=!staffstatus] ~~~ title @s[tag=illegalitemban] title §¶§cUAC ► Flagged for Illegal Items

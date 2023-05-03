@@ -14,7 +14,6 @@ function UAC/modules/ownerstatus
 function UAC/asset/toggle_sync
 function UAC/modules/randomspawn
 
-execute @a[scores={cbetime=0..2}] ~~~ gamerule commandblocksenabled true
 gamerule randomtickspeed 1
 execute @a[scores={chatspam=0}] ~~~ tag @s remove muted
 
@@ -53,7 +52,7 @@ execute @a[scores={online=0,has_gt=0}] ~~~ function UAC/packages/playerjoined
 execute @s[scores={has_gt=0}] ~~~ scoreboard players set * online 0
 execute @s[scores={has_gt=0}] ~~~ scoreboard players set @a online 1
 
-#Autoban Creative/CBE
+#Autoban Creative
 execute @a[m=c,tag=!staffstatus] ~~~ function UAC/asset/creative_flag_asset
 
 #This hides this from the in-game function command directory

@@ -57,7 +57,7 @@ function hotbar_message(player) {
             //without score
             if(hmm_toggle == 2) return hotbar(player, `§¶§bUAC §7[§2v2§7.§28§7.§27§7] Public`);
             //resource mode
-            if(hmm_toggle == 3) return player.onScreenDisplay.setTitle(`§¶§bCurrent Version §7[§2v2.8.7§7] \n\n§6Self Stats \n§¶§bKills §7: §c${kills}\n§bDeaths §7: §c${deaths}\n§bCurrent Killstreak §7: §c${killstreak}\n§bMoney §7: §c$${money}\n§¶§bDeath Coords: §g §c${scoreTest(player, `X_Coord_D`)}§g/§c${scoreTest(player, `Y_Coord_D`)}§g/§c${scoreTest(player, `Z_Coord_D`)}\n§bTime played: §gd/§c${scoreTest(player, `timeplayedday`)}§g h/§c${scoreTest(player, `timeplayedhr`)}§g m/§c${scoreTest(player, `timeplayedmin`)}§g s/§c${scoreTest(player, `timeplayedsec`)}§g t/§c${scoreTest(player, `timeplayedtick`)}§g\n\n§6Server Stats\n§bPlayerCount §7: §c${playercount}\n§bEntityCount §7: §c${entitycount}`);
+            if(hmm_toggle == 3) return player.onScreenDisplay.setTitle(`§¶§bCurrent Version §7[§2v2.8.9§7] \n\n§6Self Stats \n§¶§bKills §7: §c${kills}\n§bDeaths §7: §c${deaths}\n§bCurrent Killstreak §7: §c${killstreak}\n§bMoney §7: §c$${money}\n§¶§bDeath Coords: §g §c${scoreTest(player, `X_Coord_D`)}§g/§c${scoreTest(player, `Y_Coord_D`)}§g/§c${scoreTest(player, `Z_Coord_D`)}\n§bTime played: §gd/§c${scoreTest(player, `timeplayedday`)}§g h/§c${scoreTest(player, `timeplayedhr`)}§g m/§c${scoreTest(player, `timeplayedmin`)}§g s/§c${scoreTest(player, `timeplayedsec`)}§g t/§c${scoreTest(player, `timeplayedtick`)}§g\n\n§6Server Stats\n§bPlayerCount §7: §c${playercount}\n§bEntityCount §7: §c${entitycount}`);
         
             if(hmm_toggle == 0) {
                 // self stats display

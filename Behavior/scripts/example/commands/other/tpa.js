@@ -36,7 +36,7 @@ Server.command.register(registerInformation, (chatmsg, args) => {
                 // tpa request
                 if (tpsopen.includes(args[0])) {
                     if (scoreTest(sender, 'tpa') >= 1) {
-                        return sender.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(sender, 'tpa')}" `);
+                        return sender.tellraw(`§¶§cUAC ► §bTPA Channel already created! Your Channel §7:§c "${scoreTest(sender, 'tpa')}" \nTo make another first try §6UAC.tpa cancel`);
                     } else {
                         let input = args.join(' ').replace('request ', '').replace('@', '').replace(/"/g, '');
                         let playerfound = [...world.getPlayers()].find(player => player.getName() === input);

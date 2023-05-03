@@ -14,13 +14,6 @@ function playerbans(player) {
             try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lUAC Global Banned`); }
             catch{ player.runCommandAsync(`event entity @s uac:ban_main`); }
         }
-        if(player.hasTag('BanCBE')) {
-            TellRB(`ban`, `UAC SYSTEM ► ${name} was banned. REASON : CBE Exploit`);
-            tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cCBE Ban`);
-            try{  overworld.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Ban`); }
-            catch{ player.runCommandAsync(`event entity @s uac:ban_main`); 
-        }
-        }
         if(player.hasTag('BanCreative')) {
             TellRB(`ban`, `UAC SYSTEM ► ${name} was banned. REASON : Gamemode Manipulation`);
             tellrawServer(`§l§¶§cUAC §6SYSTEM ► §d${name} §bwas kicked §7: §cCreative Mode Ban`);

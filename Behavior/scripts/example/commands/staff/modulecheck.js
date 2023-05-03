@@ -24,11 +24,6 @@ Server.command.register(registerInformation, (chatmsg, args) => {
 
         let modules = [
             {
-                sys: `Anti-CBE`,
-                dummy: `acmtoggledummy`,
-                obj: `acmtoggle`
-            },
-            {
                 sys: `Anti Clog`,
                 dummy: `clmdummy`,
                 obj: `clmtoggle`

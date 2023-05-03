@@ -6,7 +6,6 @@ execute @s[scores={in_combat=1,clmtoggle=1..2}] ~~~ function UAC/packages/combat
 tag @s[scores={notmovingflag=0..2}] add is_moving 
 tag @s[scores={notmovingflag=2..}] remove is_moving
 kill @e[type=moving_block]
-scoreboard players remove @s[scores={cbetime=1..}] cbetime 1
 scoreboard players remove @s[scores={tp_cooldown=1..}] tp_cooldown 1
 scoreboard players remove @s[scores={has_gt=0,entityclear=1..}] entityclear 1
 execute @s[scores={entityclear=1..400,has_gt=0}] ~~~ function UAC/asset/entitycountdown

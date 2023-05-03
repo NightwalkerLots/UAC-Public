@@ -20,7 +20,6 @@
 			"home_z_positive",
 			"home_teleport_reset",
 			"spawn_points",
-			"anticbe",
 			"worldborder_pos",
 			"worldborder_neg",
 			"enchanted_helmet",
@@ -50,7 +49,6 @@
 		  "home_z_positive": "controller.animation.home_z_positive",
 		  "home_teleport_reset": "controller.animation.home_teleport_reset",
 		  "spawn_points": "controller.animation.spawn_points",
-		  "anticbe": "controller.animation.anticbe.execute_commands",
 		  "worldborder_pos": "controller.animation.border_control_pos",
 		  "worldborder_neg": "controller.animation.border_control_neg",
 		  "enchanted_helmet": "controller.animation.enchanted_helmet",
@@ -1084,57 +1082,6 @@
 				]
 			  },
 			  "event": "minecraft:trigger_raid"
-			},
-			{
-			  "filters": {
-				"all_of": [
-				  {
-					"test": "has_tag",
-					"subject": "self",
-					"operator": "!=",
-					"value": "staffstatus"
-				  }
-				],
-				"any_of": [
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:bee_nest"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:beehive"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:movingBlock"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:command_block"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:chain_command_block"
-				  },
-				  {
-					"test": "has_equipment",
-					"domain": "any",
-					"operator": "==",
-					"value": "minecraft:repeating_command_block"
-				  }
-				]
-			  },
-			  "event": "uac:cbe_flag"
 			},
 			{
 			  "filters": {
@@ -2262,21 +2209,6 @@
 			"command": [
 			  "scoreboard objectives add has_xx dummy",
 			  "scoreboard players set @s has_xx 1"
-			]
-		  }
-		},
-		"uac:cbe_flag": {
-		  "run_command": {
-			"target": "self",
-			"command": [
-			  "execute @s[scores={acmtoggle=1}] ~~~ replaceitem entity @s slot.weapon.mainhand 0 air",
-			  "execute @s[scores={acmtoggle=1}] ~~~ gamemode s @a[tag=!staffstatus]",
-			  "execute @s[scores={acmtoggle=1}] ~~~ kill @e[type=!player,r=40]",
-			  "execute @s[scores={acmtoggle=1}] ~~~ tag @a remove PermBan",
-			  "execute @s[scores={acmtoggle=1}] ~~~ function UAC/asset/cbeitemwarn",
-			  "execute @s[scores={acmtoggle=1}] ~~~ effect @s clear",
-			  "execute @s[scores={acmtoggle=1}] ~~~ function UAC/echestwipe",
-			  "execute @s[scores={acmtoggle=1}] ~~~ tag @s add cbesoft"
 			]
 		  }
 		},

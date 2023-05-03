@@ -12,8 +12,6 @@ scoreboard players operation @a worldcustom = worlddum worldcustom
 
 
 #module toggles
-scoreboard players operation @a acmtoggle = acmtoggledummy acmtoggle
-scoreboard players operation @a ACM = acmtoggledummy ACM
 scoreboard players operation @a afmtoggle = afmtoggledummy afmtoggle
 scoreboard players operation @a AFM = afmtoggledummy AFM
 scoreboard players operation @a bbmtoggle = bbmtoggledummy bbmtoggle

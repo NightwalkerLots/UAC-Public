@@ -8,11 +8,6 @@
 #=Unban Timer=
 execute @s[tag=staffstatus,scores={unban=1}] ~~~ function UAC/modules/unbantimer
 #
-# =AntiCbe=
-# Protection against the command block exploit
-# Enabled by default
-execute @s[scores={acmtoggle=1,has_gt=0}] ~~~ function UAC/modules/anticbe
-#
 # =AntiFly=
 # Protection against fly hacks
 # Enabled by default

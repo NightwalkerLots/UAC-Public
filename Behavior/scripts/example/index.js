@@ -3,7 +3,6 @@ import '../library/utils/prototype.js';
 import './commands/import-commands.js';  //all player chat commands
 
 //external module functions
-import { anticbe } from '../modules/cbe.js';
 import { unobtainable } from '../modules/unobtainable.js';
 import { playerbans } from '../modules/bans.js';
 import { ops } from '../modules/oneplayersleep.js';
@@ -13,7 +12,6 @@ import { waitMove } from './commands/staff/gui.js';
 import { hotbar_message } from '../modules/hotbar_message.js';
 import { op_abuse } from '../modules/opabuse.js';
 import { afk_kick } from '../modules/afk_kick.js';
-import { lockdown } from '../modules/lockdown.js';
 import { Check_Packet_Behavior } from '../modules/bad_packet.js';
 //game resource dependancies
 import { world as World, MinecraftBlockTypes, system } from "@minecraft/server";
@@ -73,13 +71,11 @@ system.runInterval(() => {
         on_tick++;
         let WorldBorderbool = scoreTest('wbmtoggledummy', 'wbmtoggle');
         
-        let acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
         let uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
         let opsbool = scoreTest('opsdummy', 'opstoggle');
         let opabuse_bool = scoreTest('opamtoggledummy', 'opamtoggle');
         let ld_bool = scoreTest('lddummy', 'SSDEBUG');
 
-        if(acmbool == 1) { anticbe(); }
         if(uoimbool == 1) { unobtainable(); }
 
         if( on_tick == 10 ) {
@@ -110,7 +106,6 @@ system.runInterval(() => {
                 hotbar_message(player);
                 movement_check(player);
                 afk_kick(player);
-                if(ld_bool) { lockdown(player); }
                 if(opabuse_bool) { op_abuse(player) }
                 setScore(player, "has_gt", 1, false);
                 
@@ -152,7 +147,6 @@ system.runInterval(() => {
     } catch (e) {
         console.warn( JSON.stringify(e.stack), e)
     }
-    // cbe code was contributed by MrPatches123
     
 });
 
@@ -200,40 +194,11 @@ const unobtainables = {
     'minecraft:glowingobsidian': 0,
 };
 
-const blockBans = {
-    'minecraft:moving_block': 0,
-    'minecraft:beehive': 0,
-    'minecraft:bee_nest': 0,
-    'minecraft:dispenser': 0
-};  
-const blockBuckets = {
-    'minecraft:axolotl_bucket': 0,
-    'minecraft:pufferfish_bucket': 0,
-    'minecraft:tropical_fish_bucket': 0,
-    'minecraft:salmon_bucket': 0,
-    'minecraft:cod_bucket': 0
 
-};
 World.events.blockPlace.subscribe(({ block, player }) => {
     // made originally by frost, and perfected by nightwalkerlots
-    const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
     const uoimbool = scoreTest('uoimtoggledummy', 'uoimtoggle');
     let {x, y, z} = player.location;
-    let type = block.id.replace('minecraft:', '');
-    if (block.id in blockBans && acmbool || block.id == 'minecraft:moving_block') {
-        TellRB(`flag_1`, `UAC Anti-CBE ► ${player.nameTag} tried to place ${block.id.replace('minecraft:', '')} at ${x} ${y} ${z}`);
-        tellrawStaff(`§l§¶§cUAC STAFF ► §6Anti-CBE §bItem Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z} \n§bUse §2UAC.cbetp §bto teleport there!`);
-        block.setType(MinecraftBlockTypes.air);
-        overworld.runCommandAsync(`scoreboard players set cbe_x cbe_location ${x}`);
-        overworld.runCommandAsync(`scoreboard players set cbe_y cbe_location ${y}`);
-        overworld.runCommandAsync(`scoreboard players set cbe_z cbe_location ${z}`);
-        if(player.hasTag(`staffstatus`)) { return }
-        player.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
-        tellrawServer(`§¶§c§lUAC ► §6Anti-CBE §d${player.nameTag} §bwas temp-kicked for having §c${type}`);
-        player.runCommandAsync(`clear @s`);
-        try{  player.runCommandAsync(`kick "${player.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Attempt | ${type}`);  }
-        catch{player.runCommandAsync(`event entity @s uac:ban_main`);}
-    }
     if (block.id in unobtainables && uoimbool) {
         TellRB(`flag_1`, `UAC Unobtainable Items ► ${player.nameTag} tried to place ${block.id.replace('minecraft:', '')} at ${x} ${y} ${z}`);
         tellrawStaff(`§l§¶§cUAC STAFF ► §6Unobtainable Items §bBlock Placement Flag \nBlock Type §7: §c${block.id.replace('minecraft:', '')} §bBlock Placer §7: §c${player.nameTag} §bLocation §7: §c${x} ${y} ${z}`);
@@ -249,14 +214,12 @@ World.events.blockPlace.subscribe(({ block, player }) => {
 
 
 world.events.beforeItemUseOn.subscribe((eventData) => {
-    const acmbool = scoreTest('acmtoggledummy', 'acmtoggle');
     let item = eventData.item.id;
     let item_name = item.replace('minecraft:', '');
     let name = eventData.source.nameTag;
     let by_player = undefined;
     let {x, y, z} = eventData.source.location;
     let p = world.getPlayers();
-    if(!acmbool) return;
     for (let i of p) {
         const p_name = i.getName();
         if(!p_name.match(name)) {
@@ -267,15 +230,6 @@ world.events.beforeItemUseOn.subscribe((eventData) => {
     }
     if(!by_player) return;
     if(eventData.source.hasTag('staffstatus')) return;
-
-    if(item in blockBans || item in blockBuckets) {
-        eventData.cancel = true;
-        eventData.source.runCommandAsync('function UAC/asset/cbeitem_gt_warn');
-        tellrawServer(`§¶§c§lUAC ► §6CBE Item Use §d${name} §bwas temp-kicked for placing §c${item_name} §bat §c${x} ${y} ${z}`);
-        TellRB(`flag_1`, `UAC Anti-CBE ► ${name} was temp-kicked for placing ${item_name} at ${x} ${y} ${z}`);
-        try{  eventData.source.runCommandAsync(`kick "${eventData.source.nameTag}" §r\n§l§c\n§r\n§eKicked By:§r §l§3§•Unity Anti•Cheat§r\n§bReason:§r §c§lCBE Item Placement | ${item_name}`);  }
-        catch{eventData.source.runCommandAsync(`event entity @s uac:ban_main`);}
-    }
 });
 
 

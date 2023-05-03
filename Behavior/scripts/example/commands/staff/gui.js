@@ -24,13 +24,6 @@ function scoreTest(target, objective) {
 const moduleRequires = ['has_xx', 'has_gt']
 const moduleDefs_prots = [
     {
-        mname: 'Anti-CBE',
-        obj: ['ACM', 'acmtoggle'],
-        name: 'acmtoggledummy',
-        toggle: ['§cOFF', '§aON'],
-        require: 'has_xx'
-    },
-    {
         mname: 'Anti-Fly',
         obj: ['AFM', 'afmtoggle'],
         name: 'afmtoggledummy',
@@ -547,7 +540,6 @@ const guiScheme = {
                 ['warn'        , 'Warns'              , 3],
                 ['gmc_flag'    , 'GMC flags'          , 4],
                 ['warnillegal' , 'Illegal item warns' , 9],
-                ['warncbe'     , 'CBE warns'          , 9],
             ]
             text.push('§l§eDetections')
             for (let [id, name, max] of detections) text.push(`${name}:  §e${obj(id).players.get(target) ?? 0}§r / §e${max}§r`)
