@@ -1,0 +1,441 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/source/behavior/entities/entities.json",
+    "format_version": "1.18.20",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:player",
+            "is_spawnable": false,
+            "is_summonable": false,
+            "is_experimental": false,
+            "scripts": {
+                "animate": [
+                    "msapi_blocking",
+                    "msapi_invulnerable_ticks",
+                    "msapi_out_of_control",
+                    "msapi_can_climb",
+                    "msapi_can_damage_nearby_mobs",
+                    "msapi_can_dash",
+                    "msapi_can_fly",
+                    "msapi_can_power_jump",
+                    "msapi_can_swim",
+                    "msapi_can_walk",
+                    "msapi_has_cape",
+                    "msapi_has_collision",
+                    "msapi_has_dash_cooldown",
+                    "msapi_has_gravity",
+                    "msapi_has_owner",
+                    "msapi_has_rider",
+                    "msapi_has_target",
+                    "msapi_is_admiring",
+                    "msapi_is_alive",
+                    "msapi_is_angry",
+                    "msapi_is_attached_to_entity",
+                    "msapi_is_avoiding_block",
+                    "msapi_is_avoiding_mobs",
+                    "msapi_is_baby",
+                    "msapi_is_breathing",
+                    "msapi_is_bribed",
+                    "msapi_is_carrying_block",
+                    "msapi_is_casting",
+                    "msapi_is_celebrating",
+                    "msapi_is_celebrating_special",
+                    "msapi_is_charged",
+                    "msapi_is_charging",
+                    "msapi_is_chested",
+                    "msapi_is_critical",
+                    "msapi_is_croaking",
+                    "msapi_is_dancing",
+                    "msapi_is_delayed_attacking",
+                    "msapi_is_digging",
+                    "msapi_is_eating",
+                    "msapi_is_eating_mob",
+                    "msapi_is_elder",
+                    "msapi_is_emerging",
+                    "msapi_is_emoting",
+                    "msapi_is_enchanted",
+                    "msapi_is_fire_immune",
+                    "msapi_is_first_person",
+                    "msapi_is_ghost",
+                    "msapi_is_gliding",
+                    "msapi_is_grazing",
+                    "msapi_is_idling",
+                    "msapi_is_ignited",
+                    "msapi_is_illager_captain",
+                    "msapi_is_in_contact_with_water",
+                    "msapi_is_in_love",
+                    "msapi_is_in_ui",
+                    "msapi_is_in_water",
+                    "msapi_is_in_water_or_rain",
+                    "msapi_is_interested",
+                    "msapi_is_invisible",
+                    "msapi_is_jump_goal_jumping",
+                    "msapi_is_jumping",
+                    "msapi_is_laying_down",
+                    "msapi_is_laying_egg",
+                    "msapi_is_leashed",
+                    "msapi_is_levitating",
+                    "msapi_is_lingering",
+                    "msapi_is_moving",
+                    "msapi_is_on_fire",
+                    "msapi_is_on_ground",
+                    "msapi_is_on_screen",
+                    "msapi_is_onfire",
+                    "msapi_is_orphaned",
+                    "msapi_is_persona_or_premium_skin",
+                    "msapi_is_playing_dead",
+                    "msapi_is_powered",
+                    "msapi_is_pregnant",
+                    "msapi_is_ram_attacking",
+                    "msapi_is_resting",
+                    "msapi_is_riding",
+                    "msapi_is_roaring",
+                    "msapi_is_rolling",
+                    "msapi_is_saddled",
+                    "msapi_is_scared",
+                    "msapi_is_selected_item",
+                    "msapi_is_shaking",
+                    "msapi_is_shaking_wetness",
+                    "msapi_is_sheared",
+                    "msapi_is_shield_powered",
+                    "msapi_is_silent",
+                    "msapi_is_sitting",
+                    "msapi_is_sleeping",
+                    "msapi_is_sneaking",
+                    "msapi_is_sneezing",
+                    "msapi_is_sniffing",
+                    "msapi_is_sonic_boom",
+                    "msapi_is_spectator",
+                    "msapi_is_sprinting",
+                    "msapi_is_stackable",
+                    "msapi_is_stalking",
+                    "msapi_is_standing",
+                    "msapi_is_stunned",
+                    "msapi_is_swimming",
+                    "msapi_is_tamed",
+                    "msapi_is_transforming",
+                    "msapi_is_using_item",
+                    "msapi_is_wall_climbing"
+                ]
+            },
+            "animations": {
+                "msapi_blocking": "controller.animation.msapi.blocking",
+                "msapi_invulnerable_ticks": "controller.animation.msapi.invulnerable_ticks",
+                "msapi_out_of_control": "controller.animation.msapi.out_of_control",
+                "msapi_can_climb": "controller.animation.msapi.can_climb",
+                "msapi_can_damage_nearby_mobs": "controller.animation.msapi.can_damage_nearby_mobs",
+                "msapi_can_dash": "controller.animation.msapi.can_dash",
+                "msapi_can_fly": "controller.animation.msapi.can_fly",
+                "msapi_can_power_jump": "controller.animation.msapi.can_power_jump",
+                "msapi_can_swim": "controller.animation.msapi.can_swim",
+                "msapi_can_walk": "controller.animation.msapi.can_walk",
+                "msapi_has_cape": "controller.animation.msapi.has_cape",
+                "msapi_has_collision": "controller.animation.msapi.has_collision",
+                "msapi_has_dash_cooldown": "controller.animation.msapi.has_dash_cooldown",
+                "msapi_has_gravity": "controller.animation.msapi.has_gravity",
+                "msapi_has_owner": "controller.animation.msapi.has_owner",
+                "msapi_has_rider": "controller.animation.msapi.has_rider",
+                "msapi_has_target": "controller.animation.msapi.has_target",
+                "msapi_is_admiring": "controller.animation.msapi.is_admiring",
+                "msapi_is_alive": "controller.animation.msapi.is_alive",
+                "msapi_is_angry": "controller.animation.msapi.is_angry",
+                "msapi_is_attached_to_entity": "controller.animation.msapi.is_attached_to_entity",
+                "msapi_is_avoiding_block": "controller.animation.msapi.is_avoiding_block",
+                "msapi_is_avoiding_mobs": "controller.animation.msapi.is_avoiding_mobs",
+                "msapi_is_baby": "controller.animation.msapi.is_baby",
+                "msapi_is_breathing": "controller.animation.msapi.is_breathing",
+                "msapi_is_bribed": "controller.animation.msapi.is_bribed",
+                "msapi_is_carrying_block": "controller.animation.msapi.is_carrying_block",
+                "msapi_is_casting": "controller.animation.msapi.is_casting",
+                "msapi_is_celebrating": "controller.animation.msapi.is_celebrating",
+                "msapi_is_celebrating_special": "controller.animation.msapi.is_celebrating_special",
+                "msapi_is_charged": "controller.animation.msapi.is_charged",
+                "msapi_is_charging": "controller.animation.msapi.is_charging",
+                "msapi_is_chested": "controller.animation.msapi.is_chested",
+                "msapi_is_critical": "controller.animation.msapi.is_critical",
+                "msapi_is_croaking": "controller.animation.msapi.is_croaking",
+                "msapi_is_dancing": "controller.animation.msapi.is_dancing",
+                "msapi_is_delayed_attacking": "controller.animation.msapi.is_delayed_attacking",
+                "msapi_is_digging": "controller.animation.msapi.is_digging",
+                "msapi_is_eating": "controller.animation.msapi.is_eating",
+                "msapi_is_eating_mob": "controller.animation.msapi.is_eating_mob",
+                "msapi_is_elder": "controller.animation.msapi.is_elder",
+                "msapi_is_emerging": "controller.animation.msapi.is_emerging",
+                "msapi_is_emoting": "controller.animation.msapi.is_emoting",
+                "msapi_is_enchanted": "controller.animation.msapi.is_enchanted",
+                "msapi_is_fire_immune": "controller.animation.msapi.is_fire_immune",
+                "msapi_is_first_person": "controller.animation.msapi.is_first_person",
+                "msapi_is_ghost": "controller.animation.msapi.is_ghost",
+                "msapi_is_gliding": "controller.animation.msapi.is_gliding",
+                "msapi_is_grazing": "controller.animation.msapi.is_grazing",
+                "msapi_is_idling": "controller.animation.msapi.is_idling",
+                "msapi_is_ignited": "controller.animation.msapi.is_ignited",
+                "msapi_is_illager_captain": "controller.animation.msapi.is_illager_captain",
+                "msapi_is_in_contact_with_water": "controller.animation.msapi.is_in_contact_with_water",
+                "msapi_is_in_love": "controller.animation.msapi.is_in_love",
+                "msapi_is_in_ui": "controller.animation.msapi.is_in_ui",
+                "msapi_is_in_water": "controller.animation.msapi.is_in_water",
+                "msapi_is_in_water_or_rain": "controller.animation.msapi.is_in_water_or_rain",
+                "msapi_is_interested": "controller.animation.msapi.is_interested",
+                "msapi_is_invisible": "controller.animation.msapi.is_invisible",
+                "msapi_is_jump_goal_jumping": "controller.animation.msapi.is_jump_goal_jumping",
+                "msapi_is_jumping": "controller.animation.msapi.is_jumping",
+                "msapi_is_laying_down": "controller.animation.msapi.is_laying_down",
+                "msapi_is_laying_egg": "controller.animation.msapi.is_laying_egg",
+                "msapi_is_leashed": "controller.animation.msapi.is_leashed",
+                "msapi_is_levitating": "controller.animation.msapi.is_levitating",
+                "msapi_is_lingering": "controller.animation.msapi.is_lingering",
+                "msapi_is_moving": "controller.animation.msapi.is_moving",
+                "msapi_is_on_fire": "controller.animation.msapi.is_on_fire",
+                "msapi_is_on_ground": "controller.animation.msapi.is_on_ground",
+                "msapi_is_on_screen": "controller.animation.msapi.is_on_screen",
+                "msapi_is_onfire": "controller.animation.msapi.is_onfire",
+                "msapi_is_orphaned": "controller.animation.msapi.is_orphaned",
+                "msapi_is_persona_or_premium_skin": "controller.animation.msapi.is_persona_or_premium_skin",
+                "msapi_is_playing_dead": "controller.animation.msapi.is_playing_dead",
+                "msapi_is_powered": "controller.animation.msapi.is_powered",
+                "msapi_is_pregnant": "controller.animation.msapi.is_pregnant",
+                "msapi_is_ram_attacking": "controller.animation.msapi.is_ram_attacking",
+                "msapi_is_resting": "controller.animation.msapi.is_resting",
+                "msapi_is_riding": "controller.animation.msapi.is_riding",
+                "msapi_is_roaring": "controller.animation.msapi.is_roaring",
+                "msapi_is_rolling": "controller.animation.msapi.is_rolling",
+                "msapi_is_saddled": "controller.animation.msapi.is_saddled",
+                "msapi_is_scared": "controller.animation.msapi.is_scared",
+                "msapi_is_selected_item": "controller.animation.msapi.is_selected_item",
+                "msapi_is_shaking": "controller.animation.msapi.is_shaking",
+                "msapi_is_shaking_wetness": "controller.animation.msapi.is_shaking_wetness",
+                "msapi_is_sheared": "controller.animation.msapi.is_sheared",
+                "msapi_is_shield_powered": "controller.animation.msapi.is_shield_powered",
+                "msapi_is_silent": "controller.animation.msapi.is_silent",
+                "msapi_is_sitting": "controller.animation.msapi.is_sitting",
+                "msapi_is_sleeping": "controller.animation.msapi.is_sleeping",
+                "msapi_is_sneaking": "controller.animation.msapi.is_sneaking",
+                "msapi_is_sneezing": "controller.animation.msapi.is_sneezing",
+                "msapi_is_sniffing": "controller.animation.msapi.is_sniffing",
+                "msapi_is_sonic_boom": "controller.animation.msapi.is_sonic_boom",
+                "msapi_is_spectator": "controller.animation.msapi.is_spectator",
+                "msapi_is_sprinting": "controller.animation.msapi.is_sprinting",
+                "msapi_is_stackable": "controller.animation.msapi.is_stackable",
+                "msapi_is_stalking": "controller.animation.msapi.is_stalking",
+                "msapi_is_standing": "controller.animation.msapi.is_standing",
+                "msapi_is_stunned": "controller.animation.msapi.is_stunned",
+                "msapi_is_swimming": "controller.animation.msapi.is_swimming",
+                "msapi_is_tamed": "controller.animation.msapi.is_tamed",
+                "msapi_is_transforming": "controller.animation.msapi.is_transforming",
+                "msapi_is_using_item": "controller.animation.msapi.is_using_item",
+                "msapi_is_wall_climbing": "controller.animation.msapi.is_wall_climbing"
+            }
+        },
+        "component_groups": {
+            "minecraft:add_bad_omen": {
+                "minecraft:spell_effects": {
+                    "add_effects": [
+                        {
+                            "effect": "bad_omen",
+                            "duration": 6000,
+                            "visible": false,
+                            "display_on_screen_animation": true
+                        }
+                    ]
+                },
+                "minecraft:timer": {
+                    "time": [
+                        0.0,
+                        0.0
+                    ],
+                    "looping": false,
+                    "time_down_event": {
+                        "event": "minecraft:clear_add_bad_omen",
+                        "target": "self"
+                    }
+                }
+            },
+            "minecraft:clear_bad_omen_spell_effect": {
+                "minecraft:spell_effects": {}
+            },
+            "minecraft:raid_trigger": {
+                "minecraft:raid_trigger": {
+                    "triggered_event": {
+                        "event": "minecraft:remove_raid_trigger",
+                        "target": "self"
+                    }
+                },
+                "minecraft:spell_effects": {
+                    "remove_effects": "bad_omen"
+                }
+            }
+        },
+        "components": {
+            "minecraft:experience_reward": {
+                "on_death": "Math.Min(query.player_level * 7, 100)"
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "player"
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:loot": {
+                "table": "loot_tables/empty.json"
+            },
+            "minecraft:collision_box": {
+                "width": 0.6,
+                "height": 1.8
+            },
+            "minecraft:can_climb": {},
+            "minecraft:movement": {
+                "value": 0.1
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 4
+                    }
+                ]
+            },
+            "minecraft:attack": {
+                "damage": 1
+            },
+            "minecraft:exhaustion_values": {
+                "heal": 6,
+                "jump": 0.05,
+                "sprint_jump": 0.2,
+                "mine": 0.005,
+                "attack": 0.1,
+                "damage": 0.1,
+                "walk": 0.0,
+                "sprint": 0.1,
+                "swim": 0.01
+            },
+            "minecraft:player.saturation": {
+                "value": 5,
+                "max": 20
+            },
+            "minecraft:player.exhaustion": {
+                "value": 0,
+                "max": 20
+            },
+            "minecraft:player.level": {
+                "value": 0,
+                "max": 24791
+            },
+            "minecraft:player.experience": {
+                "value": 0,
+                "max": 1
+            },
+            "minecraft:breathable": {
+                "total_supply": 15,
+                "suffocate_time": -1,
+                "inhale_time": 3.75,
+                "generates_bubbles": false
+            },
+            "minecraft:nameable": {
+                "always_show": true,
+                "allow_name_tag_renaming": false
+            },
+            "minecraft:physics": {
+                // "push_towards_closest_space": true
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": true
+            },
+            "minecraft:insomnia": {
+                "days_until_insomnia": 3
+            },
+            "minecraft:rideable": {
+                "seat_count": 2,
+                "family_types": [
+                    "parrot_tame"
+                ],
+                "pull_in_entities": true,
+                "seats": [
+                    {
+                        "position": [
+                            0.4,
+                            -0.2,
+                            -0.1
+                        ],
+                        "min_rider_count": 0,
+                        "max_rider_count": 0,
+                        "lock_rider_rotation": 0
+                    },
+                    {
+                        "position": [
+                            -0.4,
+                            -0.2,
+                            -0.1
+                        ],
+                        "min_rider_count": 1,
+                        "max_rider_count": 2,
+                        "lock_rider_rotation": 0
+                    }
+                ]
+            },
+            "minecraft:conditional_bandwidth_optimization": {},
+            "minecraft:block_climber": {},
+            "minecraft:environment_sensor": {
+                "triggers": {
+                    "filters": {
+                        "all_of": [
+                            {
+                                "test": "has_mob_effect",
+                                "subject": "self",
+                                "value": "bad_omen"
+                            },
+                            {
+                                "test": "is_in_village",
+                                "subject": "self",
+                                "value": true
+                            }
+                        ]
+                    },
+                    "event": "minecraft:trigger_raid"
+                }
+            }
+        },
+        "events": {
+            "minecraft:gain_bad_omen": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:add_bad_omen"
+                    ]
+                }
+            },
+            "minecraft:clear_add_bad_omen": {
+                "remove": {
+                    "component_groups": [
+                        "minecraft:add_bad_omen"
+                    ]
+                },
+                "add": {
+                    "component_groups": [
+                        "minecraft:clear_bad_omen_spell_effect"
+                    ]
+                }
+            },
+            "minecraft:trigger_raid": {
+                "add": {
+                    "component_groups": [
+                        "minecraft:raid_trigger"
+                    ]
+                }
+            },
+            "minecraft:remove_raid_trigger": {
+                "remove": {
+                    "component_groups": [
+                        "minecraft:raid_trigger"
+                    ]
+                }
+            },
+            "msapi:test": {}
+        }
+    }
+}

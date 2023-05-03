@@ -1,0 +1,13 @@
+import './adminchat.js';
+import './chatgroup.js';
+import './compability.js';
+import './ctoggle.js';
+import './deop.js';
+import './deopelse.js';
+import './eval.js';
+import './help.js';
+import './op.js';
+import './opelse.js';
+import './permission.js';
+import './prefix.js';
+import './role.js';

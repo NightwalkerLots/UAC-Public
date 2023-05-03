@@ -1,0 +1,53 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Blockception/Minecraft-bedrock-json-schemas/main/source/behavior/entities/entities.json",
+    "format_version": "1.19.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "uacx:storage_data",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "components": {
+            "minecraft:health": {
+                "value": 255,
+                "min": 255,
+                "max": 255
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:tick_world": {
+                "never_despawn": true,
+                "radius": 2
+            },
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            }
+        },
+        "component_groups": {
+            "uacx:kill": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": true
+                }
+            }
+        },
+        "events": {
+            "uacx:kill": {
+                "add": {
+                    "component_groups": [ "uacx:kill" ]
+                }
+            }
+        }
+    }
+}
