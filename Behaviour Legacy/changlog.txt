@@ -1,0 +1,7 @@
+- Removed Embeded Currency System
+- Removed Anti-CBE Module
+
+- Staff Bypass for movement checks
+- NPCs now spawnable
+- Updated VIP player list
+- TPA Ticket Conflict error now also suggests how to close your current ticket. (Accepted Suggestion from 968539531517263903)
