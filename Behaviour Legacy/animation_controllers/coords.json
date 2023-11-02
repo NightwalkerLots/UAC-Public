@@ -1,0 +1,574 @@
+//If you are not part of the UAC or UnknownsionCraft Administration read the below texts.
+//Please do not take credit for this work for it is part of the UnknownsionCraft Development Systems
+//If you are modifying this pack please consider giving credit to the original owner
+//
+//Creator Xbox GT: VUnkownPersonV
+//Creator Discord: Catastrophe
+
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.coords_positive": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "x_coordinate_100000": "variable.x_coordinate < (query.position(0) - 100000)"
+                        },
+                        {
+                            "x_coordinate_10000": "variable.x_coordinate < (query.position(0) - 10000)"
+                        },
+                        {
+                            "x_coordinate_1000": "variable.x_coordinate < (query.position(0) - 1000)"
+                        },
+                        {
+                            "x_coordinate_100": "variable.x_coordinate < (query.position(0) - 100)"
+                        },
+                        {
+                            "x_coordinate_10": "variable.x_coordinate < (query.position(0) - 10)"
+                        },
+                        {
+                            "x_coordinate_5": "variable.x_coordinate < (query.position(0) - 5)"
+                        },
+                        {
+                            "x_coordinate_1": "variable.x_coordinate < (query.position(0) - 0.5)"
+                        },
+                        {
+                            "y_coordinate_100000": "variable.y_coordinate < (query.position(1) - 100000)"
+                        },
+                        {
+                            "y_coordinate_10000": "variable.y_coordinate < (query.position(1) - 10000)"
+                        },
+                        {
+                            "y_coordinate_1000": "variable.y_coordinate < (query.position(1) - 1000)"
+                        },
+                        {
+                            "y_coordinate_100": "variable.y_coordinate < (query.position(1) - 100)"
+                        },
+                        {
+                            "y_coordinate_10": "variable.y_coordinate < (query.position(1) - 10)"
+                        },
+                        {
+                            "y_coordinate_5": "variable.y_coordinate < (query.position(1) - 5)"
+                        },
+                        {
+                            "y_coordinate_1": "variable.y_coordinate < (query.position(1) - 0.5)"
+                        },
+                        {
+                            "z_coordinate_100000": "variable.z_coordinate < (query.position(2) - 100000)"
+                        },
+                        {
+                            "z_coordinate_10000": "variable.z_coordinate < (query.position(2) - 10000)"
+                        },
+                        {
+                            "z_coordinate_1000": "variable.z_coordinate < (query.position(2) - 1000)"
+                        },
+                        {
+                            "z_coordinate_100": "variable.z_coordinate < (query.position(2) - 100)"
+                        },
+                        {
+                            "z_coordinate_10": "variable.z_coordinate < (query.position(2) - 10)"
+                        },
+                        {
+                            "z_coordinate_5": "variable.z_coordinate < (query.position(2) - 5)"
+                        },
+                        {
+                            "z_coordinate_1": "variable.z_coordinate < (query.position(2) - 0.5)"
+                        }
+                    ]
+                },
+                "x_coordinate_100000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 100000"
+                    ]
+                },
+                "x_coordinate_10000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 10000"
+                    ]
+                },
+                "x_coordinate_1000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 1000"
+                    ]
+                },
+                "x_coordinate_100": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 100"
+                    ]
+                },
+                "x_coordinate_10": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 10"
+                    ]
+                },
+                "x_coordinate_5": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 5"
+                    ]
+                },
+                "x_coordinate_1": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate 1"
+                    ]
+                },
+                "y_coordinate_100000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 100000"
+                    ]
+                },
+                "y_coordinate_10000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 10000"
+                    ]
+                },
+                "y_coordinate_1000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 1000"
+                    ]
+                },
+                "y_coordinate_100": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 100"
+                    ]
+                },
+                "y_coordinate_10": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 10"
+                    ]
+                },
+                "y_coordinate_5": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 5"
+                    ]
+                },
+                "y_coordinate_1": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate 1"
+                    ]
+                },
+                "z_coordinate_100000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 100000"
+                    ]
+                },
+                "z_coordinate_10000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 10000"
+                    ]
+                },
+                "z_coordinate_1000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 1000"
+                    ]
+                },
+                "z_coordinate_100": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 100"
+                    ]
+                },
+                "z_coordinate_10": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 10"
+                    ]
+                },
+                "z_coordinate_5": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 5"
+                    ]
+                },
+                "z_coordinate_1": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate 1"
+                    ]
+                }
+            }
+        },
+        "controller.animation.coords_negative": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "x_coordinate_100000": "variable.x_coordinate > (query.position(0) + 100000)"
+                        },
+                        {
+                            "x_coordinate_10000": "variable.x_coordinate > (query.position(0) + 10000)"
+                        },
+                        {
+                            "x_coordinate_1000": "variable.x_coordinate > (query.position(0) + 1000)"
+                        },
+                        {
+                            "x_coordinate_100": "variable.x_coordinate > (query.position(0) + 100)"
+                        },
+                        {
+                            "x_coordinate_10": "variable.x_coordinate > (query.position(0) + 10)"
+                        },
+                        {
+                            "x_coordinate_5": "variable.x_coordinate > (query.position(0) + 5)"
+                        },
+                        {
+                            "x_coordinate_1": "variable.x_coordinate > (query.position(0) + 0.5)"
+                        },
+                        {
+                            "y_coordinate_100000": "variable.y_coordinate > (query.position(1) + 100000)"
+                        },
+                        {
+                            "y_coordinate_10000": "variable.y_coordinate > (query.position(1) + 10000)"
+                        },
+                        {
+                            "y_coordinate_1000": "variable.y_coordinate > (query.position(1) + 1000)"
+                        },
+                        {
+                            "y_coordinate_100": "variable.y_coordinate > (query.position(1) + 100)"
+                        },
+                        {
+                            "y_coordinate_10": "variable.y_coordinate > (query.position(1) + 10)"
+                        },
+                        {
+                            "y_coordinate_5": "variable.y_coordinate > (query.position(1) + 5)"
+                        },
+                        {
+                            "y_coordinate_1": "variable.y_coordinate > (query.position(1) + 0.5)"
+                        },
+                        {
+                            "z_coordinate_100000": "variable.z_coordinate > (query.position(2) + 100000)"
+                        },
+                        {
+                            "z_coordinate_10000": "variable.z_coordinate > (query.position(2) + 10000)"
+                        },
+                        {
+                            "z_coordinate_1000": "variable.z_coordinate > (query.position(2) + 1000)"
+                        },
+                        {
+                            "z_coordinate_100": "variable.z_coordinate > (query.position(2) + 100)"
+                        },
+                        {
+                            "z_coordinate_10": "variable.z_coordinate > (query.position(2) + 10)"
+                        },
+                        {
+                            "z_coordinate_5": "variable.z_coordinate > (query.position(2) + 5)"
+                        },
+                        {
+                            "z_coordinate_1": "variable.z_coordinate > (query.position(2) + 0.5)"
+                        }
+                    ]
+                },
+                "x_coordinate_100000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -100000"
+                    ]
+                },
+                "x_coordinate_10000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -10000"
+                    ]
+                },
+                "x_coordinate_1000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -1000"
+                    ]
+                },
+                "x_coordinate_100": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -100"
+                    ]
+                },
+                "x_coordinate_10": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -10"
+                    ]
+                },
+                "x_coordinate_5": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -5"
+                    ]
+                },
+                "x_coordinate_1": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s X_Coordinate -1"
+                    ]
+                },
+                "y_coordinate_100000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -100000"
+                    ]
+                },
+                "y_coordinate_10000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -10000"
+                    ]
+                },
+                "y_coordinate_1000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -1000"
+                    ]
+                },
+                "y_coordinate_100": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -100"
+                    ]
+                },
+                "y_coordinate_10": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -10"
+                    ]
+                },
+                "y_coordinate_5": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -5"
+                    ]
+                },
+                "y_coordinate_1": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Y_Coordinate -1"
+                    ]
+                },
+                "z_coordinate_100000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -100000"
+                    ]
+                },
+                "z_coordinate_10000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -10000"
+                    ]
+                },
+                "z_coordinate_1000": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -1000"
+                    ]
+                },
+                "z_coordinate_100": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -100"
+                    ]
+                },
+                "z_coordinate_10": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -10"
+                    ]
+                },
+                "z_coordinate_5": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -5"
+                    ]
+                },
+                "z_coordinate_1": {
+                    "transitions": [
+                        {
+                            "default": "(1.0)"
+                        }
+                    ],
+                    "on_entry": [
+                        "/scoreboard players add @s Z_Coordinate -1"
+                    ]
+                }
+            }
+        }
+    }
+}
