@@ -1,0 +1,41 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.testing": {
+      "timeline": {
+        "0.0": [
+        //This is for the world_border
+        "variable.border_control_coord_x = query.scoreboard('Border_Coord_X');",
+        "variable.border_control_coord_z = query.scoreboard('Border_Coord_Z');",
+
+        //This is for the enchanted armor
+        "variable.helmet_other = query.armor_material_slot(0) == 1;",
+        "variable.helmet_leather = query.armor_material_slot(0) == 3;",
+        "variable.chestplate_other = query.armor_material_slot(1) == 1;",
+        "variable.chestplate_leather = query.armor_material_slot(1) == 3;",
+        "variable.leggings_other = query.armor_material_slot(2) == 1;",
+        "variable.leggings_leather = query.armor_material_slot(2) == 3;",
+        "variable.boots_other = query.armor_material_slot(3) == 1;",
+        "variable.boots_leather = query.armor_material_slot(3) == 3;",
+
+
+        //This is for the coordinates system
+        "variable.x_coordinate = query.scoreboard('X_Coordinate');",
+        "variable.y_coordinate = query.scoreboard('Y_Coordinate');",
+        "variable.z_coordinate = query.scoreboard('Z_Coordinate');",
+
+        //This is for teleporting home -> I am re-using this score so not other objectives are needed to be created :)
+        "variable.home_position_x = query.scoreboard('X_Coord_S');",
+        "variable.home_position_y = query.scoreboard('Y_Coord_S');",
+        "variable.home_position_z = query.scoreboard('Z_Coord_S');",
+        "variable.teleport_home = query.scoreboard('teleporting_home');",
+        "variable.teleporting = query.scoreboard('teleporting');",
+        "variable.death_effect = query.scoreboard('Deathef');"
+
+        ]
+      },
+      "animation_length": 0.01,
+      "loop": true
+    }
+  }
+}
