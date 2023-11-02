@@ -1,5 +1,0 @@
-Default Key for Owner Protection is
-/function UAC/ownerprotection/de6ec4876b6243aaab73bb61a60a6469/08ca3e40e97d4c939b7122725ca02465
-
-Change this key by renaming the File Pathways to different UUIDs
-Then take out all the " - " so that it is only numaric and alphibetic characters.
